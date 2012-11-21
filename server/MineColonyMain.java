@@ -24,7 +24,7 @@ public class MineColonyMain {
 	public static MineColonyMain instance;
 	
 	@SidedProxy(clientSide = "client.ClientProxy", serverSide = "server.CommonProxy")
-	public static CommonProxy proxy;
+	public static ServerProxy proxy;
 
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)

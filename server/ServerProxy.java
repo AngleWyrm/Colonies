@@ -4,7 +4,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
-public class CommonProxy implements IGuiHandler
+public class ServerProxy implements IGuiHandler
 {
     public void registerRenderInformation()
     {
