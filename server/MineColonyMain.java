@@ -30,8 +30,7 @@ public class MineColonyMain {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		ConfigFile.CreateDefaultConfig();
-	    // TODO: Add Pre-Initialization code such as configuration loading
+		ConfigFile.load();
 	}
 
 	@Init
