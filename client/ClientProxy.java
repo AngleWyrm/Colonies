@@ -19,7 +19,7 @@ import net.minecraft.client.Minecraft;
 public class ConfigFile {
 	
 	public static Properties settings = new Properties();
-	private static String configFilePath="MineColony.cfg";
+	private static String configFilePath="Colony.cfg";
 			
 	public static void createDefaultConfiguration() {
 	   // Default key/value pairs in ConfigFile.settings
