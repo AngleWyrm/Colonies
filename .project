@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Colonies</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<variableList>
+		<variable>
+			<name>MCP_LOC</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/Jeffrey/MCP/mcp723</value>
+		</variable>
+	</variableList>
+</projectDescription>
