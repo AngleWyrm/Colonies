@@ -1,4 +1,4 @@
-MineColony
+Colonies
 ==========
 
 Minecraft mod MineColony Reboot
