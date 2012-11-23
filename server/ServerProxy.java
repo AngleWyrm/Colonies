@@ -1,4 +1,4 @@
-package Colonies.server;
+package colonies.server;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;

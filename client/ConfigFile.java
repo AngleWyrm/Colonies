@@ -5,13 +5,11 @@
 //
 // config file location is ../config/Colonies.cfg
 //
-package Colonies.client;
+package colonies.client;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigFile {
@@ -21,6 +19,7 @@ public class ConfigFile {
 	
 	     // Default key/value pairs in ConfigFile.settings
 	     settings.setProperty("Colonies", "MineColony Reboot");
+	     settings.setProperty("CitizenMoveSpeed", "0.25");
 
 	     save();
 	}
