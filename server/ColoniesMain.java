@@ -12,17 +12,17 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid = "MineColony", name = "MineColony Reboot", version = "r1")
+@Mod(modid = "Colonies", name = "Colonies, a MineColony Reboot", version = "r1")
 @NetworkMod(
-        channels = { "MineColony" },
+        channels = { "Colonies" },
         clientSideRequired = true,
         serverSideRequired = false,
         packetHandler = PacketHandler.class )
 
-public class MineColonyMain {
+public class ColoniesMain {
 	
 	@Instance
-	public static MineColonyMain instance;
+	public static ColoniesMain instance;
 	
 	@SidedProxy(clientSide = "client.ClientProxy", serverSide = "server.ServerProxy")
 	public static ServerProxy proxy;
