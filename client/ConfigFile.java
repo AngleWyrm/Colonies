@@ -5,7 +5,7 @@
 //
 // config file location is ../config/Colonies.cfg
 //
-package client;
+package Colonies.client;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +27,7 @@ public class ConfigFile {
 	
 	
 	public static void load() {
-	     String configFilePath = ".."+File.separator+"config"+File.separator+"Colonies.cfg";
+	     String configFilePath = "config"+File.separator+"Colonies.cfg";
 	     File configFile = new File(configFilePath);
 	     
     	 if( configFile.exists() ){
@@ -50,7 +50,7 @@ public class ConfigFile {
 	     
 	    // validate or create ../config folder
 		// might not exist if this is the first mod the player installed
-		String configFilePath = ".."+File.separator+"config";
+		String configFilePath = "config";
 	    File configDir = new File(configFilePath); 
 	    
 	    if( !configDir.isDirectory()){
@@ -64,7 +64,7 @@ public class ConfigFile {
 	    }
 	    
 	    
- 	    configFilePath += File.separator+"Colony.cfg";
+ 	    configFilePath += File.separator+"Colonies.cfg";
 	    File configFile = new File(configFilePath);
 
 	    try{

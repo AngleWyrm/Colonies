@@ -1,4 +1,4 @@
-package server;
+package Colonies.server;
 
 import net.minecraft.src.INetworkManager;
 import net.minecraft.src.Packet250CustomPayload;

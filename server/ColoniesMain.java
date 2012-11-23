@@ -1,6 +1,6 @@
-package server;
+package Colonies.server;
 
-import client.ConfigFile;
+import Colonies.client.ConfigFile;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -24,7 +24,7 @@ public class ColoniesMain {
 	@Instance
 	public static ColoniesMain instance;
 	
-	@SidedProxy(clientSide = "client.ClientProxy", serverSide = "server.ServerProxy")
+	@SidedProxy(clientSide = "Colonies.client.ClientProxy", serverSide = "Colonies.server.ServerProxy")
 	public static ServerProxy proxy;
 
 	@PreInit

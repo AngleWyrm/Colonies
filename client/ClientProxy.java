@@ -1,8 +1,8 @@
-package client;
+package Colonies.client;
 
 import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
-import server.ServerProxy;
+import Colonies.server.ServerProxy;
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class ClientProxy extends ServerProxy
