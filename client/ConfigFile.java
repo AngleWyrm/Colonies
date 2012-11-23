@@ -3,7 +3,7 @@
 //   ConfigFile.settings.getProperty("myNewBlockID");
 //   ConfigFile.settings.setProperty("myNewBlockID", "1500");
 //
-// config file location is ../config/MineColony.cfg
+// config file location is ../config/Colonies.cfg
 //
 package client;
 
@@ -20,14 +20,14 @@ public class ConfigFile {
 	public static void createDefaultConfiguration() {
 	
 	     // Default key/value pairs in ConfigFile.settings
-	     settings.setProperty("MineColony", "Reboot");
+	     settings.setProperty("Colonies", "MineColony Reboot");
 
 	     save();
 	}
 	
 	
 	public static void load() {
-	     String configFilePath = ".."+File.separator+"config"+File.separator+"MineColony.cfg";
+	     String configFilePath = ".."+File.separator+"config"+File.separator+"Colonies.cfg";
 	     File configFile = new File(configFilePath);
 	     
     	 if( configFile.exists() ){
@@ -36,7 +36,7 @@ public class ConfigFile {
     			 settings.load(in);    		 
     		 } 
     		 catch (Exception e) {
-    			 System.err.println("[MineColony] " + e.getMessage());
+    			 System.err.println("[Colonies] " + e.getMessage());
     			 System.err.flush();
     		 }
     	 }
@@ -47,17 +47,34 @@ public class ConfigFile {
 
 	
 	public static void save() {
-	     String configFilePath = ".."+File.separator+"config"+File.separator+"MineColony.cfg";
-	     File configFile = new File(configFilePath);
+	     
+	    // validate or create ../config folder
+		// might not exist if this is the first mod the player installed
+		String configFilePath = ".."+File.separator+"config";
+	    File configDir = new File(configFilePath); 
+	    
+	    if( !configDir.isDirectory()){
+	    	try{
+	    		configDir.mkdir();
+	    	}
+	    	catch (Exception e) {
+	    		System.err.println("[Colonies] " + e.getMessage());
+	    		System.err.flush();
+	    	}		
+	    }
+	    
+	    
+ 	    configFilePath += File.separator+"Colony.cfg";
+	    File configFile = new File(configFilePath);
 
-	     try{
+	    try{
 	    	 FileOutputStream out = new FileOutputStream(configFile);
-	    	 settings.store(out, "MineColony configuration file");
-	     }
-	     catch (Exception e) {
-	    	 System.err.println("[MineColony] " + e.getMessage());
+	    	 settings.store(out, "Colonies configuration file");
+	    }
+	    catch (Exception e) {
+	    	 System.err.println("[Colonies] " + e.getMessage());
 	    	 System.err.flush();
-	     }
+	    }
 	}
 
 
