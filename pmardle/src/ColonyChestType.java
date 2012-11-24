@@ -18,7 +18,13 @@ public enum ColonyChestType {
   BLACKSMITH(54, 9, false, "Blacksmith Chest", "Blacksmithchest.png", 4, Arrays.asList("ingotSilver"), TileEntityBlacksmithChest.class, "LKLXCXWKW", "mGmG0GmGm"),
   HOUSE(54, 9, true, "House Chest", "Housechest.png", 5, Arrays.asList("blockGlass"), TileEntityHouseChest.class, "ZIZICIZIZ"),
   BAKER(54, 9, true, "Baker Chest", "Bakerchest.png", 5, Arrays.asList("blockGlass"), TileEntityBakerChest.class, "RWRHCHRWR"),
-  FARMER(54, 9, true, "Farmer Chest", "Farmrechest.png", 5, Arrays.asList("blockGlass"), TileEntityFarmerChest.class, "HYHYCYHYH"),
+  FARMER(54, 9, true, "Farmer Chest", "Farmerchest.png", 5, Arrays.asList("blockGlass"), TileEntityFarmerChest.class, "HYHYCYHYH"),
+  SHEPARD(54, 9, true, "Shepard Chest", "Shepardchest.png", 5, Arrays.asList("blockGlass"), TileEntityShepardChest.class, "UVUVCVUVU"),
+  FISHERMAN(54, 9, true, "Fisherman Chest", "Fishermanchest.png", 5, Arrays.asList("blockGlass"), TileEntityFishermanChest.class, "ababCbaba"),
+  BUTCHER(54, 9, true, "Butcher Chest", "Butcherchest.png", 5, Arrays.asList("blockGlass"), TileEntityButcherChest.class, "HcHcCcHcH"),
+  ALCHEMIST(54, 9, true, "Alchemist Chest", "Alchemistchest.png", 5, Arrays.asList("blockGlass"), TileEntityAlchemistChest.class, "fdfeCefdf"),
+  ENCHANTER(54, 9, true, "Enchanter Chest", "Enchanterchest.png", 5, Arrays.asList("blockGlass"), TileEntityEnchanterChest.class, "BgBhChBgB"),
+  
   WOOD(0,0,false,"","",-1,Arrays.asList("blockPlanks"),null);
   int size;
   private int rowLength;
@@ -109,6 +115,16 @@ public enum ColonyChestType {
             'Y', Item.seeds,
             'E', Block.sapling,
             'J', Item.axeStone,
+            'V', Item.shears,
+            'U', Block.cloth,
+            'a', Item.fishingRod,
+            'b', Item.fishRaw,
+            'c', Item.porkRaw,
+            'd', Block.brewingStand,
+            'e', Item.glassBottle,
+            'f', Item.emerald,
+            'g', Block.enchantmentTable,
+            'h', Item.paper,
             '0', new ItemStack(blockResult, 1, 0), /* Townhall Chest*/
             '1', new ItemStack(blockResult, 1, 1), /* Miner Chest*/
             '2', new ItemStack(blockResult, 1, 1), /* lumberjack Chest*/
