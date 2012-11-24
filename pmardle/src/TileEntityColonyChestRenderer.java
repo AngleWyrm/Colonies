@@ -33,6 +33,10 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import colonies.pmardle.src.ColonyChest;
+import colonies.pmardle.src.ColonyChestType;
+import colonies.pmardle.src.MappableItemStackWrapper;
+import colonies.pmardle.src.TileEntityColonyChest;
 
 public class TileEntityColonyChestRenderer extends TileEntitySpecialRenderer {
 	private static Map<MappableItemStackWrapper, Integer> renderList = new HashMap<MappableItemStackWrapper, Integer>();

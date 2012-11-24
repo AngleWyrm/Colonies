@@ -6,6 +6,10 @@ import net.minecraft.src.IInventory;
 
 import org.lwjgl.opengl.GL11;
 
+import colonies.pmardle.src.ContainerColonyChestBase;
+import colonies.pmardle.src.ColonyChestType;
+import colonies.pmardle.src.TileEntityColonyChest;
+
 public class GUIChest extends GuiContainer {
 	public enum GUI {
 		TOWNHALL(184,202,"/pmardle/gfx/Chestcontainer.png", ColonyChestType.TOWNHALL),
@@ -13,7 +17,9 @@ public class GUIChest extends GuiContainer {
 		LUMBERJACK(184,202,"/pmardle/gfx/Chestcontainer.png", ColonyChestType.LUMBERJACK),
 		BUILDER(184,202,"/pmardle/gfx/Chestcontainer.png", ColonyChestType.BUILDER),
 		BLACKSMITH(184,202,"/pmardle/gfx/Chestcontainer.png", ColonyChestType.BLACKSMITH),
-		HOUSE(184,202,"/pmardle/gfx/Chestcontainer.png", ColonyChestType.HOUSE);
+		HOUSE(184,202,"/pmardle/gfx/Chestcontainer.png", ColonyChestType.HOUSE),
+		BAKER(184,202,"/pmardle/gfx/Bakercontainer.png", ColonyChestType.BAKER),
+		FARMER(184,202,"/pmardle/gfx/Farmercontainer.png", ColonyChestType.FARMER);
 
 		private int xSize;
 		private int ySize;

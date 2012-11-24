@@ -4,6 +4,9 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 
+import colonies.pmardle.src.ColonyChest;
+import colonies.pmardle.src.ColonyChestType;
+import colonies.pmardle.src.TileEntityColonyChest;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.TileEntityRenderer;

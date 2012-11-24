@@ -17,6 +17,8 @@ public enum ColonyChestType {
   BUILDER(54, 9, false, "Builder Chest", "Builderchest.png", 3, Arrays.asList("ingotCopper"), TileEntityBuilderChest.class, "ADADCDADA"),
   BLACKSMITH(54, 9, false, "Blacksmith Chest", "Blacksmithchest.png", 4, Arrays.asList("ingotSilver"), TileEntityBlacksmithChest.class, "LKLXCXWKW", "mGmG0GmGm"),
   HOUSE(54, 9, true, "House Chest", "Housechest.png", 5, Arrays.asList("blockGlass"), TileEntityHouseChest.class, "ZIZICIZIZ"),
+  BAKER(54, 9, true, "Baker Chest", "Bakerchest.png", 5, Arrays.asList("blockGlass"), TileEntityBakerChest.class, "RWRHCHRWR"),
+  FARMER(54, 9, true, "Farmer Chest", "Farmrechest.png", 5, Arrays.asList("blockGlass"), TileEntityFarmerChest.class, "HYHYCYHYH"),
   WOOD(0,0,false,"","",-1,Arrays.asList("blockPlanks"),null);
   int size;
   private int rowLength;
@@ -102,6 +104,9 @@ public enum ColonyChestType {
             'X', Block.blockSteel,
             'A', Block.brick,
             'D', Item.doorWood,
+            'R', Item.bread,
+            'H', Item.wheat,
+            'Y', Item.seeds,
             'E', Block.sapling,
             'J', Item.axeStone,
             '0', new ItemStack(blockResult, 1, 0), /* Townhall Chest*/
