@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

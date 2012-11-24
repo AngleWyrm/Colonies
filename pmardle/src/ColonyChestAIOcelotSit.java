@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import net.minecraft.src.EntityAIOcelotSit;
 import net.minecraft.src.EntityOcelot;

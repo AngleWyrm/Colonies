@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.EntityPlayer;
@@ -7,11 +7,8 @@ import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import Colonies.pmardle.src.CommonProxy;
-import Colonies.pmardle.src.ColonyChestType;
-import Colonies.pmardle.src.TileEntityColonyChest;
 
-public class ClientProxy extends Colonies.pmardle.src.CommonProxy {
+public class ClientProxy extends colonies.pmardle.src.CommonProxy {
 	@Override
 	public void registerRenderInformation() {
 		ChestItemRenderHelper.instance = new ColonyChestRenderHelper();

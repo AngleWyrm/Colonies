@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 public class TileEntityHouseChest extends TileEntityColonyChest {
 	public TileEntityHouseChest() {

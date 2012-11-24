@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import net.minecraft.src.Container;
 import net.minecraft.src.EntityPlayer;

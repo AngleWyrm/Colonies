@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import static org.lwjgl.opengl.GL11.GL_COMPILE_AND_EXECUTE;
 import static org.lwjgl.opengl.GL11.glCallList;
@@ -33,10 +33,6 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
-import Colonies.pmardle.src.ColonyChest;
-import Colonies.pmardle.src.ColonyChestType;
-import Colonies.pmardle.src.MappableItemStackWrapper;
-import Colonies.pmardle.src.TileEntityColonyChest;
 
 public class TileEntityColonyChestRenderer extends TileEntitySpecialRenderer {
 	private static Map<MappableItemStackWrapper, Integer> renderList = new HashMap<MappableItemStackWrapper, Integer>();

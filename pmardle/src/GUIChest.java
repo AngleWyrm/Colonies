@@ -1,14 +1,10 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import net.minecraft.src.Container;
 import net.minecraft.src.GuiContainer;
 import net.minecraft.src.IInventory;
 
 import org.lwjgl.opengl.GL11;
-
-import Colonies.pmardle.src.ContainerColonyChestBase;
-import Colonies.pmardle.src.ColonyChestType;
-import Colonies.pmardle.src.TileEntityColonyChest;
 
 public class GUIChest extends GuiContainer {
 	public enum GUI {

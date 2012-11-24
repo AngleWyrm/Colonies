@@ -1,4 +1,4 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.src.EntityPlayer;

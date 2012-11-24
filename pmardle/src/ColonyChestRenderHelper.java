@@ -1,12 +1,9 @@
-package Colonies.pmardle.src;
+package colonies.pmardle.src;
 
 import java.util.Map;
 
 import com.google.common.collect.Maps;
 
-import Colonies.pmardle.src.ColonyChest;
-import Colonies.pmardle.src.ColonyChestType;
-import Colonies.pmardle.src.TileEntityColonyChest;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.TileEntityRenderer;
