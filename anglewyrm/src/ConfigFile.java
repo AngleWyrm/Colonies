@@ -30,7 +30,12 @@ public class ConfigFile {
 	     String configFilePath = "config"+File.separator+"Colonies.cfg";
 	     File configFile = new File(configFilePath);
 
-    	 if( configFile.exists() ){
+    	 // Developer convenience work-around:
+	     // After adding new entries to the config file,
+	     // just force createDefaultConfiguration by commenting out
+	     // the other if header statement below:
+	     if( configFile.exists() ){
+	   //if(false){
     		 try {
     			 FileInputStream in = new FileInputStream(configFile);
     			 settings.load(in);
