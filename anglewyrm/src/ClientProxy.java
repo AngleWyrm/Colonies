@@ -1,9 +1,9 @@
-package colonies.client;
+package colonies.anglewyrm.src;
 
 import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
-import colonies.server.ServerProxy;
 import cpw.mods.fml.client.FMLClientHandler;
+
 
 public class ClientProxy extends ServerProxy
 {
@@ -11,13 +11,13 @@ public class ClientProxy extends ServerProxy
 	@Override
     public void registerRenderInformation()
     {
-        MinecraftForgeClient.preloadTexture("/minecolony.png");
+        MinecraftForgeClient.preloadTexture("");
     }
 
     @Override
     public void registerTileEntitySpecialRenderer(/*PLACEHOLDER*/)
     {
-       
+
     }
 
     @Override
