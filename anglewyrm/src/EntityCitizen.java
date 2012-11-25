@@ -9,6 +9,7 @@ import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.World;
+import java.util.Random;
 
 
 public class EntityCitizen extends EntityMob {
@@ -54,28 +55,25 @@ public class EntityCitizen extends EntityMob {
         this.worldObj.playSoundAtEntity(this, "mob.zombie.step", 0.15F, 1.0F);
     }
 
-    // Mob Loot
+    // Mob Loot for default Citizen
     protected int getDropItemId() {
-        return Item.ingotGold.shiftedIndex;
-    }
-
-    protected void dropRareDrop(int par1){
-        switch (this.rand.nextInt(2)){
-            case 0:
-                this.dropItem(Item.ingotIron.shiftedIndex, 1);
-                break;
-            case 1:
-                this.dropItem(Item.helmetSteel.shiftedIndex, 1);
-                break;
-        }
-    }
-
-    protected void dropFewItems(boolean par1, int par2){
-    	if(this.rand.nextInt(3) == 0) {
-    		this.dropItem(Item.appleRed.shiftedIndex, 1);
+    	int lootID=1;
+    	switch(Utility.chooseLootCategory()){
+    	case 1: // Common
+    			switch(Utility.chooseLootCategory(3)){
+    			case 1:
+    			case 2:
+    			default:
+    			}
+    		break;
+    	case 2: // Uncommon
+    		break;
+    	case 3: // Rare
+    		break;
+    	default: // Legendary
     	}
+    	return lootID;
     }
-
 
 	public String getTexture() {
 		return "/Citizen.png";
