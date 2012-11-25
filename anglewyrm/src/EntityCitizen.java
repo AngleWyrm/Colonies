@@ -58,9 +58,9 @@ public class EntityCitizen extends EntityMob {
     // Mob Loot for default Citizen
     protected int getDropItemId() {
     	int lootID=1;
-    	switch(Utility.chooseLootCategory()){
+    	switch(Utility.getLootCategory()){
     	case 1: // Common
-    			switch(Utility.chooseLootCategory(3)){
+    			switch(Utility.getLootCategory(3)){
     			case 1:
     			case 2:
     			default:
