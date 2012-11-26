@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import java.util.Random;
 
 public class Utility {
+	public static Random rng = new Random();
 
 	// Given a category count, (usually four)
 	// return a random category in the range [1..numCategories]
@@ -11,7 +12,6 @@ public class Utility {
 		return getLootCategory(4);
 	}
 	public static int getLootCategory(int numCategories){
-		Random rng = new Random();
 		return (int) Math.round(Math.sqrt(2.0) * Math.sqrt(-1*Math.log(rng.nextFloat())));
 	}
 }
