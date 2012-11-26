@@ -21,6 +21,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import colonies.anglewyrm.src.ConfigFile;
 
 
 @Mod(modid = "Colonies", name = "Colonies, a MineColony Reboot", version = "r1")
@@ -52,7 +53,7 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
-		MeasuringTape=new ItemMeasuringTape(Integer.parseInt(ConfigFile.settings.getProperty("MeasuringTape"))).setItemName("Measuring Tape");
+		MeasuringTape=new ItemMeasuringTape(Integer.parseInt(ConfigFile.get("MeasuringTape"))).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 		
 		LanguageRegistry.addName(test, "Test Block");

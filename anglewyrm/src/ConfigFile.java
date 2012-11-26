@@ -16,6 +16,19 @@ import java.util.Properties;
 public class ConfigFile {
 	public static Properties settings = new Properties();
 
+	public static void set(String key, String value){
+		settings.setProperty(key, value);
+	}
+	public static String get(String key){
+		String tmp = new String();
+		tmp = settings.getProperty(key);
+		if(tmp == null)
+		{
+			System.err.println("[Colonies] key not found in config:"+key);
+			tmp = "0";
+		}
+		return tmp;
+	}
 	public static void createDefaultConfiguration() {
 
 	     // Default key/value pairs in ConfigFile.settings

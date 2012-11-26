@@ -16,7 +16,7 @@ public class EntityCitizen extends EntityMob {
 	public EntityCitizen(World par1World) {
 		super(par1World);
 		this.texture = "/Citizen.png";
-		this.moveSpeed = Float.parseFloat(ConfigFile.settings.getProperty("CitizenMoveSpeed"));
+		this.moveSpeed = Float.parseFloat(ConfigFile.get("CitizenMoveSpeed"));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
