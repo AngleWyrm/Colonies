@@ -1,8 +1,12 @@
 package colonies.anglewyrm.src;
 
 import net.minecraft.src.BiomeGenBase;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EnumCreatureType;
+import net.minecraft.src.Material;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Block;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
@@ -13,6 +17,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
 @Mod(modid = "Colonies", name = "Colonies, a MineColony Reboot", version = "r1")
@@ -23,6 +29,8 @@ import cpw.mods.fml.common.registry.EntityRegistry;
         packetHandler = PacketHandler.class )
 
 public class ColoniesMain {
+	public final static TestBlock test = (TestBlock) new TestBlock(500, 0, Material.ground)
+		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
 
 	@Instance
 	public static ColoniesMain instance;
@@ -33,12 +41,17 @@ public class ColoniesMain {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		System.out.println("Initializing Colonies"); 
 		ConfigFile.load();
 	}
 
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
+		LanguageRegistry.addName(test, "Test Block");
+		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
+		GameRegistry.registerBlock(test);
+
 	    // TODO: Add Initialization code such as block ID registering
 		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", 1, this, 40, 3, true);
 		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
@@ -52,5 +65,9 @@ public class ColoniesMain {
 	public void postInit(FMLPostInitializationEvent evt)
 	{
 	    // TODO: Add Post-Initialization code such as mod hooks
+	}
+	
+	public String Version(){
+		return "Colonies r2";
 	}
 }

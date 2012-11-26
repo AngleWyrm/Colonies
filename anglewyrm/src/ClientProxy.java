@@ -17,20 +17,17 @@ public class ClientProxy extends ServerProxy
 	public static String TOWNHALLCHEST_PNG = "/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Townhallchest.png";
 	public static String CHESTCONTAINER_PNG = "/colonies/pmardle/gfx/Chestcontainer.png";
 	@Override
-    public void registerRenderInformation()
-    {
-        MinecraftForgeClient.preloadTexture("");
+    public void registerRenderInformation(){
+        MinecraftForgeClient.preloadTexture(TESTBLOCK_PNG);
     }
 
     @Override
-    public void registerTileEntitySpecialRenderer(/*PLACEHOLDER*/)
-    {
+    public void registerTileEntitySpecialRenderer(/*PLACEHOLDER*/){
 
     }
 
     @Override
-    public World getClientWorld()
-    {
+    public World getClientWorld(){
         return FMLClientHandler.instance().getClient().theWorld;
     }
 }
