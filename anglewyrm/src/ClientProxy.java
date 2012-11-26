@@ -9,20 +9,17 @@ public class ClientProxy extends ServerProxy
 {
 
 	@Override
-    public void registerRenderInformation()
-    {
-        MinecraftForgeClient.preloadTexture("");
+    public void registerRenderInformation(){
+        MinecraftForgeClient.preloadTexture(TESTBLOCK_PNG);
     }
 
     @Override
-    public void registerTileEntitySpecialRenderer(/*PLACEHOLDER*/)
-    {
+    public void registerTileEntitySpecialRenderer(/*PLACEHOLDER*/){
 
     }
 
     @Override
-    public World getClientWorld()
-    {
+    public World getClientWorld(){
         return FMLClientHandler.instance().getClient().theWorld;
     }
 }
