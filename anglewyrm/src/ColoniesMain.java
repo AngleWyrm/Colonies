@@ -33,6 +33,7 @@ public class ColoniesMain {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		System.out.println("Initializing Colonies"); 
 		ConfigFile.load();
 	}
 
@@ -52,5 +53,9 @@ public class ColoniesMain {
 	public void postInit(FMLPostInitializationEvent evt)
 	{
 	    // TODO: Add Post-Initialization code such as mod hooks
+	}
+	
+	public String Version(){
+		return "Colonies r2";
 	}
 }
