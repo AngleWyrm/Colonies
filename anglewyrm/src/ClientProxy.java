@@ -19,6 +19,7 @@ public class ClientProxy extends ServerProxy
 	@Override
     public void registerRenderInformation(){
         MinecraftForgeClient.preloadTexture(TESTBLOCK_PNG);
+        MinecraftForgeClient.preloadTexture(MEASURING_TAPE);
     }
 
     @Override

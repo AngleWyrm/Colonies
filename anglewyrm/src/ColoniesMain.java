@@ -1,8 +1,10 @@
 package colonies.anglewyrm.src;
 
+import colonies.lohikaarme.src.ItemMeasuringTape;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EnumCreatureType;
+import net.minecraft.src.Item;
 import net.minecraft.src.Material;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -31,6 +33,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class ColoniesMain {
 	public final static TestBlock test = (TestBlock) new TestBlock(500, 0, Material.ground)
 		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
+	
+	public static Item MeasuringTape;
 
 	@Instance
 	public static ColoniesMain instance;
@@ -48,6 +52,9 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
+		MeasuringTape=new ItemMeasuringTape(Integer.parseInt(ConfigFile.settings.getProperty("MeasuringTape"))).setItemName("Measuring Tape");
+		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
+		
 		LanguageRegistry.addName(test, "Test Block");
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
 		GameRegistry.registerBlock(test);

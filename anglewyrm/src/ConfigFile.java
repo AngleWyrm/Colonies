@@ -21,6 +21,7 @@ public class ConfigFile {
 	     // Default key/value pairs in ConfigFile.settings
 	     settings.setProperty("Colonies", "MineColony Reboot");
 	     settings.setProperty("CitizenMoveSpeed", "0.25");
+	     settings.setProperty("MeasuringTape","1");
 
 	     save();
 	}

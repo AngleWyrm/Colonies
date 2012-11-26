@@ -8,6 +8,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 public class ServerProxy implements IGuiHandler
 {
 	public static String TESTBLOCK_PNG = "/colonies/anglewyrm/gfx/block.png";
+	public static String MEASURING_TAPE = "/colonies/lohikaarme/gfx/LItems.png";
 	
     public void registerRenderInformation()
     {
