@@ -13,28 +13,46 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Properties;
 
-public class ConfigFile {
+public class ConfigFile 
+{
 	public static Properties settings = new Properties();
 
 	public static void set(String key, String value){
 		settings.setProperty(key, value);
 	}
+	
 	public static String get(String key){
 		String tmp = new String();
 		tmp = settings.getProperty(key);
 		if(tmp == null)
 		{
-			System.err.println("[Colonies] key not found in config:"+key);
+			System.err.println("[Colonies] key not found in config: " + key);
 			tmp = "0";
 		}
 		return tmp;
 	}
+	
+	public static int parseInt(String key){
+		String tmp = new String();
+		tmp = settings.getProperty(key);
+		if(tmp == null)
+		{
+			System.err.println("[Colonies] key not found in config: " + key);
+			return 0;
+		}
+		return Integer.parseInt(tmp);
+	}
+
 	public static void createDefaultConfiguration() {
 
 	     // Default key/value pairs in ConfigFile.settings
 	     settings.setProperty("Colonies", "MineColony Reboot");
 	     settings.setProperty("CitizenMoveSpeed", "0.25");
-	     settings.setProperty("MeasuringTape","1");
+	     
+	     // Item ID numbers
+	     settings.setProperty("TestBlockID", "1100");
+	     settings.setProperty("MeasuringTape","1101");
+	     settings.setProperty("CitizenID", "1102");
 
 	     save();
 	}

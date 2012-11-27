@@ -32,7 +32,7 @@ import colonies.anglewyrm.src.ConfigFile;
         packetHandler = PacketHandler.class )
 
 public class ColoniesMain {
-	public final static TestBlock test = (TestBlock) new TestBlock(500, 0, Material.ground)
+	public final static TestBlock test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 0, Material.ground)
 		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
 	
 	public static Item MeasuringTape;
@@ -53,7 +53,7 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
-		MeasuringTape=new ItemMeasuringTape(Integer.parseInt(ConfigFile.get("MeasuringTape"))).setItemName("Measuring Tape");
+		MeasuringTape=new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 		
 		LanguageRegistry.addName(test, "Test Block");
@@ -61,7 +61,7 @@ public class ColoniesMain {
 		GameRegistry.registerBlock(test);
 
 	    // TODO: Add Initialization code such as block ID registering
-		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", 1, this, 40, 3, true);
+		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
 		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
 				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
 				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
