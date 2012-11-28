@@ -32,7 +32,7 @@ import colonies.anglewyrm.src.ConfigFile;
         packetHandler = PacketHandler.class )
 
 public class ColoniesMain {
-	public static TestBlock test; // initalize AFTER ConfigFile loads	
+	public static TestBlock test; // initalize AFTER ConfigFile loads (init phase)	
 	public static Item MeasuringTape;
 
 	@Instance
@@ -51,24 +51,9 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
+		registerColoniesStuff(); // at bottom of this file for legibility
+		proxy.registerRenderInformation();
 
-		MeasuringTape=new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
-		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
-		
-		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 0, Material.ground)
-		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
-
-		LanguageRegistry.addName(test, "Test Block");
-		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
-		GameRegistry.registerBlock(test);
-
-	    // TODO: Add Initialization code such as block ID registering
-		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
-				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
-				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
-				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
-				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
 	}
 
 	@PostInit
@@ -80,4 +65,27 @@ public class ColoniesMain {
 	public String Version(){
 		return "Colonies r2";
 	}
+	
+	
+	// Register Colonies stuff with Minecraft Forge
+	private void registerColoniesStuff()
+	{
+		MeasuringTape=new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
+		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
+		
+		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 2, Material.ground)
+		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
+
+		LanguageRegistry.addName(test, "Test Block");
+		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
+		GameRegistry.registerBlock(test);
+
+		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
+		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
+				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
+				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
+				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
+				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
+	}
+
 }
