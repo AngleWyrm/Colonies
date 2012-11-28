@@ -71,6 +71,7 @@ public class ConfigFile
     		 try {
     			 FileInputStream in = new FileInputStream(configFile);
     			 settings.load(in);
+    			 System.out.println("[Colonies] config file loaded: " + configFilePath);
     		 }
     		 catch (Exception e) {
     			 System.err.println("[Colonies] " + e.getMessage());
@@ -112,6 +113,8 @@ public class ConfigFile
 	    	 System.err.println("[Colonies] " + e.getMessage());
 	    	 System.err.flush();
 	    }
+	    
+		System.out.println("[Colonies] ConfigFile saved: " + configFilePath);
 	}
 
 

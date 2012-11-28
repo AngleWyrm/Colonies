@@ -32,9 +32,7 @@ import colonies.anglewyrm.src.ConfigFile;
         packetHandler = PacketHandler.class )
 
 public class ColoniesMain {
-	public final static TestBlock test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 0, Material.ground)
-		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
-	
+	public static TestBlock test; // initalize AFTER ConfigFile loads	
 	public static Item MeasuringTape;
 
 	@Instance
@@ -53,9 +51,13 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
+
 		MeasuringTape=new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 		
+		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 0, Material.ground)
+		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
+
 		LanguageRegistry.addName(test, "Test Block");
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
 		GameRegistry.registerBlock(test);
