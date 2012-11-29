@@ -22,7 +22,7 @@ public class ItemMeasuringTape extends Item{
 		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabTools);
 		setIconIndex(0);
-		setIconCoord(0,0);
+		setIconCoord(15,0);
 	}
 	
 	@Override
