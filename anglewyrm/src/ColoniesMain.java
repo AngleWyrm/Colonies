@@ -23,7 +23,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import colonies.anglewyrm.src.ConfigFile;
 
-
 @Mod(modid = "Colonies", name = "Colonies, a MineColony Reboot", version = "r1")
 @NetworkMod(
         channels = { "Colonies" },
@@ -73,11 +72,10 @@ public class ColoniesMain {
 		MeasuringTape=new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 		
-		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 2, Material.ground)
-		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
-
-		LanguageRegistry.addName(test, "Test Block");
+		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
+			.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
+		LanguageRegistry.addName(test, "Test Block");
 		GameRegistry.registerBlock(test);
 
 		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
