@@ -6,6 +6,7 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.Material;
+import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Block;
@@ -50,9 +51,8 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
-		registerColoniesStuff(); // at bottom of this file for legibility
 		proxy.registerRenderInformation();
-
+		registerColoniesStuff(); // at bottom of this file for legibility
 	}
 
 	@PostInit
@@ -78,6 +78,9 @@ public class ColoniesMain {
 		LanguageRegistry.addName(test, "Test Block");
 		GameRegistry.registerBlock(test);
 
+		// This generates an error from double-registering the ID,
+		// But I have yet to find out how to get an egg and a 'this'
+		ModLoader.registerEntityID(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), 0x4444aa, 0xccccff);
 		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
 		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
 				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
@@ -85,5 +88,4 @@ public class ColoniesMain {
 				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
 				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
 	}
-
 }

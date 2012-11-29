@@ -15,7 +15,7 @@ import java.util.Random;
 public class EntityCitizen extends EntityMob {
 	public EntityCitizen(World par1World) {
 		super(par1World);
-		this.texture = "/Citizen.png";
+		this.texture = "/colonies/anglewyrm/gfx/PolkadotGirl.png";
 		this.moveSpeed = Float.parseFloat(ConfigFile.get("CitizenMoveSpeed"));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
@@ -40,19 +40,19 @@ public class EntityCitizen extends EntityMob {
 
 	// Sounds
 	protected String getLivingSound(){
-        return "mob.zombie.say";
+        return "mob.cow.say";
     }
 
     protected String getHurtSound(){
-        return "mob.zombie.hurt";
+        return "mob.cow.hurt";
     }
 
     protected String getDeathSound(){
-        return "mob.zombie.death";
+        return "mob.cow.death";
     }
 
     protected void playStepSound(int par1, int par2, int par3, int par4){
-        this.worldObj.playSoundAtEntity(this, "mob.zombie.step", 0.15F, 1.0F);
+        this.worldObj.playSoundAtEntity(this, "mob.cow.step", 0.15F, 1.0F);
     }
 
     // Mob Loot for default Citizen
@@ -76,7 +76,7 @@ public class EntityCitizen extends EntityMob {
     }
 
 	public String getTexture() {
-		return "/Citizen.png";
+		return "/colonies/anglewyrm/gfx/PolkadotGirl.png";
     }
 
 	public int getTotalArmorValue() {
