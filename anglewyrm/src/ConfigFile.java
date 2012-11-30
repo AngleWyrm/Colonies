@@ -50,9 +50,11 @@ public class ConfigFile
 	     settings.setProperty("CitizenMoveSpeed", "0.25");
 	     
 	     // Item ID numbers
+	     // This section may become depreciated
 	     settings.setProperty("TestBlockID", "1100");
 	     settings.setProperty("MeasuringTape","1101");
 	     settings.setProperty("CitizenID", "1102");
+	     settings.setProperty("DefaultChestID", "1103");
 
 	     save();
 	}
@@ -66,8 +68,9 @@ public class ConfigFile
 	     // After adding new entries to the config file,
 	     // just force createDefaultConfiguration by commenting out
 	     // the other if header statement below:
-	     if( configFile.exists() ){
-	   //if(false){
+	     // if( configFile.exists() ){
+	     //NOTE: Leave this on auto-fail for now, so the testers don't crash
+	     if(false){
     		 try {
     			 FileInputStream in = new FileInputStream(configFile);
     			 settings.load(in);
