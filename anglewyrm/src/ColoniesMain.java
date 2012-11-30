@@ -25,7 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import colonies.anglewyrm.src.ConfigFile;
 
-@Mod(modid = "Colonies", name = "Colonies, a MineColony Reboot", version = "r1")
+@Mod(modid = "Colonies", name = "Colonies", version = "30 Nov 2012")
 @NetworkMod(
         channels = { "Colonies" },
         clientSideRequired = true,
@@ -33,7 +33,7 @@ import colonies.anglewyrm.src.ConfigFile;
         packetHandler = PacketHandler.class )
 
 public class ColoniesMain {
-	public static TestBlock test; // initalize AFTER ConfigFile loads (init phase)	
+	public static TestBlock test; 	
 	public static Item MeasuringTape;
 
 	@Instance
@@ -63,19 +63,19 @@ public class ColoniesMain {
 	}
 	
 	public String Version(){
-		return "Colonies r2";
+		return "Pre-Alpha, Revision 2";
 	}
 	
 	
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
-		MeasuringTape=new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
+		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"  ","II",Character.valueOf('I'),Item.ingotIron);
 		
 		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
-			.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
+			.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
 		LanguageRegistry.addName(test, "Test Block");
 		GameRegistry.registerBlock(test);
