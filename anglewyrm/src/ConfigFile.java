@@ -43,11 +43,10 @@ public class ConfigFile
 		return Integer.parseInt(tmp);
 	}
 
-	public static void createDefaultConfiguration() {
-
+	public static void createDefaultConfiguration() 
+	{
 	     // Default key/value pairs in ConfigFile.settings
-	     settings.setProperty("Colonies", "MineColony Reboot");
-	     settings.setProperty("CitizenMoveSpeed", "0.25");
+		 settings.setProperty("Version", ColoniesMain.instance.Version());
 	     
 	     // Item ID numbers
 	     // This section may become depreciated
@@ -56,21 +55,25 @@ public class ConfigFile
 	     settings.setProperty("CitizenID", "1102");
 	     settings.setProperty("DefaultChestID", "1103");
 
+	     settings.setProperty("CitizenMoveSpeed", "0.25");
+
+	     System.out.println("[Colonies] Config file regenerated.");
+	     
 	     save();
 	}
 
 
-	public static void load() {
-	     String configFilePath = "config"+File.separator+"Colonies.cfg";
+	public static void load() 
+	{
+  		 String configFilePath = "config"+File.separator+"Colonies.cfg";
 	     File configFile = new File(configFilePath);
 
     	 // Developer convenience work-around:
 	     // After adding new entries to the config file,
 	     // just force createDefaultConfiguration by commenting out
 	     // the other if header statement below:
-	     // if( configFile.exists() ){
-	     //NOTE: Leave this on auto-fail for now, so the testers don't crash
-	     if(false){
+	     if( configFile.exists() ){
+	     // if(false){
     		 try {
     			 FileInputStream in = new FileInputStream(configFile);
     			 settings.load(in);
@@ -84,6 +87,12 @@ public class ConfigFile
     	 else {
     		 createDefaultConfiguration();
     	 }
+	     
+	     // Validate config file version against game version
+	     // if they differ, recreate the config file.
+	     if(! get("Version").equals(ColoniesMain.instance.Version())){
+	    	 createDefaultConfiguration();
+	     }
     }
 
 
