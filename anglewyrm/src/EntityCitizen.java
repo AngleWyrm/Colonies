@@ -15,7 +15,7 @@ import java.util.Random;
 public class EntityCitizen extends EntityMob {
 	public EntityCitizen(World par1World) {
 		super(par1World);
-		this.texture = "/colonies/anglewyrm/gfx/PolkadotGirl.png";
+		this.texture = "/colonies/grahammarcellus/gfx/minerskin.png";
 		this.moveSpeed = Float.parseFloat(ConfigFile.get("CitizenMoveSpeed"));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
@@ -76,7 +76,7 @@ public class EntityCitizen extends EntityMob {
     }
 
 	public String getTexture() {
-		return "/colonies/anglewyrm/gfx/PolkadotGirl.png";
+		return "/colonies/grahammarcellus/gfx/minerskin.png";
     }
 
 	public int getTotalArmorValue() {
