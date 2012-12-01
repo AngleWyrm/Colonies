@@ -39,7 +39,7 @@ public class BlockColoniesChest extends BlockContainer {
 	}
 	@Override
 	  public String getTextureFile() {
-	    return ClientProxy.CHESTCONTAINER_PNG;//"/cpw/mods/ironchest/sprites/block_textures.png";
+	    return ClientProxy.TOWNHALLCHEST_PNG;//"/cpw/mods/ironchest/sprites/block_textures.png";
 	  }
 	/**
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
