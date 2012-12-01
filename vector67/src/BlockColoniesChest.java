@@ -37,6 +37,10 @@ public class BlockColoniesChest extends BlockContainer {
 	    setBlockBounds(0.0625F, 0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	    setCreativeTab(CreativeTabs.tabDecorations);
 	}
+	@Override
+	  public String getTextureFile() {
+	    return ClientProxy.CHESTCONTAINER_PNG;//"/cpw/mods/ironchest/sprites/block_textures.png";
+	  }
 	/**
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
@@ -175,7 +179,7 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        return 0;
+        return 1;
     }
 
     /**
@@ -224,7 +228,7 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
-        TileEntityChest var7 = (TileEntityChest)par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntityColoniesChest var7 = (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4);
 
         if (var7 != null)
         {
@@ -271,7 +275,7 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
     {
-        Object var10 = (TileEntityChest)par1World.getBlockTileEntity(par2, par3, par4);
+        Object var10 = (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4);
 
         if (var10 == null)
         {
@@ -305,22 +309,22 @@ public class BlockColoniesChest extends BlockContainer {
         {
             if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (TileEntityChest)par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory)var10);
+                var10 = new InventoryLargeChest("container.chestDouble", (TileEntityColoniesChest)par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory)var10);
             }
 
             if (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (IInventory)var10, (TileEntityChest)par1World.getBlockTileEntity(par2 + 1, par3, par4));
+                var10 = new InventoryLargeChest("container.chestDouble", (IInventory)var10, (TileEntityColoniesChest)par1World.getBlockTileEntity(par2 + 1, par3, par4));
             }
 
             if (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (TileEntityChest)par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory)var10);
+                var10 = new InventoryLargeChest("container.chestDouble", (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory)var10);
             }
 
             if (par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (IInventory)var10, (TileEntityChest)par1World.getBlockTileEntity(par2, par3, par4 + 1));
+                var10 = new InventoryLargeChest("container.chestDouble", (IInventory)var10, (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4 + 1));
             }
 
             if (par1World.isRemote)
@@ -340,7 +344,7 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public TileEntity createNewTileEntity(World par1World)
     {
-        return new TileEntityChest();
+        return new TileEntityColoniesChest();
     }
 
     /**
@@ -378,9 +382,6 @@ public class BlockColoniesChest extends BlockContainer {
 	
 	
 	
-	 @Override
-	  public String getTextureFile() {
-	    return ClientProxy.CHESTCONTAINER_PNG;//"/cpw/mods/ironchest/sprites/block_textures.png";
-	  }
+	 
 
 }

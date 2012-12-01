@@ -11,7 +11,6 @@ public class TestBlock extends Block {
 	
 	@Override
 	public String getTextureFile () {
-		return ServerProxy.TESTBLOCK_PNG;
+		return ServerProxy.TOWNHALLCHEST_PNG;
 	}
-
 }

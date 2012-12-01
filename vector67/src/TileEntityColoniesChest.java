@@ -45,7 +45,8 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
     /** Server sync counter (once per 20 ticks) */
     private int ticksSinceSync;
-
+    
+    private byte facing;
     /**
      * Returns the number of slots in the inventory.
      */
@@ -53,7 +54,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
     {
         return 27;
     }
-
+    public byte getFacing() {
+        return this.facing;
+      }
+    
     /**
      * Returns the stack in slot i
      */
