@@ -12,17 +12,19 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends ServerProxy
 {
+	// I think these paths are old news
+	//Is it correct that this stuff is now in the serverproxy class? -vector67
+	/*public static String BLACKSMITHCHEST_PNG = "/colonies/pmardle/gfx/Blacksmithchest.png";
+	public static String BUILDERCHEST_PNG =    "/colonies/pmardle/gfx/Builderchest.png";
+	public static String FARMERCHEST_PNG =     "/colonies/pmardle/gfx/Farmerchest.png";
+	public static String HOUSECHEST_PNG =      "/colonies/pmardle/gfx/Housechest.png";
+	public static String LUMBERJACKCHEST_PNG = "/colonies/pmardle/gfx/Lumberjackchest.png";
+	public static String MINERCHEST_PNG =      "/colonies/pmardle/gfx/Minerchest.png";
+	public static String TOWNHALLCHEST_PNG =   "/colonies/pmardle/gfx/Townhallchest.png";
+	public static String CHESTCONTAINER_PNG =  "/colonies/pmardle/gfx/Chestcontainer.png";
 	
-	public static String BLACKSMITHCHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Blacksmithchest.png";
-	public static String BUILDERCHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Builderchest.png";
-	public static String FARMERCHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Farmerchest.png";
-	public static String HOUSECHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Housechest.png";
-	public static String LUMBERJACKCHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Lumberjackchest.png";
-	public static String MINERCHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Minerchest.png";
-	public static String TOWNHALLCHEST_PNG = "/minecraft/colonies/Minecraft/bin/cpw/mods/colonies/Minecraft/bin/cpw/mods/Colonies/Chests/Townhallchest.png";
-	public static String CHESTCONTAINER_PNG = "/colonies/pmardle/gfx/Chestcontainer.png";
-	
-	
+	*/
+
 	@Override
 	public void registerRenderInformation() {
 		
@@ -37,7 +39,9 @@ public class ClientProxy extends ServerProxy
         MinecraftForgeClient.preloadTexture(MINERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(TOWNHALLCHEST_PNG);
         MinecraftForgeClient.preloadTexture(CHESTCONTAINER_PNG);
+        MinecraftForgeClient.preloadTexture(MEASURING_TAPE);
 	}
+
 
 	public void registerTileEntitySpecialRenderer(Class<TileEntityColoniesChest> colonieschesttileentity) {
 		ClientRegistry.bindTileEntitySpecialRenderer(colonieschesttileentity, new TileEntityColoniesChestRenderer());

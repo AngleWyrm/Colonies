@@ -15,7 +15,7 @@ public class ColoniesChestRenderHelper extends ChestItemRenderHelper {
 	private Map<Integer, TileEntityColoniesChest> itemRenders = Maps.newHashMap();
 
 	public ColoniesChestRenderHelper() {
-		itemRenders.put(0, (TileEntityColoniesChest) ColoniesMain.colonieschest.createTileEntity(null, 0));
+		itemRenders.put(0, (TileEntityColoniesChest) ColoniesMain.chestBlock.createTileEntity(null, 0));
 		
 	}
 	@Override

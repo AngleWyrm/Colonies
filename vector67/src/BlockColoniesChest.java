@@ -370,18 +370,4 @@ public class BlockColoniesChest extends BlockContainer {
 
         return true;
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 
-
 }

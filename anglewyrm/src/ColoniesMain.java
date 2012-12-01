@@ -3,12 +3,18 @@ package colonies.anglewyrm.src;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.BiomeGenBase;
+import net.minecraft.src.Block;
+import net.minecraft.src.BlockContainer;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EnumCreatureType;
+import net.minecraft.src.Item;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
+import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.MinecraftForge;
+import colonies.lohikaarme.src.ItemMeasuringTape;
+import colonies.vector67.src.BlockColoniesChest;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Block;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
@@ -22,8 +28,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-
-@Mod(modid = "Colonies", name = "Colonies, a MineColony Reboot", version = "r1")
+@Mod(modid = "Colonies", name = "Colonies", version = "30 Nov 2012")
 @NetworkMod(
         channels = { "Colonies" },
         clientSideRequired = true,
@@ -31,9 +36,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
         packetHandler = PacketHandler.class )
 
 public class ColoniesMain {
-	public final static TestBlock test = (TestBlock) new TestBlock(500, 0, Material.ground)
-		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabDecorations);
-	public final static BlockColoniesChest colonieschest = (BlockColoniesChest) new BlockColoniesChest(501);
+
+	public static Block test; 	
+	public static Item MeasuringTape;
+	public static Block chestBlock;
+
 	@Instance
 	public static ColoniesMain instance;
 
@@ -50,23 +57,8 @@ public class ColoniesMain {
 	@Init
 	public void init(FMLInitializationEvent evt)
 	{
-		LanguageRegistry.addName(test, "Test Block");
-		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
-		GameRegistry.registerBlock(test);
-		LanguageRegistry.addName(colonieschest, "Colonies chest block");
-		MinecraftForge.setBlockHarvestLevel(colonieschest, "shovel", 0);
-		GameRegistry.registerBlock(colonieschest);
-		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "Colonies Chest TileEntity");
-		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
-		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
-	    // TODO: Add Initialization code such as block ID registering
-		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", 1, this, 40, 3, true);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
-				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
-				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
-				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
-				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
-		proxy.registerRenderInformation();
+		
+		registerColoniesStuff(); // at bottom of this file for legibility
 	}
 
 	@PostInit
@@ -76,86 +68,46 @@ public class ColoniesMain {
 	}
 	
 	public String Version(){
-		return "Colonies r2";
+		return "Pre-Alpha, Revision 2";
 	}
-}
+	
+	
+	// Register Colonies stuff with Minecraft Forge
+	private void registerColoniesStuff()
+	{
+		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
+		LanguageRegistry.addName(chestBlock, "Colonies Chest");
+		GameRegistry.registerBlock(chestBlock);
+		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "Colonies Chest TileEntity");
+		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
+		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
+		
+		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
+		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
+		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"  ","II",Character.valueOf('I'),Item.ingotIron);
+		
+		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
+			.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
+		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
+		LanguageRegistry.addName(test, "Test Block");
+		GameRegistry.registerBlock(test);
 
-
-
-/*
-
-
-package colonies.pmardle.src;
-
-
-import java.util.logging.Level;
-
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
-@Mod(modid = "Colonies", name = "Colonies", dependencies="required-after:Forge@[6.0,)")
-@NetworkMod(channels = { "Colonies" }, versionBounds = "[4.2,)", clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
-public class ColonyChest {
-	public static BlockColonyChest ColonyChestBlock;
-	@SidedProxy(clientSide = "ClientProxy", serverSide = "CommonProxy")
-	public static CommonProxy proxy;
-	@Instance("Colonies")
-	public static ColonyChest instance;
-	public static boolean CACHE_RENDER = true;
-	public static boolean OCELOTS_SITONCHESTS = true;
-	private int blockId;
-
-	@PreInit
-	public void preInit(FMLPreInitializationEvent event) {
-		Version.init(event.getVersionProperties());
-		event.getModMetadata().version = Version.fullVersionString();
-		Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
-		try {
-			cfg.load();
-			blockId = cfg.get(Configuration.CATEGORY_BLOCK, "ColonyChests", 181).getInt(181);
-			CACHE_RENDER = cfg.get(Configuration.CATEGORY_GENERAL, "cacheRenderingInformation", true).getBoolean(true);
-			OCELOTS_SITONCHESTS = cfg.get(Configuration.CATEGORY_GENERAL, "ocelotsSitOnChests", true).getBoolean(true);
-		} catch (Exception e) {
-			FMLLog.log(Level.SEVERE, e, "Colonies has a problem loading it's configuration");
-		} finally {
-			cfg.save();
-		}
-	}
-
-	@Init
-	public void load(FMLInitializationEvent evt) {
-		ColonyChestBlock = new BlockColonyChest(blockId);
-		GameRegistry.registerBlock(ColonyChestBlock, ItemColonyChest.class);
-		for (ColonyChestType typ : ColonyChestType.values()) {
-			GameRegistry.registerTileEntity(typ.clazz, typ.name());
-			LanguageRegistry.instance().addStringLocalization(typ.name() + ".name", "en_US", typ.friendlyName);
-			proxy.registerTileEntitySpecialRenderer(typ);
-		}
-		ColonyChestType.generateTieredRecipes(ColonyChestBlock);
-		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		
+	    // TODO: Add Initialization code such as block ID registering
+		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", 1, this, 40, 3, true);
+		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
+				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
+				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
+				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
+				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
 		proxy.registerRenderInformation();
-		if (OCELOTS_SITONCHESTS)
-		{
-			MinecraftForge.EVENT_BUS.register(new OcelotsSitOnChestsHandler());
-		}
-	}
-
-	@PostInit
-	public void modsLoaded(FMLPostInitializationEvent evt) {
+		// This generates an error from double-registering the ID, but using it to get spawn eggs atm
+		ModLoader.registerEntityID(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), 0x4444aa, 0xccccff);
+		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
+		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
+				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
+				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
+				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
+				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
 	}
 }
-*/
