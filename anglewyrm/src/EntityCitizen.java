@@ -9,8 +9,14 @@ import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.World;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 
+import colonies.vector67.src.BlockColoniesChest;
+import colonies.anglewyrm.src.VacanciesQueue;
 
 public class EntityCitizen extends EntityMob {
 	public EntityCitizen(World par1World) {
@@ -24,10 +30,25 @@ public class EntityCitizen extends EntityMob {
 	    this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+	    
+	    this.job = jobs.unemployed;
+	    this.skills = new HashMap<jobs, Integer>(10);
+	    this.skills.put(jobs.unemployed, 10);
 	}
-
-	public void onLivingUpdate(){
-		if (!this.worldObj.isRemote){
+	BlockColoniesChest home;
+	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
+	public jobs job;
+	public HashMap<jobs, Integer> skills;
+	
+	public void onLivingUpdate()
+	{
+		if (!this.worldObj.isRemote)
+		{
+			// check for home in range
+			if(home==null){
+				home = VacanciesQueue.vacancies.poll();
+			}
+			
 			if (this.worldObj.isDaytime()){
 	        	// Daytime behaviors
 	        }
