@@ -84,7 +84,7 @@ public class ColoniesMain {
 		
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
-		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"  ","II",Character.valueOf('I'),Item.ingotIron);
+		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"II",Character.valueOf('I'),Item.ingotIron);
 		
 		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
 			.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
