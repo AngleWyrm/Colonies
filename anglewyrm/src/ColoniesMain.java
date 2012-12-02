@@ -11,6 +11,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
+import net.minecraft.src.SoundManager;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.vector67.src.BlockColoniesChest;
@@ -35,8 +36,8 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
         serverSideRequired = false,
         packetHandler = PacketHandler.class )
 
-public class ColoniesMain {
-
+public class ColoniesMain 
+{
 	public static Block test; 	
 	public static Item MeasuringTape;
 	public static Block chestBlock;
@@ -52,6 +53,7 @@ public class ColoniesMain {
 	{
 		System.out.println("Initializing Colonies"); 
 		ConfigFile.load();
+		MinecraftForge.EVENT_BUS.register(new ColoniesSoundManager());
 	}
 
 	@Init
@@ -71,6 +73,9 @@ public class ColoniesMain {
 		return "Pre-Alpha, Revision 2";
 	}
 	
+	public void onLoadSoundSettings(SoundManager soundMgr){
+		System.out.println("[Colonies]Initializing sound");
+	}
 	
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
@@ -97,11 +102,10 @@ public class ColoniesMain {
 
 		// Citizens
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
-				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
-				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
-				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
-				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
+		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4, EnumCreatureType.monster, 
+				BiomeGenBase.beach, BiomeGenBase.extremeHills,BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, 
+				BiomeGenBase.forestHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, 
+				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
 		
 		proxy.registerRenderInformation();		
 	}

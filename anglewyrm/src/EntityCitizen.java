@@ -61,15 +61,15 @@ public class EntityCitizen extends EntityMob {
 
 	// Sounds
 	protected String getLivingSound(){
-        return "mob.cow.say";
+        return "colonies.hello";
     }
 
     protected String getHurtSound(){
-        return "mob.cow.hurt";
+        return "colonies.ohyeaht";
     }
 
     protected String getDeathSound(){
-        return "mob.cow.death";
+        return "colonies.damnit";
     }
 
     protected void playStepSound(int par1, int par2, int par3, int par4){
