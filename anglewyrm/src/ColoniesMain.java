@@ -41,6 +41,7 @@ public class ColoniesMain
 	public static Block test; 	
 	public static Item MeasuringTape;
 	public static Block chestBlock;
+	public static Block townHall;
 
 	@Instance
 	public static ColoniesMain instance;
@@ -80,9 +81,15 @@ public class ColoniesMain
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
 		GameRegistry.registerBlock(chestBlock);
+
 		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "Colonies Chest TileEntity");
 		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
+		
+		// Town Hall
+		townHall = new TownHall(ConfigFile.parseInt("TownHallID"));
+		LanguageRegistry.addName(townHall, "Town Hall");
+		GameRegistry.registerBlock(townHall);
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
