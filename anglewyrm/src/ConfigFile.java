@@ -52,7 +52,6 @@ public class ConfigFile
 	     // This section may become depreciated
 	     settings.setProperty("TestBlockID", "1100");
 	     settings.setProperty("MeasuringTape","1101");
-	     settings.setProperty("CitizenID", "1102");
 	     settings.setProperty("DefaultChestID", "1103");
 
 	     settings.setProperty("CitizenMoveSpeed", "0.25");

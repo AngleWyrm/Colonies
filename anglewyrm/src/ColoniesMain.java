@@ -75,6 +75,7 @@ public class ColoniesMain {
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
+		// Chest block
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
 		GameRegistry.registerBlock(chestBlock);
@@ -82,32 +83,26 @@ public class ColoniesMain {
 		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 		
+		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"II",Character.valueOf('I'),Item.ingotIron);
 		
+		// Test block
 		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
 			.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
 		LanguageRegistry.addName(test, "Test Block");
 		GameRegistry.registerBlock(test);
 
+		// Citizens
+		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
+		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
+				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
+				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
+				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
+				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
 		
-	    // TODO: Add Initialization code such as block ID registering
-		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", 1, this, 40, 3, true);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
-				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
-				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
-				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
-				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
-		proxy.registerRenderInformation();
-		// This generates an error from double-registering the ID, but using it to get spawn eggs atm
-		ModLoader.registerEntityID(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), 0x4444aa, 0xccccff);
-		EntityRegistry.registerModEntity(EntityCitizen.class, "Citizen", ConfigFile.parseInt("CitizenID"), this, 40, 3, true);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4,
-				EnumCreatureType.monster, BiomeGenBase.beach, BiomeGenBase.extremeHills,
-				BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, BiomeGenBase.forestHills,
-				BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, BiomeGenBase.mushroomIslandShore,
-				BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
+		proxy.registerRenderInformation();		
 	}
 }
