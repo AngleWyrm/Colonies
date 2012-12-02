@@ -72,7 +72,8 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 			facing = tile.getFacing();
 			int typ = tile.getWorldObj().getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
 		}
-		bindTextureByName(ClientProxy.TOWNHALLCHEST_PNG);
+		//NOTE: This seems to be over-riding textures for all chests
+		bindTextureByName(ClientProxy.CHESTCONTAINER_PNG);
 		glPushMatrix();
 		glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
