@@ -13,9 +13,9 @@ import net.minecraftforge.event.ForgeSubscribe;
 	    {
 	        try
 	        {
-	            event.manager.soundPoolSounds.addSound("colonies/hello.wav", ColoniesMain.class.getResource("/colonies/anglewyrm/snd/hello.wav"));            
-	            event.manager.soundPoolSounds.addSound("colonies/damnit.wav", ColoniesMain.class.getResource("/colonies/anglewyrm/snd/damnit.wav"));            
-	            event.manager.soundPoolSounds.addSound("colonies/ohyeah.wav", ColoniesMain.class.getResource("/colonies/anglewyrm/snd/ohyeah.wav"));            
+	            event.manager.soundPoolSounds.addSound("colonies/m-hello.wav", ColoniesMain.class.getResource("/colonies/anglewyrm/snd/m-hello.wav"));            
+	            event.manager.soundPoolSounds.addSound("colonies/f-damnit.wav", ColoniesMain.class.getResource("/colonies/anglewyrm/snd/f-damnit.wav"));            
+	            event.manager.soundPoolSounds.addSound("colonies/f-ohyeah.wav", ColoniesMain.class.getResource("/colonies/anglewyrm/snd/f-ohyeah.wav"));            
 	       
 	        }
 	        catch (Exception e)

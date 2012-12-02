@@ -29,7 +29,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Colonies", name = "Colonies", version = "30 Nov 2012")
+@Mod(modid = "Colonies", name = "Colonies", version = "7 Dec 2012")
 @NetworkMod(
         channels = { "Colonies" },
         clientSideRequired = true,
@@ -70,11 +70,7 @@ public class ColoniesMain
 	}
 	
 	public String Version(){
-		return "Pre-Alpha, Revision 2";
-	}
-	
-	public void onLoadSoundSettings(SoundManager soundMgr){
-		System.out.println("[Colonies]Initializing sound");
+		return "Pre-Alpha, Revision 3";
 	}
 	
 	// Register Colonies stuff with Minecraft Forge

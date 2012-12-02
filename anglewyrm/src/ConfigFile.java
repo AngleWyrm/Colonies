@@ -54,6 +54,7 @@ public class ConfigFile
 	     settings.setProperty("MeasuringTape","1101");
 	     settings.setProperty("DefaultChestID", "1103");
 
+	     settings.setProperty("citizenGreetings", "true");
 	     settings.setProperty("CitizenMoveSpeed", "0.25");
 
 	     System.out.println("[Colonies] Config file regenerated.");

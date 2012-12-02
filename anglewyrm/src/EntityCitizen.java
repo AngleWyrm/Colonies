@@ -34,6 +34,8 @@ public class EntityCitizen extends EntityMob {
 	    this.job = jobs.unemployed;
 	    this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);
+	    
+	    this.citizenGreetings = Boolean.valueOf( ConfigFile.get("citizenGreetings") );
 	}
 	BlockColoniesChest home;
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
@@ -60,16 +62,20 @@ public class EntityCitizen extends EntityMob {
     }
 
 	// Sounds
+	boolean citizenGreetings = true;
 	protected String getLivingSound(){
-        return "colonies.hello";
+		if(citizenGreetings){
+			return "colonies.m-hello";
+		}
+		return "";
     }
 
     protected String getHurtSound(){
-        return "colonies.ohyeaht";
+        return "colonies.f-ohyeah";
     }
 
     protected String getDeathSound(){
-        return "colonies.damnit";
+        return "colonies.f-damnit";
     }
 
     protected void playStepSound(int par1, int par2, int par3, int par4){
