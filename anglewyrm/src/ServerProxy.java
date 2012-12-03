@@ -17,7 +17,7 @@ public class ServerProxy implements IGuiHandler
 	public static String LUMBERJACKCHEST_PNG = "/colonies/pmardle/gfx/Lumberjackchest.png";
 	public static String MINERCHEST_PNG      = "/colonies/pmardle/gfx/Minerchest.png";
 	public static String TOWNHALLCHEST_PNG   = "/colonies/pmardle/gfx/Townhallchest.png";
-	public static String CHESTCONTAINER_PNG  = "/colonies/anglewyrm/gfx/defaultChest.png";
+	public static String CHESTCONTAINER_PNG  = "/colonies/anglewyrm/gfx/invalidChest.png";
 	public static String MEASURING_TAPE      = "/colonies/lohikaarme/gfx/LItems.png";
 
     public void registerRenderInformation()
