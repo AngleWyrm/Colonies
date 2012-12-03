@@ -44,19 +44,9 @@ public class EntityCitizen extends EntityMob {
 	
 	public void onLivingUpdate()
 	{
-		if (!this.worldObj.isRemote)
-		{
-			// check for home in range
-			if(home==null){
-				home = VacanciesQueue.vacancies.poll();
-			}
-			
-			if (this.worldObj.isDaytime()){
-	        	// Daytime behaviors
-	        }
-	        else {
-	        	// Night time behaviors
-	        }
+		// Call baseAI for all citizens in range
+		if (!this.worldObj.isRemote){
+			BaseAI.onLivingUpdate(this);
 		}
         super.onLivingUpdate();
     }
