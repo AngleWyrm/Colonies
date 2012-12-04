@@ -9,7 +9,6 @@ import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.World;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -17,11 +16,12 @@ import java.util.Random;
 
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.anglewyrm.src.VacanciesQueue;
+import colonies.anglewyrm.src.ServerProxy;
 
 public class EntityCitizen extends EntityMob {
 	public EntityCitizen(World par1World) {
 		super(par1World);
-		this.texture = "/colonies/grahammarcellus/gfx/minerskin.png";
+		this.texture = ServerProxy.WANDERERSKIN_PNG;
 		this.moveSpeed = Float.parseFloat(ConfigFile.get("CitizenMoveSpeed"));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
@@ -93,7 +93,7 @@ public class EntityCitizen extends EntityMob {
     }
 
 	public String getTexture() {
-		return "/colonies/grahammarcellus/gfx/minerskin.png";
+		return ServerProxy.WANDERERSKIN_PNG;
     }
 
 	public int getTotalArmorValue() {
