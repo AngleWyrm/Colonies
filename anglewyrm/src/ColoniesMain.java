@@ -118,6 +118,7 @@ public class ColoniesMain
 				BiomeGenBase.beach, BiomeGenBase.extremeHills,BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, 
 				BiomeGenBase.forestHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, 
 				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
+		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Default Citizen");
 		
 		proxy.registerRenderInformation();		
 	}
