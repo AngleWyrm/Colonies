@@ -1,5 +1,8 @@
 package colonies.anglewyrm.src;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.BiomeGenBase;
@@ -42,6 +45,9 @@ public class ColoniesMain
 	public static Item MeasuringTape;
 	public static Block chestBlock;
 	public static Block townHall;
+	
+	public static List<TownHall> townsList;
+	
 
 	@Instance
 	public static ColoniesMain instance;
@@ -59,8 +65,7 @@ public class ColoniesMain
 
 	@Init
 	public void init(FMLInitializationEvent evt)
-	{
-		
+	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
 	}
 
@@ -77,6 +82,10 @@ public class ColoniesMain
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
+		// List of towns
+		// TODO: find a way to save/load this data structure
+		townsList = new ArrayList<TownHall>();
+		
 		// Chest block
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
@@ -87,7 +96,7 @@ public class ColoniesMain
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 		
 		// Town Hall
-		townHall = new TownHall(ConfigFile.parseInt("TownHallID"));
+		townHall = new TownHall(ConfigFile.parseInt("TownHallID"),townsList);
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
 		
