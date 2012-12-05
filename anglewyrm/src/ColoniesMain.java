@@ -115,18 +115,22 @@ public class ColoniesMain
 		GameRegistry.registerBlock(test);
 
 		// Citizens
+		// the three params after the class are ChanceWeight, minPackSize and maxPackSize
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.forest);
+		EntityRegistry.addSpawn(EntityCitizen.class, 1, 1, 3, EnumCreatureType.creature, 
+				BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Default Citizen");
 
 		// Miner
 		EntityRegistry.registerGlobalEntityID(EntityMiner.class, "Miner", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF8888);
-		EntityRegistry.addSpawn(EntityMiner.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.forest);
+		EntityRegistry.addSpawn(EntityMiner.class, 1, 1, 3, EnumCreatureType.creature, 
+			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Miner.name", "en_US", "Miner");
 
 		// Wife
 		EntityRegistry.registerGlobalEntityID(EntityWife.class, "Wife", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFFcccc);
-		EntityRegistry.addSpawn(EntityWife.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.forest);
+		EntityRegistry.addSpawn(EntityWife.class, 1, 1, 3, EnumCreatureType.creature, 
+			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Wife.name", "en_US", "Wife");
 		
 		proxy.registerRenderInformation();		
