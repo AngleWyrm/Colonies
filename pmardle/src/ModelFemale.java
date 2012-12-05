@@ -157,7 +157,6 @@ public class ModelFemale extends ModelBase
    leftleg.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
    leftarm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
    rightarm.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
-
-  }
+   }
 
 }

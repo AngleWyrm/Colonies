@@ -1,7 +1,7 @@
 package colonies.anglewyrm.src;
 
 import java.util.HashMap;
-
+import colonies.anglewyrm.src.Utility;
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
 import net.minecraft.src.EntityAISwimming;
@@ -26,10 +26,12 @@ public class EntityWife extends EntityCitizen{
 
 	protected String getLivingSound(){
 		if(citizenGreetings){
-			return "colonies.f-hello";
+			if(Utility.getLootCategory()==2){ // only play on Uncommon
+				return "colonies.f-hello";
+			}
 		}
 		return "";
-    }
+	}
     protected String getHurtSound(){
         return "colonies.f-ohyeah";
     }

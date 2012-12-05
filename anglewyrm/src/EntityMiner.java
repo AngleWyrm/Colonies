@@ -1,7 +1,7 @@
 package colonies.anglewyrm.src;
 
 import java.util.HashMap;
-
+import colonies.anglewyrm.src.Utility;
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
 import net.minecraft.src.EntityAISwimming;
@@ -26,10 +26,13 @@ public class EntityMiner extends EntityCitizen{
 
 	protected String getLivingSound(){
 		if(citizenGreetings){
-			return "colonies.m-hello";
+			if(Utility.getLootCategory()==2){ // only play on Uncommon
+				return "colonies.m-hello";
+			}
 		}
 		return "";
     }
+	
     // Mob Loot for default Citizen
     protected int getDropItemId() {
     	int lootID=1;
