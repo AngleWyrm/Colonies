@@ -6,7 +6,9 @@
 
 package colonies.pmardle.src;
 
+import colonies.anglewyrm.src.EntityWife;
 import net.minecraft.src.Entity;
+import net.minecraft.src.MathHelper;
 import net.minecraft.src.ModelBase;
 import net.minecraft.src.ModelRenderer;
 
@@ -122,7 +124,7 @@ public class ModelFemale extends ModelBase
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5);
+    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     head.render(f5);
     body.render(f5);
     rightarm.render(f5);
@@ -146,10 +148,16 @@ public class ModelFemale extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
+  public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity me)
   {
-	  // NOTE: NULL ADDED to force super construction, may not work
-    super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
+   super.setRotationAngles(f, f1, f2, f3, f4, f5, me);
+   
+   // Model animation calculations
+   rightleg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+   leftleg.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
+   leftarm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+   rightarm.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
+
   }
 
 }
