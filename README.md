@@ -1,4 +1,4 @@
 Colonies
 ==========
 
-Minecraft mod MineColony Reboot
+Minecraft modification, MineColony Rebooted
