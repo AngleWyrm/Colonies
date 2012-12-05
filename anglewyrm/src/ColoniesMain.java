@@ -99,11 +99,13 @@ public class ColoniesMain
 		townHall = new TownHall(ConfigFile.parseInt("TownHallID"),townsList);
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
+		GameRegistry.addRecipe( new ItemStack(townHall), new Object[]{
+			"BIB","ICI","BIB", 'B',Item.book, 'I',Item.ingotIron, 'C',BlockContainer.chest});
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
-		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"II",Character.valueOf('I'),Item.ingotIron);
+		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"II", 'I',Item.ingotIron);
 		
 		// Test block
 		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
