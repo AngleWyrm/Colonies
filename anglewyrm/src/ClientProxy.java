@@ -1,13 +1,17 @@
 package colonies.anglewyrm.src;
 
+import colonies.pmardle.src.ModelFemale;
 import colonies.vector67.src.ColoniesChestRenderHelper;
 import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChestRenderer;
 import net.minecraft.src.ChestItemRenderHelper;
+import net.minecraft.src.RenderLiving;
+import net.minecraft.src.RenderPlayer;
 import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 
 public class ClientProxy extends ServerProxy
@@ -15,8 +19,12 @@ public class ClientProxy extends ServerProxy
 	@Override
 	public void registerRenderInformation() {
 		
-		
+		// renderers
 		ChestItemRenderHelper.instance = new ColoniesChestRenderHelper();
+		RenderingRegistry.instance().registerEntityRenderingHandler(
+				EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
+		
+		// preloaded textures
 		MinecraftForgeClient.preloadTexture(TESTBLOCK_PNG);
         MinecraftForgeClient.preloadTexture(BLACKSMITHCHEST_PNG);
         MinecraftForgeClient.preloadTexture(BUILDERCHEST_PNG);
