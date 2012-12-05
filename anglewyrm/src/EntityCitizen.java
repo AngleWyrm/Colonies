@@ -62,7 +62,7 @@ public class EntityCitizen extends EntityMob {
     }
 
     protected String getHurtSound(){
-        return "colonies.m-ohyeah";
+        return "colonies.m-hurt";
     }
 
     protected String getDeathSound(){
