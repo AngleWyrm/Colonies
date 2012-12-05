@@ -56,6 +56,13 @@ public class EntityMiner extends EntityCitizen{
 	{
 		// custom miner behaviors
 		super.onLivingUpdate();
+		
+		// sparkle test
+		   worldObj.spawnParticle("reddust", 
+				   posX + (rand.nextDouble() - 0.5D) * (double)width, 
+				   (posY + rand.nextDouble() * (double)height) - 0.25D, 
+				   posZ + (rand.nextDouble() - 0.5D) * (double)width, 
+				   Utility.rng.nextFloat()+0.35, Utility.rng.nextFloat()+0.35, Utility.rng.nextFloat()+0.35);
     }
 	
 }
