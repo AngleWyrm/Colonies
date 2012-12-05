@@ -10,7 +10,9 @@ import cpw.mods.fml.common.network.IGuiHandler;
 public class ServerProxy implements IGuiHandler
 {
 	public static String TESTBLOCK_PNG       = "/colonies/anglewyrm/gfx/block.png";
-	public static String WANDERERSKIN_PNG    = "/colonies/grahammarcellus/gfx/unemployedskin.png";
+	public static String WANDERERSKIN_PNG    = "/colonies/grahammarcellus/gfx/unemployedskin1.png";
+	public static String MINERSKIN_PNG       = "/colonies/grahammarcellus/gfx/minerskin.png";
+	public static String WIFESKIN_PNG        = "/colonies/pmardle/gfx/FemaleBasic.png";
 	public static String BLACKSMITHCHEST_PNG = "/colonies/pmardle/gfx/Blacksmithchest.png";
 	public static String BUILDERCHEST_PNG    = "/colonies/pmardle/gfx/Builderchest.png";
 	public static String FARMERCHEST_PNG     = "/colonies/pmardle/gfx/Farmerchest.png";

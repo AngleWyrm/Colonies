@@ -8,6 +8,7 @@ import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,7 +62,7 @@ public class EntityCitizen extends EntityMob {
     }
 
     protected String getHurtSound(){
-        return "colonies.f-ohyeah";
+        return "colonies.m-ohyeah";
     }
 
     protected String getDeathSound(){
@@ -78,18 +79,17 @@ public class EntityCitizen extends EntityMob {
     	switch(Utility.getLootCategory()){
     	case 1: // Common
     			switch(Utility.getLootCategory(3)){
-    			case 1:
-    			case 2:
-    			default:
+    			case 1: return Item.appleRed.shiftedIndex;
+    			case 2: return Item.shovelStone.shiftedIndex;
+    			default:return Item.bakedPotato.shiftedIndex;
     			}
-    		break;
     	case 2: // Uncommon
-    		break;
+    		return Item.swordWood.shiftedIndex;
     	case 3: // Rare
-    		break;
+    		return Item.goldNugget.shiftedIndex;
     	default: // Legendary
+    		return Item.emerald.shiftedIndex;
     	}
-    	return lootID;
     }
 
 	public String getTexture() {

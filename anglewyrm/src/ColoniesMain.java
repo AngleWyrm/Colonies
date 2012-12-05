@@ -114,11 +114,18 @@ public class ColoniesMain
 
 		// Citizens
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
-		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4, EnumCreatureType.monster, 
-				BiomeGenBase.beach, BiomeGenBase.extremeHills,BiomeGenBase.extremeHillsEdge, BiomeGenBase.forest, 
-				BiomeGenBase.forestHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.mushroomIsland, 
-				BiomeGenBase.mushroomIslandShore, BiomeGenBase.ocean, BiomeGenBase.plains, BiomeGenBase.river, BiomeGenBase.swampland);
+		EntityRegistry.addSpawn(EntityCitizen.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.forest);
 		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Default Citizen");
+
+		// Miner
+		EntityRegistry.registerGlobalEntityID(EntityMiner.class, "Miner", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF8888);
+		EntityRegistry.addSpawn(EntityMiner.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.forest);
+		LanguageRegistry.instance().addStringLocalization("entity.Miner.name", "en_US", "Miner");
+
+		// Wife
+		EntityRegistry.registerGlobalEntityID(EntityWife.class, "Wife", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFFcccc);
+		EntityRegistry.addSpawn(EntityWife.class, 10, 2, 4, EnumCreatureType.monster, BiomeGenBase.forest);
+		LanguageRegistry.instance().addStringLocalization("entity.Wife.name", "en_US", "Wife");
 		
 		proxy.registerRenderInformation();		
 	}
