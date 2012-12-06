@@ -55,7 +55,12 @@ public class EntityCitizen extends EntityMob {
 	// Sounds
 	Boolean citizenGreetings = true;
 	protected String getLivingSound(){
-		return "colonies.m-hello";
+		if(citizenGreetings){
+			if(Utility.getLootCategory()==3){
+				return "colonies.m-hello";
+			}
+		}
+		return "";
     }
     protected String getHurtSound(){
         return "colonies.m-hurt";

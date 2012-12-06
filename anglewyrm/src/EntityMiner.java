@@ -26,7 +26,7 @@ public class EntityMiner extends EntityCitizen{
 
 	protected String getLivingSound(){
 		if(citizenGreetings){
-			if(Utility.getLootCategory()==2){ // only play on Uncommon
+			if(Utility.getLootCategory()==3){
 				return "colonies.m-hello";
 			}
 		}
