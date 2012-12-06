@@ -25,8 +25,8 @@ public class ModelFemale extends ModelBase
     ModelRenderer Knot;
     ModelRenderer TopTail;
     ModelRenderer MiddleTail;
-    ModelRenderer LeftChest;
-    ModelRenderer RightChest;
+    //ModelRenderer LeftChest;
+    //ModelRenderer RightChest;
     ModelRenderer UpperChest;
     ModelRenderer LowerChest;
   
@@ -95,18 +95,18 @@ public class ModelFemale extends ModelBase
       MiddleTail.setTextureSize(64, 64);
       MiddleTail.mirror = true;
       setRotation(MiddleTail, 0F, 0F, 0F);
-      LeftChest = new ModelRenderer(this, 0, 50);
-      LeftChest.addBox(0F, 0F, 0F, 3, 7, 1);
-      LeftChest.setRotationPoint(2.65F, 3.7F, -1.9F);
-      LeftChest.setTextureSize(64, 64);
-      LeftChest.mirror = true;
-      setRotation(LeftChest, -0.0872665F, 1.809191F, 0.3755949F);
-      RightChest = new ModelRenderer(this, 0, 50);
-      RightChest.addBox(0F, 0F, 0F, 3, 7, 1);
-      RightChest.setRotationPoint(-3.8F, 3.8F, -2.1F);
-      RightChest.setTextureSize(64, 64);
-      RightChest.mirror = true;
-      setRotation(RightChest, 0.1031331F, 1.302218F, 0.3756064F);
+      //LeftChest = new ModelRenderer(this, 0, 50);
+      //LeftChest.addBox(0F, 0F, 0F, 3, 7, 1);
+      //LeftChest.setRotationPoint(2.65F, 3.7F, -1.9F);
+      //LeftChest.setTextureSize(64, 64);
+      //LeftChest.mirror = true;
+      //setRotation(LeftChest, -0.0872665F, 1.809191F, 0.3755949F);
+      //RightChest = new ModelRenderer(this, 0, 50);
+      //RightChest.addBox(0F, 0F, 0F, 3, 7, 1);
+      //RightChest.setRotationPoint(-3.8F, 3.8F, -2.1F);
+      //RightChest.setTextureSize(64, 64);
+      //RightChest.mirror = true;
+      //setRotation(RightChest, 0.1031331F, 1.302218F, 0.3756064F);
       UpperChest = new ModelRenderer(this, 0, 32);
       UpperChest.addBox(0F, 0F, 0F, 6, 4, 4);
       UpperChest.setRotationPoint(-3F, 2F, -2F);
@@ -135,8 +135,8 @@ public class ModelFemale extends ModelBase
     Knot.render(f5);
     TopTail.render(f5);
     MiddleTail.render(f5);
-    LeftChest.render(f5);
-    RightChest.render(f5);
+    //LeftChest.render(f5);
+    //RightChest.render(f5);
     UpperChest.render(f5);
     LowerChest.render(f5);
   }
