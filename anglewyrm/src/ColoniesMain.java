@@ -58,7 +58,7 @@ public class ColoniesMain
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		System.out.println("Initializing Colonies"); 
+		System.out.println("Initializing Colonies " + Version()); 
 		ConfigFile.load();
 		MinecraftForge.EVENT_BUS.register(new ColoniesSoundManager());
 	}
@@ -67,6 +67,7 @@ public class ColoniesMain
 	public void init(FMLInitializationEvent evt)
 	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
+		proxy.registerRenderInformation();		
 	}
 
 	@PostInit
@@ -133,6 +134,5 @@ public class ColoniesMain
 			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Wife.name", "en_US", "Wife");
 		
-		proxy.registerRenderInformation();		
 	}
 }

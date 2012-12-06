@@ -21,6 +21,9 @@ public class EntityMiner extends EntityCitizen{
 	}
 	
 	public String getTexture() {
+		if(this.isInWater()){
+			return ServerProxy.M_SWIMSKIN_PNG;
+		}
 		return ServerProxy.MINERSKIN_PNG;
     }
 

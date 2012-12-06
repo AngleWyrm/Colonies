@@ -53,6 +53,7 @@ public class ConfigFile
 	     settings.setProperty("TestBlockID", "1100");
 	     settings.setProperty("MeasuringTape","1101");
 	     settings.setProperty("DefaultChestID", "1103");
+	     settings.setProperty("TownHallID","1102");
 
 	     settings.setProperty("citizenGreetings", "true");
 	     settings.setProperty("CitizenMoveSpeed", "0.25");

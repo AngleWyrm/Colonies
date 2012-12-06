@@ -2,6 +2,10 @@ package colonies.anglewyrm.src;
 
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
+import net.minecraft.src.EntityAIMoveIndoors;
+import net.minecraft.src.EntityAIMoveTwardsRestriction;
+import net.minecraft.src.EntityAIOpenDoor;
+import net.minecraft.src.EntityAIRestrictOpenDoor;
 import net.minecraft.src.EntityAISwimming;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
@@ -29,6 +33,10 @@ public class EntityCitizen extends EntityMob {
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
 	    this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 	    this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
+	    this.tasks.addTask(5, new EntityAIMoveIndoors(this));
+	    //this.tasks.addTask(6, new EntityAIRestrictOpenDoor(this));
+	    this.tasks.addTask(7, new EntityAIOpenDoor(this, true));
+	    this.tasks.addTask(8, new EntityAIMoveTwardsRestriction(this, 0.3F));
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 	    
@@ -93,6 +101,9 @@ public class EntityCitizen extends EntityMob {
     }
 
 	public String getTexture() {
+		if (this.isInWater()){
+			return ServerProxy.M_SWIMSKIN_PNG;
+		}
 		return ServerProxy.WANDERERSKIN_PNG;
     }
 

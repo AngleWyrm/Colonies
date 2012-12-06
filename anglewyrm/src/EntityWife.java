@@ -21,6 +21,9 @@ public class EntityWife extends EntityCitizen{
 	}
 	
 	public String getTexture() {
+		if(this.isInWater()){
+			return ServerProxy.F_SWIMSKIN_PNG;
+		}
 		return ServerProxy.WIFESKIN_PNG;
     }
 
@@ -38,7 +41,6 @@ public class EntityWife extends EntityCitizen{
 
 	public void onLivingUpdate()
 	{
-		// custom wifey behaviors
 		super.onLivingUpdate();
     }
 
