@@ -55,6 +55,7 @@ public class ConfigFile
 	{
 	     // Default key/value pairs in ConfigFile.settings
 		 set("Version", ColoniesMain.instance.Version());
+	     save();
 	     
 	     // Item ID numbers
 	     // This section may become depreciated
@@ -62,19 +63,21 @@ public class ConfigFile
 	     set("MeasuringTape","1101");
 	     set("DefaultChestID", "1103");
 	     set("TownHallID","1102");
-
+	     save();
+	     
 	     set("citizenGreetings", "true");
 	     set("CitizenMoveSpeed", "0.25");
+	     save();
 	     
 	     // Citizen skins
-	     set("skinDefault","/colonies/skins/unemployedskin1.png");
-	     set("skinMaleSwimming", "/colonies/skins/m-swimskin.png");
-	     set("skinMiner", "/colonies/skins/minerskin.png");
-	     set("skinWife", "/colonies/skins/PolkadotGirl.png");
-	     set("skinFemaleSwimming","/colonies/skins/white_bikini.png");
+	     set("skinDefault","/colonies/grahammarcellus/gfx/unemployedskin1.png");
+	     set("skinMaleSwimming", "/colonies/anglewyrm/gfx/m-swimskin.png");
+	     set("skinMiner", "/colonies/grahammarcellus/gfx/minerskin.png");
+	     set("skinMinerSwimming", "/colonies/anglewyrm/gfx/miner_swim.png");
+	     set("skinWife", "/colonies/anglewyrm/gfx/daisy_duke.png");
+	     set("skinFemaleSwimming","/colonies/anglewyrm/gfx/white_bikini.png");
 	     
 	     System.out.println("[Colonies] Config file regenerated.");
-	     
 	     save();
 	}
 

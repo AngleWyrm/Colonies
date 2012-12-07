@@ -4,6 +4,7 @@ import java.util.HashMap;
 import colonies.anglewyrm.src.Utility;
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
+import net.minecraft.src.EntityAIPanic;
 import net.minecraft.src.EntityAISwimming;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
@@ -18,6 +19,9 @@ public class EntityWife extends EntityCitizen{
 		this.texture = ConfigFile.getSkin("skinWife");
 		this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);
+	    
+		// TODO: would like Wives to panic if attacked
+
 	}
 	
 	public String getTexture() {
