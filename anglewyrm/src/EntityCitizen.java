@@ -55,7 +55,6 @@ public class EntityCitizen extends EntityMob {
 	{
 		// Call baseAI for all citizens in range
 		if (!this.worldObj.isRemote){
-			BaseAI.onLivingUpdate(this);
 		}
         super.onLivingUpdate();
     }
