@@ -2,7 +2,6 @@ package colonies.anglewyrm.src;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.BiomeGenBase;

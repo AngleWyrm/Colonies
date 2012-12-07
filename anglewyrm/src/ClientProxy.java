@@ -21,8 +21,10 @@ public class ClientProxy extends ServerProxy
 		
 		// renderers
 		ChestItemRenderHelper.instance = new ColoniesChestRenderHelper();
-		RenderingRegistry.instance().registerEntityRenderingHandler(
-				EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
+		
+		// old code for custom female model
+		//RenderingRegistry.instance().registerEntityRenderingHandler(
+		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
 		
 		// preloaded textures
 		MinecraftForgeClient.preloadTexture(TESTBLOCK_PNG);

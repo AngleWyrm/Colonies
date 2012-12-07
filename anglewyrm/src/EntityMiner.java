@@ -15,16 +15,16 @@ import colonies.anglewyrm.src.EntityCitizen.jobs;
 public class EntityMiner extends EntityCitizen{
 	public EntityMiner(World world){ 
 		super(world);
-		this.texture = ServerProxy.MINERSKIN_PNG;
+		this.texture = ConfigFile.getSkin("skinMiner");
 		this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);
 	}
 	
 	public String getTexture() {
 		if(this.isInWater()){
-			return ServerProxy.M_SWIMSKIN_PNG;
+			return ConfigFile.getSkin("skinMaleSwimming");
 		}
-		return ServerProxy.MINERSKIN_PNG;
+		return ConfigFile.getSkin("skinMiner");
     }
 
 	protected String getLivingSound(){

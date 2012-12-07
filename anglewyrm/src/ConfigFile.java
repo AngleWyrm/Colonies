@@ -31,6 +31,14 @@ public class ConfigFile
 		}
 		return tmp;
 	}
+	public static String getSkin(String key){
+		return settings.getProperty(key, "SKIN_NOT_FOUND");
+/*		String filename = new String();
+		filename = "/colonies/skins/" + settings.getProperty(key, "SKIN_NOT_FOUND") + ".png";
+		System.out.println("[Colonies] getSkin returned:"+filename);
+		return filename;
+*/
+	}
 	
 	public static int parseInt(String key){
 		String tmp = new String();
@@ -46,23 +54,29 @@ public class ConfigFile
 	public static void createDefaultConfiguration() 
 	{
 	     // Default key/value pairs in ConfigFile.settings
-		 settings.setProperty("Version", ColoniesMain.instance.Version());
+		 set("Version", ColoniesMain.instance.Version());
 	     
 	     // Item ID numbers
 	     // This section may become depreciated
-	     settings.setProperty("TestBlockID", "1100");
-	     settings.setProperty("MeasuringTape","1101");
-	     settings.setProperty("DefaultChestID", "1103");
-	     settings.setProperty("TownHallID","1102");
+	     set("TestBlockID", "1100");
+	     set("MeasuringTape","1101");
+	     set("DefaultChestID", "1103");
+	     set("TownHallID","1102");
 
-	     settings.setProperty("citizenGreetings", "true");
-	     settings.setProperty("CitizenMoveSpeed", "0.25");
-
+	     set("citizenGreetings", "true");
+	     set("CitizenMoveSpeed", "0.25");
+	     
+	     // Citizen skins
+	     set("skinDefault","/colonies/skins/unemployedskin1.png");
+	     set("skinMaleSwimming", "/colonies/skins/m-swimskin.png");
+	     set("skinMiner", "/colonies/skins/minerskin.png");
+	     set("skinWife", "/colonies/skins/PolkadotGirl.png");
+	     set("skinFemaleSwimming","/colonies/skins/white_bikini.png");
+	     
 	     System.out.println("[Colonies] Config file regenerated.");
 	     
 	     save();
 	}
-
 
 	public static void load() 
 	{

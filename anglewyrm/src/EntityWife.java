@@ -15,16 +15,16 @@ import colonies.anglewyrm.src.EntityCitizen.jobs;
 public class EntityWife extends EntityCitizen{
 	public EntityWife(World world){ 
 		super(world);
-		this.texture = ServerProxy.WIFESKIN_PNG;
+		this.texture = ConfigFile.getSkin("skinWife");
 		this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);
 	}
 	
 	public String getTexture() {
 		if(this.isInWater()){
-			return ServerProxy.F_SWIMSKIN_PNG;
+			return ConfigFile.getSkin("skinFemaleSwimming");
 		}
-		return ServerProxy.WIFESKIN_PNG;
+		return ConfigFile.getSkin("skinWife");
     }
 
 	protected String getLivingSound(){

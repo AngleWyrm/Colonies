@@ -1,5 +1,9 @@
 package colonies.anglewyrm.src;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
 import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
@@ -9,6 +13,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class ServerProxy implements IGuiHandler
 {
+	// Skins are going to be switched to variables, so players can download skins
 	public static String M_SWIMSKIN_PNG      = "/colonies/anglewyrm/gfx/m-swimskin.png";
 	public static String F_SWIMSKIN_PNG      = "/colonies/anglewyrm/gfx/f-swimskin.png";
 	public static String TESTBLOCK_PNG       = "/colonies/anglewyrm/gfx/block.png";
@@ -24,7 +29,7 @@ public class ServerProxy implements IGuiHandler
 	public static String TOWNHALLCHEST_PNG   = "/colonies/pmardle/gfx/Townhallchest.png";
 	public static String CHESTCONTAINER_PNG  = "/colonies/anglewyrm/gfx/invalidChest.png";
 	public static String MEASURING_TAPE      = "/colonies/lohikaarme/gfx/LItems.png";
-
+	
     public void registerRenderInformation()
     {
 

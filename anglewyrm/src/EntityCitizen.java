@@ -102,9 +102,9 @@ public class EntityCitizen extends EntityMob {
 
 	public String getTexture() {
 		if (this.isInWater()){
-			return ServerProxy.M_SWIMSKIN_PNG;
+			return ConfigFile.getSkin("skinMaleSwimming");
 		}
-		return ServerProxy.WANDERERSKIN_PNG;
+		return ConfigFile.getSkin("skinDefault");
     }
 
 	public int getTotalArmorValue() {
