@@ -24,7 +24,7 @@ public class EntityPriestess extends EntityCitizen{
 	
 	public String getTexture() {
 		if(this.isInWater()){
-			return ConfigFile.getSkin("skinFemaleSwimming");
+			return ConfigFile.getSkin("skinPriestessSwimming");
 		}
 		return ConfigFile.getSkin("skinPriestess");
     }
