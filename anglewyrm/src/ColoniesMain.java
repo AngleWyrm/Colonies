@@ -27,6 +27,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -44,6 +45,7 @@ public class ColoniesMain
 	public static Item MeasuringTape;
 	public static Block chestBlock;
 	public static Block townHall;
+	public static Block business;
 	
 	public static List<TownHall> townsList;
 	
@@ -73,6 +75,7 @@ public class ColoniesMain
 	public void postInit(FMLPostInitializationEvent evt)
 	{
 	    // TODO: Add Post-Initialization code such as mod hooks
+		//NetworkRegistry.instance().registerGuiHandler(this, guihBusiness);
 	}
 	
 	public String Version(){
@@ -82,7 +85,7 @@ public class ColoniesMain
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
-		// List of towns
+        // List of towns
 		// TODO: find a way to save/load this data structure
 		townsList = new ArrayList<TownHall>();
 		
@@ -113,6 +116,14 @@ public class ColoniesMain
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
 		LanguageRegistry.addName(test, "Test Block");
 		GameRegistry.registerBlock(test);
+
+		// Business test
+		business =  new BlockBusiness(ConfigFile.parseInt("BlockBusinessID"), Material.ground)
+			.setBlockName("testBusiness").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
+		LanguageRegistry.addName(test, "Test Business");
+		GameRegistry.registerBlock(business);
+		GameRegistry.registerTileEntity(TileEntityBusiness.class, "Business TileEntity");
+		LanguageRegistry.instance().addStringLocalization("TileEntityBusiness.name", "en_US", "Business TileEntity");
 
 		// Citizens
 		// the three params after the class are ChanceWeight, minPackSize and maxPackSize
