@@ -23,11 +23,10 @@ public class ConfigFile
 	
 	public static String get(String key){
 		String tmp = new String();
-		tmp = settings.getProperty(key);
+		tmp = settings.getProperty(key, "1");
 		if(tmp == null)
 		{
 			System.err.println("[Colonies] key not found in config: " + key);
-			tmp = "0";
 		}
 		return tmp;
 	}
@@ -42,11 +41,11 @@ public class ConfigFile
 	
 	public static int parseInt(String key){
 		String tmp = new String();
-		tmp = settings.getProperty(key);
+		tmp = settings.getProperty(key, "1");
 		if(tmp == null)
 		{
 			System.err.println("[Colonies] key not found in config: " + key);
-			return 0;
+			return 1;
 		}
 		return Integer.parseInt(tmp);
 	}
@@ -60,9 +59,9 @@ public class ConfigFile
 	     // Item ID numbers
 	     // This section may become depreciated
 	     set("TestBlockID", "1100");
-	     set("MeasuringTape","1101");
+	     set("MeasuringTape","1102");
 	     set("DefaultChestID", "1103");
-	     set("TownHallID","1102");
+	     set("TownHallID","1104");
 	     save();
 	     
 	     set("citizenGreetings", "true");
