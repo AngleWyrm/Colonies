@@ -62,6 +62,7 @@ public class ConfigFile
 	     set("MeasuringTape","1102");
 	     set("DefaultChestID", "1103");
 	     set("TownHallID","1104");
+	     set("BlockBusinessID", "1105");
 	     save();
 	     
 	     set("citizenGreetings", "true");
