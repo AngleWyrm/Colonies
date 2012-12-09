@@ -326,20 +326,7 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
             List var2 = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getAABBPool().addOrModifyAABBInPool((double)((float)this.xCoord - var1), (double)((float)this.yCoord - var1), (double)((float)this.zCoord - var1), (double)((float)(this.xCoord + 1) + var1), (double)((float)(this.yCoord + 1) + var1), (double)((float)(this.zCoord + 1) + var1)));
             Iterator var3 = var2.iterator();
 
-            while (var3.hasNext())
-            {
-                EntityPlayer var4 = (EntityPlayer)var3.next();
-
-                if (var4.craftingInventory instanceof ContainerChest)
-                {
-                    IInventory var5 = ((ContainerChest)var4.craftingInventory).func_85151_d();
-
-                    if (var5 == this || var5 instanceof InventoryLargeChest && ((InventoryLargeChest)var5).func_90010_a(this))
-                    {
-                        ++this.numUsingPlayers;
-                    }
-                }
-            }
+            
         }
 
         this.prevLidAngle = this.lidAngle;
