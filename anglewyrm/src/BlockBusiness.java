@@ -66,7 +66,7 @@ public class BlockBusiness extends BlockContainer
                         item.stackSize = 0;
                 }
         }
-}
+    }
     @Override
     public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
             dropItems(world, x, y, z);

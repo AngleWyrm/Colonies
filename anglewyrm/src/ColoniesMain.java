@@ -2,6 +2,8 @@ package colonies.anglewyrm.src;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import colonies.thephpdev.src.BlockMiner;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.BiomeGenBase;
@@ -46,6 +48,7 @@ public class ColoniesMain
 	public static Block chestBlock;
 	public static Block townHall;
 	public static Block business;
+	public static Block minerChest;
 	
 	public static List<TownHall> townsList;
 	
@@ -97,6 +100,11 @@ public class ColoniesMain
 		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "Colonies Chest TileEntity");
 		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
+		
+		minerChest = new BlockMiner(ConfigFile.parseInt("MinerChestID")).setBlockName("Miner Chest");
+		LanguageRegistry.addName(minerChest, "Miner Chest");
+		GameRegistry.registerBlock(minerChest);
+		GameRegistry.addRecipe(new ItemStack(minerChest), new Object [] { "WWW", "WPW", "WWW", 'W', Block.planks, 'P', Item.pickaxeWood} );
 		
 		// Town Hall
 		townHall = new TownHall(ConfigFile.parseInt("TownHallID"),townsList);

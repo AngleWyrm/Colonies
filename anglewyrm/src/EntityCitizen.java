@@ -24,6 +24,12 @@ import colonies.anglewyrm.src.VacanciesQueue;
 import colonies.anglewyrm.src.ServerProxy;
 
 public class EntityCitizen extends EntityMob {
+	
+	BlockColoniesChest home;
+	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
+	public jobs job;
+	public HashMap<jobs, Integer> skills;
+	
 	public EntityCitizen(World par1World) {
 		super(par1World);
 		this.texture = ServerProxy.WANDERERSKIN_PNG;
@@ -46,10 +52,6 @@ public class EntityCitizen extends EntityMob {
 	    
 	    this.citizenGreetings = Boolean.valueOf( ConfigFile.get("citizenGreetings") );
 	}
-	BlockColoniesChest home;
-	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
-	public jobs job;
-	public HashMap<jobs, Integer> skills;
 	
 	public void onLivingUpdate()
 	{
