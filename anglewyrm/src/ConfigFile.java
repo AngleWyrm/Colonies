@@ -63,6 +63,7 @@ public class ConfigFile
 	     set("DefaultChestID", "1103");
 	     set("TownHallID","1104");
 	     set("BlockBusinessID", "1105");
+	     set("MinerChestID","1106");
 	     save();
 	     
 	     set("citizenGreetings", "true");
