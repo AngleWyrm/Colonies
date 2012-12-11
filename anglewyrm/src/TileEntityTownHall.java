@@ -14,6 +14,6 @@ public class TileEntityTownHall extends TileEntityColoniesChest implements IInve
 	@Override
     public String getInvName()
     {
-        return "Town Hall";
+        return "container.townhall";
     }
 }
