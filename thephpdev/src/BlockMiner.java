@@ -13,7 +13,7 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.ClientProxy;
-import colonies.anglewyrm.src.TownHall;
+import colonies.anglewyrm.src.BlockTownHall;
 import colonies.anglewyrm.src.Utility;
 import colonies.anglewyrm.src.VacanciesQueue;
 import colonies.vector67.src.BlockColoniesChest;

@@ -50,7 +50,7 @@ public class ColoniesMain
 	public static Block business;
 	public static Block minerChest;
 	
-	public static List<TownHall> townsList;
+	public static List<BlockTownHall> townsList;
 	
 
 	@Instance
@@ -90,7 +90,7 @@ public class ColoniesMain
 	{
         // List of towns
 		// TODO: find a way to save/load this data structure
-		townsList = new ArrayList<TownHall>();
+		townsList = new ArrayList<BlockTownHall>();
 		
 		// Chest block
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
@@ -104,19 +104,17 @@ public class ColoniesMain
 		minerChest = new BlockMiner(ConfigFile.parseInt("MinerChestID")).setBlockName("Miner Chest");
 		LanguageRegistry.addName(minerChest, "Miner Chest");
 		GameRegistry.registerBlock(minerChest);
-		GameRegistry.addRecipe(new ItemStack(minerChest), new Object [] { "WWW", "WPW", "WWW", 'W', Block.planks, 'P', Item.pickaxeWood} );
 		
 		// Town Hall
-		townHall = new TownHall(ConfigFile.parseInt("TownHallID"),townsList);
+		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"),townsList);
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
-		GameRegistry.addRecipe( new ItemStack(townHall), new Object[]{
-			"BIB","ICI","BIB", 'B',Item.book, 'I',Item.ingotIron, 'C',BlockContainer.chest});
+		GameRegistry.registerTileEntity(TileEntityTownHall.class, "container.townhall");
+		LanguageRegistry.instance().addStringLocalization("container.townhall.name", "en_US", "Town Hall TileEntity");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
-		GameRegistry.addRecipe(new ItemStack(MeasuringTape),"II", 'I',Item.ingotIron);
 		
 		// Test block
 		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
@@ -146,6 +144,12 @@ public class ColoniesMain
 			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Miner.name", "en_US", "Miner");
 
+		// Lumberjack
+		EntityRegistry.registerGlobalEntityID(EntityLumberjack.class, "Lumberjack", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x888800);
+		EntityRegistry.addSpawn(EntityLumberjack.class, 1, 1, 3, EnumCreatureType.ambient, 
+			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
+		LanguageRegistry.instance().addStringLocalization("entity.Lumberjack.name", "en_US", "Lumberjack");
+
 		// Wife
 		EntityRegistry.registerGlobalEntityID(EntityWife.class, "Wife", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFFcccc);
 		EntityRegistry.addSpawn(EntityWife.class, 1, 1, 3, EnumCreatureType.ambient, 
@@ -158,5 +162,7 @@ public class ColoniesMain
 			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Priestess.name", "en_US", "Priestes of the Eye of the Ocelott");
 		
+		
+		Recipes.registerRecipes();
 	}
 }

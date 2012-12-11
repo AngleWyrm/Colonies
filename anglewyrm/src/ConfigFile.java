@@ -63,6 +63,7 @@ public class ConfigFile
 	     set("DefaultChestID", "1103");
 	     set("TownHallID","1104");
 	     set("BlockBusinessID", "1105");
+	     set("MinerChestID","1106");
 	     save();
 	     
 	     set("citizenGreetings", "true");
@@ -78,6 +79,7 @@ public class ConfigFile
 	     set("skinFemaleSwimming","/colonies/anglewyrm/gfx/white_bikini.png");
 	     set("skinPriestess","/colonies/anglewyrm/gfx/priestess.png");
 	     set("skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png");
+	     set("skinLumberjack","/colonies/anglewyrm/gfx/lumberjack.png");
 	     
 	     System.out.println("[Colonies] Config file regenerated.");
 	     save();
