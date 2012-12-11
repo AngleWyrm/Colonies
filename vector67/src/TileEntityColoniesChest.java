@@ -268,22 +268,22 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
             this.adjacentChestXNeg = null;
             this.adjacentChestZPosition = null;
 
-            if (this.worldObj.getBlockId(this.xCoord - 1, this.yCoord, this.zCoord) == Block.chest.blockID)
+            if (this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord) instanceof TileEntityColoniesChest)
             {
                 this.adjacentChestXNeg = (TileEntityColoniesChest)this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord + 1, this.yCoord, this.zCoord) == Block.chest.blockID)
+            if (this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord) instanceof TileEntityColoniesChest)
             {
                 this.adjacentChestXPos = (TileEntityColoniesChest)this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord - 1) == Block.chest.blockID)
+            if (this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1) instanceof TileEntityColoniesChest)
             {
                 this.adjacentChestZNeg = (TileEntityColoniesChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1);
             }
 
-            if (this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord + 1) == Block.chest.blockID)
+            if (this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1) instanceof TileEntityColoniesChest)
             {
                 this.adjacentChestZPosition = (TileEntityColoniesChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1);
             }
