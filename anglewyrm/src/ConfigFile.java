@@ -79,6 +79,7 @@ public class ConfigFile
 	     set("skinFemaleSwimming","/colonies/anglewyrm/gfx/white_bikini.png");
 	     set("skinPriestess","/colonies/anglewyrm/gfx/priestess.png");
 	     set("skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png");
+	     set("skinLumberjack","/colonies/anglewyrm/gfx/lumberjack.png");
 	     
 	     System.out.println("[Colonies] Config file regenerated.");
 	     save();

@@ -146,6 +146,12 @@ public class ColoniesMain
 			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
 		LanguageRegistry.instance().addStringLocalization("entity.Miner.name", "en_US", "Miner");
 
+		// Lumberjack
+		EntityRegistry.registerGlobalEntityID(EntityLumberjack.class, "Lumberjack", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x888800);
+		EntityRegistry.addSpawn(EntityLumberjack.class, 1, 1, 3, EnumCreatureType.ambient, 
+			BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
+		LanguageRegistry.instance().addStringLocalization("entity.Lumberjack.name", "en_US", "Lumberjack");
+
 		// Wife
 		EntityRegistry.registerGlobalEntityID(EntityWife.class, "Wife", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFFcccc);
 		EntityRegistry.addSpawn(EntityWife.class, 1, 1, 3, EnumCreatureType.ambient, 
