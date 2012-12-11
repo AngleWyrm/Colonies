@@ -204,8 +204,6 @@ public class EntityCitizen extends EntityMob {
 					Vector3D targetBlock = getPositionRelativeToSelf(x, y, z); 
 					if (worldObj.getBlockId((int)targetBlock.x, (int)targetBlock.y, (int)targetBlock.z) == blockID) {
 						PathNavigator path = new PathNavigator(getNavigator(), targetBlock.x, targetBlock.y, targetBlock.z);
-						if (!path.hasPath())
-							continue;
 						if (ret == null || ret.getLength() > path.getLength()) {
 							ret = path;
 						}
@@ -267,11 +265,11 @@ public class EntityCitizen extends EntityMob {
 			path = getNavigator().getPathToXYZ(x, y, z);
 			if (hasPath()) {
 				length = path.getCurrentPathLength();
-				location = new Vector3D();
-				location.x = (float)x;
-				location.y = (float)y;
-				location.z = (float)z;
 			}
+			location = new Vector3D();
+			location.x = (float)x;
+			location.y = (float)y;
+			location.z = (float)z;
 		}
 		
 		/**
@@ -295,11 +293,11 @@ public class EntityCitizen extends EntityMob {
 			this.path = path;
 			if (hasPath()) {
 				this.length = path.getCurrentPathLength();
-				location = new Vector3D();
-				location.x = path.getFinalPathPoint().xCoord;
-				location.y = path.getFinalPathPoint().yCoord;
-				location.z = path.getFinalPathPoint().zCoord;
 			}
+			location = new Vector3D();
+			location.x = path.getFinalPathPoint().xCoord;
+			location.y = path.getFinalPathPoint().yCoord;
+			location.z = path.getFinalPathPoint().zCoord;
 		}
 		
 		/**
@@ -335,6 +333,40 @@ public class EntityCitizen extends EntityMob {
 		 */
 		public boolean hasPath() {
 			return path != null;
+		}
+		
+		/**
+		 * Returns true if there is a location set
+		 */
+		public boolean hasLocation() {
+			return location != null;
+		}
+		
+		/**
+		 * Returns the x location of the ending block
+		 * @return
+		 */
+		public int getEndX() {
+			if (location == null) return 0;
+			return MathHelper.floor_double(location.x);
+		}
+		
+		/**
+		 * Returns the y location of the ending block
+		 * @return
+		 */
+		public int getEndY() {
+			if (location == null) return 0;
+			return MathHelper.floor_double(location.y);
+		}
+		
+		/**
+		 * Returns the z location of the ending block
+		 * @return
+		 */
+		public int getEndZ() {
+			if (location == null) return 0;
+			return MathHelper.floor_double(location.z);
 		}
 	}
 	
