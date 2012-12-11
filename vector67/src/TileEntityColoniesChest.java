@@ -140,7 +140,7 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
      */
     public String getInvName()
     {
-        return "container.colonieschest";
+        return "Place of Business";
     }
 
     /**

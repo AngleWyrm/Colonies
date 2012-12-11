@@ -50,7 +50,7 @@ public class ColoniesMain
 	public static Block business;
 	public static Block minerChest;
 	
-	public static List<TownHall> townsList;
+	public static List<BlockTownHall> townsList;
 	
 
 	@Instance
@@ -90,7 +90,7 @@ public class ColoniesMain
 	{
         // List of towns
 		// TODO: find a way to save/load this data structure
-		townsList = new ArrayList<TownHall>();
+		townsList = new ArrayList<BlockTownHall>();
 		
 		// Chest block
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
@@ -107,11 +107,13 @@ public class ColoniesMain
 		GameRegistry.addRecipe(new ItemStack(minerChest), new Object [] { "WWW", "WPW", "WWW", 'W', Block.planks, 'P', Item.pickaxeWood} );
 		
 		// Town Hall
-		townHall = new TownHall(ConfigFile.parseInt("TownHallID"),townsList);
+		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"),townsList);
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
 		GameRegistry.addRecipe( new ItemStack(townHall), new Object[]{
 			"BIB","ICI","BIB", 'B',Item.book, 'I',Item.ingotIron, 'C',BlockContainer.chest});
+		GameRegistry.registerTileEntity(TileEntityTownHall.class, "TileEntityTownHall");
+		LanguageRegistry.instance().addStringLocalization("TileEntityTownHall.name", "en_US", "Town Hall TileEntity");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
