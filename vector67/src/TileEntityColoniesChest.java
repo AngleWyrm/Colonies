@@ -140,7 +140,9 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
      */
     public String getInvName()
     {
-        return "container.colonieschest";
+    	// I think this isn't the way to get text into the GUI
+    	// But I'm using as a hack for the moment -AngleWyrm
+        return "Place of Business";
     }
 
     /**
