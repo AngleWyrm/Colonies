@@ -52,7 +52,7 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 	public TileEntityColoniesChestRenderer() {
 		model = new ModelChest();
 		random = new Random();
-		renderBlocks = new RenderBlocks();
+		renderBlocks = new RenderBlocks(); 
 	}
 
 	private void overrideTexture(Object obj) {
@@ -71,9 +71,14 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 		if (tile != null && tile.getWorldObj() != null) {
 			facing = tile.getFacing();
 			int typ = tile.getWorldObj().getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
+			
+			bindTextureByName(tile.getBlockType().getTextureFile()); // Tries to get instance from world, which might not exist
 		}
-		//NOTE: This seems to be over-riding textures for all chests
-		bindTextureByName(ClientProxy.CHESTCONTAINER_PNG);
+		else{
+			//NOTE: This seems to be over-riding textures for all chests
+			bindTextureByName(ClientProxy.CHESTCONTAINER_PNG); // forces graphic
+		}
+		
 		glPushMatrix();
 		glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
 		glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
