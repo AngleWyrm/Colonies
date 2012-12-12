@@ -1,21 +1,13 @@
 package colonies.thephpdev.src;
 
-import java.util.List;
-
-import net.minecraft.src.BlockContainer;
-import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.ClientProxy;
-import colonies.anglewyrm.src.BlockTownHall;
 import colonies.anglewyrm.src.Utility;
-import colonies.anglewyrm.src.VacanciesQueue;
 import colonies.vector67.src.BlockColoniesChest;
 
 public class BlockMiner extends BlockColoniesChest {

@@ -1,6 +1,5 @@
 package colonies.anglewyrm.src;
 
-import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.BlockContainer;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;

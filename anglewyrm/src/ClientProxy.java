@@ -1,17 +1,13 @@
 package colonies.anglewyrm.src;
 
-import colonies.pmardle.src.ModelFemale;
+import net.minecraft.src.ChestItemRenderHelper;
+import net.minecraft.src.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 import colonies.vector67.src.ColoniesChestRenderHelper;
 import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChestRenderer;
-import net.minecraft.src.ChestItemRenderHelper;
-import net.minecraft.src.RenderLiving;
-import net.minecraft.src.RenderPlayer;
-import net.minecraft.src.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 
 public class ClientProxy extends ServerProxy

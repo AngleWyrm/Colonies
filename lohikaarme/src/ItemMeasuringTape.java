@@ -1,17 +1,11 @@
 package colonies.lohikaarme.src;
 
-import java.io.File;
-import java.io.IOException;
-
-import colonies.anglewyrm.src.ServerProxy;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
+import colonies.anglewyrm.src.ServerProxy;
 
 public class ItemMeasuringTape extends Item{
   

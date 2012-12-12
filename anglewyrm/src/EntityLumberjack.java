@@ -2,26 +2,9 @@ package colonies.anglewyrm.src;
 
 import java.util.HashMap;
 
-import paulscode.sound.Vector3D;
-import colonies.anglewyrm.src.Utility;
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.EntityAIAttackOnCollide;
-import net.minecraft.src.EntityAIHurtByTarget;
-import net.minecraft.src.EntityAIMoveTowardsTarget;
-import net.minecraft.src.EntityAINearestAttackableTarget;
-import net.minecraft.src.EntityAISwimming;
-import net.minecraft.src.EntityAIWander;
-import net.minecraft.src.EntityAIWatchClosest;
-import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.PathEntity;
-import net.minecraft.src.PathNavigate;
-import net.minecraft.src.PathPoint;
-import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
-import colonies.anglewyrm.src.EntityCitizen.jobs;
-import colonies.thephpdev.src.BlockMiner;
+import paulscode.sound.Vector3D;
 
 public class EntityLumberjack extends EntityCitizen {
 	

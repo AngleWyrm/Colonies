@@ -1,13 +1,8 @@
 package colonies.anglewyrm.src;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
-import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
+import colonies.vector67.src.TileEntityColoniesChest;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 

@@ -1,7 +1,11 @@
 package colonies.eragon.src;
+import net.minecraft.src.GuiContainer;
+import net.minecraft.src.InventoryPlayer;
+import net.minecraft.src.StatCollector;
+
 import org.lwjgl.opengl.GL11;
+
 import colonies.vector67.src.TileEntityColoniesChest;
-import net.minecraft.src.*;
  
  
 public class BlockColoniesChestGui extends GuiContainer{
