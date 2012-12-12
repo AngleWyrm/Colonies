@@ -1,5 +1,6 @@
 package colonies.anglewyrm.src;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import net.minecraft.src.Item;
@@ -15,6 +16,7 @@ public class EntityMiner extends EntityCitizen {
 	private Vector3D closestMinerChest;
 	private boolean hasPickaxe;
 	private Item pickaxe;
+	private long lastSearch;
 	
 	public EntityMiner(World world) { 
 		super(world);
@@ -25,6 +27,7 @@ public class EntityMiner extends EntityCitizen {
 		this.skills.put(jobs.unemployed, 10);
 		this.hasPickaxe = false;
 		this.pickaxe = null;
+		this.lastSearch = ticksExisted;
 
 		// TODO: Would like miners to go hostile with a pickaxe if attacked
 	}
@@ -68,14 +71,18 @@ public class EntityMiner extends EntityCitizen {
 		super.onLivingUpdate();
 		updatePickaxe();
 		int minerBlockID = ConfigFile.parseInt("MinerChestID");
-		PathNavigator nav = pathToBlock(minerBlockID);
-		if (nav == null) return;
-		if (nav.getLength() < 1.5) {
-			if (!hasPickaxe && nav.hasLocation()) {
-				getPickaxeFromChest(nav.getEndX(), nav.getEndY(), nav.getEndZ());
+		if (ticksExisted - lastSearch >= 40) {
+			lastSearch = ticksExisted;
+			System.out.println("Searched.");
+			PathNavigator nav = pathToBlock(minerBlockID);
+			if (nav == null) return;
+			if (nav.getLength() < 1.5) {
+				if (!hasPickaxe && nav.hasLocation()) {
+					getPickaxeFromChest(nav.getEndX(), nav.getEndY(), nav.getEndZ());
+				}
+			} else {
+				navigateToBlock(nav);
 			}
-		} else {
-			navigateToBlock(nav);
 		}
 	}
 	
