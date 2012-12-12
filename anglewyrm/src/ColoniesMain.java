@@ -92,8 +92,8 @@ public class ColoniesMain
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
 		GameRegistry.registerBlock(chestBlock);
 
-		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "Colonies Chest TileEntity");
-		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
+		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "container.colonieschest");
+		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest (base tile entity)");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 		
 		minerChest = new BlockMiner(ConfigFile.parseInt("MinerChestID")).setBlockName("Miner Chest");
