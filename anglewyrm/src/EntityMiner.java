@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import net.minecraft.src.Material;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
@@ -13,6 +14,7 @@ public class EntityMiner extends EntityCitizen {
 	
 	private Vector3D closestMinerChest;
 	private boolean hasPickaxe;
+	private Item pickaxe;
 	
 	public EntityMiner(World world) { 
 		super(world);
@@ -22,6 +24,7 @@ public class EntityMiner extends EntityCitizen {
 		this.skills = new HashMap<jobs, Integer>(10);
 		this.skills.put(jobs.unemployed, 10);
 		this.hasPickaxe = false;
+		this.pickaxe = null;
 
 		// TODO: Would like miners to go hostile with a pickaxe if attacked
 	}
@@ -63,12 +66,13 @@ public class EntityMiner extends EntityCitizen {
 
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
+		updatePickaxe();
 		int minerBlockID = ConfigFile.parseInt("MinerChestID");
 		PathNavigator nav = pathToBlock(minerBlockID);
 		if (nav == null) return;
 		if (nav.getLength() < 1.5) {
 			if (!hasPickaxe && nav.hasLocation()) {
-				hasPickaxe = getPickaxeFromChest(nav.getEndX(), nav.getEndY(), nav.getEndZ());
+				getPickaxeFromChest(nav.getEndX(), nav.getEndY(), nav.getEndZ());
 			}
 		} else {
 			navigateToBlock(nav);
@@ -83,8 +87,10 @@ public class EntityMiner extends EntityCitizen {
 			for (int i = 0; i < invSize; i++) {
 				ItemStack stack = chest.getStackInSlot(i);
 				if (stack != null && isPickaxe(stack.getItem())) {
+					pickaxe = stack.getItem();
 					((TileEntityColoniesChest)entity).setInventorySlotContents(i, ((TileEntityColoniesChest)entity).decrStackSize(0, stack.stackSize-1));
 					entity.onInventoryChanged();
+					System.out.println("Got Pickaxe.");
 					return true;
 				}
 			}
@@ -98,6 +104,31 @@ public class EntityMiner extends EntityCitizen {
 				|| item == Item.pickaxeSteel
 				|| item == Item.pickaxeDiamond
 				|| item == Item.pickaxeGold);
+	}
+	
+	/**
+	 * Updates the pickaxe and puts it in hand if it isn't
+	 * already, or takes it out.
+	 */
+	private void updatePickaxe() {
+		if (pickaxe != null) {
+			if (!hasPickaxe) {
+				setCurrentItemOrArmor(0, new ItemStack(pickaxe, 1));
+				hasPickaxe = true;
+				System.out.println("Holding Item: " + pickaxe.getItemName() + "[" + hasPickaxe + "]");
+			}
+		} else {
+			if (!hasPickaxe && getCurrentItemOrArmor(0) != null) {
+				setCurrentItemOrArmor(0, null);
+				System.out.println("Removed Item. [" + hasPickaxe + "]");
+				removePickaxe();
+			}
+		}
+	}
+	
+	private void removePickaxe() {
+		hasPickaxe = false;
+		pickaxe = null;
 	}
 	
 }
