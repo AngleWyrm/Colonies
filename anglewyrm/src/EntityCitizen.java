@@ -1,33 +1,25 @@
 package colonies.anglewyrm.src;
 
+import java.util.HashMap;
+
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
 import net.minecraft.src.EntityAIMoveIndoors;
 import net.minecraft.src.EntityAIMoveTwardsRestriction;
 import net.minecraft.src.EntityAIOpenDoor;
-import net.minecraft.src.EntityAIRestrictOpenDoor;
 import net.minecraft.src.EntityAISwimming;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
 import net.minecraft.src.World;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
-
 import paulscode.sound.Vector3D;
-
 import colonies.vector67.src.BlockColoniesChest;
-import colonies.anglewyrm.src.VacanciesQueue;
-import colonies.anglewyrm.src.ServerProxy;
 
 public class EntityCitizen extends EntityMob {
 	

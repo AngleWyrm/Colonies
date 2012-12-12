@@ -6,7 +6,6 @@
 
 package colonies.pmardle.src;
 
-import colonies.anglewyrm.src.EntityWife;
 import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.ModelBase;

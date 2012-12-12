@@ -1,7 +1,11 @@
 package colonies.eragon.src;
 
+import net.minecraft.src.Container;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.InventoryPlayer;
+import net.minecraft.src.ItemStack;
+import net.minecraft.src.Slot;
 import colonies.vector67.src.TileEntityColoniesChest;
-import net.minecraft.src.*;
 
 
 public class ContainerColoniesChest extends Container{

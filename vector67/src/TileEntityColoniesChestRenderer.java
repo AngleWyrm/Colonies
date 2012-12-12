@@ -1,41 +1,28 @@
 package colonies.vector67.src;
 
-import static org.lwjgl.opengl.GL11.GL_COMPILE_AND_EXECUTE;
-import static org.lwjgl.opengl.GL11.glCallList;
 import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11.glDisable;
 import static org.lwjgl.opengl.GL11.glEnable;
-import static org.lwjgl.opengl.GL11.glEndList;
-import static org.lwjgl.opengl.GL11.glGenLists;
-import static org.lwjgl.opengl.GL11.glNewList;
 import static org.lwjgl.opengl.GL11.glPopMatrix;
 import static org.lwjgl.opengl.GL11.glPushMatrix;
 import static org.lwjgl.opengl.GL11.glRotatef;
 import static org.lwjgl.opengl.GL11.glScalef;
 import static org.lwjgl.opengl.GL11.glTranslatef;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityItem;
 import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
 import net.minecraft.src.ModelChest;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.Tessellator;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.TileEntitySpecialRenderer;
-import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import cpw.mods.fml.client.FMLClientHandler;
-import colonies.anglewyrm.src.ColoniesMain;
-//import colonies.pmardle.src.MappableItemStackWrapper;
 import colonies.anglewyrm.src.ClientProxy;
+import cpw.mods.fml.client.FMLClientHandler;
+//import colonies.pmardle.src.MappableItemStackWrapper;
 
 
 public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {

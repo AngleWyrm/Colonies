@@ -3,22 +3,18 @@ package colonies.anglewyrm.src;
 import java.util.ArrayList;
 import java.util.List;
 
-import colonies.thephpdev.src.BlockMiner;
-import colonies.vector67.src.BlockColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockContainer;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
-import net.minecraft.src.SoundManager;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.lohikaarme.src.ItemMeasuringTape;
+import colonies.thephpdev.src.BlockMiner;
 import colonies.vector67.src.BlockColoniesChest;
+import colonies.vector67.src.TileEntityColoniesChest;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -29,7 +25,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -97,8 +92,8 @@ public class ColoniesMain
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
 		GameRegistry.registerBlock(chestBlock);
 
-		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "Colonies Chest TileEntity");
-		LanguageRegistry.instance().addStringLocalization("Colonies Chest TileEntity" + ".name", "en_US", "Colonies Chest TileEntity");
+		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "container.colonieschest");
+		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest (base tile entity)");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 		
 		minerChest = new BlockMiner(ConfigFile.parseInt("MinerChestID")).setBlockName("Miner Chest");
@@ -110,7 +105,7 @@ public class ColoniesMain
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
 		GameRegistry.registerTileEntity(TileEntityTownHall.class, "container.townhall");
-		LanguageRegistry.instance().addStringLocalization("container.townhall.name", "en_US", "Town Hall TileEntity");
+		LanguageRegistry.instance().addStringLocalization("container.townhall", "en_US", "MyTown Town Hall");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");

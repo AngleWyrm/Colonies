@@ -5,15 +5,12 @@ import java.util.List;
 
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
-import net.minecraft.src.ContainerChest;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
-import net.minecraft.src.InventoryLargeChest;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityChest;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
@@ -140,9 +137,7 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
      */
     public String getInvName()
     {
-    	// I think this isn't the way to get text into the GUI
-    	// But I'm using as a hack for the moment -AngleWyrm
-        return "Place of Business";
+        return "container.colonieschest";
     }
 
     /**

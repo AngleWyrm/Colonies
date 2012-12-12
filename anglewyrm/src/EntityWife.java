@@ -1,17 +1,9 @@
 package colonies.anglewyrm.src;
 
 import java.util.HashMap;
-import colonies.anglewyrm.src.Utility;
-import net.minecraft.src.EntityAIAttackOnCollide;
-import net.minecraft.src.EntityAIHurtByTarget;
-import net.minecraft.src.EntityAIPanic;
-import net.minecraft.src.EntityAISwimming;
-import net.minecraft.src.EntityAIWander;
-import net.minecraft.src.EntityAIWatchClosest;
-import net.minecraft.src.EntityPlayer;
+
 import net.minecraft.src.Item;
 import net.minecraft.src.World;
-import colonies.anglewyrm.src.EntityCitizen.jobs;
 
 public class EntityWife extends EntityCitizen{
 	public EntityWife(World world){ 

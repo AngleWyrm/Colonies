@@ -2,14 +2,12 @@ package colonies.vector67.src;
 
 import java.util.Map;
 
+import net.minecraft.src.Block;
+import net.minecraft.src.ChestItemRenderHelper;
+import net.minecraft.src.TileEntityRenderer;
 import colonies.anglewyrm.src.ColoniesMain;
 
 import com.google.common.collect.Maps;
-
-import net.minecraft.src.Block;
-import net.minecraft.src.ChestItemRenderHelper;
-import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.TileEntityRenderer;
 
 public class ColoniesChestRenderHelper extends ChestItemRenderHelper{
 		

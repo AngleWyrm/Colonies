@@ -5,9 +5,6 @@ import static net.minecraftforge.common.ForgeDirection.DOWN;
 import java.util.Iterator;
 import java.util.Random;
 
-import colonies.anglewyrm.src.ClientProxy;
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BlockContainer;
 import net.minecraft.src.CreativeTabs;
@@ -23,8 +20,10 @@ import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityChest;
 import net.minecraft.src.World;
+import colonies.anglewyrm.src.ClientProxy;
+import cpw.mods.fml.common.Side;
+import cpw.mods.fml.common.asm.SideOnly;
 
 public class BlockColoniesChest extends BlockContainer {
 
