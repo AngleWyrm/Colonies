@@ -44,6 +44,7 @@ public class ColoniesMain
 	public static Block townHall;
 	public static Block business;
 	public static Block minerChest;
+	public static Block lumberjackChest;
 	
 	public static List<BlockTownHall> townsList;
 	

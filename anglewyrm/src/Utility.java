@@ -2,7 +2,9 @@ package colonies.anglewyrm.src;
 
 import java.util.Random;
 
-public class Utility {
+public class Utility 
+{
+	// TODO: get world instance, and put world.getSeed() in Random() c'tor
 	public static Random rng = new Random();
 
 	// Given a category count, (usually four)
@@ -13,5 +15,11 @@ public class Utility {
 	}
 	public static int getLootCategory(int numCategories){
 		return (int) Math.round(Math.sqrt(2.0) * Math.sqrt(-1*Math.log(rng.nextFloat())));
+	}
+	
+	// Disable-able replacement for System.out.println()
+	public static void Debug(String text)
+	{
+		System.out.println(text);
 	}
 }
