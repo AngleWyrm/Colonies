@@ -98,11 +98,10 @@ public class EntityMiner extends EntityCitizen {
 			TileEntityColoniesChest chest = (TileEntityColoniesChest)entity;
 			int invSize = chest.getSizeInventory();
 			for (int i = 0; i < invSize; i++) {
-				// TODO: Figure out why this returns only null, even if there is a pickaxe in the chest
 				ItemStack stack = chest.getStackInSlot(i);
 				if (stack != null && isPickaxe(stack.getItem())) {
-					((TileEntityColoniesChest)entity).getStackInSlot(i).stackSize--;
-					System.out.println("Removed Pickaxe from Chest.");
+					((TileEntityColoniesChest)entity).setInventorySlotContents(i, ((TileEntityColoniesChest)entity).decrStackSize(0, stack.stackSize-1));
+					entity.onInventoryChanged();
 					return true;
 				}
 			}
