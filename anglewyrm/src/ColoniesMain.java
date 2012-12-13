@@ -106,7 +106,7 @@ public class ColoniesMain
 		GameRegistry.registerBlock(minerChest);
 
 		// Town Hall
-		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"),townsList);
+		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"));
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
 		GameRegistry.registerTileEntity(TileEntityTownHall.class, "container.townhall");

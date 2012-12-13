@@ -30,7 +30,7 @@ public class EntityLumberjack extends EntityCitizen {
 
 	protected String getLivingSound() {
 		if (citizenGreetings){
-			if (Utility.getLootCategory()==3) {
+			if (Utility.getLootCategory()>=3) { // Rare or above
 				return "colonies.m-hello";
 			}
 		}
