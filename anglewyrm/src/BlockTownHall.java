@@ -9,22 +9,11 @@ import colonies.vector67.src.BlockColoniesChest;
 
 public class BlockTownHall extends BlockColoniesChest 
 {
+	public TileEntityTownHall tileEntity;
 	public BlockTownHall(int id) {
 		super(id);
 		setBlockName("BlockTownHall");
-		townName = new String("MyTown");
-		
-		// DEBUG: testing the towns list
 		System.out.println("[Colonies]Towns List contains "+ColoniesMain.townsList.size()+" town halls");
-	}
-	public static String townName;
-	public static List<BlockColoniesChest> homesList;
-	public static List<BlockColoniesChest> employersList;
-	
-	// This might end up in TileEntityTownHall
-	// when we create a GUI to name a town in-game
-	public void setTownName(String newName){
-		townName = newName;
 	}
 	
 	@Override
@@ -35,8 +24,10 @@ public class BlockTownHall extends BlockColoniesChest
     @Override
     public TileEntity createNewTileEntity(World par1World){
     	// this town hall placed in world
-    	ColoniesMain.townsList.add(this);
-        return new TileEntityTownHall();
+    	tileEntity = new TileEntityTownHall();
+    	tileEntity.setTownName("My Town");
+    	ColoniesMain.townsList.add(tileEntity);
+        return tileEntity;
      }
     
     @Override
@@ -45,10 +36,10 @@ public class BlockTownHall extends BlockColoniesChest
     	// remove this town hall from global townsList
     	Iterator iter = ColoniesMain.townsList.iterator();
     	while(iter.hasNext()){
-    		if (iter.next() == this)
+    		if (iter.next() == tileEntity)
     		{
     			iter.remove();
-    			Utility.Debug(this.townName + " removed from townslist");
+    			Utility.Debug(tileEntity.townName + " removed from townslist");
     			break;
     		}
     	}

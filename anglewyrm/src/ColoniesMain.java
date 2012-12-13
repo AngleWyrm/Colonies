@@ -48,7 +48,7 @@ public class ColoniesMain
 	public static Block minerChest;
 	public static Block lumberjackChest;
 
-	public static List<BlockTownHall> townsList;
+	public static List<TileEntityTownHall> townsList;
 
 
 	@Instance
@@ -90,7 +90,7 @@ public class ColoniesMain
 	{
 		// List of towns
 		// TODO: find a way to save/load this data structure
-		townsList = new ArrayList<BlockTownHall>();
+		townsList = new ArrayList<TileEntityTownHall>();
 
 		// Chest block
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));

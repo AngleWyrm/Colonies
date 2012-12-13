@@ -20,11 +20,12 @@ import net.minecraft.src.PathPoint;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 import colonies.vector67.src.BlockColoniesChest;
+import colonies.vector67.src.TileEntityColoniesChest;
 
 public class EntityCitizen extends EntityMob {
 	
-	public BlockColoniesChest home;
-	public BlockTownHall homeTown;
+	public TileEntityColoniesChest home;
+	public TileEntityTownHall homeTown;
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
 	public jobs job;
 	public HashMap<jobs, Integer> skills;

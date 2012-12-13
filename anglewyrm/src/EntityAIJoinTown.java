@@ -28,10 +28,11 @@ public class EntityAIJoinTown extends EntityAIBase {
 			Utility.Debug("Citizen with no town");
 			
 			// Find closest town hall
-			BlockTownHall closestTown = ColoniesMain.townsList.get(0);
-			Iterator<BlockTownHall> iter = ColoniesMain.townsList.iterator();
+			// DEBUG: Still possible to end up with a citizen moving into null town
+			TileEntityTownHall closestTown = ColoniesMain.townsList.get(0);
+			Iterator<TileEntityTownHall> iter = ColoniesMain.townsList.iterator();
 			while(iter.hasNext()){
-				BlockTownHall test = iter.next();
+				TileEntityTownHall test = iter.next();
 				if(distanceToBlock(test) < distanceToBlock(closestTown)){
 					closestTown = test;
 				}
@@ -44,12 +45,10 @@ public class EntityAIJoinTown extends EntityAIBase {
 		return false; // already has a homeTown
 	}
 
-	private float distanceToBlock(BlockColoniesChest block){
-		float distance = 1;
-		
-		// Quick estimate, no pathing: sqrt(dx^2 + dy^2 + dz^2)
+	private double distanceToBlock(TileEntityTownHall tile){
+		double distance = 1;
 		Utility.Debug("range check");
-		
+		distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
 		return distance;
 	}
 }
