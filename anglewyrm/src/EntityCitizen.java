@@ -206,6 +206,14 @@ public class EntityCitizen extends EntityMob {
 		return ret;
 	}
 	
+	protected Vector3D makeVector(double x, double y, double z) {
+		Vector3D ret = new Vector3D();
+		ret.x = (float) x;
+		ret.y = (float) y;
+		ret.z = (float) z;
+		return ret;
+	}
+	
 	protected class PathNavigator {
 		private Vector3D location;
 		private PathEntity path;
