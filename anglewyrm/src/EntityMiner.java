@@ -16,7 +16,12 @@ public class EntityMiner extends EntityCitizen {
 	private Vector3D closestMinerChest;
 	private boolean hasPickaxe;
 	private Item pickaxe;
+	private static ItemStack defaultHeldItem;
 	private long lastSearch;
+	
+	static {
+		defaultHeldItem = null;
+	}
 	
 	public EntityMiner(World world) { 
 		super(world);
@@ -69,16 +74,16 @@ public class EntityMiner extends EntityCitizen {
 
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		updatePickaxe();
 		int minerBlockID = ConfigFile.parseInt("MinerChestID");
 		if (ticksExisted - lastSearch >= 40) {
 			lastSearch = ticksExisted;
-			System.out.println("Searched.");
 			PathNavigator nav = pathToBlock(minerBlockID);
 			if (nav == null) return;
 			if (nav.getLength() < 1.5) {
-				if (!hasPickaxe && nav.hasLocation()) {
-					getPickaxeFromChest(nav.getEndX(), nav.getEndY(), nav.getEndZ());
+				if (nav.hasLocation()) {
+					if (!hasPickaxe) {
+						getPickaxeFromChest(nav.getEndX(), nav.getEndY(), nav.getEndZ());
+					}
 				}
 			} else {
 				navigateToBlock(nav);
@@ -94,10 +99,9 @@ public class EntityMiner extends EntityCitizen {
 			for (int i = 0; i < invSize; i++) {
 				ItemStack stack = chest.getStackInSlot(i);
 				if (stack != null && isPickaxe(stack.getItem())) {
-					pickaxe = stack.getItem();
+					setPickaxe(stack.getItem());
 					((TileEntityColoniesChest)entity).setInventorySlotContents(i, ((TileEntityColoniesChest)entity).decrStackSize(0, stack.stackSize-1));
 					entity.onInventoryChanged();
-					System.out.println("Got Pickaxe.");
 					return true;
 				}
 			}
@@ -113,29 +117,21 @@ public class EntityMiner extends EntityCitizen {
 				|| item == Item.pickaxeGold);
 	}
 	
-	/**
-	 * Updates the pickaxe and puts it in hand if it isn't
-	 * already, or takes it out.
-	 */
-	private void updatePickaxe() {
-		if (pickaxe != null) {
-			if (!hasPickaxe) {
-				setCurrentItemOrArmor(0, new ItemStack(pickaxe, 1));
-				hasPickaxe = true;
-				System.out.println("Holding Item: " + pickaxe.getItemName() + "[" + hasPickaxe + "]");
-			}
-		} else {
-			if (!hasPickaxe && getCurrentItemOrArmor(0) != null) {
-				setCurrentItemOrArmor(0, null);
-				System.out.println("Removed Item. [" + hasPickaxe + "]");
-				removePickaxe();
-			}
-		}
+	public ItemStack getHeldItem() {
+		if (pickaxe == null) return null;
+		return new ItemStack(pickaxe, 1);
 	}
 	
 	private void removePickaxe() {
-		hasPickaxe = false;
-		pickaxe = null;
+		this.hasPickaxe = false;
+		this.pickaxe = null;
+		this.defaultHeldItem = null;
+	}
+	
+	private void setPickaxe(Item pickaxe) {
+		this.hasPickaxe = true;
+		this.pickaxe = pickaxe;
+		this.defaultHeldItem = new ItemStack(pickaxe, 1);
 	}
 	
 }
