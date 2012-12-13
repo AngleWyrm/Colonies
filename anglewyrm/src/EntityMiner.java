@@ -53,7 +53,7 @@ public class EntityMiner extends EntityCitizen {
 		return "";
 	}
 
-	// Mob Loot for default Citizen
+	// Mob Loot for Miner
 	protected int getDropItemId() {
 		int lootID=1;
 		switch(Utility.getLootCategory()) {
