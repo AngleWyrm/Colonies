@@ -1,5 +1,7 @@
 package colonies.anglewyrm.src;
-
+//
+// TODO: Possibly add a navigate to town hall phase
+//
 import java.util.Iterator;
 
 import colonies.vector67.src.BlockColoniesChest;
@@ -31,6 +33,8 @@ public class EntityAIJoinTown extends EntityAIBase {
 			while(iter.hasNext()){
 				TileEntityTownHall test = iter.next();
 				if(distanceToBlock(test) < distanceToBlock(closestTown)){
+					// TODO: Possibly test for range, and bail if far away
+					// might not be necessary though.
 					closestTown = test;
 				}
 			}
@@ -44,6 +48,7 @@ public class EntityAIJoinTown extends EntityAIBase {
 	private double distanceToBlock(TileEntityTownHall tile){
 		double distance = 1;
 		Utility.Debug("range check");
+		// TODO: Maybe make this as the dog runs instead of as the crow flies
 		distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
 		return distance;
 	}

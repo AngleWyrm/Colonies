@@ -312,6 +312,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
     public void updateEntity()
     {
         super.updateEntity();
+
+    	// TODO: Validate chest belongs to a town,
+    	//       add to closest if not
+    	       
         this.checkForAdjacentChests();
         ++this.ticksSinceSync;
         float var1;
