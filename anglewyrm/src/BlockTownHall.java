@@ -10,10 +10,11 @@ import colonies.vector67.src.BlockColoniesChest;
 public class BlockTownHall extends BlockColoniesChest 
 {
 	public TileEntityTownHall tileEntity;
+	
 	public BlockTownHall(int id) {
 		super(id);
-		setBlockName("BlockTownHall");
-		System.out.println("[Colonies]Towns List contains "+ColoniesMain.townsList.size()+" town halls");
+		setBlockName("block.townhall");
+		Utility.Debug("[Colonies]Towns List contains "+ColoniesMain.townsList.size()+" town halls");
 	}
 	
 	@Override
@@ -31,7 +32,7 @@ public class BlockTownHall extends BlockColoniesChest
      }
     
     @Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+    public void breakBlock(World theWorld, int par2, int par3, int par4, int par5, int par6)
     {
     	// remove this town hall from global townsList
     	Iterator iter = ColoniesMain.townsList.iterator();
@@ -43,6 +44,6 @@ public class BlockTownHall extends BlockColoniesChest
     			break;
     		}
     	}
-    	super.breakBlock(par1World, par2, par3, par4, par5, par6);
+    	super.breakBlock(theWorld, par2, par3, par4, par5, par6);
     }
  }

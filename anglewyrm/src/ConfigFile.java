@@ -64,11 +64,10 @@ public class ConfigFile
 	     set("TownHallID","1104");
 	     set("BlockBusinessID", "1105");
 	     set("MinerChestID","1106");
-	     save();
+	     set("LoggingCampID", "1107");
 	     
 	     set("citizenGreetings", "true");
 	     set("CitizenMoveSpeed", "0.25");
-	     save();
 	     
 	     // Citizen skins
 	     set("skinDefault","/colonies/grahammarcellus/gfx/unemployedskin1.png");

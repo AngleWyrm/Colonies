@@ -28,7 +28,7 @@ public class ClientProxy extends ServerProxy
         MinecraftForgeClient.preloadTexture(BUILDERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(FARMERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(HOUSECHEST_PNG);
-        MinecraftForgeClient.preloadTexture(LUMBERJACKCHEST_PNG);
+        MinecraftForgeClient.preloadTexture(LOGGINGCAMP_PNG);
         MinecraftForgeClient.preloadTexture(MINERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(TOWNHALLCHEST_PNG);
         MinecraftForgeClient.preloadTexture(CHESTCONTAINER_PNG);

@@ -31,7 +31,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Colonies", name = "Colonies", version = "7 Dec 2012")
+@Mod(modid = "Colonies", name = "Colonies", version = "21 Dec 2012")
 @NetworkMod(
 		channels = { "Colonies" },
 		clientSideRequired = true,
@@ -44,9 +44,8 @@ public class ColoniesMain
 	public static Item MeasuringTape;
 	public static Block chestBlock;
 	public static Block townHall;
-	public static Block business;
 	public static Block minerChest;
-	public static Block lumberjackChest;
+	public static Block loggingCamp;
 
 	public static List<TileEntityTownHall> townsList;
 
@@ -82,7 +81,7 @@ public class ColoniesMain
 	}
 
 	public String Version(){
-		return "Pre-Alpha, Revision 4";
+		return "Pre-Alpha, Revision 5";
 	}
 
 	// Register Colonies stuff with Minecraft Forge
@@ -98,12 +97,19 @@ public class ColoniesMain
 		GameRegistry.registerBlock(chestBlock);
 
 		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "container.colonieschest");
-		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest (base tile entity)");
+		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 
 		minerChest = new BlockMiner(ConfigFile.parseInt("MinerChestID")).setBlockName("Miner Chest");
 		LanguageRegistry.addName(minerChest, "Miner Chest");
 		GameRegistry.registerBlock(minerChest);
+		
+		// Logging Camp
+		loggingCamp = new BlockLoggingCamp(ConfigFile.parseInt("LoggingCampID"));
+		LanguageRegistry.addName(loggingCamp, "Logging Camp");
+		GameRegistry.registerBlock(loggingCamp);
+		GameRegistry.registerTileEntity(TileEntityLoggingCamp.class, "container.loggingcamp");
+		LanguageRegistry.instance().addStringLocalization("container.loggingcamp", "en_US", "Logging Camp");
 
 		// Town Hall
 		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"));
@@ -123,20 +129,12 @@ public class ColoniesMain
 		LanguageRegistry.addName(test, "Test Block");
 		GameRegistry.registerBlock(test);
 
-		// Business test
-		business =  new BlockBusiness(ConfigFile.parseInt("BlockBusinessID"), Material.ground)
-		.setBlockName("testBusiness").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
-		LanguageRegistry.addName(test, "Test Business");
-		GameRegistry.registerBlock(business);
-		GameRegistry.registerTileEntity(TileEntityBusiness.class, "Business TileEntity");
-		LanguageRegistry.instance().addStringLocalization("TileEntityBusiness.name", "en_US", "Business TileEntity");
-
 		// Citizens
 		// the three params after the class are ChanceWeight, minPackSize and maxPackSize
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
 		EntityRegistry.addSpawn(EntityCitizen.class, 1, 1, 3, EnumCreatureType.ambient, 
 				BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
-		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Default Citizen");
+		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Wanderer");
 
 		// Miner
 		EntityRegistry.registerGlobalEntityID(EntityMiner.class, "Miner", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF8888);
@@ -160,7 +158,7 @@ public class ColoniesMain
 		EntityRegistry.registerGlobalEntityID(EntityPriestess.class, "Priestess", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x00FF00);
 		EntityRegistry.addSpawn(EntityPriestess.class, 1, 1, 3, EnumCreatureType.ambient, 
 				BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);
-		LanguageRegistry.instance().addStringLocalization("entity.Priestess.name", "en_US", "Priestes of the Eye of the Ocelott");
+		LanguageRegistry.instance().addStringLocalization("entity.Priestess.name", "en_US", "Cleric");
 
 
 		Recipes.registerRecipes();

@@ -95,24 +95,24 @@ public class BlockColoniesChest extends BlockContainer {
     /**
      * Called whenever the block is added into the world. Args: world, x, y, z
      */
-    public void onBlockAdded(World par1World, int par2, int par3, int par4)
+    public void onBlockAdded(World theWorld, int x, int y, int z)
     {
-        super.onBlockAdded(par1World, par2, par3, par4);
-        int var5 = par1World.getBlockId(par2, par3, par4 - 1);
-        int var6 = par1World.getBlockId(par2, par3, par4 + 1);
-        int var7 = par1World.getBlockId(par2 - 1, par3, par4);
-        int var8 = par1World.getBlockId(par2 + 1, par3, par4);
+        super.onBlockAdded(theWorld, x, y, z);
+        int var5 = theWorld.getBlockId(x, y, z - 1);
+        int var6 = theWorld.getBlockId(x, y, z + 1);
+        int var7 = theWorld.getBlockId(x - 1, y, z);
+        int var8 = theWorld.getBlockId(x + 1, y, z);
     }
 
     /**
      * Called when the block is placed in the world.
      */
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving)
+    public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
     {
-        int var6 = par1World.getBlockId(par2, par3, par4 - 1);
-        int var7 = par1World.getBlockId(par2, par3, par4 + 1);
-        int var8 = par1World.getBlockId(par2 - 1, par3, par4);
-        int var9 = par1World.getBlockId(par2 + 1, par3, par4);
+        int var6 = theWorld.getBlockId(x, y, z - 1);
+        int var7 = theWorld.getBlockId(x, y, z + 1);
+        int var8 = theWorld.getBlockId(x - 1, y, z);
+        int var9 = theWorld.getBlockId(x + 1, y, z);
         byte var10 = 0;
         int var11 = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
@@ -138,7 +138,7 @@ public class BlockColoniesChest extends BlockContainer {
 
         if (var6 != this.blockID && var7 != this.blockID && var8 != this.blockID && var9 != this.blockID)
         {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+            theWorld.setBlockMetadataWithNotify(x, y, z, var10);
         }
         else
         {
@@ -146,28 +146,28 @@ public class BlockColoniesChest extends BlockContainer {
             {
                 if (var6 == this.blockID)
                 {
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, var10);
+                    theWorld.setBlockMetadataWithNotify(x, y, z - 1, var10);
                 }
                 else
                 {
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4 + 1, var10);
+                    theWorld.setBlockMetadataWithNotify(x, y, z + 1, var10);
                 }
 
-                par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                theWorld.setBlockMetadataWithNotify(x, y, z, var10);
             }
 
             if ((var8 == this.blockID || var9 == this.blockID) && (var10 == 2 || var10 == 3))
             {
                 if (var8 == this.blockID)
                 {
-                    par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, var10);
+                    theWorld.setBlockMetadataWithNotify(x - 1, y, z, var10);
                 }
                 else
                 {
-                    par1World.setBlockMetadataWithNotify(par2 + 1, par3, par4, var10);
+                    theWorld.setBlockMetadataWithNotify(x + 1, y, z, var10);
                 }
 
-                par1World.setBlockMetadataWithNotify(par2, par3, par4, var10);
+                theWorld.setBlockMetadataWithNotify(x, y, z, var10);
             }
         }
     }
