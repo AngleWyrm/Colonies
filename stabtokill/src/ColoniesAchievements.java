@@ -1,4 +1,4 @@
-package colonies.thephpdev.src;
+package colonies.stabtokill.src;
 
 import net.minecraft.src.Achievement;
 import net.minecraftforge.common.AchievementPage;
