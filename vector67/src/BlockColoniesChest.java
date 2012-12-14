@@ -194,6 +194,11 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
+    	// TODO: validate range from town hall, return false if outside town perimeter
+    	
+    	
+    	
+    	
         int var5 = 0;
 
         if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID)

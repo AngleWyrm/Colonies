@@ -6,9 +6,7 @@ import colonies.vector67.src.BlockColoniesChest;
 
 import net.minecraft.src.EntityAIBase;
 
-// Join a town, and move to town hall
-// movement suggests mutex bit 1
-//
+// Join a town
 public class EntityAIJoinTown extends EntityAIBase {
 	
 	EntityCitizen citizen;
@@ -28,7 +26,6 @@ public class EntityAIJoinTown extends EntityAIBase {
 			Utility.Debug("Citizen with no town");
 			
 			// Find closest town hall
-			// DEBUG: Still possible to end up with a citizen moving into null town
 			TileEntityTownHall closestTown = ColoniesMain.townsList.get(0);
 			Iterator<TileEntityTownHall> iter = ColoniesMain.townsList.iterator();
 			while(iter.hasNext()){
@@ -37,9 +34,8 @@ public class EntityAIJoinTown extends EntityAIBase {
 					closestTown = test;
 				}
 			}
-			citizen.homeTown = closestTown;
-			
-			Utility.Debug("Citizen moved into:" + citizen.homeTown.townName);
+			citizen.homeTown = closestTown;		
+			Utility.Debug("Citizen moved into: " + citizen.homeTown.townName);
 			return true;
 		}
 		return false; // already has a homeTown

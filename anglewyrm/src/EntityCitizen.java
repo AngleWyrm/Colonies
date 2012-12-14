@@ -37,14 +37,11 @@ public class EntityCitizen extends EntityMob {
 		this.moveSpeed = Float.parseFloat(ConfigFile.get("CitizenMoveSpeed"));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
+	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
-	    this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 	    this.tasks.addTask(3, new EntityAIJoinTown(this));
-	    this.tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
-	    this.tasks.addTask(5, new EntityAIMoveIndoors(this));
-	    //this.tasks.addTask(6, new EntityAIRestrictOpenDoor(this));
-	    this.tasks.addTask(7, new EntityAIOpenDoor(this, true));
-	    this.tasks.addTask(8, new EntityAIMoveTwardsRestriction(this, 0.3F));
+		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+	    this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 	    
