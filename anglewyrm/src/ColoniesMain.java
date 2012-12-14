@@ -14,7 +14,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.thephpdev.src.BlockMiner;
-import colonies.thephpdev.src.ColoniesAchievements;
+import colonies.stabtokill.src.ColoniesAchievements;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 import cpw.mods.fml.common.Mod;
