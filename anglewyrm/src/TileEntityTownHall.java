@@ -5,7 +5,7 @@ import net.minecraft.src.IInventory;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
-public class TileEntityTownHall extends TileEntityColoniesChest implements IInventory{
+public class TileEntityTownHall extends TileEntityColoniesChest {
 
 	public TileEntityTownHall() {
 		super();

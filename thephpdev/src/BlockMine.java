@@ -7,14 +7,17 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.ClientProxy;
+import colonies.anglewyrm.src.TileEntityLoggingCamp;
 import colonies.anglewyrm.src.Utility;
 import colonies.vector67.src.BlockColoniesChest;
 
-public class BlockMiner extends BlockColoniesChest {
+public class BlockMine extends BlockColoniesChest {
+	
+	public TileEntityMine tileEntity = null;
 
-	public BlockMiner(int id) {
+	public BlockMine(int id) {
 		super(id);
-		setBlockName("Miner Chest");
+		setBlockName("Mine");
 		setTextureFile(ClientProxy.MINERCHEST_PNG);
 	}
 
@@ -61,4 +64,11 @@ public class BlockMiner extends BlockColoniesChest {
 	public String getTextureFile() {
 		return ClientProxy.MINERCHEST_PNG;
 	}
+	
+    @Override
+    public TileEntity createNewTileEntity(World theWorld){
+    	tileEntity = new TileEntityMine();
+        return tileEntity;
+     }
+
 }

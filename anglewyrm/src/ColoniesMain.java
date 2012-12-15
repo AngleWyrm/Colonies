@@ -13,7 +13,8 @@ import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.lohikaarme.src.ItemMeasuringTape;
-import colonies.thephpdev.src.BlockMiner;
+import colonies.thephpdev.src.BlockMine;
+import colonies.thephpdev.src.TileEntityMine;
 import colonies.stabtokill.src.ColoniesAchievements;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
@@ -100,9 +101,11 @@ public class ColoniesMain
 		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 
-		minerChest = new BlockMiner(ConfigFile.parseInt("MinerChestID")).setBlockName("Miner Chest");
+		minerChest = new BlockMine(ConfigFile.parseInt("MinerChestID")).setBlockName("Mine");
 		LanguageRegistry.addName(minerChest, "Miner Chest");
 		GameRegistry.registerBlock(minerChest);
+		GameRegistry.registerTileEntity(TileEntityMine.class, "container.mine");
+		LanguageRegistry.instance().addStringLocalization("container.mine", "en_US", "Mine");
 		
 		// Logging Camp
 		loggingCamp = new BlockLoggingCamp(ConfigFile.parseInt("LoggingCampID"));

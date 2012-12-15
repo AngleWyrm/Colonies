@@ -3,7 +3,7 @@ package colonies.anglewyrm.src;
 import net.minecraft.src.IInventory;
 import colonies.vector67.src.TileEntityColoniesChest;
 
-public class TileEntityLoggingCamp extends TileEntityColoniesChest implements IInventory{
+public class TileEntityLoggingCamp extends TileEntityColoniesChest {
 
 	public TileEntityLoggingCamp() {
 		super();
