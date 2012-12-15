@@ -19,7 +19,8 @@ public class Recipes
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.townHall), new Object[]{
 			"BIB","ICI","BIB", 'B',Item.book, 'I',Item.ingotIron, 'C',BlockContainer.chest});
 
-
+		GameRegistry.addRecipe( new ItemStack(ColoniesMain.loggingCamp), new Object[]{
+			"SXS","XCX","SXS", 'S',Block.sapling, 'X',Item.axeStone, 'C',BlockContainer.chest});
 		
 	}
 }
