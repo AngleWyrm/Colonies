@@ -15,18 +15,21 @@ public class EntityAIJoinTown extends EntityAIBase {
 
 	public EntityAIJoinTown(EntityCitizen this_guy) {
 		this.citizen = this_guy;
-		this.setMutexBits(1);
+		// this.setMutexBits(1); // this is for later, when pathing to town
 	}
 
 	@Override
 	public boolean shouldExecute() 
 	{
-		if(ColoniesMain.townsList.isEmpty()) return false; // no town to join
+		if((ColoniesMain.townsList==null)||(ColoniesMain.townsList.isEmpty())) return false; // no town to join
 		
 		if( citizen.homeTown == null)
 		{
 			Utility.Debug("Citizen with no town");
 			
+			//
+			// TODO: Rework this, possibly a priorityqueue
+			//
 			// Find closest town hall
 			TileEntityTownHall closestTown = ColoniesMain.townsList.get(0);
 			Iterator<TileEntityTownHall> iter = ColoniesMain.townsList.iterator();
@@ -38,18 +41,17 @@ public class EntityAIJoinTown extends EntityAIBase {
 					closestTown = test;
 				}
 			}
-			citizen.homeTown = closestTown;		
-			Utility.Debug("Citizen moved into: " + citizen.homeTown.townName);
-			return true;
+			if(closestTown.adoptTown(citizen)){
+				citizen.homeTown = closestTown;				
+				Utility.Debug("Citizen moved into: " + citizen.homeTown.townName + " pop: " + citizen.homeTown.citizens.size() + "/" + citizen.homeTown.maxPopulation);
+				return true;
+			} // else town rejected application
 		}
 		return false; // already has a homeTown
 	}
 
 	private double distanceToBlock(TileEntityTownHall tile){
-		double distance = 1;
-		Utility.Debug("range check");
-		// TODO: Maybe make this as the dog runs instead of as the crow flies
-		distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
-		return distance;
+		double distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
+		return Math.sqrt(distance);
 	}
 }

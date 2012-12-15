@@ -26,7 +26,6 @@ public class BlockTownHall extends BlockColoniesChest
     public TileEntity createNewTileEntity(World par1World){
     	// this town hall placed in world
     	tileEntity = new TileEntityTownHall();
-    	tileEntity.setTownName("My Town");
     	ColoniesMain.townsList.add(tileEntity);
         return tileEntity;
      }

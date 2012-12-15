@@ -22,8 +22,9 @@ import paulscode.sound.Vector3D;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
-public class EntityCitizen extends EntityMob {
-	
+public class EntityCitizen extends EntityMob 
+{
+	public String name;
 	public TileEntityColoniesChest home;
 	public TileEntityTownHall homeTown;
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
