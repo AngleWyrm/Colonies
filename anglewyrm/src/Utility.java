@@ -2,10 +2,14 @@ package colonies.anglewyrm.src;
 
 import java.util.Random;
 
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.Vec3;
+import net.minecraft.src.World;
+
 public class Utility 
 {
 	// TODO: get world instance, and put world.getSeed() in Random() c'tor
-	public static Random rng = new Random();
+	public static RNG rng = new RNG();
 
 	// Given a category count, (usually four)
 	// return a random category in the range [1..numCategories]
@@ -22,4 +26,4 @@ public class Utility
 	{
 		System.out.println(text);
 	}
-}
+	}

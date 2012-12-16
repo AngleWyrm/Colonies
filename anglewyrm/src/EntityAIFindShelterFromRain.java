@@ -38,17 +38,17 @@ public class EntityAIFindShelterFromRain extends EntityAIBase
         }
         else
         {
-            Vec3 var1 = this.findPossibleShelter();
+            Vec3 v = this.findPossibleShelter();
 
-            if (var1 == null)
+            if (v == null)
             {
                 return false;
             }
             else
             {
-                this.shelterX = var1.xCoord;
-                this.shelterY = var1.yCoord;
-                this.shelterZ = var1.zCoord;
+                this.shelterX = v.xCoord;
+                this.shelterY = v.yCoord;
+                this.shelterZ = v.zCoord;
                 return true;
             }
         }
@@ -66,7 +66,7 @@ public class EntityAIFindShelterFromRain extends EntityAIBase
 
     private Vec3 findPossibleShelter()
     {
-        for (int var2 = 0; var2 < 10; ++var2)
+        for (int i = 0; i < 10; ++i)
         {
             int x = MathHelper.floor_double(this.citizen.posX + Utility.rng.nextInt(30) - 15);
             int y = MathHelper.floor_double(this.citizen.boundingBox.minY + Utility.rng.nextInt(10) - 5);
