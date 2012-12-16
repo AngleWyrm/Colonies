@@ -14,7 +14,6 @@ public class BlockTownHall extends BlockColoniesChest
 	public BlockTownHall(int id) {
 		super(id);
 		setBlockName("block.townhall");
-		Utility.Debug("[Colonies]Towns List contains "+ColoniesMain.townsList.size()+" town halls");
 	}
 	
 	@Override
@@ -26,23 +25,13 @@ public class BlockTownHall extends BlockColoniesChest
     public TileEntity createNewTileEntity(World par1World){
     	// this town hall placed in world
     	tileEntity = new TileEntityTownHall();
-    	ColoniesMain.townsList.add(tileEntity);
         return tileEntity;
      }
     
     @Override
     public void breakBlock(World theWorld, int par2, int par3, int par4, int par5, int par6)
     {
-    	// remove this town hall from global townsList
-    	Iterator iter = ColoniesMain.townsList.iterator();
-    	while(iter.hasNext()){
-    		if (iter.next() == tileEntity)
-    		{
-    			iter.remove();
-    			Utility.Debug(tileEntity.townName + " removed from townslist");
-    			break;
-    		}
-    	}
+    	tileEntity.evacuateTown();
     	super.breakBlock(theWorld, par2, par3, par4, par5, par6);
     }
  }

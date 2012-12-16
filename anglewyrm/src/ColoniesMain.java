@@ -48,7 +48,7 @@ public class ColoniesMain
 	public static Block minerChest;
 	public static Block loggingCamp;
 
-	public static List<TileEntityTownHall> townsList;
+	//public static List<TileEntityTownHall> townsList;
 
 
 	@Instance
@@ -88,10 +88,6 @@ public class ColoniesMain
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
-		// List of towns
-		// TODO: find a way to save/load this data structure
-		townsList = new ArrayList<TileEntityTownHall>();
-
 		// Chest block
 		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
@@ -133,7 +129,7 @@ public class ColoniesMain
 		GameRegistry.registerBlock(test);
 
 		// Citizens
-		// the three params after the class are ChanceWeight, minPackSize and maxPackSize
+		// the three parameters after the class are ChanceWeight, minPackSize and maxPackSize
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
 		EntityRegistry.addSpawn(EntityCitizen.class, 1, 1, 3, EnumCreatureType.ambient, 
 				BiomeGenBase.forest, BiomeGenBase.plains, BiomeGenBase.taiga);

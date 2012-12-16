@@ -11,39 +11,58 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	// Town variables
 	public int maxPopulation = 4;
 	public String townName;
-	public LinkedList<BlockColoniesChest> homesList;
-	public LinkedList<BlockColoniesChest> employersList;
-	public LinkedList<EntityCitizen>      citizens;
+	public LinkedList<BlockColoniesChest>        homesList;
+	public LinkedList<BlockColoniesChest>        employersList;
+	public LinkedList<EntityCitizen>             citizensList;
+	public static LinkedList<TileEntityTownHall> townsList;
 	private int spawnDelay = 500; // measured in updates
 	
 	public TileEntityTownHall() {
 		super();
-		citizens = new LinkedList<EntityCitizen>();
+		citizensList = new LinkedList<EntityCitizen>();
 		employersList = new LinkedList<BlockColoniesChest>();
 		homesList = new LinkedList<BlockColoniesChest>();
-		if(ColoniesMain.townsList!=null){
-			setTownName("MyTown #" + (ColoniesMain.townsList.size()+1) );
+		if(townsList == null){ // first town hall so start the towns list
+			townsList = new LinkedList<TileEntityTownHall>();
 		}
+		setTownName("MyTown #" + (townsList.size()+1) );
+		townsList.add(this);
 	}
 	
 	public boolean adoptTown(EntityCitizen newCitizen){
-		if((citizens==null)||(newCitizen==null)) return false;
+		if((citizensList==null)||(newCitizen==null)) return false;
+		if(citizensList.size() >= maxPopulation) return false;
+		if(citizensList.contains(newCitizen)) return false;
 		
-		// verify this citizen is not already a member
-		for(EntityCitizen c: citizens){
-			if(c == newCitizen) return false;
-		}
-		citizens.add(newCitizen);
+		newCitizen.homeTown = this;
+		citizensList.add(newCitizen);
 		return true;
 	}
 	
 	public boolean abandonTown(EntityCitizen oldCitizen){
-		if((citizens==null)||(oldCitizen==null)) return false;
+		if((citizensList==null)||(oldCitizen==null)) return false;
+		if(!citizensList.contains(oldCitizen)) return false;
+		citizensList.remove(citizensList.indexOf(oldCitizen));
+		oldCitizen.homeTown = null;
+		return true;
+	}
+	
+	public boolean evacuateTown(){
+		if(citizensList==null) return false;
 		
-		if(citizens.remove(oldCitizen)){
-			return true;
+		// remove citizens from town
+		while(!citizensList.isEmpty()){
+			EntityCitizen tmp = citizensList.getFirst();
+			citizensList.removeFirst();
+			tmp.homeTown = null;
 		}
-		return false;
+		// remove town from town list
+		if(townsList.contains(this)){
+			townsList.remove(townsList.indexOf(this));
+		}else{
+			return false;
+		}
+		return true;
 	}
 	
 	public void setTownName(String newName){
@@ -59,12 +78,12 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public void updateEntity(){
         super.updateEntity();
         
-        if(citizens==null) return;
-        if(maxPopulation <= citizens.size()) return;
+        if(citizensList==null) return;
+        if(maxPopulation <= citizensList.size()) return;
         
         if(--spawnDelay <= 0){
         	spawnDelay = 500;
-        	Utility.Debug(townName + " spawner triggered, pop: " + citizens.size());
+        	Utility.Debug(townName + " spawner triggered, pop: " + citizensList.size());
         	EntityCitizen newGuy;
         	if(Utility.rng.nextInt(2)>0){
         		newGuy = new EntityCitizen(this.worldObj);
