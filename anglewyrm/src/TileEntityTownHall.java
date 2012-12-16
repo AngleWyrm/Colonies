@@ -9,7 +9,7 @@ import colonies.vector67.src.TileEntityColoniesChest;
 public class TileEntityTownHall extends TileEntityColoniesChest 
 {
 	// Town variables
-	public int maxPopulation = 4;
+	public int maxPopulation = 10;
 	public String townName;
 	public LinkedList<BlockColoniesChest>        homesList;
 	public LinkedList<BlockColoniesChest>        employersList;
@@ -26,16 +26,25 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			townsList = new LinkedList<TileEntityTownHall>();
 		}
 		setTownName("MyTown #" + (townsList.size()+1) );
-		townsList.add(this);
+		townsList.offer(this);
 	}
 	
 	public boolean adoptTown(EntityCitizen newCitizen){
-		if((citizensList==null)||(newCitizen==null)) return false;
-		if(citizensList.size() >= maxPopulation) return false;
-		if(citizensList.contains(newCitizen)) return false;
+		if((citizensList==null)||(newCitizen==null)){
+			Utility.Debug("null list and/or citizen");
+			return false;
+		}
+		if(citizensList.size() >= maxPopulation){
+			Utility.Debug("town full: " + citizensList.size());
+			return false;
+		}
+		if(citizensList.contains(newCitizen)){
+			Utility.Debug("Already a resident!?");
+			return false;
+		}
 		
 		newCitizen.homeTown = this;
-		citizensList.add(newCitizen);
+		citizensList.offer(newCitizen);
 		return true;
 	}
 	
@@ -49,7 +58,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	
 	public boolean evacuateTown(){
 		if(citizensList==null) return false;
-		
+		Utility.Debug("Evacuating " + townName + " (pop:"+citizensList.size()+")");
 		// remove citizens from town
 		while(!citizensList.isEmpty()){
 			EntityCitizen tmp = citizensList.getFirst();
@@ -71,7 +80,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	
 	@Override
     public String getInvName(){
-        return "container.townhall";
+        // return "container.townhall";
+		return townName + " pop: " + citizensList.size();
     }
 	
 	@Override
