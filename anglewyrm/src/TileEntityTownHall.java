@@ -10,22 +10,33 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 {
 	// Town variables
 	public int maxPopulation = 10;
+	public double townPerimeter = 30;
 	public String townName;
 	public LinkedList<BlockColoniesChest>        homesList;
 	public LinkedList<BlockColoniesChest>        employersList;
 	public LinkedList<EntityCitizen>             citizensList;
 	public static LinkedList<TileEntityTownHall> townsList;
-	private int spawnDelay = 500; // measured in updates
+	private int spawnDelay = 1000; // measured in updates
 	
 	public TileEntityTownHall() {
 		super();
 		citizensList = new LinkedList<EntityCitizen>();
+		citizensList.clear();
 		employersList = new LinkedList<BlockColoniesChest>();
+		employersList.clear();
 		homesList = new LinkedList<BlockColoniesChest>();
+		homesList.clear();
 		if(townsList == null){ // first town hall so start the towns list
 			townsList = new LinkedList<TileEntityTownHall>();
+			townsList.clear();
 		}
-		setTownName("MyTown #" + (townsList.size()+1) );
+		if(townsList.isEmpty()){
+			setTownName("FirstTown");
+			maxPopulation = 0;
+		}
+		else{
+			setTownName("MyTown#" + townsList.size() );
+		}
 		townsList.offer(this);
 	}
 	
@@ -35,7 +46,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			return false;
 		}
 		if(citizensList.size() >= maxPopulation){
-			Utility.Debug("town full: " + citizensList.size());
+			Utility.Debug(townName + " full: " + citizensList.size());
 			return false;
 		}
 		if(citizensList.contains(newCitizen)){
@@ -43,7 +54,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			return false;
 		}
 		
-		newCitizen.homeTown = this;
+		newCitizen.hasHomeTown = true;
 		citizensList.offer(newCitizen);
 		return true;
 	}
@@ -52,7 +63,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		if((citizensList==null)||(oldCitizen==null)) return false;
 		if(!citizensList.contains(oldCitizen)) return false;
 		citizensList.remove(citizensList.indexOf(oldCitizen));
-		oldCitizen.homeTown = null;
+		oldCitizen.hasHomeTown = false;
 		return true;
 	}
 	
@@ -63,7 +74,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		while(!citizensList.isEmpty()){
 			EntityCitizen tmp = citizensList.getFirst();
 			citizensList.removeFirst();
-			tmp.homeTown = null;
+			tmp.hasHomeTown = false;
 		}
 		// remove town from town list
 		if(townsList.contains(this)){
@@ -99,8 +110,14 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         		newGuy = new EntityCitizen(this.worldObj);
         	}else{
         		newGuy = new EntityWife(this.worldObj);
-        	}        	
-            newGuy.setLocationAndAngles(this.xCoord + 3, this.yCoord + 1, this.zCoord + 3, Utility.rng.nextFloat()*360.0f, 0.0f);
+        	}  
+        	Point p = new Point(this.xCoord, this.yCoord, this.zCoord);
+        	Point q = new Point();
+        	Utility.Debug(p.toString());
+        	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), townPerimeter);
+        	p.plus(q);
+        	Utility.Debug(p.toString());
+            newGuy.setLocationAndAngles(p.x, p.y, p.z, Utility.rng.nextFloat()*360.0f, 0.0f);
             this.worldObj.spawnEntityInWorld(newGuy);
         }
         

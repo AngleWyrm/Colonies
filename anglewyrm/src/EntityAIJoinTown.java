@@ -16,7 +16,7 @@ public class EntityAIJoinTown extends EntityAIBase {
 
 	public EntityAIJoinTown(EntityCitizen this_guy) {
 		this.citizen = this_guy;
-		// this.setMutexBits(1); // this is for later, when pathing to town
+		this.setMutexBits(1); 
 	}
 
 	// Node class for priority queue
@@ -40,7 +40,10 @@ public class EntityAIJoinTown extends EntityAIBase {
 	@Override
 	public boolean shouldExecute() 
 	{
-		if( citizen.homeTown != null) return false;
+		if( citizen.hasHomeTown){
+			// Utility.Debug("Already has hometown"); // This gets called A LOT
+			return false;
+		}
 
 		// check for town to join
 		if((TileEntityTownHall.townsList==null)||(TileEntityTownHall.townsList.isEmpty())) return false; // no town to join
@@ -62,6 +65,8 @@ public class EntityAIJoinTown extends EntityAIBase {
 			}
 			if(application.town.adoptTown(citizen)){
 				Utility.Debug(application.town.townName + " accepted applicant; pop:" + application.town.citizensList.size());
+				citizen.hasHomeTown = true;
+				citizen.homeTownLocation = new Point(application.town.xCoord, application.town.yCoord, application.town.zCoord);
 				return true;
 			}
 			else{
@@ -72,7 +77,22 @@ public class EntityAIJoinTown extends EntityAIBase {
 		Utility.Debug("No towns remaining in list");
 		return false;
 	}
+	
+    public void startExecuting()
+    {
+        this.citizen.getNavigator()
+        	.tryMoveToXYZ(citizen.homeTownLocation.x, 
+        				  citizen.homeTownLocation.y, 
+        				  citizen.homeTownLocation.z, 0.2f);
+    }
 
+    public boolean continueExecuting()
+    {
+        return !this.citizen.getNavigator().noPath();
+    }
+
+
+    
 	private double distanceToBlock(TileEntityTownHall tile){
 		double distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
 		return Math.sqrt(distance);
