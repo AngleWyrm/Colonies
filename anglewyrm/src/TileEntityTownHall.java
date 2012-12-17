@@ -9,9 +9,9 @@ import colonies.vector67.src.TileEntityColoniesChest;
 public class TileEntityTownHall extends TileEntityColoniesChest 
 {
 	// Town variables
-	public int maxPopulation = 10;    // citizen count
+	public int maxPopulation = 0;    // citizen count
 	public double townPerimeter = 30; // meters
-	private int spawnDelay = 1000;    // count of calls to update function
+	private int spawnDelay = 500;    // count of calls to update function
 	public String townName;
 	
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
@@ -26,9 +26,6 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		citizensList = new LinkedList<EntityCitizen>();
 		employersList = new LinkedList<BlockColoniesChest>();
 		homesList = new LinkedList<BlockColoniesChest>();
-		if(playerTown == null){
-			playerTown = this;
-		}
 	}
 	
 	public boolean adoptTown(EntityCitizen newCitizen){
@@ -75,6 +72,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			EntityCitizen tmp = citizensList.getFirst();
 			tmp.hasHomeTown = false;
 			citizensList.removeFirst();
+			Utility.Debug("Citizen left town");
 		}
 		
 		if(playerTown==this){
@@ -108,14 +106,15 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         if(--spawnDelay <= 0){
         	spawnDelay = 500;
         	Utility.Debug(townName + " spawner triggered");
-        	
-        	// choose type of mob to spawn
+ 
+        	// Choose citizen type to spawn
            	EntityCitizen newGuy;
-            if(Utility.rng.nextInt(2)>0){
-        		newGuy = new EntityCitizen(this.worldObj);
-        	}else{
-        		newGuy = new EntityWife(this.worldObj);
-        	}  
+           	if(Utility.rng.nextBoolean()){
+           		newGuy = new EntityCitizen(worldObj);
+           	}
+           	else{
+           		newGuy = new EntityWife(worldObj);
+           	}
         	
         	// pick a random direction at the town perimeter
         	Point p = new Point(this.xCoord, this.yCoord, this.zCoord);
@@ -125,8 +124,10 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         	p.plus(q);
         	Utility.Debug(p.toString());
         	
+        	// TODO: Validate and adjust ground level for mob landing
+
         	// spawn mob
-            newGuy.setLocationAndAngles(p.x, p.y, p.z, Utility.rng.nextFloat()*360.0f, 0.0f);
+            newGuy.setLocationAndAngles(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z), Utility.rng.nextFloat()*360.0f, 0.0f);
             this.worldObj.spawnEntityInWorld(newGuy);
         }
         

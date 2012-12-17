@@ -24,6 +24,6 @@ public class Utility
 	// Disable-able replacement for System.out.println()
 	public static void Debug(String text)
 	{
-		System.out.println(text);
+		//System.out.println(text);
 	}
 	}

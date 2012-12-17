@@ -27,9 +27,12 @@ public class EntityAIFindShelterFromRain extends EntityAIBase
 
     public boolean shouldExecute()
     {
+    	// is it raining?
         if (!this.theWorld.isRaining()){
             return false;
         }
+        
+        // Am I already under cover?
         else if (!this.theWorld.canBlockSeeTheSky(
         		MathHelper.floor_double(this.citizen.posX), 
         		(int)this.citizen.boundingBox.minY, 

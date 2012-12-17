@@ -12,8 +12,8 @@ import net.minecraft.src.EntityAIBase;
 // Join a town
 public class EntityAIJoinTown extends EntityAIBase 
 {
-	public static double TOO_FAR_AWAY = 150;
-	public EntityCitizen citizen;
+	public static double TOO_FAR_AWAY = 40;
+	private EntityCitizen citizen;
 
 	public EntityAIJoinTown(EntityCitizen _citizen) {
 		this.citizen = _citizen;
@@ -26,7 +26,10 @@ public class EntityAIJoinTown extends EntityAIBase
 		// reasons to idle this task in the background
 		if( citizen.hasHomeTown && !citizen.firstVisit ) return false;
 		if( TileEntityTownHall.playerTown == null ) return false;
-		if( distanceToBlock(TileEntityTownHall.playerTown) > TOO_FAR_AWAY ) return false;
+		
+		double distance = distanceToBlock(TileEntityTownHall.playerTown);
+		Utility.Debug("Distance to town hall:" + distance);
+		if( distance > TOO_FAR_AWAY ) return false;
 		
 		// apply for citizenship if necessary
 		if( !citizen.hasHomeTown ){
@@ -39,20 +42,45 @@ public class EntityAIJoinTown extends EntityAIBase
 			}
 		}
 		
+		// Mission complete?
+		if( distance < 2d){
+			Utility.Debug("Citizen visited Town Hall");
+			citizen.firstVisit = false;
+			return false;
+		}
+		
 		return true;
 	}
 	
     public void startExecuting()
     {
-        this.citizen.getNavigator()
-        	.tryMoveToXYZ(TileEntityTownHall.playerTown.xCoord, 
+    	if(TileEntityTownHall.playerTown != null){
+    	   	Utility.Debug("Attempting Journey");
+    		this.citizen.getNavigator()
+        		.tryMoveToXYZ(TileEntityTownHall.playerTown.xCoord, 
         	 			  TileEntityTownHall.playerTown.yCoord, 
-        				  TileEntityTownHall.playerTown.zCoord, 0.2f);
+        				  TileEntityTownHall.playerTown.zCoord, 0.25f);
+    	}
     }
 
     public boolean continueExecuting()
     {
-        return !this.citizen.getNavigator().noPath();
+    	if(TileEntityTownHall.playerTown != null){
+    		Utility.Debug("Continuing Journey");
+    		if(distanceToBlock(TileEntityTownHall.playerTown) < 2d){
+    			Utility.Debug("Journey Finished!");
+    			citizen.firstVisit = false;
+    			return false;
+    		}
+    	}
+    	boolean pathOK = !this.citizen.getNavigator().noPath();
+    	if(pathOK){
+    		Utility.Debug("...I can see it from here!");
+    	}
+    	else{
+    		Utility.Debug("Oh no! I can't get there from here!");
+    	}
+    	return pathOK;
     }
    
 	private double distanceToBlock(TileEntityTownHall tile){

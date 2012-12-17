@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.src.EntityLiving;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.vector67.src.BlockColoniesChest;
@@ -23,6 +24,25 @@ public class BlockTownHall extends BlockColoniesChest
     public TileEntity createNewTileEntity(World par1World){
     	return new TileEntityTownHall();
      }
+ 
+    public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
+    {
+    	super.onBlockPlacedBy(theWorld, x, y, z, par5EntityLiving);
+    	TileEntity te = theWorld.getBlockTileEntity(x, y, z);
+    	if(te != null){
+    		if(te instanceof TileEntityTownHall){
+    			((TileEntityTownHall)te).maxPopulation = 10;
+    			((TileEntityTownHall) te).playerTown = (TileEntityTownHall) te;
+    			Utility.Debug("Player town placed");
+    		}
+    		else{
+    			Utility.Debug("Found entity not a town hall");
+    		}
+    	}
+    	else{
+    		Utility.Debug("Null tileEntity when placing town");
+    	}
+    }
     
     @Override
     public void breakBlock(World theWorld, int x, int y, int z, int par5, int par6)
