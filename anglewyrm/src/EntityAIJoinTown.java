@@ -7,7 +7,9 @@ import java.util.PriorityQueue;
 
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.anglewyrm.src.TileEntityTownHall;
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityAIBase;
+import net.minecraft.src.ModLoader;
 
 // Join a town
 public class EntityAIJoinTown extends EntityAIBase 
@@ -43,7 +45,7 @@ public class EntityAIJoinTown extends EntityAIBase
 		}
 		
 		// Mission complete?
-		if( distance < 2d){
+		if( distance < 3d){
 			Utility.Debug("Citizen visited Town Hall");
 			citizen.firstVisit = false;
 			return false;
@@ -67,8 +69,9 @@ public class EntityAIJoinTown extends EntityAIBase
     {
     	if(TileEntityTownHall.playerTown != null){
     		Utility.Debug("Continuing Journey");
-    		if(distanceToBlock(TileEntityTownHall.playerTown) < 2d){
+    		if(distanceToBlock(TileEntityTownHall.playerTown) < 3d){
     			Utility.Debug("Journey Finished!");
+				Minecraft.getMinecraft().thePlayer.addChatMessage("A new citizen arrived in town!");    			
     			citizen.firstVisit = false;
     			return false;
     		}
