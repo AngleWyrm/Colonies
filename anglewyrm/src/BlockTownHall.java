@@ -9,8 +9,6 @@ import colonies.vector67.src.BlockColoniesChest;
 
 public class BlockTownHall extends BlockColoniesChest 
 {
-	public TileEntityTownHall tileEntity;
-	
 	public BlockTownHall(int id) {
 		super(id);
 		setBlockName("block.townhall");
@@ -23,15 +21,18 @@ public class BlockTownHall extends BlockColoniesChest
 	
     @Override
     public TileEntity createNewTileEntity(World par1World){
-    	// this town hall placed in world
-    	tileEntity = new TileEntityTownHall();
-        return tileEntity;
+    	return new TileEntityTownHall();
      }
     
     @Override
-    public void breakBlock(World theWorld, int par2, int par3, int par4, int par5, int par6)
+    public void breakBlock(World theWorld, int x, int y, int z, int par5, int par6)
     {
-    	tileEntity.evacuateTown();
-    	super.breakBlock(theWorld, par2, par3, par4, par5, par6);
+    	// Get block's associated tile entity,
+    	// and if it's a good town hall, evacuate the citizens
+    	TileEntity myTileEntity = theWorld.getBlockTileEntity(x, y, z);
+    	if((myTileEntity != null) && (myTileEntity instanceof TileEntityTownHall)){
+    		((TileEntityTownHall) myTileEntity).evacuateTown();
+    	}
+    	super.breakBlock(theWorld, x, y, z, par5, par6);
     }
  }

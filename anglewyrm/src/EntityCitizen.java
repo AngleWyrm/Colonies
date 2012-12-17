@@ -26,9 +26,9 @@ public class EntityCitizen extends EntityMob
 {
 	public String name;
 	public TileEntityColoniesChest home;
-	// public TileEntityTownHall homeTown;
-	public Point homeTownLocation;
 	public boolean hasHomeTown;
+	public boolean firstVisit = false; // a bit clumsy
+	
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
 	public jobs job;
 	public HashMap<jobs, Integer> skills;

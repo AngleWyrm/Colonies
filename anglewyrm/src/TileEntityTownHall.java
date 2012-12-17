@@ -9,35 +9,26 @@ import colonies.vector67.src.TileEntityColoniesChest;
 public class TileEntityTownHall extends TileEntityColoniesChest 
 {
 	// Town variables
-	public int maxPopulation = 10;
-	public double townPerimeter = 30;
+	public int maxPopulation = 10;    // citizen count
+	public double townPerimeter = 30; // meters
+	private int spawnDelay = 1000;    // count of calls to update function
 	public String townName;
-	public LinkedList<BlockColoniesChest>        homesList;
-	public LinkedList<BlockColoniesChest>        employersList;
-	public LinkedList<EntityCitizen>             citizensList;
-	public static LinkedList<TileEntityTownHall> townsList;
-	private int spawnDelay = 1000; // measured in updates
+	
+	public static TileEntityTownHall playerTown; // to be replace by a list later on
+
+	public LinkedList<EntityCitizen>       citizensList;
+	public LinkedList<BlockColoniesChest>  homesList;
+	public LinkedList<BlockColoniesChest>  employersList;
 	
 	public TileEntityTownHall() {
 		super();
+		setTownName("MyTown");
 		citizensList = new LinkedList<EntityCitizen>();
-		citizensList.clear();
 		employersList = new LinkedList<BlockColoniesChest>();
-		employersList.clear();
 		homesList = new LinkedList<BlockColoniesChest>();
-		homesList.clear();
-		if(townsList == null){ // first town hall so start the towns list
-			townsList = new LinkedList<TileEntityTownHall>();
-			townsList.clear();
+		if(playerTown == null){
+			playerTown = this;
 		}
-		if(townsList.isEmpty()){
-			setTownName("FirstTown");
-			maxPopulation = 0;
-		}
-		else{
-			setTownName("MyTown#" + townsList.size() );
-		}
-		townsList.offer(this);
 	}
 	
 	public boolean adoptTown(EntityCitizen newCitizen){
@@ -46,7 +37,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			return false;
 		}
 		if(citizensList.size() >= maxPopulation){
-			Utility.Debug(townName + " full: " + citizensList.size());
+			Utility.Debug(townName + " full: " + citizensList.size() + "/" + maxPopulation);
 			return false;
 		}
 		if(citizensList.contains(newCitizen)){
@@ -55,7 +46,13 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		}
 		
 		newCitizen.hasHomeTown = true;
-		citizensList.offer(newCitizen);
+		if(citizensList.offer(newCitizen)){
+			Utility.Debug("Citizen joined town");
+		}
+		else{
+			Utility.Debug("[ERR] citizenList refused offer");
+			return false;
+		}
 		return true;
 	}
 	
@@ -64,23 +61,28 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		if(!citizensList.contains(oldCitizen)) return false;
 		citizensList.remove(citizensList.indexOf(oldCitizen));
 		oldCitizen.hasHomeTown = false;
+		Utility.Debug("Citizen left town");
 		return true;
 	}
 	
 	public boolean evacuateTown(){
 		if(citizensList==null) return false;
-		Utility.Debug("Evacuating " + townName + " (pop:"+citizensList.size()+")");
+		
+		Utility.Debug("Evacuating " + townName);
+		
 		// remove citizens from town
 		while(!citizensList.isEmpty()){
 			EntityCitizen tmp = citizensList.getFirst();
-			citizensList.removeFirst();
 			tmp.hasHomeTown = false;
+			citizensList.removeFirst();
 		}
-		// remove town from town list
-		if(townsList.contains(this)){
-			townsList.remove(townsList.indexOf(this));
-		}else{
-			return false;
+		
+		if(playerTown==this){
+			playerTown = null;
+			Utility.Debug("playerTown removed");
+		}
+		else{
+			Utility.Debug("another town removed");
 		}
 		return true;
 	}
@@ -92,31 +94,38 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	@Override
     public String getInvName(){
         // return "container.townhall";
-		return townName + " pop: " + citizensList.size();
+		return townName + " (pop: " + citizensList.size() + ")";
     }
 	
 	@Override
 	public void updateEntity(){
         super.updateEntity();
         
-        if(citizensList==null) return;
-        if(maxPopulation <= citizensList.size()) return;
+        // Spawner system
+        if(citizensList == null) return;
+        if(citizensList.size() >= maxPopulation) return;
         
         if(--spawnDelay <= 0){
         	spawnDelay = 500;
-        	Utility.Debug(townName + " spawner triggered, pop: " + citizensList.size());
-        	EntityCitizen newGuy;
-        	if(Utility.rng.nextInt(2)>0){
+        	Utility.Debug(townName + " spawner triggered");
+        	
+        	// choose type of mob to spawn
+           	EntityCitizen newGuy;
+            if(Utility.rng.nextInt(2)>0){
         		newGuy = new EntityCitizen(this.worldObj);
         	}else{
         		newGuy = new EntityWife(this.worldObj);
         	}  
+        	
+        	// pick a random direction at the town perimeter
         	Point p = new Point(this.xCoord, this.yCoord, this.zCoord);
         	Point q = new Point();
         	Utility.Debug(p.toString());
         	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), townPerimeter);
         	p.plus(q);
         	Utility.Debug(p.toString());
+        	
+        	// spawn mob
             newGuy.setLocationAndAngles(p.x, p.y, p.z, Utility.rng.nextFloat()*360.0f, 0.0f);
             this.worldObj.spawnEntityInWorld(newGuy);
         }
