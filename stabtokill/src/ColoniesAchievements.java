@@ -21,8 +21,9 @@ public class ColoniesAchievements implements ICraftingHandler
 
 	public static final Achievement TownStarted = new Achievement(50, "TownStarted", 1, 1, ColoniesMain.townHall, (Achievement)null).setIndependent().registerAchievement();	
 	public static final Achievement ToTheDepts = new Achievement(51, "ToTheDepts", 3, 2, ColoniesMain.minerChest, TownStarted).setIndependent().registerAchievement();
-
-	public static AchievementPage page1 = new AchievementPage("Colonies", TownStarted, ToTheDepts);
+	public static final Achievement Prosperity = new Achievement(52, "Prosperity", -1, 2, ColoniesMain.townHall, TownStarted).registerAchievement();
+	
+	public static AchievementPage page1 = new AchievementPage("Colonies", TownStarted, ToTheDepts, Prosperity);
 
 
 	private static void addAchievementName(String ach, String name) {
@@ -35,9 +36,11 @@ public class ColoniesAchievements implements ICraftingHandler
 
 	public static void addAchievementLocalizations() {
 		addAchievementName("TownStarted", "First Town Started");
-		addAchievementDesc("TownStarted", "You Made A Town");
+		addAchievementDesc("TownStarted", "Made A Town");
 		addAchievementName("ToTheDepts", "Miner box");
 		addAchievementDesc("ToTheDepts", "Made A Helpful Miner");
+		addAchievementName("Prosperity", "The Start of Work");
+		addAchievementDesc("Prosperity", "Having A Complete Set of Basic Workers");
 	}
 
 	@Override
