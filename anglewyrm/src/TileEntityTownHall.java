@@ -11,7 +11,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	// Town variables
 	public int maxPopulation = 0;    // citizen count
 	public double townPerimeter = 20; // meters
-	private int spawnDelay = 500;    // count of calls to update function
+	private int spawnDelay = 600;    // count of calls to update function
 	public String townName;
 	
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
@@ -120,7 +120,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         	Point p = new Point(this.xCoord, this.yCoord, this.zCoord);
         	Point q = new Point();
         	Utility.Debug(p.toString());
-        	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), townPerimeter);
+        	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), 14d);
         	p.plus(q);
         	Utility.Debug(p.toString());
         	

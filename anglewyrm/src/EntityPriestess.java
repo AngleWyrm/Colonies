@@ -8,7 +8,7 @@ import net.minecraft.src.World;
 public class EntityPriestess extends EntityCitizen{
 	public EntityPriestess(World world){ 
 		super(world);
-		this.texture = ConfigFile.getSkin("skinPriestess");
+		this.texture = ColoniesMain.skinPriestess;
 		this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);
 	    
@@ -17,9 +17,9 @@ public class EntityPriestess extends EntityCitizen{
 	
 	public String getTexture() {
 		if(this.isInWater()){
-			return ConfigFile.getSkin("skinPriestessSwimming");
+			return ColoniesMain.skinPriestessSwimming;
 		}
-		return ConfigFile.getSkin("skinPriestess");
+		return ColoniesMain.skinPriestess;
     }
     protected String getHurtSound(){
         return "colonies.f-ohyeah";

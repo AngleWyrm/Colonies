@@ -62,11 +62,10 @@ public class ColoniesMain
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		System.out.println("Initializing Colonies " + Version()); 
-		ConfigFile.load(); // on it's way out!
-		//Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-		//config.load();
-		//setConfig(config);
-		//config.save();
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		setConfig(config);
+		config.save();
 		MinecraftForge.EVENT_BUS.register(new ColoniesSoundManager());
 	}
 
@@ -101,9 +100,17 @@ public class ColoniesMain
 	public static int blockHouseID;
 	
 	public static boolean citizenGreetings;
+	public static float citizenMoveSpeed;
+	
 	public static String skinDefault;
 	public static String skinMaleSwimming;
 	public static String skinMiner;
+	public static String skinMinerSwimming;
+	public static String skinWife;
+	public static String skinFemaleSwimming;
+	public static String skinPriestess;
+	public static String skinPriestessSwimming;
+	public static String skinLumberjack;
 	
 	private void setConfig(Configuration config)
 	{
@@ -116,17 +123,24 @@ public class ColoniesMain
 		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
 		
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
+		citizenMoveSpeed = Float.parseFloat(config.get(Configuration.CATEGORY_GENERAL, "citizenMoveSpeed", "0.25f").value);
 		
-		skinDefault      = config.get("Skins", "skinDefault",      "/colonies/grahammarcellus/gfx/unemployedskin1.png").value;
-		skinMaleSwimming = config.get("Skins", "skinMaleSwimming", "/colonies/anglewyrm/gfx/m-swimskin.png").value;
-		skinMiner        = config.get("Skins", "skinMiner",        "/colonies/grahammarcellus/gfx/minerskin.png").value;
+		skinDefault           = config.get("Skins", "skinDefault",           "/colonies/grahammarcellus/gfx/unemployedskin1.png").value;
+		skinMaleSwimming      = config.get("Skins", "skinMaleSwimming",      "/colonies/anglewyrm/gfx/m-swimskin.png").value;
+		skinMiner             = config.get("Skins", "skinMiner",             "/colonies/grahammarcellus/gfx/minerskin.png").value;
+		skinMinerSwimming     = config.get("Skins", "skinMinerSwimming",     "/colonies/anglewyrm/gfx/miner_swim.png").value;
+		skinWife              = config.get("Skins", "skinWife",              "/colonies/anglewyrm/gfx/daisy_duke.png").value;
+		skinFemaleSwimming    = config.get("Skins", "skinFemaleSwimming",    "/colonies/anglewyrm/gfx/white_bikini.png").value;
+		skinPriestess         = config.get("Skins", "skinPriestess",         "/colonies/anglewyrm/gfx/priestess.png").value;
+		skinPriestessSwimming = config.get("Skins", "skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png").value;
+		skinLumberjack        = config.get("Skins", "skinLumberjack",        "/colonies/anglewyrm/gfx/lumberjack.png").value;		
 	}
 	
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
 		// Chest block
-		chestBlock = new BlockColoniesChest(ConfigFile.parseInt("DefaultChestID"));
+		chestBlock = new BlockColoniesChest(defaultChestID);
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
 		GameRegistry.registerBlock(chestBlock);
 
@@ -134,39 +148,39 @@ public class ColoniesMain
 		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest");
 		proxy.registerTileEntitySpecialRenderer(TileEntityColoniesChest.class);
 
-		minerChest = new BlockMine(ConfigFile.parseInt("MinerChestID")).setBlockName("Mine");
+		minerChest = new BlockMine(minerChestID).setBlockName("Mine");
 		LanguageRegistry.addName(minerChest, "Miner Chest");
 		GameRegistry.registerBlock(minerChest);
 		GameRegistry.registerTileEntity(TileEntityMine.class, "container.mine");
 		LanguageRegistry.instance().addStringLocalization("container.mine", "en_US", "Mine");
 		
 		// Logging Camp
-		loggingCamp = new BlockLoggingCamp(ConfigFile.parseInt("LoggingCampID"));
+		loggingCamp = new BlockLoggingCamp(loggingCampID);
 		LanguageRegistry.addName(loggingCamp, "Logging Camp");
 		GameRegistry.registerBlock(loggingCamp);
 		GameRegistry.registerTileEntity(TileEntityLoggingCamp.class, "container.loggingcamp");
 		LanguageRegistry.instance().addStringLocalization("container.loggingcamp", "en_US", "Logging Camp");
 
 		// House
-		house = new BlockHouse(ConfigFile.parseInt("BlockHouseID"));
+		house = new BlockHouse(blockHouseID);
 		LanguageRegistry.addName(house, "House");
 		GameRegistry.registerBlock(house);
 		GameRegistry.registerTileEntity(TileEntityHouse.class, "container.house");
 		LanguageRegistry.instance().addStringLocalization("container.house", "en_US", "House");
 
 		// Town Hall
-		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"));
+		townHall = new BlockTownHall(townHallID);
 		LanguageRegistry.addName(townHall, "Town Hall");
 		GameRegistry.registerBlock(townHall);
 		GameRegistry.registerTileEntity(TileEntityTownHall.class, "container.townhall");
 		LanguageRegistry.instance().addStringLocalization("container.townhall", "en_US", "MyTown Town Hall");
 
 		// Measuring tape
-		MeasuringTape = new ItemMeasuringTape(ConfigFile.parseInt("MeasuringTape")).setItemName("Measuring Tape");
+		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
 
 		// Test block
-		test = (TestBlock) new TestBlock(ConfigFile.parseInt("TestBlockID"), 3, Material.ground)
+		test = (TestBlock) new TestBlock(testBlockID, 3, Material.ground)
 		.setBlockName("test").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
 		MinecraftForge.setBlockHarvestLevel(test, "shovel", 0);
 		LanguageRegistry.addName(test, "Test Block");

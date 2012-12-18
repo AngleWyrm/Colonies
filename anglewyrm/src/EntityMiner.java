@@ -27,7 +27,7 @@ public class EntityMiner extends EntityCitizen {
 		super(world);
         //this.targetTasks.addTask(1, new EntityAI
 		
-		this.texture = ConfigFile.getSkin("skinMiner");
+		this.texture = ColoniesMain.skinMiner;
 		this.skills = new HashMap<jobs, Integer>(10);
 		this.skills.put(jobs.unemployed, 10);
 		this.hasPickaxe = false;
@@ -39,9 +39,9 @@ public class EntityMiner extends EntityCitizen {
 	
 	public String getTexture() {
 		if (this.isInWater()) {
-			return ConfigFile.getSkin("skinMinerSwimming");
+			return ColoniesMain.skinMinerSwimming;
 		}
-		return ConfigFile.getSkin("skinMiner");
+		return ColoniesMain.skinMiner;
 	}
 
 	protected String getLivingSound() {
@@ -74,7 +74,7 @@ public class EntityMiner extends EntityCitizen {
 
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		int minerBlockID = ConfigFile.parseInt("MinerChestID");
+		int minerBlockID = ColoniesMain.minerChestID;
 		if (ticksExisted - lastSearch >= 40) {
 			lastSearch = ticksExisted;
 			PathNavigator nav = pathToBlock(minerBlockID);

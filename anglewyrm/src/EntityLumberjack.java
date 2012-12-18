@@ -14,7 +14,7 @@ public class EntityLumberjack extends EntityCitizen {
 		super(world);
         //this.targetTasks.addTask(1, new EntityAI
 		
-		this.texture = ConfigFile.getSkin("skinLumberjack");
+		this.texture = ColoniesMain.skinLumberjack;
 		this.skills = new HashMap<jobs, Integer>(10);
 		this.skills.put(jobs.unemployed, 10);
 
@@ -23,9 +23,9 @@ public class EntityLumberjack extends EntityCitizen {
 	
 	public String getTexture() {
 		if (this.isInWater()) {
-			return ConfigFile.getSkin("skinMinerSwimming");
+			return ColoniesMain.skinMinerSwimming;
 		}
-		return ConfigFile.getSkin("skinLumberjack");
+		return ColoniesMain.skinLumberjack;
 	}
 
 	protected String getLivingSound() {

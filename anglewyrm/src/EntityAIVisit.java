@@ -33,7 +33,8 @@ public class EntityAIVisit extends EntityAIBase
 		// reasons to idle this task in the background
 		if( !citizen.hasHomeTown  ) return false;
 		if( TileEntityTownHall.playerTown == null ) return false;
-		if(Utility.getLootCategory() <= 3 ) return false; // only very rarely do visiting	
+		if( distanceToBlock(destination) < 6d) return false; // too close
+		if(Utility.rng.nextFloat() > 0.75f ) return false; // sometimes just doesn't wanna	
 		return true;
 	}
 	
@@ -58,7 +59,7 @@ public class EntityAIVisit extends EntityAIBase
     	   	destination = choices.get(Utility.rng.nextInt(choices.size()));
     	   	
     		this.citizen.getNavigator()
-        		.tryMoveToXYZ(destination.xCoord, destination.yCoord, destination.zCoord, 0.2f);
+        		.tryMoveToXYZ(destination.xCoord, destination.yCoord, destination.zCoord, 0.25f);
     	}
     }
 
@@ -84,6 +85,7 @@ public class EntityAIVisit extends EntityAIBase
     }
    
 	private double distanceToBlock(TileEntityColoniesChest tile){
+		if(tile==null) return 999;
 		double distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
 		return Math.sqrt(distance);
 	}

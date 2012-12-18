@@ -60,7 +60,7 @@ public class EntityAIJoinTown extends EntityAIBase
     	   	Utility.Debug("Attempting Journey");
     		this.citizen.getNavigator()
         		.tryMoveToXYZ(TileEntityTownHall.playerTown.xCoord, 
-        	 			  TileEntityTownHall.playerTown.yCoord, 
+        	 			  TileEntityTownHall.playerTown.yCoord+1, 
         				  TileEntityTownHall.playerTown.zCoord, 0.25f);
     	}
     }
@@ -69,7 +69,7 @@ public class EntityAIJoinTown extends EntityAIBase
     {
     	if(TileEntityTownHall.playerTown != null){
     		Utility.Debug("Continuing Journey");
-    		if(distanceToBlock(TileEntityTownHall.playerTown) < 3d){
+    		if(distanceToBlock(TileEntityTownHall.playerTown) < 4d){
     			Utility.Debug("Journey Finished!");
 				Minecraft.getMinecraft().thePlayer.addChatMessage("A new citizen arrived in town!");    			
     			citizen.firstVisit = false;

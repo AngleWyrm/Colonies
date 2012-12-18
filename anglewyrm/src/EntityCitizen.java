@@ -8,6 +8,7 @@ import net.minecraft.src.EntityAIMoveIndoors;
 import net.minecraft.src.EntityAIMoveTwardsRestriction;
 import net.minecraft.src.EntityAIOpenDoor;
 import net.minecraft.src.EntityAISwimming;
+import net.minecraft.src.EntityAITempt;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityMob;
@@ -37,7 +38,7 @@ public class EntityCitizen extends EntityMob
 	public EntityCitizen(World par1World) {
 		super(par1World);
 		this.texture = ServerProxy.WANDERERSKIN_PNG;
-		this.moveSpeed = Float.parseFloat(ConfigFile.get("CitizenMoveSpeed"));
+		this.moveSpeed = ColoniesMain.citizenMoveSpeed;
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
 	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
@@ -54,7 +55,7 @@ public class EntityCitizen extends EntityMob
 	    this.skills.put(jobs.unemployed, 10);
 	    this.paths = new HashMap<Integer, PathNavigator>();
 	    
-	    this.citizenGreetings = Boolean.valueOf( ConfigFile.get("citizenGreetings") );
+	    this.citizenGreetings = ColoniesMain.citizenGreetings;
 	}
 	
 	public void onLivingUpdate()
@@ -107,9 +108,9 @@ public class EntityCitizen extends EntityMob
 
 	public String getTexture() {
 		if (this.isInWater()){
-			return ConfigFile.getSkin("skinMaleSwimming");
+			return ColoniesMain.skinMaleSwimming;
 		}
-		return ConfigFile.getSkin("skinDefault");
+		return ColoniesMain.skinDefault;
     }
 
 	public int getTotalArmorValue() {
