@@ -45,6 +45,7 @@ public class EntityCitizen extends EntityMob
 	    this.tasks.addTask(3, new EntityAIJoinTown(this));
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 	    this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+	    this.tasks.addTask(6, new EntityAIVisit(this));
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 	    
