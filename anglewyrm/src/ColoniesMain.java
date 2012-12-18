@@ -75,9 +75,8 @@ public class ColoniesMain
 	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
 		proxy.registerRenderInformation(); 
-		// TODO: Achievements disabled until the page is functional
-		// ColoniesAchievements.addAchievementLocalizations();
-		// AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
+		ColoniesAchievements.addAchievementLocalizations();
+		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
 	}
 
 	@PostInit
