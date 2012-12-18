@@ -99,6 +99,9 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public void updateEntity(){
         super.updateEntity();
         
+        // DEBUG: workaround for double-chest placement bug
+        if(this != playerTown) return;
+        
         // Spawner system
         if(citizensList == null) return;
         if(citizensList.size() >= maxPopulation) return;
