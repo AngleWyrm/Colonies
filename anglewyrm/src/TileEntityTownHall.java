@@ -17,15 +17,15 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
 
 	public LinkedList<EntityCitizen>       citizensList;
-	public LinkedList<BlockColoniesChest>  homesList;
-	public LinkedList<BlockColoniesChest>  employersList;
+	public LinkedList<TileEntityColoniesChest>  homesList;
+	public LinkedList<TileEntityColoniesChest>  employersList;
 	
 	public TileEntityTownHall() {
 		super();
 		setTownName("MyTown");
 		citizensList = new LinkedList<EntityCitizen>();
-		employersList = new LinkedList<BlockColoniesChest>();
-		homesList = new LinkedList<BlockColoniesChest>();
+		employersList = new LinkedList<TileEntityColoniesChest>();
+		homesList = new LinkedList<TileEntityColoniesChest>();
 	}
 	
 	public boolean adoptTown(EntityCitizen newCitizen){

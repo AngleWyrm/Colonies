@@ -5,6 +5,7 @@ import static net.minecraftforge.common.ForgeDirection.DOWN;
 import java.util.Iterator;
 import java.util.Random;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BlockContainer;
 import net.minecraft.src.CreativeTabs;
@@ -22,6 +23,7 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.ClientProxy;
+import colonies.anglewyrm.src.TileEntityTownHall;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 
@@ -104,11 +106,19 @@ public class BlockColoniesChest extends BlockContainer {
         int var8 = theWorld.getBlockId(x + 1, y, z);
     }
 
+    // to be over-ridden by the various building types
+    public boolean addBlockToTown(TileEntityColoniesChest _teChest){
+    	return false;
+    }
+    
     /**
      * Called when the block is placed in the world.
      */
     public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
     {
+    	// TODO: override in subclasses
+    	addBlockToTown((TileEntityColoniesChest) theWorld.getBlockTileEntity(x, y, z));
+    	
         int var6 = theWorld.getBlockId(x, y, z - 1);
         int var7 = theWorld.getBlockId(x, y, z + 1);
         int var8 = theWorld.getBlockId(x - 1, y, z);

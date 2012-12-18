@@ -1,5 +1,6 @@
 package colonies.thephpdev.src;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -8,8 +9,10 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.ClientProxy;
 import colonies.anglewyrm.src.TileEntityLoggingCamp;
+import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
 import colonies.vector67.src.BlockColoniesChest;
+import colonies.vector67.src.TileEntityColoniesChest;
 
 public class BlockMine extends BlockColoniesChest {
 	
@@ -70,5 +73,15 @@ public class BlockMine extends BlockColoniesChest {
     	tileEntity = new TileEntityMine();
         return tileEntity;
      }
+
+    @Override
+    public boolean addBlockToTown(TileEntityColoniesChest _teMine){
+    	if(TileEntityTownHall.playerTown != null){
+    		TileEntityTownHall.playerTown.employersList.offer(_teMine);
+    		Minecraft.getMinecraft().thePlayer.addChatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		return true;
+    	}
+    	return false;
+    }
 
 }

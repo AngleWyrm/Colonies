@@ -65,6 +65,7 @@ public class ConfigFile
 	     set("BlockBusinessID", "1105");
 	     set("MinerChestID","1106");
 	     set("LoggingCampID", "1107");
+	     set("BlockHouseID","1108");
 	     
 	     set("citizenGreetings", "true");
 	     set("CitizenMoveSpeed", "0.25");

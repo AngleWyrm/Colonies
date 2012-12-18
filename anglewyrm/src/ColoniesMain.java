@@ -47,6 +47,7 @@ public class ColoniesMain
 	public static Block townHall;
 	public static Block minerChest;
 	public static Block loggingCamp;
+	public static Block house;
 
 	//public static List<TileEntityTownHall> townsList;
 
@@ -110,6 +111,13 @@ public class ColoniesMain
 		GameRegistry.registerBlock(loggingCamp);
 		GameRegistry.registerTileEntity(TileEntityLoggingCamp.class, "container.loggingcamp");
 		LanguageRegistry.instance().addStringLocalization("container.loggingcamp", "en_US", "Logging Camp");
+
+		// House
+		house = new BlockHouse(ConfigFile.parseInt("BlockHouseID"));
+		LanguageRegistry.addName(house, "House");
+		GameRegistry.registerBlock(house);
+		GameRegistry.registerTileEntity(TileEntityHouse.class, "container.house");
+		LanguageRegistry.instance().addStringLocalization("container.house", "en_US", "House");
 
 		// Town Hall
 		townHall = new BlockTownHall(ConfigFile.parseInt("TownHallID"));

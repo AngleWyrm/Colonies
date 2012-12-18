@@ -7,6 +7,7 @@ import net.minecraft.src.EntityLiving;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.vector67.src.BlockColoniesChest;
+import colonies.vector67.src.TileEntityColoniesChest;
 
 public class BlockTownHall extends BlockColoniesChest 
 {
@@ -55,4 +56,13 @@ public class BlockTownHall extends BlockColoniesChest
     	}
     	super.breakBlock(theWorld, x, y, z, par5, par6);
     }
+
+    @Override
+    public boolean addBlockToTown(TileEntityColoniesChest _teTownHall){
+    	// If we got here, then we're trying to add a town hall to a list of buildings
+    	// TODO: support a list of town halls
+    	// for now, just bail
+    	return false;
+    }
+
  }
