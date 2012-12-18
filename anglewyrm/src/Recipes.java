@@ -22,5 +22,7 @@ public class Recipes
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.loggingCamp), new Object[]{
 			"SXS","XCX","SXS", 'S',Block.sapling, 'X',Item.axeStone, 'C',BlockContainer.chest});
 		
+		GameRegistry.addRecipe( new ItemStack(ColoniesMain.house), new Object[]{
+			"TBT","DCD","TBT", 'T',Block.torchWood, 'B',Item.bed, 'C',BlockContainer.chest, 'D',Block.doorWood});
 	}
 }
