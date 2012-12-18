@@ -80,6 +80,7 @@ public class EntityCitizen extends EntityMob
         return "colonies.m-hurt";
     }
     protected String getDeathSound(){
+    	if(ColoniesMain.offensiveLanguageFilter) return "";
         return "colonies.f-damnit";
     }
 

@@ -99,8 +99,9 @@ public class ColoniesMain
 	public static int loggingCampID;
 	public static int blockHouseID;
 	
+	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
-	public static float citizenMoveSpeed;
+	public static float   citizenMoveSpeed;
 	
 	public static String skinDefault;
 	public static String skinMaleSwimming;
@@ -122,6 +123,7 @@ public class ColoniesMain
 		loggingCampID   = config.getBlock("loggingCampID",   1105).getInt();
 		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
 		
+		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
 		citizenMoveSpeed = Float.parseFloat(config.get(Configuration.CATEGORY_GENERAL, "citizenMoveSpeed", "0.25f").value);
 		
