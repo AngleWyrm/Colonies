@@ -2,7 +2,7 @@ package colonies.anglewyrm.src;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import net.minecraftforge.common.Configuration;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.CreativeTabs;
@@ -62,7 +62,11 @@ public class ColoniesMain
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		System.out.println("Initializing Colonies " + Version()); 
-		ConfigFile.load();
+		ConfigFile.load(); // on it's way out!
+		//Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		//config.load();
+		//setConfig(config);
+		//config.save();
 		MinecraftForge.EVENT_BUS.register(new ColoniesSoundManager());
 	}
 
@@ -87,6 +91,38 @@ public class ColoniesMain
 		return "Pre-Alpha, Revision 5";
 	}
 
+	// Configuration Settings
+	// Appear here as public statics, and are set below in setConfig()
+	public static int testBlockID;
+	public static int measuringTapeID;
+	public static int defaultChestID;
+	public static int townHallID;
+	public static int minerChestID;
+	public static int loggingCampID;
+	public static int blockHouseID;
+	
+	public static boolean citizenGreetings;
+	public static String skinDefault;
+	public static String skinMaleSwimming;
+	public static String skinMiner;
+	
+	private void setConfig(Configuration config)
+	{
+		testBlockID     = config.getBlock("testBlockID",     1100).getInt();
+		measuringTapeID = config.getBlock("measuringTapeID", 1101).getInt();
+		defaultChestID  = config.getBlock("defaultChestID",  1102).getInt();
+		townHallID      = config.getBlock("townHallID",      1103).getInt();
+		minerChestID    = config.getBlock("minerChestID",    1104).getInt();
+		loggingCampID   = config.getBlock("loggingCampID",   1105).getInt();
+		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
+		
+		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
+		
+		skinDefault      = config.get("Skins", "skinDefault",      "/colonies/grahammarcellus/gfx/unemployedskin1.png").value;
+		skinMaleSwimming = config.get("Skins", "skinMaleSwimming", "/colonies/anglewyrm/gfx/m-swimskin.png").value;
+		skinMiner        = config.get("Skins", "skinMiner",        "/colonies/grahammarcellus/gfx/minerskin.png").value;
+	}
+	
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
