@@ -11,8 +11,11 @@ import net.minecraft.src.EntityAISwimming;
 import net.minecraft.src.EntityAITempt;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
+import net.minecraft.src.EntityCreature;
+import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.IMob;
 import net.minecraft.src.Item;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PathEntity;
@@ -23,7 +26,7 @@ import paulscode.sound.Vector3D;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
-public class EntityCitizen extends EntityMob 
+public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
 	public String name;
 	public TileEntityColoniesChest home;
@@ -45,7 +48,7 @@ public class EntityCitizen extends EntityMob
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
 	    this.tasks.addTask(3, new EntityAIJoinTown(this));
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-	    this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
+	    //this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
 	    this.tasks.addTask(6, new EntityAIVisit(this));
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
