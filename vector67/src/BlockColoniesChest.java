@@ -24,12 +24,13 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.ClientProxy;
 import colonies.anglewyrm.src.TileEntityTownHall;
+import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 
 public class BlockColoniesChest extends BlockContainer {
 
-	private Random random = new Random();
+	//private Random random = new Random();
 	public BlockColoniesChest(int id){
 		super(id, Material.wood);
 		setBlockName("ColoniesChest");
@@ -258,13 +259,13 @@ public class BlockColoniesChest extends BlockContainer {
 
                 if (var9 != null)
                 {
-                    float var10 = this.random.nextFloat() * 0.8F + 0.1F;
-                    float var11 = this.random.nextFloat() * 0.8F + 0.1F;
+                    float var10 = Utility.rng.nextFloat() * 0.8F + 0.1F;
+                    float var11 = Utility.rng.nextFloat() * 0.8F + 0.1F;
                     EntityItem var14;
 
-                    for (float var12 = this.random.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; theWorld.spawnEntityInWorld(var14))
+                    for (float var12 = Utility.rng.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; theWorld.spawnEntityInWorld(var14))
                     {
-                        int var13 = this.random.nextInt(21) + 10;
+                        int var13 = Utility.rng.nextInt(21) + 10;
 
                         if (var13 > var9.stackSize)
                         {
@@ -274,9 +275,9 @@ public class BlockColoniesChest extends BlockContainer {
                         var9.stackSize -= var13;
                         var14 = new EntityItem(theWorld, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
                         float var15 = 0.05F;
-                        var14.motionX = (double)((float)this.random.nextGaussian() * var15);
-                        var14.motionY = (double)((float)this.random.nextGaussian() * var15 + 0.2F);
-                        var14.motionZ = (double)((float)this.random.nextGaussian() * var15);
+                        var14.motionX = (double)((float)Utility.rng.nextGaussian() * var15);
+                        var14.motionY = (double)((float)Utility.rng.nextGaussian() * var15 + 0.2F);
+                        var14.motionZ = (double)((float)Utility.rng.nextGaussian() * var15);
 
                         if (var9.hasTagCompound())
                         {
