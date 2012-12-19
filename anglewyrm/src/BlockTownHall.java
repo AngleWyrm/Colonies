@@ -32,7 +32,7 @@ public class BlockTownHall extends BlockColoniesChest
     	TileEntity te = theWorld.getBlockTileEntity(x, y, z);
     	if(te != null){
     		if(te instanceof TileEntityTownHall){
-    			((TileEntityTownHall)te).maxPopulation = 10;
+    			((TileEntityTownHall)te).maxPopulation = 4;
     			((TileEntityTownHall) te).playerTown = (TileEntityTownHall) te;
     			Utility.Debug("Player town placed");
     		}
