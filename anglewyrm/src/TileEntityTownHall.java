@@ -2,6 +2,8 @@ package colonies.anglewyrm.src;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.IInventory;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
@@ -59,7 +61,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		citizensList.remove(citizensList.indexOf(oldCitizen));
 		oldCitizen.hasHomeTown = false;
 		Utility.Debug("Citizen left town");
-		return true;
+  		Minecraft.getMinecraft().thePlayer.addChatMessage("A Citizen left " 
+   				+ TileEntityTownHall.playerTown.townName + " (pop: " 
+   				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
+   				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+ 		return true;
 	}
 	
 	public boolean evacuateTown(){

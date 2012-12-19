@@ -49,7 +49,11 @@ public class BlockHouse extends BlockColoniesChest {
     		// DEBUG: Workaround for double-chest placement bug
     		
     		// TODO: Use list
-    		TileEntityTownHall.playerTown.maxPopulation -= 1;
+    		TileEntityTownHall.playerTown.maxPopulation -= 2;
+    		while(TileEntityTownHall.playerTown.citizensList.size() > TileEntityTownHall.playerTown.maxPopulation){
+    			TileEntityTownHall.playerTown.abandonTown(TileEntityTownHall.playerTown.citizensList.getLast());
+    		}
+    		
     		Minecraft.getMinecraft().thePlayer.addChatMessage("Housing reduced for " 
 				+ TileEntityTownHall.playerTown.townName + " (pop: " 
 				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
