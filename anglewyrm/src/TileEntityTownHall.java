@@ -66,6 +66,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		if(citizensList==null) return false;
 		
 		Utility.Debug("Evacuating " + townName);
+		maxPopulation = 0;
 		
 		// remove citizens from town
 		while(!citizensList.isEmpty()){

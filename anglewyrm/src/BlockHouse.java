@@ -29,10 +29,33 @@ public class BlockHouse extends BlockColoniesChest {
     @Override
     public boolean addBlockToTown(TileEntityColoniesChest _teHouse){
     	if(TileEntityTownHall.playerTown != null){
+    		// DEBUG: Workaround for double-chest placement bug
+    		
+    		// TODO: use list
     		TileEntityTownHall.playerTown.employersList.offer(_teHouse);
-    		Minecraft.getMinecraft().thePlayer.addChatMessage("New housing available in " + TileEntityTownHall.playerTown.townName);
-    		return true;
+    		TileEntityTownHall.playerTown.maxPopulation += 1;
+       		Minecraft.getMinecraft().thePlayer.addChatMessage("New housing available in " 
+       				+ TileEntityTownHall.playerTown.townName + " (pop: " 
+       				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
+       				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+       	    		return true;
     	}
+    	return false;
+    }
+    
+    @Override
+    public boolean removeChestFromTown(TileEntityColoniesChest _teChest){
+    	if(TileEntityTownHall.playerTown != null){
+    		// DEBUG: Workaround for double-chest placement bug
+    		
+    		// TODO: Use list
+    		TileEntityTownHall.playerTown.maxPopulation -= 1;
+    		Minecraft.getMinecraft().thePlayer.addChatMessage("Housing reduced for " 
+				+ TileEntityTownHall.playerTown.townName + " (pop: " 
+				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
+				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+    	}
+    	
     	return false;
     }
 

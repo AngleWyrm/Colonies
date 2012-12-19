@@ -110,6 +110,9 @@ public class BlockColoniesChest extends BlockContainer {
     public boolean addBlockToTown(TileEntityColoniesChest _teChest){
     	return false;
     }
+    public boolean removeChestFromTown(TileEntityColoniesChest _teChest){
+    	return false;
+    }
     
     /**
      * Called when the block is placed in the world.
@@ -240,9 +243,12 @@ public class BlockColoniesChest extends BlockContainer {
     /**
      * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+    public void breakBlock(World theWorld, int x, int y, int z, int par5, int par6)
     {
-        TileEntityColoniesChest var7 = (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4);
+    	removeChestFromTown((TileEntityColoniesChest) theWorld.getBlockTileEntity(x, y, z));
+    	
+    	
+        TileEntityColoniesChest var7 = (TileEntityColoniesChest)theWorld.getBlockTileEntity(x, y, z);
 
         if (var7 != null)
         {
@@ -256,7 +262,7 @@ public class BlockColoniesChest extends BlockContainer {
                     float var11 = this.random.nextFloat() * 0.8F + 0.1F;
                     EntityItem var14;
 
-                    for (float var12 = this.random.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; par1World.spawnEntityInWorld(var14))
+                    for (float var12 = this.random.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; theWorld.spawnEntityInWorld(var14))
                     {
                         int var13 = this.random.nextInt(21) + 10;
 
@@ -266,7 +272,7 @@ public class BlockColoniesChest extends BlockContainer {
                         }
 
                         var9.stackSize -= var13;
-                        var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
+                        var14 = new EntityItem(theWorld, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
                         float var15 = 0.05F;
                         var14.motionX = (double)((float)this.random.nextGaussian() * var15);
                         var14.motionY = (double)((float)this.random.nextGaussian() * var15 + 0.2F);
@@ -281,7 +287,7 @@ public class BlockColoniesChest extends BlockContainer {
             }
         }
 
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
+        super.breakBlock(theWorld, x, y, z, par5, par6);
     }
 
     /**
