@@ -55,7 +55,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		return true;
 	}
 	
-	public boolean abandonTown(EntityCitizen oldCitizen){
+	// One citizen leaves town membership
+	public boolean leaveTown(EntityCitizen oldCitizen){
 		if((citizensList==null)||(oldCitizen==null)) return false;
 		if(!citizensList.contains(oldCitizen)) return false;
 		citizensList.remove(citizensList.indexOf(oldCitizen));
@@ -65,9 +66,12 @@ public class TileEntityTownHall extends TileEntityColoniesChest
    				+ TileEntityTownHall.playerTown.townName + " (pop: " 
    				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
    				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+  		
+  		// TODO: free up houseing
  		return true;
 	}
 	
+	// Empties town of all residents
 	public boolean evacuateTown(){
 		if(citizensList==null) return false;
 		

@@ -51,7 +51,7 @@ public class BlockHouse extends BlockColoniesChest {
     		// TODO: Use list
     		TileEntityTownHall.playerTown.maxPopulation -= 2;
     		while(TileEntityTownHall.playerTown.citizensList.size() > TileEntityTownHall.playerTown.maxPopulation){
-    			TileEntityTownHall.playerTown.abandonTown(TileEntityTownHall.playerTown.citizensList.getLast());
+    			TileEntityTownHall.playerTown.leaveTown(TileEntityTownHall.playerTown.citizensList.getLast());
     		}
     		
     		Minecraft.getMinecraft().thePlayer.addChatMessage("Housing reduced for " 

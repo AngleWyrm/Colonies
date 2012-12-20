@@ -33,8 +33,8 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 {
 	public String name;
 	
-	// May be able to compliment/replace this with EntityLiving home/homeArea functions
-	public TileEntityColoniesChest home;
+	// May be able to compliment this with EntityLiving home/homeArea functions
+	public TileEntityColoniesChest residence;
 	public boolean hasHomeTown;
 	public boolean firstVisit = true; // a bit clumsy
 	
