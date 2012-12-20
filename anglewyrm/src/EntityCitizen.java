@@ -32,6 +32,8 @@ import colonies.vector67.src.TileEntityColoniesChest;
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
 	public String name;
+	
+	// May be able to compliment/replace this with EntityLiving home/homeArea functions
 	public TileEntityColoniesChest home;
 	public boolean hasHomeTown;
 	public boolean firstVisit = true; // a bit clumsy
@@ -420,7 +422,11 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		public int getEndZ() {
 			if (location == null) return 0;
 			return MathHelper.floor_double(location.z);
-		}
-	}
+		}	
+	}// pathNavigator
 	
+	@Override
+	public boolean canDespawn() {
+		return false;
+	}
 }
