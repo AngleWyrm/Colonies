@@ -12,15 +12,18 @@ import net.minecraft.src.EntityAITempt;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityCreature;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IMob;
 import net.minecraft.src.Item;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
+import net.minecraft.src.StatList;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 import colonies.vector67.src.BlockColoniesChest;
@@ -90,7 +93,48 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
     protected void playStepSound(int par1, int par2, int par3, int par4){
         this.worldObj.playSoundAtEntity(this, "mob.cow.step", 0.15F, 1.0F);
     }
+    /**
+     * Args: itemstack, flag
+     */
+    public EntityItem dropPlayerItemWithRandomChoice(ItemStack par1ItemStack, boolean par2)
+    {
+        if (par1ItemStack == null)
+        {
+            return null;
+        }
+        else
+        {
+            EntityItem var3 = new EntityItem(this.worldObj, this.posX, this.posY - 0.30000001192092896D + (double)this.getEyeHeight(), this.posZ, par1ItemStack);
+            var3.delayBeforeCanPickup = 40;
+            float var4 = 0.1F;
+            float var5;
 
+            if (par2)
+            {
+                var5 = this.rand.nextFloat() * 0.5F;
+                float var6 = this.rand.nextFloat() * (float)Math.PI * 2.0F;
+                var3.motionX = (double)(-MathHelper.sin(var6) * var5);
+                var3.motionZ = (double)(MathHelper.cos(var6) * var5);
+                var3.motionY = 0.20000000298023224D;
+            }
+            else
+            {
+                var4 = 0.3F;
+                var3.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI) * var4);
+                var3.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI) * var4);
+                var3.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI) * var4 + 0.1F);
+                var4 = 0.02F;
+                var5 = this.rand.nextFloat() * (float)Math.PI * 2.0F;
+                var4 *= this.rand.nextFloat();
+                var3.motionX += Math.cos((double)var5) * (double)var4;
+                var3.motionY += (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F);
+                var3.motionZ += Math.sin((double)var5) * (double)var4;
+            }
+
+            this.worldObj.spawnEntityInWorld(var3);
+            return var3;
+        }
+    }
     // Mob Loot for default Citizen
     protected int getDropItemId() {
     	int lootID=1;
