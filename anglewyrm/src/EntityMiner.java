@@ -3,16 +3,20 @@ package colonies.anglewyrm.src;
 import java.util.Date;
 import java.util.HashMap;
 
+import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
+import colonies.vector67.src.EntityAIMine;
+import colonies.vector67.src.InventoryCitizen;
 import colonies.vector67.src.TileEntityColoniesChest;
 
-public class EntityMiner extends EntityCitizen {
+public class EntityMiner extends EntityCitizen{
 	
+	public InventoryCitizen inventory = new InventoryCitizen(this);
 	private Vector3D closestMinerChest;
 	private boolean hasPickaxe;
 	private Item pickaxe;
@@ -25,7 +29,7 @@ public class EntityMiner extends EntityCitizen {
 	
 	public EntityMiner(World world) { 
 		super(world);
-        //this.targetTasks.addTask(1, new EntityAI
+        this.targetTasks.addTask(1, new EntityAIMine(this));
 		
 		this.texture = ColoniesMain.skinMiner;
 		this.skills = new HashMap<jobs, Integer>(10);
@@ -116,7 +120,9 @@ public class EntityMiner extends EntityCitizen {
 				|| item == Item.pickaxeDiamond
 				|| item == Item.pickaxeGold);
 	}
-	
+	public boolean hasPickaxe(){
+			return hasPickaxe;
+	}
 	public ItemStack getHeldItem() {
 		if (pickaxe == null) return null;
 		return new ItemStack(pickaxe, 1);
