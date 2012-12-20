@@ -18,6 +18,7 @@ public class ColoniesChestRenderHelper extends ChestItemRenderHelper{
 	}
 	
 	public void renderChest(Block block, int i, float f) {
+		if(block==null) return; // prevent null pointer exceptions
 		super.renderChest(block,i,f);
 		if(block.blockID==ColoniesMain.chestBlock.blockID){
 		  TileEntityRenderer.instance.renderTileEntityAt(itemRenders.get(i), 0.0D, 0.0D, 0.0D, 0.0F);
