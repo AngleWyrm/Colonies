@@ -23,7 +23,9 @@ public class ClientProxy extends ServerProxy
 		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
 		
 		// preloaded textures
-		MinecraftForgeClient.preloadTexture(TESTBLOCK_PNG);
+        MinecraftForgeClient.preloadTexture(ITEMS_PNG);
+		MinecraftForgeClient.preloadTexture(BLOCK_PNG);
+		
         MinecraftForgeClient.preloadTexture(BLACKSMITHCHEST_PNG);
         MinecraftForgeClient.preloadTexture(BUILDERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(FARMERCHEST_PNG);
@@ -32,7 +34,6 @@ public class ClientProxy extends ServerProxy
         MinecraftForgeClient.preloadTexture(MINERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(TOWNHALLCHEST_PNG);
         MinecraftForgeClient.preloadTexture(CHESTCONTAINER_PNG);
-        MinecraftForgeClient.preloadTexture(MEASURING_TAPE);
 	}
 
 

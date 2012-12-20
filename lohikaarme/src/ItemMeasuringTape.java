@@ -65,6 +65,6 @@ public class ItemMeasuringTape extends Item{
     
 	@Override
 	public String getTextureFile(){
-		return ServerProxy.MEASURING_TAPE;
+		return ServerProxy.ITEMS_PNG;
 	}
 }
