@@ -2,6 +2,7 @@ package colonies.anglewyrm.src;
 
 import java.util.Random;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
@@ -26,4 +27,9 @@ public class Utility
 	{
 		//System.out.println(text);
 	}
+	
+	public static void chatMessage(String txt){
+  		Minecraft.getMinecraft().thePlayer.addChatMessage(txt); 				 
 	}
+	
+}

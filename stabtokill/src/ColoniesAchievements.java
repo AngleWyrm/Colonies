@@ -1,6 +1,7 @@
 package colonies.stabtokill.src;
 
 import net.minecraft.src.Achievement;
+import net.minecraft.src.AchievementList;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -19,7 +20,7 @@ public class ColoniesAchievements implements ICraftingHandler
 
 
 
-	public static final Achievement TownStarted = new Achievement(50, "TownStarted", 1, 1, ColoniesMain.townHall, (Achievement)null).setIndependent().registerAchievement();	
+	public static final Achievement TownStarted = new Achievement(50, "TownStarted", 1, 1, ColoniesMain.townHall, (Achievement)null).setIndependent().setSpecial().registerAchievement();	
 	public static final Achievement ToTheDepts = new Achievement(51, "ToTheDepts", 3, 2, ColoniesMain.minerChest, TownStarted).setIndependent().registerAchievement();
 	public static final Achievement Prosperity = new Achievement(52, "Prosperity", -1, 2, ColoniesMain.townHall, TownStarted).registerAchievement();
 	
