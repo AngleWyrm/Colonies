@@ -22,6 +22,7 @@ import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
+import colonies.anglewyrm.src.BlockTownHall;
 import colonies.anglewyrm.src.ClientProxy;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
@@ -208,8 +209,13 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
     {
-    	// TODO: validate range from town hall, return false if outside town perimeter
-    	
+    	// TODO: Validate town hall placed first
+    	if(!(this instanceof BlockTownHall)){
+    		if(TileEntityTownHall.playerTown == null){
+				Utility.chatMessage("Place a town hall first");
+				return false;
+    		}
+    	}
     	
     	
     	
@@ -237,10 +243,12 @@ public class BlockColoniesChest extends BlockContainer {
 
         return var5 > 1 ? false : (this.isThereANeighborChest(par1World, par2 - 1, par3, par4) ? false : (this.isThereANeighborChest(par1World, par2 + 1, par3, par4) ? false : (this.isThereANeighborChest(par1World, par2, par3, par4 - 1) ? false : !this.isThereANeighborChest(par1World, par2, par3, par4 + 1))));
     }
+    
     private boolean isThereANeighborChest(World par1World, int par2, int par3, int par4)
     {
         return par1World.getBlockId(par2, par3, par4) != this.blockID ? false : (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID ? true : (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID ? true : (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID ? true : par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)));
     }
+    
     /**
      * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
