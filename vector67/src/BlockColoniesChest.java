@@ -1,10 +1,8 @@
 package colonies.vector67.src;
 
 import static net.minecraftforge.common.ForgeDirection.DOWN;
-
 import java.util.Iterator;
 import java.util.Random;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.BlockContainer;
@@ -28,6 +26,7 @@ import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
+import colonies.anglewyrm.src.Point;
 
 public class BlockColoniesChest extends BlockContainer {
 
@@ -207,41 +206,53 @@ public class BlockColoniesChest extends BlockContainer {
     /**
      * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
      */
-    public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
+    public boolean canPlaceBlockAt(World theWorld, int x, int y, int z)
     {
-    	// TODO: Validate town hall placed first
+    	// RULE: Town hall placed first
     	if(!(this instanceof BlockTownHall)){
     		if(TileEntityTownHall.playerTown == null){
 				Utility.chatMessage("Place a town hall first");
 				return false;
     		}
+    		else{
+    			// RULE: place only within town
+    			Point here = new Point(x,y,z);
+    			double distanceToTown = here.getDistance(TileEntityTownHall.playerTown.getPoint());
+    			if(Math.floor(distanceToTown) > Math.floor(TileEntityTownHall.playerTown.townPerimeter)){
+    				Utility.chatMessage("Too far from Town ("
+    						+ (int)distanceToTown + " > " 
+    						+ (int)TileEntityTownHall.playerTown.townPerimeter + ")");
+    				return false;
+    			}
+    		}
     	}
     	
+
     	
     	
         int var5 = 0;
 
-        if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID)
+        if (theWorld.getBlockId(x - 1, y, z) == this.blockID)
         {
             ++var5;
         }
 
-        if (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
+        if (theWorld.getBlockId(x + 1, y, z) == this.blockID)
         {
             ++var5;
         }
 
-        if (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID)
+        if (theWorld.getBlockId(x, y, z - 1) == this.blockID)
         {
             ++var5;
         }
 
-        if (par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)
+        if (theWorld.getBlockId(x, y, z + 1) == this.blockID)
         {
             ++var5;
         }
 
-        return var5 > 1 ? false : (this.isThereANeighborChest(par1World, par2 - 1, par3, par4) ? false : (this.isThereANeighborChest(par1World, par2 + 1, par3, par4) ? false : (this.isThereANeighborChest(par1World, par2, par3, par4 - 1) ? false : !this.isThereANeighborChest(par1World, par2, par3, par4 + 1))));
+        return var5 > 1 ? false : (this.isThereANeighborChest(theWorld, x - 1, y, z) ? false : (this.isThereANeighborChest(theWorld, x + 1, y, z) ? false : (this.isThereANeighborChest(theWorld, x, y, z - 1) ? false : !this.isThereANeighborChest(theWorld, x, y, z + 1))));
     }
     
     private boolean isThereANeighborChest(World par1World, int par2, int par3, int par4)

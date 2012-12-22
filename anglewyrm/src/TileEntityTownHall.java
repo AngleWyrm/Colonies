@@ -12,7 +12,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 {
 	// Town variables
 	public int maxPopulation = 0;    // citizen count
-	public double townPerimeter = 20; // meters
+	public double townPerimeter = 14; // meters
 	private int spawnDelay = 600;    // count of calls to update function
 	public String townName;
 	

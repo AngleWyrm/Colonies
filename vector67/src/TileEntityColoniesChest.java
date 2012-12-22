@@ -2,7 +2,6 @@ package colonies.vector67.src;
 
 import java.util.Iterator;
 import java.util.List;
-
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
@@ -11,10 +10,15 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
+import colonies.anglewyrm.src.Point;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
 	private ItemStack[] chestContents = new ItemStack[36];
+	
+	public Point getPoint(){
+		return new Point(this.xCoord, this.yCoord, this.zCoord);
+	}
 
     /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked = false;
