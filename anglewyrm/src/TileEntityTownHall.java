@@ -46,8 +46,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		
 		newCitizen.hasHomeTown = true;
 		if(citizensList.offer(newCitizen)){
-			Utility.Debug("Citizen joined town");
-		}
+	 		Utility.chatMessage("A Citizen joined " 
+	   				+ TileEntityTownHall.playerTown.townName + " (pop: " 
+	   				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
+	   				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+	 		}
 		else{
 			Utility.Debug("[ERR] citizenList refused offer");
 			return false;
@@ -62,7 +65,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		citizensList.remove(citizensList.indexOf(oldCitizen));
 		oldCitizen.hasHomeTown = false;
 		Utility.Debug("Citizen left town");
-  		Minecraft.getMinecraft().thePlayer.addChatMessage("A Citizen left " 
+  		Utility.chatMessage("A Citizen left " 
    				+ TileEntityTownHall.playerTown.townName + " (pop: " 
    				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
    				+ TileEntityTownHall.playerTown.maxPopulation + ")");
@@ -103,7 +106,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	@Override
     public String getInvName(){
         // return "container.townhall";
-		return townName + " (pop: " + citizensList.size() + ")";
+		return townName + " (pop: " + citizensList.size() + 
+				"/" + this.maxPopulation + ")";
     }
 	
 	@Override
