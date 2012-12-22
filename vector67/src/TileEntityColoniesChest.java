@@ -11,6 +11,7 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
 import colonies.anglewyrm.src.Point;
+import colonies.anglewyrm.src.TileEntityTownHall;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
@@ -318,7 +319,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         super.updateEntity();
 
     	// TODO: Validate chest belongs to a town,
-    	//       add to closest if not
+    	if(TileEntityTownHall.playerTown!=null){
+    		// check places of employment
+    		// check homes
+    	}
     	       
         this.checkForAdjacentChests();
         ++this.ticksSinceSync;
