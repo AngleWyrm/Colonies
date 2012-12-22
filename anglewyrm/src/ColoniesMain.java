@@ -12,7 +12,6 @@ import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
-import colonies.kzolp67.src.ItemCalculator;
 import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.thephpdev.src.BlockMine;
 import colonies.thephpdev.src.TileEntityMine;
@@ -49,7 +48,6 @@ public class ColoniesMain
 	public static Block minerChest;
 	public static Block loggingCamp;
 	public static Block house;
-	public static Item Calculator;
 
 	//public static List<TileEntityTownHall> townsList;
 
@@ -100,7 +98,6 @@ public class ColoniesMain
 	public static int minerChestID;
 	public static int loggingCampID;
 	public static int blockHouseID;
-	public static int calculatorID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -125,8 +122,7 @@ public class ColoniesMain
 		minerChestID    = config.getBlock("minerChestID",    1104).getInt();
 		loggingCampID   = config.getBlock("loggingCampID",   1105).getInt();
 		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
-		calculatorID = config.getBlock("calculatorID", 1107).getInt();
-		
+			
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
 		citizenMoveSpeed = Float.parseFloat(config.get(Configuration.CATEGORY_GENERAL, "citizenMoveSpeed", "0.25f").value);
@@ -213,10 +209,5 @@ public class ColoniesMain
 		EntityRegistry.registerGlobalEntityID(EntityPriestess.class, "Priestess", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x00FF00);
 		LanguageRegistry.instance().addStringLocalization("entity.Priestess.name", "en_US", "Cleric");
 
-		// Calculator
-		Calculator = new ItemCalculator(calculatorID).setItemName("Calculator");
-		LanguageRegistry.addName(Calculator,"Calculator");
-
-		Recipes.registerRecipes();
-	}
+		}
 }
