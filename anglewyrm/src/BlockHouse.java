@@ -29,10 +29,13 @@ public class BlockHouse extends BlockColoniesChest {
     @Override
     public boolean addBlockToTown(TileEntityColoniesChest _teHouse){
     	if(TileEntityTownHall.playerTown != null){
+    		if(TileEntityTownHall.playerTown.homesList == null) return false;
+    		if(TileEntityTownHall.playerTown.citizensList == null) return false;
+    		
     		// DEBUG: Workaround for double-chest placement bug
     		
     		// TODO: use list
-    		TileEntityTownHall.playerTown.employersList.offer(_teHouse);
+    		TileEntityTownHall.playerTown.homesList.offer(_teHouse);
     		TileEntityTownHall.playerTown.maxPopulation += 1;
        		Minecraft.getMinecraft().thePlayer.addChatMessage("New housing available in " 
        				+ TileEntityTownHall.playerTown.townName + " (pop: " 
@@ -46,10 +49,13 @@ public class BlockHouse extends BlockColoniesChest {
     @Override
     public boolean removeChestFromTown(TileEntityColoniesChest _teChest){
     	if(TileEntityTownHall.playerTown != null){
-    		// DEBUG: Workaround for double-chest placement bug
-    		
+    		if(TileEntityTownHall.playerTown.homesList == null) return false;
+    		if(TileEntityTownHall.playerTown.citizensList == null) return false;
+    		if(TileEntityTownHall.playerTown.citizensList.size() <=0) return false;
+    	    		
     		// TODO: Use list
     		TileEntityTownHall.playerTown.maxPopulation -= 2;
+    		if(TileEntityTownHall.playerTown.maxPopulation <=0) return false;
     		while(TileEntityTownHall.playerTown.citizensList.size() > TileEntityTownHall.playerTown.maxPopulation){
     			TileEntityTownHall.playerTown.leaveTown(TileEntityTownHall.playerTown.citizensList.getLast());
     		}
