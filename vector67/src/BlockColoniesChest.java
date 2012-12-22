@@ -22,6 +22,7 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.BlockTownHall;
 import colonies.anglewyrm.src.ClientProxy;
+import colonies.anglewyrm.src.ColoniesMain;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.Side;
@@ -373,7 +374,8 @@ public class BlockColoniesChest extends BlockContainer {
             }
             else
             {
-                player.displayGUIChest((IInventory)chest);
+                // player.displayGUIChest((IInventory)chest);
+                player.openGui(ColoniesMain.instance, 0, theWorld, x, y, z);
                 return true;
             }
         }

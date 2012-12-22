@@ -12,6 +12,7 @@ import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
+import colonies.eragon.src.GuiHandler;
 import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.thephpdev.src.BlockMine;
 import colonies.thephpdev.src.TileEntityMine;
@@ -28,6 +29,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -48,6 +50,8 @@ public class ColoniesMain
 	public static Block minerChest;
 	public static Block loggingCamp;
 	public static Block house;
+	
+	public static GuiHandlerColoniesChest guiHandlerChest;
 
 	//public static List<TileEntityTownHall> townsList;
 
@@ -73,6 +77,8 @@ public class ColoniesMain
 	public void init(FMLInitializationEvent evt)
 	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
+		guiHandlerChest = new GuiHandlerColoniesChest();
+		NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
 		proxy.registerRenderInformation(); 
 		ColoniesAchievements.addAchievementLocalizations();
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
@@ -113,6 +119,8 @@ public class ColoniesMain
 	public static String skinPriestessSwimming;
 	public static String skinLumberjack;
 	
+	public static String guiChestBackground;
+	
 	private void setConfig(Configuration config)
 	{
 		testBlockID     = config.getBlock("testBlockID",     1100).getInt();
@@ -135,7 +143,9 @@ public class ColoniesMain
 		skinFemaleSwimming    = config.get("Skins", "skinFemaleSwimming",    "/colonies/anglewyrm/gfx/white_bikini.png").value;
 		skinPriestess         = config.get("Skins", "skinPriestess",         "/colonies/anglewyrm/gfx/priestess.png").value;
 		skinPriestessSwimming = config.get("Skins", "skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png").value;
-		skinLumberjack        = config.get("Skins", "skinLumberjack",        "/colonies/anglewyrm/gfx/lumberjack.png").value;		
+		skinLumberjack        = config.get("Skins", "skinLumberjack",        "/colonies/anglewyrm/gfx/lumberjack.png").value;
+		
+		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
 	}
 	
 	// Register Colonies stuff with Minecraft Forge
