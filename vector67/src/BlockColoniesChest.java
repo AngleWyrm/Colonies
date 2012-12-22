@@ -313,67 +313,67 @@ public class BlockColoniesChest extends BlockContainer {
     /**
      * Called upon block activation (right click on the block.)
      */
-    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    public boolean onBlockActivated(World theWorld, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
-        Object var10 = (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4);
+        Object chest = (TileEntityColoniesChest)theWorld.getBlockTileEntity(x, y, z);
 
-        if (var10 == null)
+        if (chest == null)
         {
             return true;
         }
-        else if (par1World.isBlockSolidOnSide(par2, par3 + 1, par4, DOWN))
+        else if (theWorld.isBlockSolidOnSide(x, y + 1, z, DOWN))
         {
             return true;
         }
-        else if (isOcelotBlockingChest(par1World, par2, par3, par4))
+        else if (isOcelotBlockingChest(theWorld, x, y, z))
         {
             return true;
         }
-        else if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID && (par1World.isBlockSolidOnSide(par2 - 1, par3 + 1, par4, DOWN) || isOcelotBlockingChest(par1World, par2 - 1, par3, par4)))
+        else if (theWorld.getBlockId(x - 1, y, z) == this.blockID && (theWorld.isBlockSolidOnSide(x - 1, y + 1, z, DOWN) || isOcelotBlockingChest(theWorld, x - 1, y, z)))
         {
             return true;
         }
-        else if (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID && (par1World.isBlockSolidOnSide(par2 + 1, par3 + 1, par4, DOWN) || isOcelotBlockingChest(par1World, par2 + 1, par3, par4)))
+        else if (theWorld.getBlockId(x + 1, y, z) == this.blockID && (theWorld.isBlockSolidOnSide(x + 1, y + 1, z, DOWN) || isOcelotBlockingChest(theWorld, x + 1, y, z)))
         {
             return true;
         }
-        else if (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID && (par1World.isBlockSolidOnSide(par2, par3 + 1, par4 - 1, DOWN) || isOcelotBlockingChest(par1World, par2, par3, par4 - 1)))
+        else if (theWorld.getBlockId(x, y, z - 1) == this.blockID && (theWorld.isBlockSolidOnSide(x, y + 1, z - 1, DOWN) || isOcelotBlockingChest(theWorld, x, y, z - 1)))
         {
             return true;
         }
-        else if (par1World.getBlockId(par2, par3, par4 + 1) == this.blockID && (par1World.isBlockSolidOnSide(par2, par3 + 1, par4 + 1, DOWN) || isOcelotBlockingChest(par1World, par2, par3, par4 + 1)))
+        else if (theWorld.getBlockId(x, y, z + 1) == this.blockID && (theWorld.isBlockSolidOnSide(x, y + 1, z + 1, DOWN) || isOcelotBlockingChest(theWorld, x, y, z + 1)))
         {
             return true;
         }
         else
         {
-            if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID)
+            if (theWorld.getBlockId(x - 1, y, z) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (TileEntityColoniesChest)par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory)var10);
+                chest = new InventoryLargeChest("container.chestDouble", (TileEntityColoniesChest)theWorld.getBlockTileEntity(x - 1, y, z), (IInventory)chest);
             }
 
-            if (par1World.getBlockId(par2 + 1, par3, par4) == this.blockID)
+            if (theWorld.getBlockId(x + 1, y, z) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (IInventory)var10, (TileEntityColoniesChest)par1World.getBlockTileEntity(par2 + 1, par3, par4));
+                chest = new InventoryLargeChest("container.chestDouble", (IInventory)chest, (TileEntityColoniesChest)theWorld.getBlockTileEntity(x + 1, y, z));
             }
 
-            if (par1World.getBlockId(par2, par3, par4 - 1) == this.blockID)
+            if (theWorld.getBlockId(x, y, z - 1) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory)var10);
+                chest = new InventoryLargeChest("container.chestDouble", (TileEntityColoniesChest)theWorld.getBlockTileEntity(x, y, z - 1), (IInventory)chest);
             }
 
-            if (par1World.getBlockId(par2, par3, par4 + 1) == this.blockID)
+            if (theWorld.getBlockId(x, y, z + 1) == this.blockID)
             {
-                var10 = new InventoryLargeChest("container.chestDouble", (IInventory)var10, (TileEntityColoniesChest)par1World.getBlockTileEntity(par2, par3, par4 + 1));
+                chest = new InventoryLargeChest("container.chestDouble", (IInventory)chest, (TileEntityColoniesChest)theWorld.getBlockTileEntity(x, y, z + 1));
             }
 
-            if (par1World.isRemote)
+            if (theWorld.isRemote)
             {
                 return true;
             }
             else
             {
-                par5EntityPlayer.displayGUIChest((IInventory)var10);
+                player.displayGUIChest((IInventory)chest);
                 return true;
             }
         }
