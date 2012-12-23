@@ -17,11 +17,16 @@ public class ColoniesChestRenderHelper extends ChestItemRenderHelper{
 		itemRenders.put(0, (TileEntityColoniesChest) ColoniesMain.chestBlock.createTileEntity(null, 0));
 	}
 	
+	// FIXME: This is causing problems with rendering in the GUI
 	public void renderChest(Block block, int i, float f) {
 		if(block==null) return; // prevent null pointer exceptions
-		super.renderChest(block,i,f);
-		if(block.blockID==ColoniesMain.chestBlock.blockID){
+		
+		// Test each type of chest
+		if(block.blockID==ColoniesMain.blockHouseID){ // <-- Don't know if this works right
+		  // Pretty sure this isn't getting the right thing	
 		  TileEntityRenderer.instance.renderTileEntityAt(itemRenders.get(i), 0.0D, 0.0D, 0.0D, 0.0F);
+		  return;
 		}
+		super.renderChest(block,i,f); // should only be called as a last resort
 	}
 }
