@@ -20,6 +20,7 @@ import net.minecraft.src.TileEntitySpecialRenderer;
 
 import org.lwjgl.opengl.GL11;
 
+import colonies.anglewyrm.src.BlockHouse;
 import colonies.anglewyrm.src.ClientProxy;
 import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -52,20 +53,18 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 	}
 
 	public void render(TileEntityColoniesChest tile, double x, double y, double z, float partialTick) {
-		if (tile == null) {
-			return;
-		}
+		if (tile == null) return;
+		
+		// FIXME: the getWorldObj() doesn't seem to work for items in the player's inventory
+		//  So we need another method for bindTextureByName
+		//  Some method of sorting out which string to bind
+		bindTextureByName(ClientProxy.HOUSECHEST_PNG);
+		
 		int facing = 3;
-		if (tile != null && tile.getWorldObj() != null) {
+		if (tile.getWorldObj() != null) {
 			facing = tile.getFacing();
 			int typ = tile.getWorldObj().getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
-			
-			bindTextureByName(tile.getBlockType().getTextureFile()); // Tries to get instance from world, which might not exist
-		}
-		else{
-			Utility.Debug("Test failed, using default"); // This happens a lot.
-			bindTextureByName(ClientProxy.CHESTCONTAINER_PNG); // forces graphic
-		}
+		}		
 		
 		glPushMatrix();
 		glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);
