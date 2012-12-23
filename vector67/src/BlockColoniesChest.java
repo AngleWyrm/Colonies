@@ -374,10 +374,10 @@ public class BlockColoniesChest extends BlockContainer {
             }
             else
             {
-            	// Choose first line for default chest
+            	// NOTE: Choose first line for default chest
             	// and second line for custom chest GUI (WIP)
                 player.displayGUIChest((IInventory)chest);
-                // player.openGui(ColoniesMain.instance, 0, theWorld, x, y, z);
+                //player.openGui(ColoniesMain.instance, 0, theWorld, x, y, z);
                 return true;
             }
         }

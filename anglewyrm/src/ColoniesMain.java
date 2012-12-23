@@ -51,8 +51,8 @@ public class ColoniesMain
 	public static Block loggingCamp;
 	public static Block house;
 	
-	public static GuiHandlerColoniesChest guiHandlerChest;
-
+	//public static GuiHandler guiHandlerChest;
+	//public static GuiHandlerColoniesChest guiHandlerChest;
 	//public static List<TileEntityTownHall> townsList;
 
 
@@ -77,8 +77,9 @@ public class ColoniesMain
 	public void init(FMLInitializationEvent evt)
 	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
-		guiHandlerChest = new GuiHandlerColoniesChest();
-		NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
+		// guiHandlerChest = new GuiHandlerColoniesChest();
+		// guiHandlerChest = new GuiHandler();
+		// NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
 		proxy.registerRenderInformation(); 
 		ColoniesAchievements.addAchievementLocalizations();
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);

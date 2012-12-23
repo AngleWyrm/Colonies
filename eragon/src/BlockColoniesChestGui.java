@@ -25,7 +25,7 @@ public class BlockColoniesChestGui extends GuiContainer{
         @Override
         protected void drawGuiContainerBackgroundLayer(float f, int i, int j){
        
-                int picture = mc.renderEngine.getTexture("/terrain.png");
+                int picture = mc.renderEngine.getTexture("/colonies/anglewyrm/gfx/container.png");
                
                 GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
                
