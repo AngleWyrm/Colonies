@@ -11,13 +11,12 @@ public class EntityLumberjack extends EntityCitizen {
 	private Vector3D closestMinerChest;
 	
 	public EntityLumberjack(World world) { 
-		super(world);
-        //this.targetTasks.addTask(1, new EntityAI
-		
+		super(world);		
 		this.texture = ColoniesMain.skinLumberjack;
 		this.skills = new HashMap<jobs, Integer>(10);
 		this.skills.put(jobs.unemployed, 10);
 
+		
 		// TODO: Would like miners to go hostile with a pickaxe if attacked
 	}
 	

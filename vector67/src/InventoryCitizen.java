@@ -41,9 +41,9 @@ public class InventoryCitizen implements IInventory{
      */
     public boolean inventoryChanged = false;
 
-    public InventoryCitizen(EntityCitizen par1EntityCitizen)
+    public InventoryCitizen(EntityCitizen _citizen)
     {
-        this.citizen = par1EntityCitizen;
+        this.citizen = _citizen;
     }
 
     /**
@@ -62,13 +62,13 @@ public class InventoryCitizen implements IInventory{
     /**
      * Returns a slot index in main inventory containing a specific itemID
      */
-    private int getInventorySlotContainItem(int par1)
+    private int getInventorySlotContainItem(int _itemID)
     {
-        for (int var2 = 0; var2 < this.mainInventory.length; ++var2)
+        for (int index = 0; index < this.mainInventory.length; ++index)
         {
-            if (this.mainInventory[var2] != null && this.mainInventory[var2].itemID == par1)
+            if (this.mainInventory[index] != null && this.mainInventory[index].itemID == _itemID)
             {
-                return var2;
+                return index;
             }
         }
 
@@ -757,18 +757,18 @@ public class InventoryCitizen implements IInventory{
     /**
      * Copy the ItemStack contents from another InventoryCitizen instance
      */
-    public void copyInventory(InventoryCitizen par1InventoryCitizen)
+    public void copyInventory(InventoryCitizen otherCitizen)
     {
-        int var2;
+        int index;
 
-        for (var2 = 0; var2 < this.mainInventory.length; ++var2)
+        for (index = 0; index < this.mainInventory.length; ++index)
         {
-            this.mainInventory[var2] = ItemStack.copyItemStack(par1InventoryCitizen.mainInventory[var2]);
+            this.mainInventory[index] = ItemStack.copyItemStack(otherCitizen.mainInventory[index]);
         }
 
-        for (var2 = 0; var2 < this.armorInventory.length; ++var2)
+        for (index = 0; index < this.armorInventory.length; ++index)
         {
-            this.armorInventory[var2] = ItemStack.copyItemStack(par1InventoryCitizen.armorInventory[var2]);
+            this.armorInventory[index] = ItemStack.copyItemStack(otherCitizen.armorInventory[index]);
         }
     }
 	

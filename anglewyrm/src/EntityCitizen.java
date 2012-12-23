@@ -1,6 +1,7 @@
 package colonies.anglewyrm.src;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
@@ -27,15 +28,17 @@ import net.minecraft.src.StatList;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 import colonies.vector67.src.BlockColoniesChest;
+import colonies.vector67.src.InventoryCitizen;
 import colonies.vector67.src.TileEntityColoniesChest;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
 	public String name;
+	public InventoryCitizen inventory;
+	public InventoryCitizen desiredInventoryLevels;
 	
-	// May be able to compliment this with EntityLiving home/homeArea functions
-	public TileEntityColoniesChest residence;
 	public boolean hasHomeTown;
+	public TileEntityColoniesChest residence;
 	public boolean firstVisit = true; // a bit clumsy
 	
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
@@ -47,6 +50,9 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		super(par1World);
 		this.texture = ServerProxy.WANDERERSKIN_PNG;
 		this.moveSpeed = ColoniesMain.citizenMoveSpeed;
+		
+		this.inventory = new InventoryCitizen(this);
+		this.desiredInventoryLevels = new InventoryCitizen(this);
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
 	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
@@ -62,8 +68,6 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	    this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);
 	    this.paths = new HashMap<Integer, PathNavigator>();
-	    
-	    this.citizenGreetings = ColoniesMain.citizenGreetings;
 	}
 	
 	public void onLivingUpdate()
