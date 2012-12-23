@@ -6,6 +6,8 @@ import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.TileEntityRenderer;
 import colonies.anglewyrm.src.ColoniesMain;
+import colonies.anglewyrm.src.TileEntityHouse;
+import colonies.anglewyrm.src.Utility;
 
 import com.google.common.collect.Maps;
 
@@ -24,11 +26,12 @@ public class ColoniesChestRenderHelper extends ChestItemRenderHelper{
 		
 		// Test each type of chest
 		if(block.blockID==ColoniesMain.blockHouseID){ 
-		  // Pretty sure itemRenders.get(i) isn't getting the right tileEntity
-		  // which is likely because the registerSpecialRenderHelper hasn't registered it
-		  // from ClientProxy.registerSpecialRenderers
-		  TileEntityRenderer.instance.renderTileEntityAt(itemRenders.get(i), 0.0D, 0.0D, 0.0D, 0.0F);
-		  return;
+		  // Utility.Debug("rendering House"); // This happens quite regularly
+		  if(TileEntityHouse.house != null){
+			  TileEntityRenderer.instance.renderTileEntityAt(TileEntityHouse.house, 0.0D, 0.0D, 0.0D, 0.0F);
+			  return;
+		  }
+		  return; // is house, but base class not constructed yet
 		}
 		
 		super.renderChest(block,i,f); // should only be called as a last resort

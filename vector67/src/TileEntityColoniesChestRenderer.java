@@ -21,6 +21,7 @@ import net.minecraft.src.TileEntitySpecialRenderer;
 import org.lwjgl.opengl.GL11;
 
 import colonies.anglewyrm.src.ClientProxy;
+import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.client.FMLClientHandler;
 //import colonies.pmardle.src.MappableItemStackWrapper;
 
@@ -62,7 +63,7 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 			bindTextureByName(tile.getBlockType().getTextureFile()); // Tries to get instance from world, which might not exist
 		}
 		else{
-			//NOTE: This seems to be over-riding textures for all chests
+			Utility.Debug("Test failed, using default"); // This happens a lot.
 			bindTextureByName(ClientProxy.CHESTCONTAINER_PNG); // forces graphic
 		}
 		
