@@ -5,9 +5,8 @@ INSTALLATION:
 Just drop this zip file into your .minecraft/mods folder and you're all set!
 
 PREREQUISITES:
-* Minecraft v1.3.0 http://minecraft.net
-* Minecraft Forge v6.3.0 http://www.minecraftforge.net/forum/index.php?board=3.0
-
+* Minecraft v1.4.5
+* Forge v6.4.1.411 (http://files.minecraftforge.net/minecraftforge/minecraftforge-universal-1.4.5-6.4.1.411.zip)
 
 
 RELEASE NOTES
