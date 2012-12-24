@@ -13,12 +13,21 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	int updateCounter = 100; // about 5 seconds between inventory scans 
 	
 	public EntityAIMaintainInventoryLevels(EntityCitizen _citizen){
-		citizen = _citizen;
-		
+		citizen = _citizen;		
 	}
    
 	@Override
-	public boolean shouldExecute() {
-		return false;
+	public boolean shouldExecute() 
+	{
+		// reasons to idle this task
+		if(citizen == null) return false;		
+		if(--updateCounter > 0)	return false;
+		updateCounter = 100;
+		
+		// check for supply shortages
+		// check for supply replacements
+		
+		// return true;
+		return false; // TODO: Switch this to true when finished
 	}
 }
