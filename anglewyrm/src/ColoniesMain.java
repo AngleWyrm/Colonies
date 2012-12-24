@@ -81,6 +81,7 @@ public class ColoniesMain
 		// guiHandlerChest = new GuiHandler();
 		// NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
 		proxy.registerRenderInformation(); 
+		Recipes.registerRecipes();
 		ColoniesAchievements.addAchievementLocalizations();
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
 	}
