@@ -21,13 +21,27 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	{
 		// reasons to idle this task
 		if(citizen == null) return false;		
+
 		if(--updateCounter > 0)	return false;
 		updateCounter = 100;
 		
-		// check for supply shortages
-		// check for supply replacements
+		// Establish current object of desire and seek it
+		if(wantsSomething()){
+			if(canGetSomething()){
+				return true;
+			}
+			return false;
+		}
 		
-		// return true;
-		return false; // TODO: Switch this to true when finished
+		return false;
+	}
+	
+	private boolean wantsSomething(){
+		return false;
+	}
+	
+	private boolean canGetSomething(){
+		return false;
 	}
 }
+
