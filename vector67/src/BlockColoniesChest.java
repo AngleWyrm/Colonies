@@ -220,9 +220,9 @@ public class BlockColoniesChest extends BlockContainer {
     			Point here = new Point(x,y,z);
     			double distanceToTown = here.getDistance(TileEntityTownHall.playerTown.getPoint());
     			if(Math.floor(distanceToTown) > Math.floor(TileEntityTownHall.playerTown.townPerimeter)){
-    				Utility.chatMessage("Too far from Town ("
-    						+ (int)distanceToTown + " > " 
-    						+ (int)TileEntityTownHall.playerTown.townPerimeter + ")");
+    				Utility.chatMessage("Too far from Town. "
+    						+ (int)distanceToTown + "m > " 
+    						+ (int)TileEntityTownHall.playerTown.townPerimeter + "m");
     				return false;
     			}
     		}
