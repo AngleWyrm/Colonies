@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import java.util.Date;
 import java.util.HashMap;
 
+import net.minecraft.src.Block;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
@@ -29,7 +30,12 @@ public class EntityMiner extends EntityCitizen{
 	
 	public EntityMiner(World world) { 
 		super(world);
-        this.targetTasks.addTask(1, new EntityAIMine(this));
+		
+		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.pickaxeSteel,1));
+		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.pickaxeStone,2));
+		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Block.torchWood,10));
+
+		this.targetTasks.addTask(1, new EntityAIMine(this));
 		
 		this.texture = ColoniesMain.skinMiner;
 		this.skills = new HashMap<jobs, Integer>(10);

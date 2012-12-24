@@ -2,7 +2,9 @@ package colonies.anglewyrm.src;
 
 import java.util.HashMap;
 
+import net.minecraft.src.Block;
 import net.minecraft.src.Item;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 
@@ -13,6 +15,11 @@ public class EntityLumberjack extends EntityCitizen {
 	public EntityLumberjack(World world) { 
 		super(world);		
 		this.texture = ColoniesMain.skinLumberjack;
+
+		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
+		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.axeStone,2));
+		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Block.sapling,10));
+
 		this.skills = new HashMap<jobs, Integer>(10);
 		this.skills.put(jobs.unemployed, 10);
 
