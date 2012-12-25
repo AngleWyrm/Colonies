@@ -1,7 +1,6 @@
 package colonies.stabtokill.src;
 
 import net.minecraft.src.Achievement;
-import net.minecraft.src.AchievementList;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -9,6 +8,7 @@ import net.minecraftforge.common.AchievementPage;
 import colonies.anglewyrm.src.ColoniesMain;
 import cpw.mods.fml.common.ICraftingHandler;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+
 
 /**
  * 
@@ -18,13 +18,12 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class ColoniesAchievements implements ICraftingHandler
 {
 
-
-
-	public static final Achievement TownStarted = new Achievement(50, "TownStarted", 1, 1, ColoniesMain.townHall, (Achievement)null).setIndependent().setSpecial().registerAchievement();	
-	public static final Achievement ToTheDepts = new Achievement(51, "ToTheDepts", 3, 2, ColoniesMain.minerChest, TownStarted).setIndependent().registerAchievement();
-	public static final Achievement Prosperity = new Achievement(52, "Prosperity", -1, 2, ColoniesMain.townHall, TownStarted).registerAchievement();
+	public static Achievement TownStarted = (new Achievement(50, "TownStarted", 1, 1, ColoniesMain.townHall, null)).setIndependent().registerAchievement();	
+	public static Achievement ToTheDepts = (new Achievement(51, "ToTheDepts", 3, 2, ColoniesMain.minerChest, TownStarted)).registerAchievement();
+	public static Achievement Prosperity = (new Achievement(52, "Prosperity", -1, 2, ColoniesMain.townHall, TownStarted)).registerAchievement();
 	
 	public static AchievementPage page1 = new AchievementPage("Colonies", TownStarted, ToTheDepts, Prosperity);
+	
 
 
 	private static void addAchievementName(String ach, String name) {
@@ -45,15 +44,28 @@ public class ColoniesAchievements implements ICraftingHandler
 	}
 
 	@Override
-	public void onCrafting(EntityPlayer player, ItemStack block, IInventory craftMatrix) {
-		// TODO Auto-generated method stub
+	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
+		
+		System.out.println("ColoniesAchievements, crafting, are being called??");
+        if (item.itemID == ColoniesMain.townHallID)
+        {
+                player.addStat(TownStarted, 1);
+        }
+        else if (item.itemID == ColoniesMain.minerChestID)
+        {
+                player.addStat(ToTheDepts, 1);
+        }
+        else if (item.itemID == ColoniesMain.loggingCampID)
+        {
+                player.addStat(Prosperity, 1);
+        }
 
 	}
 
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item) {
 		// TODO Auto-generated method stub
-
+   
 	}
 
 }
