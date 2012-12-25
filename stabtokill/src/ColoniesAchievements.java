@@ -18,9 +18,9 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class ColoniesAchievements implements ICraftingHandler
 {
 
-	public static Achievement TownStarted = (new Achievement(50, "TownStarted", 1, 1, ColoniesMain.townHall, null)).setIndependent().registerAchievement();	
-	public static Achievement ToTheDepts = (new Achievement(51, "ToTheDepts", 3, 2, ColoniesMain.minerChest, TownStarted)).registerAchievement();
-	public static Achievement Prosperity = (new Achievement(52, "Prosperity", -1, 2, ColoniesMain.townHall, TownStarted)).registerAchievement();
+	public static Achievement TownStarted = (new Achievement(50, "TownStarted", 0, 0, ColoniesMain.townHall, null)).setIndependent().registerAchievement();	
+	public static Achievement ToTheDepts = (new Achievement(51, "ToTheDepts", 3, 1, ColoniesMain.minerChest, TownStarted)).registerAchievement();
+	public static Achievement Prosperity = (new Achievement(52, "Prosperity", -1, 2, ColoniesMain.chestBlock, TownStarted)).registerAchievement();
 	
 	public static AchievementPage page1 = new AchievementPage("Colonies", TownStarted, ToTheDepts, Prosperity);
 	
@@ -42,23 +42,52 @@ public class ColoniesAchievements implements ICraftingHandler
 		addAchievementName("Prosperity", "The Start of Work");
 		addAchievementDesc("Prosperity", "Having A Complete Set of Basic Workers");
 	}
-
+	
+	private boolean chestZMinerItMade = false;
+	private boolean chestZBuilderItMade = false;
+	private boolean chestZBlSmithItMade = false;
+	private boolean chestZLumItMade = false;
+	private boolean chestZFarmsItMade = false;
+	
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
 		
+		
 		System.out.println("ColoniesAchievements, crafting, are being called??");
-        if (item.itemID == ColoniesMain.townHallID)
-        {
-                player.addStat(TownStarted, 1);
-        }
-        else if (item.itemID == ColoniesMain.minerChestID)
-        {
-                player.addStat(ToTheDepts, 1);
-        }
-        else if (item.itemID == ColoniesMain.loggingCampID)
-        {
-                player.addStat(Prosperity, 1);
-        }
+		if (item.itemID == ColoniesMain.townHallID)
+		{
+			player.addStat(TownStarted, 1);
+		}
+		if (item.itemID == ColoniesMain.minerChestID)
+		{
+			player.addStat(ToTheDepts, 1);
+			chestZMinerItMade = true;    
+		}
+		//is this a valid way of doing it?
+		if((chestZMinerItMade) && (chestZBuilderItMade) && (chestZBlSmithItMade) && (chestZLumItMade) && (chestZFarmsItMade))
+		{
+			player.addStat(Prosperity, 1);
+		}
+		/*
+		if (item.itemID == ColoniesMain.loggingCampID)
+		{
+			chestZLumItMade = true;
+		}
+		if(item.itemID == ColoniesMain.builderChestID)
+		{
+			chestZBuilderItMade = true;
+		}
+
+		if(item.itemID == ColoniesMain.blackSmithID)
+		{
+			chestZBlSmithItMade = true; 
+		}
+		if(item.itemID == ColoniesMain.farmerID)
+		{
+			chestZFarmsItMade = true;
+		}
+        */
+		
 
 	}
 
