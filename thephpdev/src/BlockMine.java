@@ -1,6 +1,7 @@
 package colonies.thephpdev.src;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
@@ -21,6 +22,7 @@ public class BlockMine extends BlockColoniesChest {
 	public BlockMine(int id) {
 		super(id);
 		setBlockName("Mine");
+		setCreativeTab(CreativeTabs.tabDecorations);
 		setTextureFile(ClientProxy.MINERCHEST_PNG);
 	}
 

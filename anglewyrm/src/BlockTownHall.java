@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
@@ -14,6 +15,7 @@ public class BlockTownHall extends BlockColoniesChest
 	public BlockTownHall(int id) {
 		super(id);
 		setBlockName("block.townhall");
+		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
 	@Override

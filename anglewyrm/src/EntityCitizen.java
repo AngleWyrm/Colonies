@@ -35,7 +35,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 {
 	public String name;
 	public InventoryCitizen inventory;
-	public InventoryCitizen desiredInventoryLevels;
+	public InventoryCitizen desiredInventory;
 	
 	public boolean hasHomeTown;
 	public TileEntityColoniesChest residence;
@@ -52,8 +52,8 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		this.moveSpeed = ColoniesMain.citizenMoveSpeed;
 		
 		this.inventory = new InventoryCitizen(this);
-		this.desiredInventoryLevels = new InventoryCitizen(this);
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.bread, 2));
+		this.desiredInventory = new InventoryCitizen(this);
+		desiredInventory.addItemStackToInventory(new ItemStack(Item.bread, 2));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
 	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));

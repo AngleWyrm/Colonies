@@ -1,6 +1,7 @@
 package colonies.anglewyrm.src;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.vector67.src.BlockColoniesChest;
@@ -13,6 +14,7 @@ public class BlockLoggingCamp extends BlockColoniesChest {
 	public BlockLoggingCamp(int id) {
 		super(id);
 		setBlockName("block.loggingcamp");
+		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
 	@Override

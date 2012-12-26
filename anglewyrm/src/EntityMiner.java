@@ -31,9 +31,9 @@ public class EntityMiner extends EntityCitizen{
 	public EntityMiner(World world) { 
 		super(world);
 		
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.pickaxeSteel,1));
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.pickaxeStone,2));
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Block.torchWood,10));
+		desiredInventory.addItemStackToInventory(new ItemStack(Item.pickaxeSteel,1));
+		desiredInventory.addItemStackToInventory(new ItemStack(Item.pickaxeStone,2));
+		desiredInventory.addItemStackToInventory(new ItemStack(Block.torchWood,10));
 
 		this.targetTasks.addTask(1, new EntityAIMine(this));
 		

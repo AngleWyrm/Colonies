@@ -10,7 +10,9 @@ import net.minecraft.src.ItemStack;
 public class EntityAIMaintainInventoryLevels extends EntityAIBase 
 {
 	EntityCitizen citizen;
-	int updateCounter = 100; // about 5 seconds between inventory scans 
+	static int INVENTORY_CHECK_FREQUENCY = 100; // about 5 seconds between scans
+	int updateCounter = INVENTORY_CHECK_FREQUENCY;
+	ItemStack objectOfDesire;
 	
 	public EntityAIMaintainInventoryLevels(EntityCitizen _citizen){
 		citizen = _citizen;		
@@ -21,22 +23,18 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	{
 		// reasons to idle this task
 		if(citizen == null) return false;		
-
+		
 		if(--updateCounter > 0)	return false;
-		updateCounter = 100;
-		
-		// Establish current object of desire and seek it
-		if(wantsSomething()){
-			if(canGetSomething()){
-				return true;
-			}
-			return false;
-		}
-		
-		return false;
+		updateCounter = INVENTORY_CHECK_FREQUENCY;
+
+		return wantsSomething();
 	}
 	
+	// Returns true if citizen has an item in desiredInventory,
+	// but the citizen's inventory has less of that item.
 	private boolean wantsSomething(){
+		// check main inventory
+		// check armor
 		return false;
 	}
 	

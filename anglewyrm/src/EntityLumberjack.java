@@ -16,9 +16,9 @@ public class EntityLumberjack extends EntityCitizen {
 		super(world);		
 		this.texture = ColoniesMain.skinLumberjack;
 
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Item.axeStone,2));
-		desiredInventoryLevels.addItemStackToInventory(new ItemStack(Block.sapling,10));
+		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
+		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
+		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,10));
 
 		this.skills = new HashMap<jobs, Integer>(10);
 		this.skills.put(jobs.unemployed, 10);
