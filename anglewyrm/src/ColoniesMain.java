@@ -82,8 +82,10 @@ public class ColoniesMain
 		// NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
 		proxy.registerRenderInformation(); 
 		Recipes.registerRecipes();
+		
 		ColoniesAchievements.addAchievementLocalizations();
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
+		GameRegistry.registerCraftingHandler(new ColoniesAchievements());
 	}
 
 	@PostInit
