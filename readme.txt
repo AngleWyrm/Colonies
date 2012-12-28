@@ -11,6 +11,65 @@ PREREQUISITES:
 
 RELEASE NOTES
 
+Pre-Alpha Revision 6 28-Dec-2012
+
+Features
+    #47 Towns have a border, and buildings must be nearby the town hall
+    #45 Achievements are achievable
+
+
+Fixes
+    #48 Removing a house could cause a crash to desktop
+    #36 Default chest no longer appears in Creative mode
+    #53 Recipes re-enabled for Colonies chests
+
+
+Pre-Alpha Revision 5 21-Dec-2012
+
+Features
+    Towns have populations, and citizens can join and leave towns
+    House chests with recipe, that add to the town's population cap
+    #23 Offensive Language Filter setting in config file to censor objectionable content
+    Citizens will occasionally visit the buildings in their home town
+    Citizens spawn outside of town, and stop by the town hall to register for citizenship
+
+
+Fixes
+    #38 Added recipe for Logging Camp
+    #34 Achievements window shows achievements
+    #19 Citizens don't trigger "Can't sleep now" message
+    #31 Cheating in a miner's chest from creative mode no longer stalls the miner pathing
+    Easier to read config files
+
+
+Known Issues
+    #45 Achievements don't activate
+    #46 Save/load functionality not implemented yet
+
+
+Pre-Alpha Revision 4 - 14 Dec 2012
+
+Features
+    #24 Cleric/Healer
+    Lumberjack and Logging Camp
+    Wanderer
+    Custom Achievements page
+    Miner's Chest
+    Miner will head to his chest and grab a pickaxe, if one is inside
+    Citizens have enough sense to take shelter when it rains
+
+
+Fixes
+    #11 chests drawn with wrong textures
+    #27 chest placement could cause the game to crash
+
+
+Known Issues
+    #35 Began work on achievements page; no achievements visible yet..
+    #36 Default chest can be seen and built in Creative mode
+    #38 No recipe installed for Logging Camp yet
+
+
 Pre-Alpha Revision 3 - 7 Dec 2012
 
 Features

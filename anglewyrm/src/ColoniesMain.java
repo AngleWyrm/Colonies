@@ -34,7 +34,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Colonies", name = "Colonies", version = "21 Dec 2012")
+@Mod(modid = "Colonies", name = "Colonies", version = "28 Dec 2012")
 @NetworkMod(
 		channels = { "Colonies" },
 		clientSideRequired = true,
