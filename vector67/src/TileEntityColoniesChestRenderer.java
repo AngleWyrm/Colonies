@@ -58,13 +58,15 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 		// FIXME: the getWorldObj() doesn't seem to work for items in the player's inventory
 		//  So we need another method for bindTextureByName
 		//  Some method of sorting out which string to bind
-		bindTextureByName(ClientProxy.HOUSECHEST_PNG);
-		
+		// bindTextureByName(ClientProxy.HOUSECHEST_PNG);
 		int facing = 3;
-		if (tile.getWorldObj() != null) {
+		if(tile != null && tile.getWorldObj() != null){
 			facing = tile.getFacing();
-			int typ = tile.getWorldObj().getBlockMetadata(tile.xCoord, tile.yCoord, tile.zCoord);
-		}		
+			bindTextureByName(tile.getBlockType().getTextureFile()); // this can fail
+		}
+		else{
+			bindTextureByName(ClientProxy.CHESTCONTAINER_PNG);
+		}
 		
 		glPushMatrix();
 		glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);

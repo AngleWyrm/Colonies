@@ -23,7 +23,7 @@ public class ColoniesChestRenderHelper extends ChestItemRenderHelper{
 	// FIXME: This is causing problems with rendering in the GUI
 	public void renderChest(Block block, int i, float f) {
 		if(block==null) return; // prevent null pointer exceptions
-		
+		/*
 		// Test each type of chest
 		if(block.blockID==ColoniesMain.blockHouseID){ 
 		  // Utility.Debug("rendering House"); // This happens quite regularly
@@ -33,6 +33,7 @@ public class ColoniesChestRenderHelper extends ChestItemRenderHelper{
 		  }
 		  return; // is house, but base class not constructed yet
 		}
+		*/
 		
 		super.renderChest(block,i,f); // should only be called as a last resort
 	}
