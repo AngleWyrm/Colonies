@@ -7,7 +7,7 @@ import net.minecraft.src.ItemStack;
 
 // AI is given a set of stock levels to maintain in their personal inventory
 // They will check their place of employment to gather shortages
-public class EntityAIMaintainInventoryLevels extends EntityAIBase 
+public class EntityAIMaintainInventoryLevels extends EntityAIBase
 {
 	EntityCitizen citizen;
 	static int INVENTORY_CHECK_FREQUENCY = 100; // about 5 seconds between scans
@@ -32,13 +32,21 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	
 	// Returns true if citizen has an item in desiredInventory,
 	// but the citizen's inventory has less of that item.
-	private boolean wantsSomething(){
+	private boolean wantsSomething()
+	{
 		// check main inventory
-		// check armor
-		return false;
-	}
-	
-	private boolean canGetSomething(){
+		for(int slot = 0; slot < citizen.desiredInventory.getSizeInventory(); ++slot)
+		{
+			ItemStack thisDesire = citizen.desiredInventory.getStackInSlot(slot);
+			if(thisDesire == null) continue;
+			
+			if(citizen.desiredInventory.countItems(thisDesire.itemID) > citizen.inventory.countItems(thisDesire.itemID)){
+				// found at least one unfulfilled desire
+				citizen.wantsSomething = true;
+				return true;
+			}
+		}
+		citizen.wantsSomething = false;
 		return false;
 	}
 }

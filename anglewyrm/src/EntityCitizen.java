@@ -36,6 +36,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public String name;
 	public InventoryCitizen inventory;
 	public InventoryCitizen desiredInventory;
+	public boolean wantsSomething = false;
 	
 	public boolean hasHomeTown;
 	public TileEntityColoniesChest residence;
@@ -58,10 +59,11 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		this.tasks.addTask(0, new EntityAISwimming(this));
 	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
-	    this.tasks.addTask(3, new EntityAIJoinTown(this));
-		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-	    this.tasks.addTask(5, new EntityAIWander(this, this.moveSpeed));
-	    this.tasks.addTask(6, new EntityAIVisit(this));
+	    this.tasks.addTask(3, new EntityAIMaintainInventoryLevels(this));
+	    this.tasks.addTask(4, new EntityAIJoinTown(this));
+		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+	    this.tasks.addTask(6, new EntityAIWander(this, this.moveSpeed));
+	    this.tasks.addTask(7, new EntityAIVisit(this));
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 	    
@@ -73,10 +75,15 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	
 	public void onLivingUpdate()
 	{
-		// Call baseAI for all citizens in range
-		if (!this.worldObj.isRemote){
-		}
         super.onLivingUpdate();
+
+        // Call baseAI for all citizens in range
+		if (!this.worldObj.isRemote){
+			if(wantsSomething){
+				// special effects ping				
+			}
+		}
+        
     }
 
 	// Sounds

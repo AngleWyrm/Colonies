@@ -1,6 +1,7 @@
 package colonies.vector67.src;
 
 import colonies.anglewyrm.src.EntityCitizen;
+import colonies.anglewyrm.src.Utility;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;
@@ -35,6 +36,20 @@ public class InventoryCitizen implements IInventory{
     public EntityCitizen citizen;
     private ItemStack itemStack;
 
+    // given a block ID
+    // returns the total number of items of this type in all three inventories (main, armor, in-hand)
+    public int countItems(int searchedForID){
+    	int sum = 0;
+    	// check main
+    	int slot = this.getInventorySlotContainItem(searchedForID);
+    	while(slot >= 0){
+    		sum += this.getStackInSlot(slot).stackSize;
+    		slot = this.getInventorySlotContainItem(searchedForID, ++slot);
+    	}
+    	// TODO: check armor slots and in-hand slot
+    	return sum;
+    }
+    
     /**
      * Set true whenever the inventory changes. Nothing sets it false so you will have to write your own code to check
      * it and reset the value.
@@ -59,12 +74,16 @@ public class InventoryCitizen implements IInventory{
         return 9;
     }
 
-    /**
-     * Returns a slot index in main inventory containing a specific itemID
-     */
-    private int getInventorySlotContainItem(int _itemID)
+    // Given an itemID, return slot location or -1
+    // Optional second parameter gives starting index
+    private int getInventorySlotContainItem(int _itemID){
+    	return getInventorySlotContainItem(_itemID, 0);
+    }
+    private int getInventorySlotContainItem(int _itemID, int _slot)
     {
-        for (int index = 0; index < this.mainInventory.length; ++index)
+    	if((_slot < 0)||(_slot > this.getSizeInventory())) return -1;
+    	
+        for (int index = _slot; index < this.mainInventory.length; ++index)
         {
             if (this.mainInventory[index] != null && this.mainInventory[index].itemID == _itemID)
             {
