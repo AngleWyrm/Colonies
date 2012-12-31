@@ -39,6 +39,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public boolean wantsSomething = false;
 	
 	public boolean hasHomeTown;
+	public TileEntityTownHall homeTown;
 	public TileEntityColoniesChest residence;
 	public boolean firstVisit = true; // a bit clumsy
 	

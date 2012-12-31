@@ -12,6 +12,10 @@ public class Point
 		x = y = z = 0;
 	}
 	public Point(double _x, double _y, double _z) {
+		set(_x, _y, _z);
+	}
+
+	public void set(double _x, double _y, double _z) {
 		x = _x;
 		y = _y;
 		z = _z;
@@ -25,6 +29,12 @@ public class Point
 		x += other.x;
 		y += other.y;
 		z += other.z;
+		return this;
+	}
+	public Point plus(double _x, double _y, double _z){
+		x += _x;
+		y += _y;
+		z += _z;
 		return this;
 	}
 	

@@ -32,9 +32,8 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	}
 	
 	public void startExecuting(){
-		// select destination
-		
-		
+		// TODO: select destination from employer, home, townhall
+		// citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.shelterX, this.shelterY, this.shelterZ, this.movementSpeed);
 	}
 	
 	// Returns true if citizen has an item in desiredInventory,

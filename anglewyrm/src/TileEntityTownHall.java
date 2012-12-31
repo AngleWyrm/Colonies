@@ -117,6 +117,10 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         // DEBUG: workaround for double-chest placement bug
         if(this != playerTown) return;
         
+        // player town border markers
+        worldObj.spawnParticle("reddust", this.xCoord, this.yCoord + 2.5, this.zCoord, 0.2,0.9,0.2);
+        // Utility.chatMessage(this.xCoord + " "+this.yCoord+" "+this.zCoord);
+       	
         // Spawner system
         if(citizensList == null) return;
         if(citizensList.size() >= maxPopulation) return;
