@@ -22,12 +22,19 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	public boolean shouldExecute() 
 	{
 		// reasons to idle this task
-		if(citizen == null) return false;		
+		if(citizen == null) return false;
+		if(!citizen.hasHomeTown) return false;
 		
 		if(--updateCounter > 0)	return false;
 		updateCounter = INVENTORY_CHECK_FREQUENCY;
 
 		return wantsSomething();
+	}
+	
+	public void startExecuting(){
+		// select destination
+		
+		
 	}
 	
 	// Returns true if citizen has an item in desiredInventory,
@@ -41,11 +48,13 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 			if(thisDesire == null) continue;
 			
 			if(citizen.desiredInventory.countItems(thisDesire.itemID) > citizen.inventory.countItems(thisDesire.itemID)){
-				// found at least one unfulfilled desire
+				Utility.chatMessage("Citizen wants something");
+				objectOfDesire = thisDesire;
 				citizen.wantsSomething = true;
 				return true;
 			}
 		}
+		objectOfDesire = null;
 		citizen.wantsSomething = false;
 		return false;
 	}

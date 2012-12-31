@@ -42,6 +42,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public TileEntityColoniesChest residence;
 	public boolean firstVisit = true; // a bit clumsy
 	
+	public TileEntityColoniesChest employer;
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
 	public jobs job;
 	public HashMap<jobs, Integer> skills;
@@ -77,13 +78,10 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	{
         super.onLivingUpdate();
 
-        // Call baseAI for all citizens in range
-		if (!this.worldObj.isRemote){
-			if(wantsSomething){
-				// special effects ping				
-			}
-		}
-        
+		// citizen status special effects
+        //if(this.wantsSomething){
+        	worldObj.spawnParticle("reddust", posX, posY + 2.5, posZ, 0.2,0.9,0.2);
+		//}
     }
 
 	// Sounds
