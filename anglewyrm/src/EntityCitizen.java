@@ -79,10 +79,10 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	{
         super.onLivingUpdate();
 
-		// citizen status special effects
-        //if(this.wantsSomething){
+		// citizen status special effects 
+        if(this.wantsSomething){ // updated by EntityAIMaintainInventoryLevels
         	worldObj.spawnParticle("reddust", posX, posY + 2.5, posZ, 0.2,0.9,0.2);
-		//}
+		}
     }
 
 	// Sounds

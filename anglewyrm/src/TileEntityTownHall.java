@@ -45,6 +45,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		}
 		
 		newCitizen.hasHomeTown = true;
+		newCitizen.homeTown = this;
 		if(citizensList.offer(newCitizen)){
 	 		Utility.chatMessage("A Citizen joined " 
 	   				+ TileEntityTownHall.playerTown.townName + " (pop: " 
@@ -64,6 +65,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		if(!citizensList.contains(oldCitizen)) return false;
 		citizensList.remove(citizensList.indexOf(oldCitizen));
 		oldCitizen.hasHomeTown = false;
+		oldCitizen.homeTown = null;
 		Utility.Debug("Citizen left town");
   		Utility.chatMessage("A Citizen left " 
    				+ TileEntityTownHall.playerTown.townName + " (pop: " 
@@ -118,7 +120,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         if(this != playerTown) return;
         
         // player town border markers
-        worldObj.spawnParticle("reddust", this.xCoord, this.yCoord + 2.5, this.zCoord, 0.2,0.9,0.2);
+        this.worldObj.spawnParticle("reddust", this.xCoord, this.yCoord + 1.5, this.zCoord, 0.2,0.9,0.2);
         // Utility.chatMessage(this.xCoord + " "+this.yCoord+" "+this.zCoord);
        	
         // Spawner system

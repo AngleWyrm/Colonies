@@ -25,16 +25,25 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 		if(citizen == null) return false;
 		if(!citizen.hasHomeTown) return false;
 		
-		if(--updateCounter > 0)	return false;
-		updateCounter = INVENTORY_CHECK_FREQUENCY;
+		// TODO: Update counter doesn't belong here
+		// if(--updateCounter > 0)	return false;
+		// updateCounter = INVENTORY_CHECK_FREQUENCY;
 
 		return wantsSomething();
 	}
 	
 	public void startExecuting(){
 		// TODO: select destination from employer, home, townhall
-		// citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.shelterX, this.shelterY, this.shelterZ, this.movementSpeed);
+		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.xCoord+1, citizen.homeTown.xCoord, 0.35f);
 	}
+	
+    public boolean continueExecuting()
+    {
+    	boolean shouldContinue = !this.citizen.getNavigator().noPath();
+    	// other reasons to bail, such as status changes
+    	return shouldContinue;
+    }
+
 	
 	// Returns true if citizen has an item in desiredInventory,
 	// but the citizen's inventory has less of that item.
@@ -47,7 +56,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 			if(thisDesire == null) continue;
 			
 			if(citizen.desiredInventory.countItems(thisDesire.itemID) > citizen.inventory.countItems(thisDesire.itemID)){
-				Utility.chatMessage("Citizen wants something");
+				// Utility.chatMessage("Citizen wants something");
 				objectOfDesire = thisDesire;
 				citizen.wantsSomething = true;
 				return true;
