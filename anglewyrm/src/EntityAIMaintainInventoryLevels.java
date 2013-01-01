@@ -15,7 +15,8 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	ItemStack objectOfDesire;
 	
 	public EntityAIMaintainInventoryLevels(EntityCitizen _citizen){
-		citizen = _citizen;		
+		citizen = _citizen;	
+		this.setMutexBits(1);
 	}
    
 	@Override
@@ -25,16 +26,19 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 		if(citizen == null) return false;
 		if(!citizen.hasHomeTown) return false;
 		
-		// TODO: Update counter doesn't belong here
-		// if(--updateCounter > 0)	return false;
-		// updateCounter = INVENTORY_CHECK_FREQUENCY;
-
-		return wantsSomething();
+		// using memory of want, and updating want infrequently
+		if(--updateCounter > 0){
+			return citizen.wantsSomething;
+		}
+		else{
+			updateCounter = INVENTORY_CHECK_FREQUENCY;
+			return wantsSomething();
+		}
 	}
 	
 	public void startExecuting(){
 		// TODO: select destination from employer, home, townhall
-		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.xCoord+1, citizen.homeTown.xCoord, 0.35f);
+		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.xCoord+1, citizen.homeTown.xCoord, 0.55f);
 	}
 	
     public boolean continueExecuting()
@@ -50,7 +54,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	private boolean wantsSomething()
 	{
 		// check main inventory
-		for(int slot = 0; slot < citizen.desiredInventory.getSizeInventory(); ++slot)
+		for(int slot = 0; slot < citizen.desiredInventory.getSizeInventory(); slot++)
 		{
 			ItemStack thisDesire = citizen.desiredInventory.getStackInSlot(slot);
 			if(thisDesire == null) continue;
