@@ -2,6 +2,7 @@ package colonies.anglewyrm.src;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityLiving;
@@ -16,6 +17,7 @@ public class BlockTownHall extends BlockColoniesChest
 		super(id);
 		setBlockName("block.townhall");
 		setCreativeTab(CreativeTabs.tabDecorations);
+		setTickRandomly(true); // for city limits effects
 	}
 	
 	@Override
@@ -66,5 +68,26 @@ public class BlockTownHall extends BlockColoniesChest
     	// for now, just bail
     	return false;
     }
+    
+    public int tickRate(){
+    	return 1;
+    }
+    
+    public void updateTick(World world, int x, int y, int z, Random rng){
+    	super.updateTick(world, x,y,z, rng);
+    }
 
+    public void randomDisplayTick(World world, int x, int y, int z, Random rng)
+    {
+    	super.randomDisplayTick(world, x, y, z, rng);
+
+    	// player town border markers
+    	Point p = new Point();
+    	for(int angle = 0; angle < 32; ++angle){
+    		p.set(0, 0, 0);
+    		p.polarTranslation((float)angle/32.0 * 2*Math.PI, Math.PI/2, 14d);
+    		p.plus(x, y, z);
+    		world.spawnParticle("reddust", p.x, p.y + 0.5, p.z, -0.5,0.5,0.8);
+    	}
+    }
  }

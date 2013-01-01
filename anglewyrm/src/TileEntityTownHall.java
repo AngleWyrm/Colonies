@@ -120,7 +120,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         if(this != playerTown) return;
         
         // player town border markers
-        this.worldObj.spawnParticle("reddust", this.xCoord, this.yCoord + 1.5, this.zCoord, 0.2,0.9,0.2);
+        // this.worldObj.spawnParticle("reddust", this.xCoord, this.yCoord + 1.5, this.zCoord, 0.0,0.0,0.0);
         // Utility.chatMessage(this.xCoord + " "+this.yCoord+" "+this.zCoord);
        	
         // Spawner system

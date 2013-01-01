@@ -38,10 +38,10 @@ public class Point
 		return this;
 	}
 	
-	public Point polarTranslation(float equatorial, float polar, double distance){
-		x = distance * Math.sin(polar) * Math.cos(equatorial);
-		y = distance * Math.cos(polar);
-		z = distance * Math.sin(equatorial) * Math.sin(polar);
+	public Point polarTranslation(double d, double e, double distance){
+		x = distance * Math.sin(e) * Math.cos(d);
+		y = distance * Math.cos(e);
+		z = distance * Math.sin(d) * Math.sin(e);
 		return this; 
 	}
 	
