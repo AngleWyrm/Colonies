@@ -38,7 +38,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	
 	public void startExecuting(){
 		// TODO: select destination from employer, home, townhall
-		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.xCoord+1, citizen.homeTown.xCoord, 0.55f);
+		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.xCoord+1, citizen.homeTown.xCoord, 0.45f);
 	}
 	
     public boolean continueExecuting()
@@ -60,12 +60,13 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 			if(thisDesire == null) continue;
 			
 			if(citizen.desiredInventory.countItems(thisDesire.itemID) > citizen.inventory.countItems(thisDesire.itemID)){
-				// Utility.chatMessage("Citizen wants something");
+				Utility.chatMessage(citizen.ssn + " wants something");
 				objectOfDesire = thisDesire;
 				citizen.wantsSomething = true;
 				return true;
 			}
 		}
+		Utility.chatMessage("Citizen is content");
 		objectOfDesire = null;
 		citizen.wantsSomething = false;
 		return false;

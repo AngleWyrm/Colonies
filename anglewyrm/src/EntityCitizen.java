@@ -33,6 +33,8 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
+	public static int ssnPool = 0;
+	public int ssn;
 	public String name;
 	public InventoryCitizen inventory;
 	public InventoryCitizen desiredInventory;
@@ -51,7 +53,8 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	
 	public EntityCitizen(World par1World) {
 		super(par1World);
-		this.texture = ServerProxy.WANDERERSKIN_PNG;
+		this.ssn = ++ssnPool;
+		this.texture = ColoniesMain.skinDefault;
 		this.moveSpeed = ColoniesMain.citizenMoveSpeed;
 		
 		this.inventory = new InventoryCitizen(this);
@@ -81,7 +84,8 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 
 		// citizen status special effects
         // TODO: get AI to update wantsSomething
-        if(this.wantsSomething){ // updated by EntityAIMaintainInventoryLevels
+        if(wantsSomething){ // updated by EntityAIMaintainInventoryLevels
+        	Utility.chatMessage("want #" + ssn); // is executed, not clear by whom
         	worldObj.spawnParticle("reddust", posX, posY + 2.5, posZ, 0.2,0.9,0.2);
 		}
     }

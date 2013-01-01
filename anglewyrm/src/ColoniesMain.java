@@ -143,7 +143,7 @@ public class ColoniesMain
 		skinMaleSwimming      = config.get("Skins", "skinMaleSwimming",      "/colonies/anglewyrm/gfx/m-swimskin.png").value;
 		skinMiner             = config.get("Skins", "skinMiner",             "/colonies/grahammarcellus/gfx/minerskin.png").value;
 		skinMinerSwimming     = config.get("Skins", "skinMinerSwimming",     "/colonies/anglewyrm/gfx/miner_swim.png").value;
-		skinWife              = config.get("Skins", "skinWife",              "/colonies/anglewyrm/gfx/daisy_duke.png").value;
+		skinWife              = config.get("Skins", "skinWife",              "/colonies/austensible/gfx/wife2.png").value;
 		skinFemaleSwimming    = config.get("Skins", "skinFemaleSwimming",    "/colonies/anglewyrm/gfx/white_bikini.png").value;
 		skinPriestess         = config.get("Skins", "skinPriestess",         "/colonies/anglewyrm/gfx/priestess.png").value;
 		skinPriestessSwimming = config.get("Skins", "skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png").value;
