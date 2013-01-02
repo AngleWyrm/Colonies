@@ -22,6 +22,10 @@ public class ClientProxy extends ServerProxy
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
 		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
 		
+		// Grave Stone (start)
+		//RenderingRegistry.instance().registerEntityRenderingHandler(
+		//		EntityGraveStone.class, new RenderLiving(new ModelGraveStone(), 0.5F));		
+		
 		// preloaded textures
         MinecraftForgeClient.preloadTexture(ITEMS_PNG);
 		MinecraftForgeClient.preloadTexture(BLOCK_PNG);
