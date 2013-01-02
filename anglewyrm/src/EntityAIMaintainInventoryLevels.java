@@ -38,11 +38,22 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	
 	public void startExecuting(){
 		// TODO: select destination from employer, home, townhall
-		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.xCoord+1, citizen.homeTown.xCoord, 0.45f);
+		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.yCoord+1, citizen.homeTown.zCoord, 0.35f);
 	}
 	
     public boolean continueExecuting()
     {
+    	// if arrived, get supplies and return false
+    	Point p = new Point(citizen.posX, citizen.posY, citizen.posZ);
+    	double range = p.getDistance(citizen.homeTown.getPoint());
+    	if(range < 3.0){
+    		// arrived at location, transfer supplies
+    		citizen.getItemFromChest(citizen.homeTown, objectOfDesire);    		
+    		citizen.wantsSomething = false;
+    		objectOfDesire = null;
+    		return false;
+    	}// else still pathing to location
+    	
     	boolean shouldContinue = !this.citizen.getNavigator().noPath();
     	// other reasons to bail, such as status changes
     	return shouldContinue;
@@ -60,13 +71,13 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 			if(thisDesire == null) continue;
 			
 			if(citizen.desiredInventory.countItems(thisDesire.itemID) > citizen.inventory.countItems(thisDesire.itemID)){
-				Utility.chatMessage(citizen.ssn + " wants something");
+				//Utility.chatMessage(citizen.ssn + " wants something");
 				objectOfDesire = thisDesire;
 				citizen.wantsSomething = true;
 				return true;
 			}
 		}
-		Utility.chatMessage("Citizen is content");
+		// Utility.chatMessage("Citizen is content");
 		objectOfDesire = null;
 		citizen.wantsSomething = false;
 		return false;

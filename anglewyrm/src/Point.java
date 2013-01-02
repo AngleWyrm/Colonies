@@ -24,6 +24,9 @@ public class Point
 	public double getDistance(Point other){
 		return Math.sqrt((x-other.x)*(x-other.x) + (y-other.y)*(y-other.y) + (z-other.z)*(z-other.z));  
 	}
+	public double getDistance(double _x, double _y, double _z){
+		return Math.sqrt((x-_x)*(x-_x) + (y-_y)*(y-_y) + (z-_z)*(z-_z));
+	}
 	
 	public Point plus(Point other){
 		x += other.x;

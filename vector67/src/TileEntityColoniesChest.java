@@ -72,26 +72,26 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
      * Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a
      * new stack.
      */
-    public ItemStack decrStackSize(int par1, int par2)
+    public ItemStack decrStackSize(int index, int numItemsToRemove)
     {
-        if (this.chestContents[par1] != null)
+        if (this.chestContents[index] != null)
         {
             ItemStack var3;
 
-            if (this.chestContents[par1].stackSize <= par2)
+            if (this.chestContents[index].stackSize <= numItemsToRemove)
             {
-                var3 = this.chestContents[par1];
-                this.chestContents[par1] = null;
+                var3 = this.chestContents[index];
+                this.chestContents[index] = null;
                 this.onInventoryChanged();
                 return var3;
             }
             else
             {
-                var3 = this.chestContents[par1].splitStack(par2);
+                var3 = this.chestContents[index].splitStack(numItemsToRemove);
 
-                if (this.chestContents[par1].stackSize == 0)
+                if (this.chestContents[index].stackSize == 0)
                 {
-                    this.chestContents[par1] = null;
+                    this.chestContents[index] = null;
                 }
 
                 this.onInventoryChanged();

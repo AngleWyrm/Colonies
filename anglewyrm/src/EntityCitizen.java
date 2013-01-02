@@ -78,6 +78,22 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	    this.paths = new HashMap<Integer, PathNavigator>();
 	}
 	
+	public ItemStack getItemFromChest(TileEntityColoniesChest chest, ItemStack desiredItem){
+		if(chest == null || desiredItem == null) return null;
+		ItemStack gatheredItems = null;
+		for(int index = 0; index < chest.getSizeInventory(); index++){
+			gatheredItems = chest.getStackInSlot(index);
+			if((gatheredItems != null) && (gatheredItems.itemID == desiredItem.itemID)){
+				// found item in chest
+				gatheredItems = chest.decrStackSize(index, desiredItem.stackSize);
+				this.inventory.addItemStackToInventory(gatheredItems);
+				desiredItem.stackSize -= gatheredItems.stackSize;
+				// TODO: Consolidate inventory
+			}
+		}
+		return gatheredItems; // can return null
+	}
+	
 	public void onLivingUpdate()
 	{
         super.onLivingUpdate();
@@ -85,7 +101,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		// citizen status special effects
         // TODO: get AI to update wantsSomething
         if(wantsSomething){ // updated by EntityAIMaintainInventoryLevels
-        	Utility.chatMessage("want #" + ssn); // is executed, not clear by whom
+        	//Utility.chatMessage("want #" + ssn); // is executed, not clear by whom
         	worldObj.spawnParticle("reddust", posX, posY + 2.5, posZ, 0.2,0.9,0.2);
 		}
     }
