@@ -10,7 +10,7 @@ import colonies.vector67.src.TileEntityColoniesChest;
 public class BlockLoggingCamp extends BlockColoniesChest {
 
 	public TileEntityLoggingCamp tileEntity;
-	
+
 	public BlockLoggingCamp(int id) {
 		super(id);
 		setBlockName("block.loggingcamp");

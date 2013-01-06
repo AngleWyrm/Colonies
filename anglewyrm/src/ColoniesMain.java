@@ -13,6 +13,8 @@ import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
+import colonies.kzolp67.src.BlockHunterBlind;
+import colonies.kzolp67.src.TileEntityHunterBlind;
 import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.thephpdev.src.BlockMine;
 import colonies.thephpdev.src.TileEntityMine;
@@ -50,6 +52,7 @@ public class ColoniesMain
 	public static Block minerChest;
 	public static Block loggingCamp;
 	public static Block house;
+	public static Block hunterBlind;
 	
 	//public static GuiHandler guiHandlerChest;
 	//public static GuiHandlerColoniesChest guiHandlerChest;
@@ -108,6 +111,7 @@ public class ColoniesMain
 	public static int minerChestID;
 	public static int loggingCampID;
 	public static int blockHouseID;
+	public static int hunterBlindID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -134,7 +138,8 @@ public class ColoniesMain
 		minerChestID    = config.getBlock("minerChestID",    1104).getInt();
 		loggingCampID   = config.getBlock("loggingCampID",   1105).getInt();
 		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
-			
+		hunterBlindID   = config.getBlock("hunterBlindID",   1107).getInt();	
+		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
 		citizenMoveSpeed = Float.parseFloat(config.get(Configuration.CATEGORY_GENERAL, "citizenMoveSpeed", "0.25f").value);
@@ -183,7 +188,7 @@ public class ColoniesMain
 		GameRegistry.registerBlock(house);
 		GameRegistry.registerTileEntity(TileEntityHouse.class, "container.house");
 		LanguageRegistry.instance().addStringLocalization("container.house", "en_US", "House");
-
+		
 		// Town Hall
 		townHall = new BlockTownHall(townHallID);
 		LanguageRegistry.addName(townHall, "Town Hall");
@@ -191,6 +196,13 @@ public class ColoniesMain
 		GameRegistry.registerTileEntity(TileEntityTownHall.class, "container.townhall");
 		LanguageRegistry.instance().addStringLocalization("container.townhall", "en_US", "MyTown Town Hall");
 
+		// Hunter Blind
+		hunterBlind = new BlockHunterBlind(hunterBlindID);
+		LanguageRegistry.addName(hunterBlind, "Hunter Blind");
+		GameRegistry.registerBlock(hunterBlind);
+		GameRegistry.registerTileEntity(TileEntityHunterBlind.class, "container.hunterblind");
+		LanguageRegistry.instance().addStringLocalization("container.hunterblind", "en_US", "Hunter Blind");
+		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
