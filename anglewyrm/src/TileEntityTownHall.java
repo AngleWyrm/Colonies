@@ -181,7 +181,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		// else is air, if air beneath, go down until it ain't
 		while(this.worldObj.isAirBlock((int)p.x, (int)p.y-1, (int)p.z)){
 			--p.y;
-			if(p.y >= 5) return p; // failsafe
+			if(p.y <= 5) return p; // failsafe
 		}
 		return p;
 	}
