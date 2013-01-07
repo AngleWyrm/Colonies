@@ -33,6 +33,7 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
+	public boolean isMale = true;
 	public static int ssnPool = 0;
 	public int ssn;
 	public String name;

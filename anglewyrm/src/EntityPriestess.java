@@ -8,6 +8,7 @@ import net.minecraft.src.World;
 public class EntityPriestess extends EntityCitizen{
 	public EntityPriestess(World world){ 
 		super(world);
+		this.isMale = false;
 		this.texture = ColoniesMain.skinPriestess;
 		this.skills = new HashMap<jobs, Integer>(10);
 	    this.skills.put(jobs.unemployed, 10);

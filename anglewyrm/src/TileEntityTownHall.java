@@ -133,11 +133,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
  
         	// Choose citizen type to spawn
            	EntityCitizen newGuy;
-           	if(Utility.rng.nextBoolean()){
-           		newGuy = new EntityCitizen(worldObj);
+           	if(this.isLessFemales()){
+           		newGuy = new EntityWife(worldObj);
            	}
            	else{
-           		newGuy = new EntityWife(worldObj);
+           		newGuy = new EntityCitizen(worldObj);
            	}
         	
         	// pick a random direction at the town perimeter
@@ -155,5 +155,18 @@ public class TileEntityTownHall extends TileEntityColoniesChest
             this.worldObj.spawnEntityInWorld(newGuy);
         }
         
+	}
+	private boolean isLessFemales(){
+		if(citizensList == null || citizensList.isEmpty()) return false;
+		
+		int males = 0, females = 0;
+		for(EntityCitizen me: citizensList){
+			if(me.isMale){
+				++males;
+			}else{
+				++females;
+			}
+		}
+		return (females < males);
 	}
 }
