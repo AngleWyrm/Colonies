@@ -87,7 +87,23 @@ public class BlockTownHall extends BlockColoniesChest
     		p.set(0, 0, 0);
     		p.polarTranslation((float)angle/32.0 * 2*Math.PI, Math.PI/2, 14d);
     		p.plus(x, y, z);
-    		world.spawnParticle("reddust", p.x, p.y + 0.5, p.z, -0.5,0.5,0.8);
+    		this.terrainAdjustment(world, p);
+    		world.spawnParticle("reddust", p.x, p.y+0.5, p.z, -0.5,0.5,0.8);
     	}
     }
+	public Point terrainAdjustment(World world, Point p){
+		// If this ain't air, go up until it is
+		while(!world.isAirBlock((int)p.x, (int)p.y, (int)p.z)){
+			++p.y;
+			if(p.y >= 126) return p; // failsafe
+			if(!world.isAirBlock((int)p.x, (int)p.y+1, (int)p.z)) ++p.y;
+		}
+		// else is air, if air beneath, go down until it ain't
+		while(world.isAirBlock((int)p.x, (int)p.y-1, (int)p.z)){
+			--p.y;
+			if(p.y >= 5) return p; // failsafe
+		}
+		return p;
+	}
+
  }

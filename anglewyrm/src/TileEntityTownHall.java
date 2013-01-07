@@ -146,7 +146,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         	Utility.Debug(p.toString());
         	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), 14d);
         	p.plus(q);
-        	Utility.Debug(p.toString());
+        	this.terrainAdjustment(p);
+        	Utility.chatMessage(p.toString());
         	
         	// TODO: Validate and adjust ground level for mob landing
 
@@ -168,5 +169,20 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			}
 		}
 		return (females < males);
+	}
+	
+	public Point terrainAdjustment(Point p){
+		// If this ain't air, go up until it is
+		while(!this.worldObj.isAirBlock((int)p.x, (int)p.y, (int)p.z)){
+			++p.y;
+			if(p.y >= 126) return p; // failsafe
+			if(!this.worldObj.isAirBlock((int)p.x, (int)p.y+1, (int)p.z)) ++p.y;
+		}
+		// else is air, if air beneath, go down until it ain't
+		while(this.worldObj.isAirBlock((int)p.x, (int)p.y-1, (int)p.z)){
+			--p.y;
+			if(p.y >= 5) return p; // failsafe
+		}
+		return p;
 	}
 }
