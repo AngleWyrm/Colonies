@@ -24,5 +24,8 @@ public class Recipes
 		
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.house), new Object[]{
 			"TBT","DCD","TBT", 'T',Block.torchWood, 'B',Item.bed, 'C',BlockContainer.chest, 'D',Block.doorWood});
+		
+		GameRegistry.addRecipe( new ItemStack(ColoniesMain.hunterBlind), new Object[]{
+			"TLT","LCL","TLT", 'T',Item.beefRaw, 'L',Item.leather, 'C',BlockContainer.chest});
 	}	
 }

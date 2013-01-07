@@ -14,7 +14,7 @@ public class AchievementCraftingHandler implements ICraftingHandler
 	@Override
     public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix)
     {
-			Utility.chatMessage("Achievement Test");
+			player.addChatMessage("Achievement Test");
             if (item.itemID == ColoniesMain.townHallID)
             {
                     player.addStat(ColoniesAchievements.TownStarted, 1);

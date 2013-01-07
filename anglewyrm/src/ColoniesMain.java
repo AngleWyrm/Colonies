@@ -14,6 +14,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
 import colonies.kzolp67.src.BlockHunterBlind;
+import colonies.kzolp67.src.EntityHunter;
 import colonies.kzolp67.src.TileEntityHunterBlind;
 import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.thephpdev.src.BlockMine;
@@ -126,6 +127,7 @@ public class ColoniesMain
 	public static String skinPriestess;
 	public static String skinPriestessSwimming;
 	public static String skinLumberjack;
+	public static String skinHunter;
 	
 	public static String guiChestBackground;
 	
@@ -153,6 +155,8 @@ public class ColoniesMain
 		skinPriestess         = config.get("Skins", "skinPriestess",         "/colonies/anglewyrm/gfx/priestess.png").value;
 		skinPriestessSwimming = config.get("Skins", "skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png").value;
 		skinLumberjack        = config.get("Skins", "skinLumberjack",        "/colonies/anglewyrm/gfx/lumberjack.png").value;
+		skinHunter            = config.get("Skins", "skinHunter",        "/colonies/kzolp67/gfx/Hunter.png").value;
+
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
 	}
@@ -200,8 +204,8 @@ public class ColoniesMain
 		hunterBlind = new BlockHunterBlind(hunterBlindID);
 		LanguageRegistry.addName(hunterBlind, "Hunter Blind");
 		GameRegistry.registerBlock(hunterBlind);
-		GameRegistry.registerTileEntity(TileEntityHunterBlind.class, "container.hunterblind");
-		LanguageRegistry.instance().addStringLocalization("container.hunterblind", "en_US", "Hunter Blind");
+		GameRegistry.registerTileEntity(TileEntityHunterBlind.class, "container.hunterBlind");
+		LanguageRegistry.instance().addStringLocalization("container.hunterBlind", "en_US", "Hunter Blind");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
@@ -234,6 +238,10 @@ public class ColoniesMain
 		// Priestess
 		EntityRegistry.registerGlobalEntityID(EntityPriestess.class, "Priestess", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x00FF00);
 		LanguageRegistry.instance().addStringLocalization("entity.Priestess.name", "en_US", "Cleric");
+
+		// Hunter
+		EntityRegistry.registerGlobalEntityID(EntityHunter.class, "Hunter", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Hunter.name", "en_US", "Hunter");
 
 		}
 }

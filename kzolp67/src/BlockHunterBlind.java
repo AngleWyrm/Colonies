@@ -15,7 +15,7 @@ public class BlockHunterBlind extends BlockColoniesChest {
 	
 	public BlockHunterBlind(int id) {
 		super(id);
-		setBlockName("block.loggingcamp");
+		setBlockName("block.loggingCamp");
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
