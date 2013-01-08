@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import net.minecraft.src.DamageSource;
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
 import net.minecraft.src.EntityAIMoveIndoors;
@@ -33,6 +34,7 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
+	public boolean isMale = true;
 	public static int ssnPool = 0;
 	public int ssn;
 	public String name;
@@ -123,7 +125,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
     	if(ColoniesMain.offensiveLanguageFilter) return "";
         return "colonies.f-damnit";
     }
-
+    
     protected void playStepSound(int par1, int par2, int par3, int par4){
         this.worldObj.playSoundAtEntity(this, "mob.cow.step", 0.15F, 1.0F);
     }
@@ -460,5 +462,14 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	@Override
 	public boolean canDespawn() {
 		return false;
+	}
+	
+	public void onDeath(DamageSource _damageSource){
+		// if this citizen belongs to a town, leave that town before dying
+		if(this.homeTown != null){
+			homeTown.leaveTown(this);
+			this.homeTown = null;
+		}
+		super.onDeath(_damageSource);
 	}
 }
