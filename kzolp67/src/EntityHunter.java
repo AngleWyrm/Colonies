@@ -33,26 +33,48 @@ public class EntityHunter extends EntityCitizen {
 		}
 		return ColoniesMain.skinHunter;
 	}
+   
+    /**
+     * Returns the item ID for the item the mob drops on death.
+     */
+    protected int getDropItemId()
+    {
+        return Item.arrow.shiftedIndex;
+    }
 
-	// Mob Loot for default Citizen
-	protected int getDropItemId() {
-		int lootID=1;
-		switch(Utility.getLootCategory()) {
-			case 1: // Common
-				switch(Utility.getLootCategory(3)) {
-					case 1: return Item.bow.shiftedIndex;
-					default:return Item.arrow.shiftedIndex;
-				}
-			case 2: // Uncommon
-				return Item.porkRaw.shiftedIndex;
-			case 3: // Rare
-				return Item.beefRaw.shiftedIndex;
-			default: // Legendary
-				return Item.chickenRaw.shiftedIndex;
-		}
-	}
+    /**
+     * Drop 0-2 items of this living's type
+     */
+    protected void dropFewItems(boolean par1, int par2)
+    {
+        int var3;
+        int var4;
+
+        {
+            var3 = this.rand.nextInt(3 + par2);
+
+            for (var4 = 0; var4 < var3; ++var4)
+            {
+                this.dropItem(Item.arrow.shiftedIndex, 1);
+            }
+        }
+
+        var3 = this.rand.nextInt(3 + par2);
+
+        for (var4 = 0; var4 < var3; ++var3)
+        {
+            this.dropItem(Item.bow.shiftedIndex, 1);
+        }
+    }
+    
 
 	public void onLivingUpdate() {
+		
+        if (this.worldObj.isDaytime())
+        {
+        	
+        }
+		
 		super.onLivingUpdate();
 	}
 	
