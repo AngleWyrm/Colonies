@@ -54,6 +54,7 @@ public class ColoniesMain
 	public static Block loggingCamp;
 	public static Block house;
 	public static Block hunterBlind;
+	public static Block fishermanHut;
 	
 	//public static GuiHandler guiHandlerChest;
 	//public static GuiHandlerColoniesChest guiHandlerChest;
@@ -113,6 +114,7 @@ public class ColoniesMain
 	public static int loggingCampID;
 	public static int blockHouseID;
 	public static int hunterBlindID;
+	public static int fishermanHutID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -128,6 +130,7 @@ public class ColoniesMain
 	public static String skinPriestessSwimming;
 	public static String skinLumberjack;
 	public static String skinHunter;
+	public static String skinFisherman;
 	
 	public static String guiChestBackground;
 	
@@ -140,7 +143,8 @@ public class ColoniesMain
 		minerChestID    = config.getBlock("minerChestID",    1104).getInt();
 		loggingCampID   = config.getBlock("loggingCampID",   1105).getInt();
 		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
-		hunterBlindID   = config.getBlock("hunterBlindID",   1107).getInt();	
+		hunterBlindID   = config.getBlock("hunterBlindID",   1107).getInt();
+		fishermanHutID  = config.getBlock("fishermanHutID",  1108).getInt();
 		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
@@ -155,7 +159,8 @@ public class ColoniesMain
 		skinPriestess         = config.get("Skins", "skinPriestess",         "/colonies/anglewyrm/gfx/priestess.png").value;
 		skinPriestessSwimming = config.get("Skins", "skinPriestessSwimming", "/colonies/anglewyrm/gfx/priestess_swimsuit.png").value;
 		skinLumberjack        = config.get("Skins", "skinLumberjack",        "/colonies/anglewyrm/gfx/lumberjack.png").value;
-		skinHunter            = config.get("Skins", "skinHunter",        "/colonies/kzolp67/gfx/Hunter.png").value;
+		skinHunter            = config.get("Skins", "skinHunter",            "/colonies/kzolp67/gfx/Hunter.png").value;
+		skinFisherman         = config.get("Skins", "skinFisherman",         "/colonies/irontaxi/gfx/fisherman2.png").value;
 
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
@@ -206,6 +211,13 @@ public class ColoniesMain
 		GameRegistry.registerBlock(hunterBlind);
 		GameRegistry.registerTileEntity(TileEntityHunterBlind.class, "container.hunterBlind");
 		LanguageRegistry.instance().addStringLocalization("container.hunterBlind", "en_US", "Hunter Blind");
+
+		// Fisherman's Hut
+		fishermanHut = new BlockFishermanHut(fishermanHutID);
+		LanguageRegistry.addName(fishermanHut, "Fisherman's Hut");
+		GameRegistry.registerBlock(fishermanHut);
+		GameRegistry.registerTileEntity(TileEntityHunterBlind.class, "container.fishermanHut");
+		LanguageRegistry.instance().addStringLocalization("container.fishermanHut", "en_US", "Fisherman's Hut");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
@@ -242,6 +254,10 @@ public class ColoniesMain
 		// Hunter
 		EntityRegistry.registerGlobalEntityID(EntityHunter.class, "Hunter", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Hunter.name", "en_US", "Hunter");
+
+		// Fisherman
+		EntityRegistry.registerGlobalEntityID(EntityFisherman.class, "Fisherman", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Fisherman.name", "en_US", "Fisherman");
 
 		}
 }
