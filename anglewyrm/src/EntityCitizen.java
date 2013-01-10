@@ -41,6 +41,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public InventoryCitizen inventory;
 	public InventoryCitizen desiredInventory;
 	public boolean wantsSomething = false;
+	public float hunger = 20;
 	
 	public boolean hasHomeTown;
 	public TileEntityTownHall homeTown;
@@ -99,6 +100,11 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public void onLivingUpdate()
 	{
         super.onLivingUpdate();
+        
+        // If not playing Peaceful mode, tick down hunger
+        if(this.worldObj.difficultySetting != 0){
+        	hunger = hunger - 0.0005f; // about 1/2 hunger/minute
+        }
 
 		// citizen status special effects
         // TODO: get AI to update wantsSomething
