@@ -27,5 +27,9 @@ public class Recipes
 		
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.hunterBlind), new Object[]{
 			"TLT","LCL","TLT", 'T',Item.beefRaw, 'L',Item.leather, 'C',BlockContainer.chest});
+		
+		GameRegistry.addRecipe( new ItemStack(ColoniesMain.fishermanHut), new Object[]{
+			"SSS","FCF","WBW", 'S',Block.stoneSingleSlab, 'F',Item.fishingRod, 'C',BlockContainer.chest,
+			'W',Block.woodSingleSlab, 'B',Item.bucketWater});
 	}	
 }
