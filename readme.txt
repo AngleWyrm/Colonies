@@ -11,6 +11,19 @@ PREREQUISITES:
 
 RELEASE NOTES
 
+Pre-Alpha Revision 8 12-Jan-2013
+
+Features
+    #66 Fisherman and Fisherman's Hut
+    Hunter and Hunter's Blind
+
+Fixes
+    #60 Citizens sometimes spawned in ground
+    #61 Citizen death wasn't affecting town population
+    #59 Gender distribution was random
+    #65 City limits markers follow terrain
+
+
 Pre-Alpha Revision 6 28-Dec-2012
 
 Features
