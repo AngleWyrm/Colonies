@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 
 import colonies.vector67.src.BlockColoniesChest;
+import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityAIBase;
@@ -69,10 +70,30 @@ public class EntityAIJoinTown extends EntityAIBase
     {
     	if(TileEntityTownHall.playerTown != null){
     		Utility.Debug("Continuing Journey");
+    		
+    		// Arrive at town hall
     		if(distanceToBlock(TileEntityTownHall.playerTown) < 4d){
-    			Utility.Debug("Journey Finished!");
-				Minecraft.getMinecraft().thePlayer.addChatMessage("A new citizen arrived in town!");    			
-    			citizen.firstVisit = false;
+    			// assign housing
+    			Utility.Debug("Assigning housing");
+				Minecraft.getMinecraft().thePlayer.addChatMessage("A new citizen settled in town!");    			
+    			citizen.firstVisit = false; // TODO: replace with housing availability check
+    			
+    			if(TileEntityTownHall.playerTown.homesList != null && !TileEntityTownHall.playerTown.homesList.isEmpty()){
+    				// move into first house with vacancy and complimentary gender
+    				for(TileEntityColoniesChest testHouse : TileEntityTownHall.playerTown.homesList){
+    					if(testHouse.hasVacancy(citizen)){
+    						citizen.residence = testHouse;
+    						citizen.residence.moveIn(citizen);
+    						break;
+    					}
+    				}
+    			}
+    			if(citizen.residence == null){
+    				// couldn't find a suitable residence, use town hall
+    				citizen.residence = TileEntityTownHall.playerTown;
+    				citizen.residence.moveIn(citizen);
+    			}
+    			
     			return false;
     		}
     	}

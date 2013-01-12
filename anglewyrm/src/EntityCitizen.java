@@ -46,7 +46,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public boolean hasHomeTown;
 	public TileEntityTownHall homeTown;
 	public TileEntityColoniesChest residence;
-	public boolean firstVisit = true; // a bit clumsy
+	public boolean firstVisit = true; // TODO: replace with check for housing availability
 	
 	public TileEntityColoniesChest employer;
 	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }

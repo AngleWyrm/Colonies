@@ -1,6 +1,7 @@
 package colonies.vector67.src;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
@@ -10,12 +11,21 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
+import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Point;
 import colonies.anglewyrm.src.TileEntityTownHall;
+import colonies.anglewyrm.src.Utility;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
 	private ItemStack[] chestContents = new ItemStack[36];
+	private LinkedList<EntityCitizen> occupants;
+	private int maxOccupancy = 2;
+	
+	public TileEntityColoniesChest(){
+		super();
+		occupants = new LinkedList<EntityCitizen>();
+	}
 	
 	public Point getPoint(){
 		return new Point(this.xCoord, this.yCoord, this.zCoord);
@@ -436,6 +446,38 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         super.invalidate();
         this.updateContainingBlockInfo();
         this.checkForAdjacentChests();
+        this.evictOccupants();
     }
+    
+    private void evictOccupants(){
+    	if(occupants == null) return;
+    	EntityCitizen evictedTennant;
+    	while(!occupants.isEmpty()){
+    		evictedTennant = occupants.getFirst();
+    		evictedTennant.residence = null;
+    		occupants.removeFirst();
+    	}
+    }
+    
+	public boolean hasVacancy(EntityCitizen candidate) {
+		// gender bias may need further consideration for employment scenarios
+		if(occupants.size() >= maxOccupancy){
+			Utility.chatMessage("house full " + occupants.size());
+			return false;
+		}
+		
+		for(EntityCitizen occupant : occupants){
+			if(occupant.isMale == candidate.isMale ){
+				Utility.chatMessage("House already contains a " + (occupant.isMale? "male":"female"));
+				return false;
+			}
+		}
+		Utility.chatMessage("appropriate housing found " + occupants.size());
+		return true;
+	}
+	public void moveIn(EntityCitizen newOccupant) {
+		if(occupants == null) return;
+		occupants.add(newOccupant);
+	}
 
 }
