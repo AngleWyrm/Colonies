@@ -71,6 +71,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	    this.tasks.addTask(4, new EntityAIJoinTown(this));
 		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(5, new EntityAIGoHomeAtNight(this));
+	    this.tasks.addTask(6, new EntityAIVisit(this));
 	    this.tasks.addTask(6, new EntityAIWander(this, this.moveSpeed));
 	    this.tasks.addTask(7, new EntityAIGoHomeAtNight(this));
 

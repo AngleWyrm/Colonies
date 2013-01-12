@@ -14,7 +14,7 @@ import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.ModLoader;
 import colonies.vector67.src.TileEntityColoniesChest;
 
-// Join a town
+// Go home at night
 public class EntityAIGoHomeAtNight extends EntityAIBase 
 {
 	public static double TOO_FAR_AWAY = 30;
@@ -33,6 +33,7 @@ public class EntityAIGoHomeAtNight extends EntityAIBase
 		// reasons to idle this task in the background
 		if( citizen.worldObj.isDaytime() ) return false;
 		if( TileEntityTownHall.playerTown == null ) return false;
+		if((destination != null) && (distanceToBlock(destination) < 5d)) return false;
 
 		return true;
 	}
@@ -58,7 +59,7 @@ public class EntityAIGoHomeAtNight extends EntityAIBase
     {
     	if(destination == null) return false;
     	
-    	if(distanceToBlock(destination) < 4d){
+    	if(distanceToBlock(destination) < 5d){
 			Utility.Debug("Bed time");
 			// Minecraft.getMinecraft().thePlayer.addChatMessage("Sleeping");    			
 			return false;
