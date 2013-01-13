@@ -2,10 +2,13 @@ package colonies.anglewyrm.src;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+import cpw.mods.fml.common.Side;
+import cpw.mods.fml.common.asm.SideOnly;
 
-	public class ColoniesSoundManager 
+public class ColoniesSoundManager 
 	{
 	   @ForgeSubscribe
+	   @SideOnly(Side.CLIENT)
 	    public void onSound(SoundLoadEvent event)
 	    {
 	        try
