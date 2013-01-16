@@ -65,6 +65,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.bread, 2));
 
 		this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(1, new EntityAIEatSomething(this));
 	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
 	    this.tasks.addTask(3, new EntityAIMaintainInventoryLevels(this));
@@ -105,7 +106,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
         
         // If not playing Peaceful mode, tick down hunger
         if(this.worldObj.difficultySetting != 0){
-        	hunger = hunger - 0.0005f; // 0.0005f is about 1/2 hunger/minute
+        	hunger = hunger - 0.02f; // 0.0005f is about 1/2 hunger/minute
         	
         	// Starvation
         	if(hunger < 0){

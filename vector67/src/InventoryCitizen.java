@@ -13,6 +13,7 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
+import net.minecraft.src.ItemFood;
 
 public class InventoryCitizen implements IInventory{
 
@@ -48,6 +49,24 @@ public class InventoryCitizen implements IInventory{
     	}
     	// TODO: check armor slots and in-hand slot
     	return sum;
+    }
+    
+    public boolean eatFood(){
+    	if(citizen == null) return false;
+    	
+    	// search for and consume a food item
+    	for (int index = 0; index < this.mainInventory.length; ++index){
+    		if(this.mainInventory[index] != null){
+    			Item item = this.mainInventory[index].getItem();
+    			if((item != null) && (item instanceof ItemFood)){
+    				// found a food stack in main inventory
+    				citizen.hunger += ((ItemFood)item).getHealAmount();
+    				consumeInventoryItem(index);
+    				return true;
+    			}
+    		}
+    	}
+    	return false;
     }
     
     /**
