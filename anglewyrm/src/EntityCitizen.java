@@ -105,7 +105,16 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
         
         // If not playing Peaceful mode, tick down hunger
         if(this.worldObj.difficultySetting != 0){
-        	hunger = hunger - 0.0005f; // about 1/2 hunger/minute
+        	hunger = hunger - 0.0005f; // 0.0005f is about 1/2 hunger/minute
+        	
+        	// Starvation
+        	if(hunger < 0){
+        		hunger = 0;
+        		this.damageEntity(DamageSource.starve, 1);
+        		if(this.health <= 0 && !this.dead){
+        			this.onDeath(DamageSource.starve);
+        		}
+        	}
         }
 
 		// citizen status special effects
@@ -472,11 +481,17 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		return false;
 	}
 	
+	// TODO: This is not being called upon death.
+	@Override
 	public void onDeath(DamageSource _damageSource){
 		// if this citizen belongs to a town, leave that town before dying
 		if(this.homeTown != null){
 			homeTown.leaveTown(this);
 			this.homeTown = null;
+		}
+		if(_damageSource == DamageSource.starve){
+			Utility.chatMessage("Citizen starved");
+			this.worldObj.playSoundAtEntity(this, this.getDeathSound(), 0.15F, 1.0F);
 		}
 		super.onDeath(_damageSource);
 	}
