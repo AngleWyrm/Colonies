@@ -23,7 +23,7 @@ public class Recipes
 			"SXS","XCX","SXS", 'S',Block.sapling, 'X',Item.axeStone, 'C',BlockContainer.chest});
 		
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.house), new Object[]{
-			"TBT","DCD","TBT", 'T',Block.torchWood, 'B',Item.bed, 'C',BlockContainer.chest, 'D',Block.doorWood});
+			"TBT"," C ","TBT", 'T',Block.torchWood, 'B',Item.bed, 'C',BlockContainer.chest});
 		
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.hunterBlind), new Object[]{
 			"TLT","LCL","TLT", 'T',Item.beefRaw, 'L',Item.leather, 'C',BlockContainer.chest});
