@@ -36,7 +36,7 @@ public class EntityAIEatSomething extends EntityAIBase
     		Utility.chatMessage("Ate something " + citizen.hunger);    	
     	}
     	else{
-    		Utility.chatMessage("Nothing to eat " + citizen.hunger);
+    		// Utility.chatMessage("Nothing to eat " + citizen.hunger);
     	}
 
     	// if still hungry, try again
