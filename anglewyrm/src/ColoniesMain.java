@@ -55,6 +55,7 @@ public class ColoniesMain
 	public static Block house;
 	public static Block hunterBlind;
 	public static Block fishermanHut;
+	public static Block alchemistShop;
 	
 	//public static GuiHandler guiHandlerChest;
 	//public static GuiHandlerColoniesChest guiHandlerChest;
@@ -115,6 +116,7 @@ public class ColoniesMain
 	public static int blockHouseID;
 	public static int hunterBlindID;
 	public static int fishermanHutID;
+	public static int alchemistShopID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -131,6 +133,7 @@ public class ColoniesMain
 	public static String skinLumberjack;
 	public static String skinHunter;
 	public static String skinFisherman;
+	public static String skinAlchemist;
 	
 	public static String guiChestBackground;
 	
@@ -145,6 +148,7 @@ public class ColoniesMain
 		blockHouseID    = config.getBlock("blockHouseID",    1106).getInt();
 		hunterBlindID   = config.getBlock("hunterBlindID",   1107).getInt();
 		fishermanHutID  = config.getBlock("fishermanHutID",  1108).getInt();
+		alchemistShopID = config.getBlock("alchemistShopID", 1109).getInt();
 		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
@@ -161,6 +165,7 @@ public class ColoniesMain
 		skinLumberjack        = config.get("Skins", "skinLumberjack",        "/colonies/anglewyrm/gfx/lumberjack.png").value;
 		skinHunter            = config.get("Skins", "skinHunter",            "/colonies/kzolp67/gfx/Hunter.png").value;
 		skinFisherman         = config.get("Skins", "skinFisherman",         "/colonies/irontaxi/gfx/fisherman2.png").value;
+		skinAlchemist         = config.get("Skins", "skinAlchemist",         "/colonies/irontaxi/gfx/alchemist.png").value;
 
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
@@ -216,8 +221,15 @@ public class ColoniesMain
 		fishermanHut = new BlockFishermanHut(fishermanHutID);
 		LanguageRegistry.addName(fishermanHut, "Fisherman's Hut");
 		GameRegistry.registerBlock(fishermanHut);
-		GameRegistry.registerTileEntity(TileEntityHunterBlind.class, "container.fishermanHut");
+		GameRegistry.registerTileEntity(TileEntityFishermanHut.class, "container.fishermanHut");
 		LanguageRegistry.instance().addStringLocalization("container.fishermanHut", "en_US", "Fisherman's Hut");
+
+		// Alchemist's Shop
+		alchemistShop = new BlockAlchemistShop(alchemistShopID);
+		LanguageRegistry.addName(alchemistShop, "Alchemist's Shop");
+		GameRegistry.registerBlock(alchemistShop);
+		GameRegistry.registerTileEntity(TileEntityAlchemistShop.class, "container.alchemistShop");
+		LanguageRegistry.instance().addStringLocalization("container.alchemistShop", "en_US", "Alchemist's Shop");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
@@ -258,6 +270,10 @@ public class ColoniesMain
 		// Fisherman
 		EntityRegistry.registerGlobalEntityID(EntityFisherman.class, "Fisherman", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Fisherman.name", "en_US", "Fisherman");
+
+		// Alchemist
+		EntityRegistry.registerGlobalEntityID(EntityAlchemist.class, "Alchemist", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Alchemist.name", "en_US", "Alchemist");
 
 		}
 }

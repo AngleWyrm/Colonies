@@ -13,7 +13,7 @@ public class TileEntityFishermanHut extends TileEntityColoniesChest {
 
 	@Override
     public String getInvName(){
-        return "container.FishermanHut";
+        return "container.fishermanHut";
     }
 
 }
