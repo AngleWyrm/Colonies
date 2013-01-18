@@ -106,7 +106,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
         
         // If not playing Peaceful mode, tick down hunger
         if(this.worldObj.difficultySetting != 0){
-        	hunger = hunger - 0.02f; // 0.0005f is about 1/2 hunger/minute
+        	hunger = hunger - 0.0005f; // 0.0005f is about 1/2 hunger/minute
         	
         	// Starvation
         	if(hunger < 0){

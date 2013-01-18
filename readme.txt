@@ -11,6 +11,22 @@ PREREQUISITES:
 
 RELEASE NOTES
 
+Pre-Alpha Revision 9 18-Jan-2013
+
+Features
+    #75 Alchemist and alchemist's shop
+    Citizens move into houses, as well as town hall
+    Citizens go home at night
+
+Fixes
+    #72 House recipe wasn't working
+    #22 Server side wasn't working
+
+Known Issues
+    Citizens starve even when bread is available
+    Alchemist's shop displays as a logging camp chest
+
+
 Pre-Alpha Revision 8 12-Jan-2013
 
 Features
