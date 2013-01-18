@@ -31,5 +31,8 @@ public class Recipes
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.fishermanHut), new Object[]{
 			"SSS","FCF","WBW", 'S',Block.stoneSingleSlab, 'F',Item.fishingRod, 'C',BlockContainer.chest,
 			'W',Block.woodSingleSlab, 'B',Item.bucketWater});
+		
+		GameRegistry.addRecipe( new ItemStack(ColoniesMain.alchemistShop), new Object[]{
+			" F "," C "," B ", 'F',Item.flintAndSteel, 'B',BlockContainer.brewingStand, 'C',BlockContainer.chest});
 	}	
 }
