@@ -1,5 +1,6 @@
 package colonies.lohikaarme.src;
 
+import net.minecraft.src.GuiButton;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.StatCollector;
 import colonies.anglewyrm.src.GuiColoniesChest;
@@ -15,6 +16,7 @@ public class GuiTownHall extends GuiColoniesChest {
 	@Override
 	public void initGui(){
 	  super.initGui();
+	 controlList.add(new GuiButtonColonies(0, this.width / 2 + 30, this.height / 4 - 4,50,10, "Info"));
 	}
 
 }
