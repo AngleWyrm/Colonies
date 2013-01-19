@@ -4,6 +4,8 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import colonies.lohikaarme.src.GuiHouse;
+import colonies.lohikaarme.src.GuiTownHall;
 import colonies.vector67.src.TileEntityColoniesChest;
 
 public class GuiHandlerColoniesChest implements IGuiHandler {
@@ -22,9 +24,9 @@ public class GuiHandlerColoniesChest implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-            if(tileEntity instanceof TileEntityColoniesChest){
-                    return new GuiColoniesChest(player.inventory, (TileEntityColoniesChest) tileEntity);
+            switch(ID){
+            case 0:return new GuiTownHall((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory);
+            case 1:return new GuiHouse((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory);
             }
             return null;
     }

@@ -58,7 +58,7 @@ public class ColoniesMain
 	public static Block alchemistShop;
 	
 	//public static GuiHandler guiHandlerChest;
-	//public static GuiHandlerColoniesChest guiHandlerChest;
+	public static GuiHandlerColoniesChest guiHandlerChest;
 	//public static List<TileEntityTownHall> townsList;
 
 
@@ -83,9 +83,9 @@ public class ColoniesMain
 	public void init(FMLInitializationEvent evt)
 	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
-		// guiHandlerChest = new GuiHandlerColoniesChest();
+		 guiHandlerChest = new GuiHandlerColoniesChest();
 		// guiHandlerChest = new GuiHandler();
-		// NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
+		 NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
 		proxy.registerRenderInformation(); 
 		Recipes.registerRecipes();
 		

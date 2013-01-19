@@ -7,13 +7,15 @@ public class TileEntityHouse extends TileEntityColoniesChest {
 
 	public static TileEntityHouse house = new TileEntityHouse();
 	
+	private EntityCitizen[] owners;
+	
 	public TileEntityHouse() {
 		super();
 	}
 
 	@Override
     public String getInvName(){
-        return "container.house";
+        return "House";
     }
 
 }

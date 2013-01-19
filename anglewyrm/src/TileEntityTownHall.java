@@ -48,7 +48,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		newCitizen.homeTown = this;
 		if(citizensList.offer(newCitizen)){
 	 		Utility.chatMessage("A Citizen joined " 
-	   				+ TileEntityTownHall.playerTown.townName + " (pop: " 
+	   				+ TileEntityTownHall.playerTown.townName + " (pop: "  
 	   				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
 	   				+ TileEntityTownHall.playerTown.maxPopulation + ")");
 	 		}

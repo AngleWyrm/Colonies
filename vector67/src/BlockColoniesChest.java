@@ -31,6 +31,9 @@ import colonies.anglewyrm.src.Point;
 
 public class BlockColoniesChest extends BlockContainer {
 
+	//ID that is used to know what gui to show at Handler
+	protected int GuiID=0;
+	
 	//private Random random = new Random();
 	public BlockColoniesChest(int id){
 		super(id, Material.wood);
@@ -376,8 +379,8 @@ public class BlockColoniesChest extends BlockContainer {
             {
             	// NOTE: Choose first line for default chest
             	// and second line for custom chest GUI (WIP)
-                player.displayGUIChest((IInventory)chest);
-                //player.openGui(ColoniesMain.instance, 0, theWorld, x, y, z);
+//                player.displayGUIChest((IInventory)chest);
+                player.openGui(ColoniesMain.instance, GuiID, theWorld, x, y, z);
                 return true;
             }
         }

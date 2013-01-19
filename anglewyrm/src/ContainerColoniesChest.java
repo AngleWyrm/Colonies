@@ -6,18 +6,28 @@ import colonies.vector67.src.TileEntityColoniesChest;
 public class ContainerColoniesChest extends Container {
 
         protected TileEntityColoniesChest tileEntity;
-       
+        private int numrows;
+        
         public ContainerColoniesChest (InventoryPlayer inventoryPlayer, TileEntityColoniesChest te){
                 tileEntity = te;
-
+                tileEntity.openChest();
+                numrows = te.getSizeInventory()/9;
+                
                 //the Slot constructor takes the IInventory and the slot number in that it binds to
                 //and the x-y coordinates it resides on-screen
-                addSlotToContainer(new Slot(tileEntity, 0, 76, 37));
-
+                for(int var4 = 0;var4 < numrows; ++var4){
+                	for (int var5 = 0; var5 < 9; ++var5){
+                      addSlotToContainer(new Slot(tileEntity,var5 + var4 * 9, 8 + var5 * 18, 18 + var4 * 18));
+                    }
+                }
                 //commonly used vanilla code that adds the player's inventory
                 bindPlayerInventory(inventoryPlayer);
         }
 
+//        public ContainerColoniesChest(IInventory par1IInventory, IInventory par2IInventory){
+          
+//        }
+        
         @Override
         public boolean canInteractWith(EntityPlayer player) {
                 return tileEntity.isUseableByPlayer(player);
@@ -67,6 +77,11 @@ public class ContainerColoniesChest extends Container {
                 }
 
                 return stack;
+        }
+        public void onCraftGuiClosed(EntityPlayer par1EntityPlayer)
+        {
+            super.onCraftGuiClosed(par1EntityPlayer);
+            tileEntity.closeChest();
         }
 
 }

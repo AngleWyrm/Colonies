@@ -15,6 +15,7 @@ public class BlockHouse extends BlockColoniesChest {
 		super(id);
 		setBlockName("block.house");
 		setCreativeTab(CreativeTabs.tabDecorations);
+		GuiID = 1;
 	}
 	
 	@Override

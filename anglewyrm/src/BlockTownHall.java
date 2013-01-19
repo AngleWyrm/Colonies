@@ -18,6 +18,7 @@ public class BlockTownHall extends BlockColoniesChest
 		setBlockName("block.townhall");
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setTickRandomly(true); // for city limits effects
+		GuiID = 0;
 	}
 	
 	@Override
