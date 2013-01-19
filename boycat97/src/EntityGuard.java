@@ -35,30 +35,31 @@ public class EntityGuard extends EntityCitizen {
 			return ColoniesMain.skinGuard;
 	}
 
-//	protected String getLivingSound() {
-//		if (citizenGreetings){
-//			if (Utility.getLootCategory()>=3) { // Rare or above
-//				return "colonies.m-hello";
-//			}
-//		}
-//		return "";
-//	}
+	// TODO: custom voices
+	protected String getLivingSound() {
+		if (ColoniesMain.citizenGreetings){
+			if (Utility.getLootCategory()>=3) { // Rare or above
+				return "colonies.m-hello";
+			}
+		}
+		return "";
+	}
 
 	// Mob Loot for default Citizen
-//	protected int getDropItemId() {
-//		int lootID=1;
-//		
-//		switch(Utility.getLootCategory()) {
-//			case 1: // Common
-//				return Item.fishRaw.shiftedIndex;
-//			case 2: // Uncommon
-//				return Item.fishingRod.shiftedIndex;
-//			case 3: // Rare
-//				return Item.goldNugget.shiftedIndex;
-//			default: // Legendary
-//				return Item.ingotGold.shiftedIndex;
-//		}
-//	}
+	protected int getDropItemId() {
+		int lootID=1;
+		
+		switch(Utility.getLootCategory()) {
+			case 1: // Common
+				return Item.bread.shiftedIndex;
+			case 2: // Uncommon
+				return Item.swordWood.shiftedIndex;
+			case 3: // Rare
+				return Item.goldNugget.shiftedIndex;
+			default: // Legendary
+				return Item.ingotGold.shiftedIndex;
+		}
+	}
 
 	public void onLivingUpdate() {
 		super.onLivingUpdate();

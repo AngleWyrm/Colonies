@@ -1,6 +1,7 @@
 package colonies.boycat97.src;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.src.Block;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;

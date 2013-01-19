@@ -22,6 +22,7 @@ import colonies.thephpdev.src.TileEntityMine;
 import colonies.stabtokill.src.ColoniesAchievements;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.boycat97.src.BlockGuardHouse;
 import colonies.boycat97.src.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -173,9 +174,9 @@ public class ColoniesMain
 		skinHunter            = config.get("Skins", "skinHunter",            "/colonies/kzolp67/gfx/Hunter.png").value;
 		skinFisherman         = config.get("Skins", "skinFisherman",         "/colonies/irontaxi/gfx/fisherman2.png").value;
 		skinAlchemist         = config.get("Skins", "skinAlchemist",         "/colonies/irontaxi/gfx/alchemist.png").value;
-		skinArcher			  = config.get("Skins", "skinArcher", 			 "/colonies/boycat97/skin_archer.png").value;
-		skinGuard			  = config.get("Skins", "skinGuard", 			 "/colonies/boycat97/skin_footsoldier.png").value;
-		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/skin_sergeant").value;
+		skinArcher			  = config.get("Skins", "skinArcher", 			 "/colonies/boycat97/gfx/skin_archer.png").value;
+		skinGuard			  = config.get("Skins", "skinGuard", 			 "/colonies/boycat97/gfx/skin_footsoldier.png").value;
+		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/gfx/skin_sergeant").value;
 
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
@@ -240,6 +241,13 @@ public class ColoniesMain
 		GameRegistry.registerBlock(alchemistShop);
 		GameRegistry.registerTileEntity(TileEntityAlchemistShop.class, "container.alchemistShop");
 		LanguageRegistry.instance().addStringLocalization("container.alchemistShop", "en_US", "Alchemist's Shop");
+
+		// Guard House
+		guardHouse = new BlockGuardHouse(guardHouseID);
+		LanguageRegistry.addName(guardHouse, "Guard House");
+		GameRegistry.registerBlock(guardHouse);
+		GameRegistry.registerTileEntity(TileEntityGuardHouse.class, "container.guardHouse");
+		LanguageRegistry.instance().addStringLocalization("container.guardHouse", "en_US", "Guard House");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
@@ -288,7 +296,7 @@ public class ColoniesMain
 		// Guard
 		EntityRegistry.registerGlobalEntityID(EntityGuard.class, "Guard", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Guard.name", "en_US", "Guard");
-		
+/*		
 		// Archer
 		EntityRegistry.registerGlobalEntityID(EntityArcher.class, "Archer", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Archer.name", "en_US", "Archer");
@@ -296,6 +304,6 @@ public class ColoniesMain
 		// Sergeant
 		EntityRegistry.registerGlobalEntityID(EntitySergeant.class, "Sergeant", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Sergeant.name", "en_US", "Sergeant");		
-
+*/
 		}
 }
