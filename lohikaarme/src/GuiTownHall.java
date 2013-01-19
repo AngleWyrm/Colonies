@@ -16,7 +16,7 @@ public class GuiTownHall extends GuiColoniesChest {
 	@Override
 	public void initGui(){
 	  super.initGui();
-	 controlList.add(new GuiButtonColonies(0, this.width / 2 + 30, this.height / 4 - 4,50,10, "Info"));
+	 controlList.add(new GuiButtonColonies(0, this.width / 2 + 30, this.height / 4 - 5, 50, 12, "Info"));
 	}
 
 }
