@@ -7,8 +7,6 @@ public class TileEntityHouse extends TileEntityColoniesChest {
 
 	public static TileEntityHouse house = new TileEntityHouse();
 	
-	private EntityCitizen[] owners;
-	
 	public TileEntityHouse() {
 		super();
 	}
