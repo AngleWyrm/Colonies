@@ -22,6 +22,7 @@ import colonies.thephpdev.src.TileEntityMine;
 import colonies.stabtokill.src.ColoniesAchievements;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.boycat97.src.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -56,6 +57,7 @@ public class ColoniesMain
 	public static Block hunterBlind;
 	public static Block fishermanHut;
 	public static Block alchemistShop;
+	public static Block guardHouse;
 	
 	//public static GuiHandler guiHandlerChest;
 	//public static GuiHandlerColoniesChest guiHandlerChest;
@@ -117,6 +119,7 @@ public class ColoniesMain
 	public static int hunterBlindID;
 	public static int fishermanHutID;
 	public static int alchemistShopID;
+	public static int guardHouseID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -134,6 +137,9 @@ public class ColoniesMain
 	public static String skinHunter;
 	public static String skinFisherman;
 	public static String skinAlchemist;
+	public static String skinGuard;
+	public static String skinArcher;
+	public static String skinSergeant;
 	
 	public static String guiChestBackground;
 	
@@ -149,6 +155,7 @@ public class ColoniesMain
 		hunterBlindID   = config.getBlock("hunterBlindID",   1107).getInt();
 		fishermanHutID  = config.getBlock("fishermanHutID",  1108).getInt();
 		alchemistShopID = config.getBlock("alchemistShopID", 1109).getInt();
+		guardHouseID	= config.getBlock("guardHouseID", 	 1110).getInt();
 		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
@@ -166,6 +173,9 @@ public class ColoniesMain
 		skinHunter            = config.get("Skins", "skinHunter",            "/colonies/kzolp67/gfx/Hunter.png").value;
 		skinFisherman         = config.get("Skins", "skinFisherman",         "/colonies/irontaxi/gfx/fisherman2.png").value;
 		skinAlchemist         = config.get("Skins", "skinAlchemist",         "/colonies/irontaxi/gfx/alchemist.png").value;
+		skinArcher			  = config.get("Skins", "skinArcher", 			 "/colonies/boycat97/skin_archer.png").value;
+		skinGuard			  = config.get("Skins", "skinGuard", 			 "/colonies/boycat97/skin_footsoldier.png").value;
+		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/skin_sergeant").value;
 
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
@@ -274,6 +284,18 @@ public class ColoniesMain
 		// Alchemist
 		EntityRegistry.registerGlobalEntityID(EntityAlchemist.class, "Alchemist", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Alchemist.name", "en_US", "Alchemist");
+		
+		// Guard
+		EntityRegistry.registerGlobalEntityID(EntityGuard.class, "Guard", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Guard.name", "en_US", "Guard");
+		
+		// Archer
+		EntityRegistry.registerGlobalEntityID(EntityArcher.class, "Archer", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Archer.name", "en_US", "Archer");
+		
+		// Sergeant
+		EntityRegistry.registerGlobalEntityID(EntitySergeant.class, "Sergeant", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Sergeant.name", "en_US", "Sergeant");		
 
 		}
 }
