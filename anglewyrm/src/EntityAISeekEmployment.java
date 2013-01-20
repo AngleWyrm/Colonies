@@ -15,7 +15,14 @@ public class EntityAISeekEmployment extends EntityAIBase
 	{
 		// reasons to idle this process
 		if(TileEntityTownHall.playerTown == null) return false;
+		if(TileEntityTownHall.playerTown.employersList == null) return false;
+		if(TileEntityTownHall.playerTown.employersList.isEmpty()) return false;
 		
+		// for now, fill first available job in employers list
+		EntityCitizen newJob = TileEntityTownHall.playerTown.getNextJob();
+		if(newJob != null){
+			citizen.setNewJob(newJob);
+		}
 		
 		return false;
 	}

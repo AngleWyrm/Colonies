@@ -22,13 +22,18 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 	private LinkedList<EntityCitizen> occupants;
 	private int maxOccupancy = 2;
 	
+	public EntityCitizen workerType = new EntityCitizen(this.worldObj);
+	
 	public TileEntityColoniesChest(){
 		super();
 		occupants = new LinkedList<EntityCitizen>();
 	}
 	
-	public boolean isJobAvailable(){
-		return occupants.size() < maxOccupancy;
+	public EntityCitizen jobPositionAvailable(){
+		if(occupants.size() < maxOccupancy){
+			return workerType;
+		}
+		return null;
 	}
 	
 	public Point getPoint(){
