@@ -51,22 +51,37 @@ public class BlockHouse extends BlockColoniesChest {
     
     @Override
     public boolean removeChestFromTown(TileEntityColoniesChest _teChest){
-    	if(TileEntityTownHall.playerTown != null){
-    		if(TileEntityTownHall.playerTown.homesList == null) return false;
-    		if(TileEntityTownHall.playerTown.citizensList == null) return false;
-    		if(TileEntityTownHall.playerTown.citizensList.size() <=0) return false;
+    	TileEntityTownHall players = TileEntityTownHall.playerTown;
+    	if(players != null){
+    		if(players.homesList == null) return false;
+    		if(players.citizensList == null) return false;
+    		if(players.citizensList.size() <=0) return false;
     	    		
     		// TODO: Use list
-    		TileEntityTownHall.playerTown.maxPopulation -= 2;
-    		if(TileEntityTownHall.playerTown.maxPopulation <=0) return false;
-    		while(TileEntityTownHall.playerTown.citizensList.size() > TileEntityTownHall.playerTown.maxPopulation){
-    			TileEntityTownHall.playerTown.leaveTown(TileEntityTownHall.playerTown.citizensList.getLast());
+    		players.maxPopulation -= 2;
+//    		if(TileEntityTownHall.playerTown.maxPopulation <=0) return false;
+    		
+    		int size1 = players.homesList.size();
+    		for(int i=0;i<size1;i++){
+    		  if(_teChest.xCoord==players.homesList.get(i).xCoord){
+    			if(_teChest.yCoord==players.homesList.get(i).yCoord){
+    			  if(_teChest.zCoord==players.homesList.get(i).zCoord){
+    				players.homesList.remove(i);
+    				players.homesList.remove(i);//removes a ghost!
+    				break;
+    			  }
+    			}
+    		  }
+    		}
+    		
+    		while(players.citizensList.size() >players.maxPopulation){
+    			players.leaveTown(players.citizensList.getLast());
     		}
     		
     		Minecraft.getMinecraft().thePlayer.addChatMessage("Housing reduced for " 
-				+ TileEntityTownHall.playerTown.townName + " (pop: " 
-				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
-				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+				+ players.townName + " (pop: " 
+				+ players.citizensList.size() + "/"
+				+ players.maxPopulation + ")");
     	}
     	
     	return false;
