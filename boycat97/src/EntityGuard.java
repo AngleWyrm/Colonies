@@ -15,6 +15,12 @@ public class EntityGuard extends EntityCitizen {
 	
 	protected EnumGuardRank currentRank;	
 	
+	public enum EnumGuardRank {
+		FootSoldier,
+		Archer,
+		Seargent	
+	};
+	
 	public EntityGuard(World world) { 
 		super(world);		
 		this.texture = ColoniesMain.skinGuard;
