@@ -22,9 +22,16 @@ public class EntityHunter extends EntityCitizen {
 
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.bow,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.arrow,64));
-
-		this.skills = new HashMap<jobs, Integer>(10);
-		this.skills.put(jobs.unemployed, 10);
+	    
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityHunter){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
 	}
 	
 	public String getTexture() {

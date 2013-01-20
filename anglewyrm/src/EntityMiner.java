@@ -38,9 +38,18 @@ public class EntityMiner extends EntityCitizen{
 		this.targetTasks.addTask(1, new EntityAIMine(this));
 		
 		this.texture = ColoniesMain.skinMiner;
-		this.skills = new HashMap<jobs, Integer>(10);
-		this.skills.put(jobs.unemployed, 10);
-		this.hasPickaxe = false;
+	    
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityMiner){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
+
+	    this.hasPickaxe = false;
 		this.pickaxe = null;
 		this.lastSearch = ticksExisted;
 

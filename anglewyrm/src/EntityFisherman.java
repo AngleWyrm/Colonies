@@ -17,9 +17,16 @@ public class EntityFisherman extends EntityCitizen {
 		this.texture = ColoniesMain.skinFisherman;
 
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.fishingRod));
-
-		this.skills = new HashMap<jobs, Integer>(10);
-		this.skills.put(jobs.unemployed, 10);
+	    
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityFisherman){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
 
 		
 		// TODO: Would like miners to go hostile with a pickaxe if attacked
