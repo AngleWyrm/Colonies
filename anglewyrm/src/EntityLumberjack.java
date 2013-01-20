@@ -19,9 +19,16 @@ public class EntityLumberjack extends EntityCitizen {
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,10));
-
-		this.skills = new HashMap<jobs, Integer>(10);
-		this.skills.put(jobs.unemployed, 10);
+	    
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityLumberjack){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
 
 		
 		// TODO: Would like miners to go hostile with a pickaxe if attacked

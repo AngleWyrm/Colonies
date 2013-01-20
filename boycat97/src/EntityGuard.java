@@ -9,7 +9,6 @@ import paulscode.sound.Vector3D;
 import colonies.anglewyrm.src.ColoniesMain;
 import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Utility;
-import colonies.anglewyrm.src.EntityCitizen.jobs;
 
 public class EntityGuard extends EntityCitizen {
 	
@@ -28,9 +27,16 @@ public class EntityGuard extends EntityCitizen {
 
 		//TODO: Figure out all the items that are required for desires.
 		//desiredInventory.addItemStackToInventory(new ItemStack(Item.fishingRod));
-
-		this.skills = new HashMap<jobs, Integer>(10);
-		this.skills.put(jobs.unemployed, 10);
+	    
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityGuard){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
 
 	}
 	

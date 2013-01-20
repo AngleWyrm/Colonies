@@ -6,17 +6,11 @@ import java.util.LinkedList;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
-import net.minecraft.src.EntityAIMoveIndoors;
-import net.minecraft.src.EntityAIMoveTwardsRestriction;
-import net.minecraft.src.EntityAIOpenDoor;
 import net.minecraft.src.EntityAISwimming;
-import net.minecraft.src.EntityAITempt;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityCreature;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityMob;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IMob;
 import net.minecraft.src.Item;
@@ -25,10 +19,8 @@ import net.minecraft.src.MathHelper;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
-import net.minecraft.src.StatList;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.InventoryCitizen;
 import colonies.vector67.src.TileEntityColoniesChest;
 
@@ -48,10 +40,11 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public TileEntityColoniesChest residence;
 	public boolean firstVisit = true; // TODO: replace with check for housing availability
 	
+	// Employment Mechanics
 	public TileEntityColoniesChest employer;
-	public static enum jobs {unemployed, miner, farmer, builder, lumberjack, fisherman }
-	public jobs job;
-	public HashMap<jobs, Integer> skills;
+	public static LinkedList<EntityCitizen> jobTypes = new LinkedList<EntityCitizen>();
+	private EntityCitizen[] skillPoints = new EntityCitizen[10];
+
 	private HashMap <Integer, PathNavigator> paths;
 	
 	public EntityCitizen(World par1World) {
@@ -78,11 +71,25 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 
 	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 	    
-	    this.job = jobs.unemployed;
-	    this.skills = new HashMap<jobs, Integer>(10);
-	    this.skills.put(jobs.unemployed, 10);
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityCitizen){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
+	    
+	    // initialize skill points
+	    for(EntityCitizen skill : skillPoints){
+	    	skill = this;
+	    }
+
 	    this.paths = new HashMap<Integer, PathNavigator>();
 	}
+	
+	
 	
 	public ItemStack getItemFromChest(TileEntityColoniesChest chest, ItemStack desiredItem){
 		if(chest == null || desiredItem == null) return null;

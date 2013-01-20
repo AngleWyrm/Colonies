@@ -10,8 +10,16 @@ public class EntityWife extends EntityCitizen{
 		super(world);
 		this.isMale = false;
 		this.texture = ColoniesMain.skinWife;
-		this.skills = new HashMap<jobs, Integer>(10);
-	    this.skills.put(jobs.unemployed, 10);
+	    
+	    // add this type of employment to the jobTypes if necessary
+	    boolean alreadyInList = false;
+	    for(EntityCitizen job : jobTypes){
+	    	if(job instanceof EntityWife){
+	    		alreadyInList = true;
+	    		break;
+	    	}
+	    }
+	    if(!alreadyInList) jobTypes.add(this);
 	    
 		// TODO: would like Wives to panic if attacked
 
