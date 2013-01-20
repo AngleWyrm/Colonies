@@ -503,4 +503,9 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		}
 		super.onDeath(_damageSource);
 	}
+
+	public void setNewJob(EntityCitizen newJob) {
+		// TODO; replace 'this' with newjob?
+	}
+
 }

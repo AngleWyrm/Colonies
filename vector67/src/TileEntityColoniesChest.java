@@ -27,6 +27,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 		occupants = new LinkedList<EntityCitizen>();
 	}
 	
+	public boolean isJobAvailable(){
+		return occupants.size() < maxOccupancy;
+	}
+	
 	public Point getPoint(){
 		return new Point(this.xCoord, this.yCoord, this.zCoord);
 	}
