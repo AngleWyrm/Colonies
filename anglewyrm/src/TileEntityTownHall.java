@@ -1,10 +1,12 @@
 package colonies.anglewyrm.src;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.NBTTagCompound;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
@@ -184,5 +186,53 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			if(p.y <= 5) return p; // failsafe
 		}
 		return p;
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
+	  super.writeToNBT(par1NBTTagCompound);
+	  
+	  
+	  par1NBTTagCompound.setString("Townsname",playerTown.townName);
+	  
+	  int i0=0;
+	  TileEntityColoniesChest i1;
+	  Iterator<TileEntityColoniesChest> ite  = playerTown.homesList.iterator();
+	  while(ite.hasNext()){
+		++i0;
+		i1 = ite.next();
+		par1NBTTagCompound.setInteger("Homeslist" + i0 + "x", i1.xCoord);
+		par1NBTTagCompound.setInteger("Homeslist" + i0 + "y", i1.yCoord);
+		par1NBTTagCompound.setInteger("Homeslist" + i0 + "z", i1.zCoord);
+		System.out.println("saved");
+	  }
+	  par1NBTTagCompound.setInteger("HomeslistSize", i0);/*  */
+	  
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound){
+	  super.readFromNBT(par1NBTTagCompound);
+	  System.out.println("added");
+	  townName = par1NBTTagCompound.getString("Townsname");
+	  
+	  int size = par1NBTTagCompound.getInteger("HomeslistSize");
+	  for(int i=1;i<=size;i++){
+		int x = par1NBTTagCompound.getInteger("Homeslist"+i+"x");
+		int y = par1NBTTagCompound.getInteger("Homeslist"+i+"y");
+		int z = par1NBTTagCompound.getInteger("Homeslist"+i+"z");
+		
+		try{
+		  homesList.add((TileEntityColoniesChest) worldObj.getBlockTileEntity(x,y,z));
+		  
+		}
+		catch(Exception e){
+		  Utility.Debug("[err] it wasn't home...");
+		}
+		
+	  }
+	  
+	  playerTown = this;
+	  /**/
 	}
 }
