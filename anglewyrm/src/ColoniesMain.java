@@ -164,7 +164,7 @@ public class ColoniesMain
 		
 		skinDefault           = config.get("Skins", "skinDefault",           "/colonies/grahammarcellus/gfx/unemployedskin1.png").value;
 		skinMaleSwimming      = config.get("Skins", "skinMaleSwimming",      "/colonies/anglewyrm/gfx/m-swimskin.png").value;
-		skinMiner             = config.get("Skins", "skinMiner",             "/colonies/grahammarcellus/gfx/minerskin.png").value;
+		skinMiner             = config.get("Skins", "skinMiner",             "/colonies/irontaxi/gfx/minerSkin1.png").value;
 		skinMinerSwimming     = config.get("Skins", "skinMinerSwimming",     "/colonies/anglewyrm/gfx/miner_swim.png").value;
 		skinWife              = config.get("Skins", "skinWife",              "/colonies/austensible/gfx/wife2.png").value;
 		skinFemaleSwimming    = config.get("Skins", "skinFemaleSwimming",    "/colonies/anglewyrm/gfx/white_bikini.png").value;
