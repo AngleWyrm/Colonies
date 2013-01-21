@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.IInventory;
@@ -155,7 +156,30 @@ public class TileEntityTownHall extends TileEntityColoniesChest
            		newGuy = new EntityWife(worldObj);
            	}
            	else{
-           		newGuy = new EntityCitizen(worldObj);
+           		Random random = new Random();
+           		switch(random.nextInt(6)){
+           			case 0:
+           				newGuy = new EntityAlchemist(worldObj);
+           				break;
+           			case 1:
+           				newGuy = new EntityFisherman(worldObj);
+           				break;
+           			case 2:
+           				newGuy = new EntityLumberjack(worldObj);
+           				break;
+           			case 3:
+           				newGuy = new EntityMiner(worldObj);
+           				break;
+           			case 4:
+           				newGuy = new EntityPriestess(worldObj);
+           				break;
+           			case 5:
+           				newGuy = new EntityWife(worldObj);
+           				break;
+           			default:
+           				newGuy = new EntityCitizen(worldObj); //This should never happen
+           				break;
+           		}
            	}
         	
         	// pick a random direction at the town perimeter
