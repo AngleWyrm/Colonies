@@ -75,7 +75,7 @@ public class EntityAIJoinTown extends EntityAIBase
     		if(distanceToBlock(TileEntityTownHall.playerTown) < 4d){
     			// assign housing
     			Utility.Debug("Assigning housing");
-				Minecraft.getMinecraft().thePlayer.addChatMessage("A new citizen settled in town!");    			
+				Utility.chatMessage("A new citizen settled in town!");    			
     			citizen.firstVisit = false; // TODO: replace with housing availability check
     			
     			if(TileEntityTownHall.playerTown.homesList != null && !TileEntityTownHall.playerTown.homesList.isEmpty()){
