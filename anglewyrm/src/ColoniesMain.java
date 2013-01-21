@@ -176,7 +176,7 @@ public class ColoniesMain
 		skinAlchemist         = config.get("Skins", "skinAlchemist",         "/colonies/irontaxi/gfx/alchemist.png").value;
 		skinArcher			  = config.get("Skins", "skinArcher", 			 "/colonies/boycat97/gfx/skin_archer.png").value;
 		skinGuard			  = config.get("Skins", "skinGuard", 			 "/colonies/boycat97/gfx/skin_footsoldier.png").value;
-		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/gfx/skin_sergeant").value;
+		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/gfx/skin_sergeant.png").value;
 
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
@@ -296,14 +296,6 @@ public class ColoniesMain
 		// Guard
 		EntityRegistry.registerGlobalEntityID(EntityGuard.class, "Guard", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Guard.name", "en_US", "Guard");
-/*		
-		// Archer
-		EntityRegistry.registerGlobalEntityID(EntityArcher.class, "Archer", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
-		LanguageRegistry.instance().addStringLocalization("entity.Archer.name", "en_US", "Archer");
-		
-		// Sergeant
-		EntityRegistry.registerGlobalEntityID(EntitySergeant.class, "Sergeant", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
-		LanguageRegistry.instance().addStringLocalization("entity.Sergeant.name", "en_US", "Sergeant");		
-*/
+
 		}
 }
