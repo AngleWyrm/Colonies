@@ -29,7 +29,10 @@ public class Utility
 	}
 	
 	public static void chatMessage(String txt){
-  		Minecraft.getMinecraft().thePlayer.addChatMessage(txt); 				 
+		Minecraft game = Minecraft.getMinecraft();
+		if(game == null) return;
+		
+  		game.thePlayer.addChatMessage(txt); 				 
 	}
 	
 }

@@ -52,10 +52,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		newCitizen.hasHomeTown = true;
 		newCitizen.homeTown = this;
 		if(citizensList.offer(newCitizen)){
-	 		Utility.chatMessage("A Citizen joined " 
-	   				+ TileEntityTownHall.playerTown.townName + " (pop: "  
-	   				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
-	   				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+	 		Utility.chatMessage("A Citizen joined "	+ playerTown.getTownLabel());
 	 		}
 		else{
 			Utility.Debug("[ERR] citizenList refused offer");
@@ -64,6 +61,22 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		return true;
 	}
 	
+	private String getTownLabel() {
+		String townLabel = new String();
+		if(townName != null) townLabel += townName;
+		townLabel += " (Pop: ";
+		if(citizensList != null && citizensList.isEmpty()){
+			townLabel += citizensList.size();
+			townLabel += "/";
+			townLabel += maxPopulation;
+			townLabel += ")";
+		}
+		else{
+			townLabel += "0)";
+		}
+		return townLabel;
+	}
+
 	// One citizen leaves town membership
 	public boolean leaveTown(EntityCitizen oldCitizen){
 		if((citizensList==null)||(oldCitizen==null)) return false;
