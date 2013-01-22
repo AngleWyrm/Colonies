@@ -247,8 +247,8 @@ public class ColoniesMain
 		guardHouse = new BlockGuardHouse(guardHouseID);
 		LanguageRegistry.addName(guardHouse, "Guard House");
 		GameRegistry.registerBlock(guardHouse);
-		GameRegistry.registerTileEntity(TileEntityGuardHouse.class, "container.guardHouse");
-		LanguageRegistry.instance().addStringLocalization("container.guardHouse", "en_US", "Guard House");
+		GameRegistry.registerTileEntity(TileEntityGuardHouse.class, "container.guardhouse");
+		LanguageRegistry.instance().addStringLocalization("container.guardhouse", "en_US", "Guard House");
 		
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");

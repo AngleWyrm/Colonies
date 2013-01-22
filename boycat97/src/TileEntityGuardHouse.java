@@ -13,6 +13,6 @@ public class TileEntityGuardHouse extends TileEntityColoniesChest {
 
 	@Override
     public String getInvName(){
-        return "container.GuardHouse";
+        return "container.guardhouse";
     }
 }

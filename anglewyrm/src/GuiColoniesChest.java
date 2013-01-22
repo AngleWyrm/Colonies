@@ -36,7 +36,7 @@ public class GuiColoniesChest extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int x, int y) 
     {
             // drawString parameters: string, x, y, color
-            fontRenderer.drawString(chestInventory.getInvName(), 8, 6, 0x404040);
+            fontRenderer.drawString(StatCollector.translateToLocal(chestInventory.getInvName()), 8, 6, 0x404040);
 
 //             Localization: draws "Inventory" or your regional equivalent
             fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),8,ySize - 62, 0x404040);
