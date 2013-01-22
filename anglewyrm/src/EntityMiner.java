@@ -34,7 +34,7 @@ public class EntityMiner extends EntityCitizen{
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.pickaxeSteel,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.pickaxeStone,2));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.torchWood,10));
-
+		System.out.println("here miner");
 		this.targetTasks.addTask(1, new EntityAIMine(this));
 		
 		this.texture = ColoniesMain.skinMiner;
