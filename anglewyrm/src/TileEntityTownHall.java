@@ -253,7 +253,6 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	  int i0=0;
 	  TileEntityColoniesChest i1;
 	  Iterator<TileEntityColoniesChest> ite  = playerTown.homesList.iterator();
-	  System.out.println("runned");
 	  while(ite.hasNext()){
 		++i0;
 		i1 = ite.next();
