@@ -44,7 +44,7 @@ public class EntityGuard extends EntityCitizen {
 		if (this.isInWater()) {
 			return ColoniesMain.skinMaleSwimming;
 		} else			
-			return ColoniesMain.skinGuard;
+			return this.texture;
 	}
 
 	// TODO: custom voices
