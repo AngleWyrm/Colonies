@@ -9,6 +9,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 import colonies.boycat97.src.EntityAIGoToWork;
+import colonies.src.ColoniesMain;
 
 public class EntityLumberjack extends EntityCitizen {
 	
