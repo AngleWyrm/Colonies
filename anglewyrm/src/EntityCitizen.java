@@ -44,6 +44,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public TileEntityColoniesChest employer;
 	public static LinkedList<EntityCitizen> jobTypes = new LinkedList<EntityCitizen>();
 	private EntityCitizen[] skillPoints = new EntityCitizen[10];
+	private int expertise = 0;
 
 	private HashMap <Integer, PathNavigator> paths;
 	
@@ -219,6 +220,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		if (this.isInWater()){
 			return ColoniesMain.skinMaleSwimming;
 		}
+		// TODO: return skin based on expertise in this job
 		return ColoniesMain.skinDefault;
     }
 
@@ -504,6 +506,15 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		super.onDeath(_damageSource);
 	}
 
+	public void respecSkillPoints()
+	{	
+		// add a point of current skill, lose a point of oldest skill
+		for(int index = 9; index > 1; index--){
+			skillPoints[index] = skillPoints[index-1];
+		}
+		expertise++;
+	}
+	
 	public void setNewJob(EntityCitizen newJob) {
 		// TODO; replace 'this' with newjob?
 	}
