@@ -5,7 +5,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.AchievementPage;
-import colonies.anglewyrm.src.ColoniesMain;
+import colonies.src.ColoniesMain;
 import cpw.mods.fml.common.ICraftingHandler;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 

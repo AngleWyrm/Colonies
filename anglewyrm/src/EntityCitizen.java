@@ -21,6 +21,7 @@ import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
+import colonies.src.ColoniesMain;
 import colonies.vector67.src.InventoryCitizen;
 import colonies.vector67.src.TileEntityColoniesChest;
 

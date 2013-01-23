@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;
@@ -8,8 +8,8 @@ import cpw.mods.fml.common.network.IGuiHandler;
 
 public class ServerProxy implements IGuiHandler
 {
-	public static String ITEMS_PNG  = "/colonies/lohikaarme/gfx/LItems.png";
-	public static String BLOCK_PNG  = "/colonies/anglewyrm/gfx/block.png";
+	public static String ITEMS_PNG  = "/colonies/gfx/Items.png";
+	public static String BLOCK_PNG  = "/colonies/gfx/block.png";
 
 	// Skins are going to be switched to variables, so players can download skins
 	/*

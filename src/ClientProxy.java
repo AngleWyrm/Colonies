@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.World;

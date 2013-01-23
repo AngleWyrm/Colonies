@@ -5,7 +5,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
-import colonies.anglewyrm.src.ServerProxy;
+import colonies.src.ServerProxy;
 
 public class ItemMeasuringTape extends Item{
   

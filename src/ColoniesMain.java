@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,29 @@ import colonies.thephpdev.src.TileEntityMine;
 import colonies.stabtokill.src.ColoniesAchievements;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
-import colonies.boycat97.src.BlockGuardHouse;
+import colonies.anglewyrm.src.BlockAlchemistShop;
+import colonies.anglewyrm.src.BlockFishermanHut;
+import colonies.anglewyrm.src.BlockHouse;
+import colonies.anglewyrm.src.BlockLoggingCamp;
+import colonies.anglewyrm.src.BlockTownHall;
+import colonies.anglewyrm.src.ColoniesSoundManager;
+import colonies.anglewyrm.src.EntityAlchemist;
+import colonies.anglewyrm.src.EntityCitizen;
+import colonies.anglewyrm.src.EntityFisherman;
+import colonies.anglewyrm.src.EntityLumberjack;
+import colonies.anglewyrm.src.EntityMiner;
+import colonies.anglewyrm.src.EntityPriestess;
+import colonies.anglewyrm.src.EntityWife;
+import colonies.anglewyrm.src.GuiHandlerColoniesChest;
+import colonies.anglewyrm.src.PacketHandler;
+import colonies.anglewyrm.src.Recipes;
+import colonies.anglewyrm.src.TestBlock;
+import colonies.anglewyrm.src.TileEntityAlchemistShop;
+import colonies.anglewyrm.src.TileEntityFishermanHut;
+import colonies.anglewyrm.src.TileEntityHouse;
+import colonies.anglewyrm.src.TileEntityLoggingCamp;
+import colonies.anglewyrm.src.TileEntityTownHall;
+import colonies.anglewyrm.src.Utility;
 import colonies.boycat97.src.*;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -68,7 +90,7 @@ public class ColoniesMain
 	@Instance
 	public static ColoniesMain instance;
 
-	@SidedProxy(clientSide = "colonies.anglewyrm.src.ClientProxy", serverSide = "colonies.anglewyrm.src.ServerProxy")
+	@SidedProxy(clientSide = "colonies.src.ClientProxy", serverSide = "colonies.anglewyrm.src.ServerProxy")
 	public static ServerProxy proxy;
 
 	@PreInit
