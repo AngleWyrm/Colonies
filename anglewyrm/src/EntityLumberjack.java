@@ -3,10 +3,12 @@ package colonies.anglewyrm.src;
 import java.util.HashMap;
 
 import net.minecraft.src.Block;
+import net.minecraft.src.BlockWood;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
+import colonies.boycat97.src.EntityAIGoToWork;
 
 public class EntityLumberjack extends EntityCitizen {
 	
@@ -19,6 +21,8 @@ public class EntityLumberjack extends EntityCitizen {
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,10));
+		
+		this.tasks.addTask(1, new EntityAIGoToWork(this,17, 0.4f));
 	    
 	    // add this type of employment to the jobTypes if necessary
 	    boolean alreadyInList = false;
@@ -29,7 +33,6 @@ public class EntityLumberjack extends EntityCitizen {
 	    	}
 	    }
 	    if(!alreadyInList) jobTypes.add(this);
-
 		
 		// TODO: Would like miners to go hostile with a pickaxe if attacked
 	}
@@ -70,7 +73,10 @@ public class EntityLumberjack extends EntityCitizen {
 	}
 
 	public void onLivingUpdate() {
+
 		super.onLivingUpdate();
+		
+		
 	}
 	
 }
