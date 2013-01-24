@@ -5,6 +5,7 @@ import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
+import colonies.src.ColoniesMain;
 import colonies.src.ServerProxy;
 
 public class ItemMeasuringTape extends Item{
@@ -14,7 +15,7 @@ public class ItemMeasuringTape extends Item{
 	public ItemMeasuringTape(int par1){
 		super(par1);
 		setMaxStackSize(1);
-		setCreativeTab(CreativeTabs.tabTools);
+		setCreativeTab(ColoniesMain.coloniesTab);
 		setIconIndex(0);
 		setIconCoord(15,0);
 	}

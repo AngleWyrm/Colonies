@@ -1,5 +1,6 @@
 package colonies.anglewyrm.src;
 
+import colonies.src.ColoniesMain;
 import colonies.src.ServerProxy;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
@@ -11,6 +12,7 @@ public class TestBlock extends Block {
 
 	public TestBlock (int id, int texture, Material material) {
 		super(id, texture, material);
+		setCreativeTab(ColoniesMain.coloniesTab);
 	}
 	
 	@Override

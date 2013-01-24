@@ -5,6 +5,7 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.src.ClientProxy;
+import colonies.src.ColoniesMain;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
@@ -15,7 +16,7 @@ public class BlockLoggingCamp extends BlockColoniesChest {
 	public BlockLoggingCamp(int id) {
 		super(id);
 		setBlockName("block.loggingcamp");
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(ColoniesMain.coloniesTab);
 	}
 	
 	@Override

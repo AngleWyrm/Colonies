@@ -14,6 +14,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
 import colonies.kzolp67.src.BlockHunterBlind;
+import colonies.kzolp67.src.ColoniesTab;
 import colonies.kzolp67.src.EntityHunter;
 import colonies.kzolp67.src.TileEntityHunterBlind;
 import colonies.lohikaarme.src.ItemMeasuringTape;
@@ -85,6 +86,8 @@ public class ColoniesMain
 	//public static GuiHandler guiHandlerChest;
 	public static GuiHandlerColoniesChest guiHandlerChest;
 	//public static List<TileEntityTownHall> townsList;
+	
+	public static CreativeTabs coloniesTab = new ColoniesTab("coloniesTab");
 
 
 	@Instance
@@ -319,6 +322,8 @@ public class ColoniesMain
 		// Guard
 		EntityRegistry.registerGlobalEntityID(EntityGuard.class, "Guard", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Guard.name", "en_US", "Guard");
+		
+		LanguageRegistry.instance().addStringLocalization("itemGroup.coloniesTab", "en_US", "Colonies");
 
 		}
 }

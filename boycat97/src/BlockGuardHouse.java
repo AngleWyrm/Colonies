@@ -7,6 +7,7 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.src.ClientProxy;
+import colonies.src.ColoniesMain;
 import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.vector67.src.BlockColoniesChest;
@@ -18,7 +19,7 @@ public class BlockGuardHouse extends BlockColoniesChest {
 	public BlockGuardHouse(int id) {
 		super(id);
 		setBlockName("block.guardhouse");
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(ColoniesMain.coloniesTab);
 	}
 	
 	@Override

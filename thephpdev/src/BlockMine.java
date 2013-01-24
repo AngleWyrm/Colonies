@@ -12,6 +12,7 @@ import colonies.anglewyrm.src.TileEntityLoggingCamp;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
 import colonies.src.ClientProxy;
+import colonies.src.ColoniesMain;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
@@ -22,7 +23,7 @@ public class BlockMine extends BlockColoniesChest {
 	public BlockMine(int id) {
 		super(id);
 		setBlockName("Mine");
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(ColoniesMain.coloniesTab);
 		setTextureFile(ClientProxy.MINERCHEST_PNG);
 	}
 

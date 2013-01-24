@@ -6,6 +6,7 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.src.ClientProxy;
+import colonies.src.ColoniesMain;
 import colonies.vector67.src.BlockColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChest;
 
@@ -16,7 +17,7 @@ public class BlockHunterBlind extends BlockColoniesChest {
 	public BlockHunterBlind(int id) {
 		super(id);
 		setBlockName("block.hunterblind");
-		setCreativeTab(CreativeTabs.tabDecorations);
+		setCreativeTab(ColoniesMain.coloniesTab);
 	}
 	
 	@Override
