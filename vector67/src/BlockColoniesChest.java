@@ -21,13 +21,13 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.BlockTownHall;
-import colonies.anglewyrm.src.ClientProxy;
-import colonies.anglewyrm.src.ColoniesMain;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 import colonies.anglewyrm.src.Point;
+import colonies.src.ClientProxy;
+import colonies.src.ColoniesMain;
 
 public class BlockColoniesChest extends BlockContainer {
 

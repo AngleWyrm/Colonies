@@ -2,9 +2,9 @@ package colonies.kzolp67.src;
 
 import java.util.HashMap;
 
-import colonies.anglewyrm.src.ColoniesMain;
 import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Utility;
+import colonies.src.ColoniesMain;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;

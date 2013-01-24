@@ -1,5 +1,6 @@
 package colonies.anglewyrm.src;
 
+import colonies.src.ServerProxy;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 

@@ -6,7 +6,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.anglewyrm.src.ColoniesMain;
+import colonies.src.ColoniesMain;
 import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Utility;
 
