@@ -93,7 +93,7 @@ public class ColoniesMain
 	@Instance
 	public static ColoniesMain instance;
 
-	@SidedProxy(clientSide = "colonies.src.ClientProxy", serverSide = "colonies.anglewyrm.src.ServerProxy")
+	@SidedProxy(clientSide = "colonies.src.ClientProxy", serverSide = "colonies.src.ServerProxy")
 	public static ServerProxy proxy;
 
 	@PreInit
