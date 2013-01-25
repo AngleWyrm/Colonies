@@ -62,7 +62,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Colonies", name = "Colonies", version = "18 Jan 2012")
+@Mod(modid = "Colonies", name = "Colonies", version = "25 Jan 2012")
 @NetworkMod(
 		channels = { "Colonies" },
 		clientSideRequired = true,
@@ -131,7 +131,7 @@ public class ColoniesMain
 	}
 
 	public String Version(){
-		return "Pre-Alpha, Revision 9";
+		return "Pre-Alpha, Revision 10";
 	}
 
 	// Configuration Settings
