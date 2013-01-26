@@ -12,7 +12,7 @@ public class ColoniesTab extends CreativeTabs {
 	
 	@Override
 	public ItemStack getIconItemStack() {
-	    return new ItemStack(ColoniesMain.townHall);
+	    return new ItemStack(ColoniesMain.house);
 	}
 	
 }
