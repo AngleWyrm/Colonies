@@ -11,10 +11,9 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class BlockHouse extends BlockColoniesChest {
 
-	public TileEntityHouse tileEntity;
-	
 	public BlockHouse(int id) {
 		super(id);
+		tileEntity = new TileEntityHouse();
 		setBlockName("block.house");
 		setCreativeTab(ColoniesMain.coloniesTab);
 		GuiID = 1;

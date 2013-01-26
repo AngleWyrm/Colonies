@@ -33,6 +33,7 @@ public class BlockColoniesChest extends BlockContainer {
 
 	//ID that is used to know what gui to show at Handler
 	protected int GuiID=0;
+	public TileEntityColoniesChest tileEntity;
 	
 	//private Random random = new Random();
 	public BlockColoniesChest(int id){
@@ -386,6 +387,10 @@ public class BlockColoniesChest extends BlockContainer {
         }
     }
 
+    public TileEntityColoniesChest getChestType(){
+    	return tileEntity;
+    }
+    
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */

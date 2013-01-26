@@ -60,13 +60,10 @@ public class TileEntityColoniesChestRenderer extends TileEntitySpecialRenderer {
 		//  Some method of sorting out which string to bind
 		// bindTextureByName(ClientProxy.HOUSECHEST_PNG);
 		int facing = 3;
-		if(tile != null && tile.getWorldObj() != null){
+		if(tile.getWorldObj() != null){
 			facing = tile.getFacing();
-			bindTextureByName(tile.getBlockType().getTextureFile()); // this can fail
 		}
-		else{
-			bindTextureByName(ClientProxy.CHESTCONTAINER_PNG);
-		}
+		bindTextureByName(tile.getTextureFile()); // Using TileEntity.getTextureFile
 		
 		glPushMatrix();
 		glEnable(32826 /* GL_RESCALE_NORMAL_EXT */);

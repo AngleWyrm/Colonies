@@ -12,10 +12,9 @@ import colonies.anglewyrm.src.TileEntityAlchemistShop;
 
 public class BlockAlchemistShop extends BlockColoniesChest {
 
-	public TileEntityAlchemistShop tileEntity;
-
 	public BlockAlchemistShop(int id) {
 		super(id);
+		tileEntity = new TileEntityAlchemistShop();
 		setBlockName("block.alchemistShop");
 		setCreativeTab(ColoniesMain.coloniesTab);
 	}

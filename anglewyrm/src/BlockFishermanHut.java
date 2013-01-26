@@ -11,10 +11,9 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class BlockFishermanHut extends BlockColoniesChest {
 
-	public TileEntityFishermanHut tileEntity;
-
 	public BlockFishermanHut(int id) {
 		super(id);
+		tileEntity = new TileEntityFishermanHut();
 		setBlockName("block.fishermanHut");
 		setCreativeTab(ColoniesMain.coloniesTab);
 	}

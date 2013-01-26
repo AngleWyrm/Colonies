@@ -15,6 +15,7 @@ import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Point;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
+import colonies.src.ClientProxy;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
@@ -34,6 +35,14 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 			return workerType;
 		}
 		return null;
+	}
+	
+	// Normally this function appears in the Block class,
+	// but there's a freakish requirement that the worldObj exist for the block
+	// which is incompatible with GUI rendering.
+	// So a duplicate appears within these TileEntity Chest clases for the renderer to use
+	public String getTextureFile(){
+		return ClientProxy.CHESTCONTAINER_PNG;
 	}
 	
 	public Point getPoint(){

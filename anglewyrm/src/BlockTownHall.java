@@ -17,10 +17,16 @@ public class BlockTownHall extends BlockColoniesChest
 {
 	public BlockTownHall(int id) {
 		super(id);
+		tileEntity = new TileEntityTownHall();
 		setBlockName("block.townhall");
 		setCreativeTab(ColoniesMain.coloniesTab);
 		setTickRandomly(true); // for city limits effects
 		GuiID = 0;
+	}
+	
+	@Override
+	public TileEntityColoniesChest getChestType(){
+		return tileEntity;
 	}
 	
 	@Override

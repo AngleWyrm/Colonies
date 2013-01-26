@@ -18,15 +18,14 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class BlockMine extends BlockColoniesChest {
 	
-	public TileEntityMine tileEntity = null;
-
 	public BlockMine(int id) {
 		super(id);
 		setBlockName("Mine");
+		tileEntity = new TileEntityMine();
 		setCreativeTab(ColoniesMain.coloniesTab);
 		setTextureFile(ClientProxy.MINERCHEST_PNG);
 	}
-
+	
 	private void dropItems(World world, int x, int y, int z)
 	{
 		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);

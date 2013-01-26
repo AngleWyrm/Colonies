@@ -14,10 +14,9 @@ import colonies.vector67.src.BlockColoniesChest;
 
 public class BlockGuardHouse extends BlockColoniesChest {
 	
-	public TileEntityGuardHouse tileEntity;
-
 	public BlockGuardHouse(int id) {
 		super(id);
+		tileEntity = new TileEntityGuardHouse();
 		setBlockName("block.guardhouse");
 		setCreativeTab(ColoniesMain.coloniesTab);
 	}

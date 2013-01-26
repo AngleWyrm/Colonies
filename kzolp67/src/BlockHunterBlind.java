@@ -12,10 +12,9 @@ import colonies.vector67.src.TileEntityColoniesChest;
 
 public class BlockHunterBlind extends BlockColoniesChest {
 
-	public TileEntityHunterBlind tileEntity;
-	
 	public BlockHunterBlind(int id) {
 		super(id);
+		tileEntity = new TileEntityHunterBlind();
 		setBlockName("block.hunterblind");
 		setCreativeTab(ColoniesMain.coloniesTab);
 	}

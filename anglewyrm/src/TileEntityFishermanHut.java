@@ -1,6 +1,7 @@
 package colonies.anglewyrm.src;
 
 import net.minecraft.src.IInventory;
+import colonies.src.ClientProxy;
 import colonies.vector67.src.TileEntityColoniesChest;
 
 public class TileEntityFishermanHut extends TileEntityColoniesChest {
@@ -15,5 +16,11 @@ public class TileEntityFishermanHut extends TileEntityColoniesChest {
     public String getInvName(){
         return "container.fishermanHut";
     }
+	
+	@Override
+	public String getTextureFile(){
+		return ClientProxy.FISHERMANHUT_PNG;
+	}
+
 
 }
