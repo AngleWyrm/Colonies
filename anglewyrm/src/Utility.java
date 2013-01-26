@@ -2,6 +2,9 @@ package colonies.anglewyrm.src;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.Side;
+import cpw.mods.fml.common.asm.SideOnly;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3;
@@ -30,14 +33,12 @@ public class Utility
 		//System.out.println(text);
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static void chatMessage(String txt){
+		game = Minecraft.getMinecraft();	
+		
 		if(game == null || txt == null || game.thePlayer == null) return;
 		
   		game.thePlayer.addChatMessage(txt); 				 
-	}
-	
-	public static void setGameInstance(){
-		game = Minecraft.getMinecraft();	
-	}
-	
+	}	
 }

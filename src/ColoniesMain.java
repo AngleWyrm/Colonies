@@ -127,7 +127,6 @@ public class ColoniesMain
 	{
 		// TODO: Add Post-Initialization code such as mod hooks
 		//NetworkRegistry.instance().registerGuiHandler(this, guihBusiness);
-		Utility.setGameInstance();
 	}
 
 	public String Version(){
