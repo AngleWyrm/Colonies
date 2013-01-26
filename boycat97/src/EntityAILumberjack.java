@@ -33,17 +33,17 @@ public class EntityAILumberjack extends EntityAIGoToWork
 	{
 		
 		if (this.currentTask.equals(task.chopping) && Math.abs(this.targetBlockX - this.taskEntity.posX) < 2) {
-			if (findPossibleBlockTarget() != null )
+			if (lookForWorkLocation() != null )
 			{
 				this.collectingWood();
 			} else {
 				this.currentTask = task.walking;
 			}
 			
-			return false;
+			return true;
 		}
 		
-		if (findPossibleBlockTarget() != null  && 
+		if (lookForWorkLocation() != null  && 
 		this.taskEntityWorld.getBlockId(MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ)) == 17 ) 
 		{	
 			

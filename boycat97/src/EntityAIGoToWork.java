@@ -35,7 +35,7 @@ public class EntityAIGoToWork extends EntityAIBase {
         this.setMutexBits(1);
     }
         
-    public Vec3 findPossibleBlockTarget()
+    public Vec3 lookForWorkLocation()
     {
         for (int i = 0; i < 10; ++i)
         {
@@ -71,7 +71,7 @@ public class EntityAIGoToWork extends EntityAIBase {
         else
         {
         	//Look for some other block of the same type.
-            Vec3 v = this.findPossibleBlockTarget();
+            Vec3 v = this.lookForWorkLocation();
 
             if (v == null)
             {
