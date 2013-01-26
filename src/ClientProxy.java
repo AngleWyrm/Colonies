@@ -22,7 +22,7 @@ public class ClientProxy extends ServerProxy
 		
 		// old code for custom female model
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
-		//		EtityWife.class, new RenderLiving(new ModelFemale(), 0.5F));n
+		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
 		
 		// Grave Stone (start)
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
