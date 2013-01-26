@@ -19,7 +19,7 @@ public class TileEntityAlchemistShop extends TileEntityColoniesChest {
 	
 	@Override
 	public String getTextureFile(){
-		return ClientProxy.CHESTCONTAINER_PNG;
+		return ClientProxy.ALCHEMISTCHEST_PNG;
 	}
 
 

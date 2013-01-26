@@ -1,6 +1,7 @@
 package colonies.thephpdev.src;
 
 import net.minecraft.src.IInventory;
+import colonies.src.ClientProxy;
 import colonies.vector67.src.TileEntityColoniesChest;
 
 public class TileEntityMine extends TileEntityColoniesChest {
@@ -13,5 +14,11 @@ public class TileEntityMine extends TileEntityColoniesChest {
     public String getInvName(){
         return "container.mine";
     }
+
+	@Override
+	public String getTextureFile(){
+		return ClientProxy.MINERCHEST_PNG;
+	}
+
 
 }
