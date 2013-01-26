@@ -12,7 +12,7 @@ import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.FMLModContainer;
 import cpw.mods.fml.common.network.Player;
 
-public class EntityAILumberjack extends EntityAIGoToWork
+public class EntityAILumberjackChopTree extends EntityAIGoToWork
 {
 	
 	private enum task {
@@ -23,7 +23,7 @@ public class EntityAILumberjack extends EntityAIGoToWork
 	
 	private task currentTask;
 
-	public EntityAILumberjack(EntityLiving par1EntityLiving, int BlockID, float _movementSpeed) {
+	public EntityAILumberjackChopTree(EntityLiving par1EntityLiving, int BlockID, float _movementSpeed) {
 		super(par1EntityLiving, BlockID, _movementSpeed);
 		this.currentTask = task.walking;
 		
