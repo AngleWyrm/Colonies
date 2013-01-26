@@ -5,6 +5,8 @@ import net.minecraft.src.Block;
 import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.EntityAITarget;
 import net.minecraft.src.EntityLiving;
+import net.minecraft.src.Item;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathPoint;
@@ -19,9 +21,9 @@ public class EntityAIGoToWork extends EntityAIBase {
     protected World taskEntityWorld; 
     protected float movementSpeed;
     
-    private double targetBlockX;
-    private double targetBlockY;
-    private double targetBlockZ;    
+    protected double targetBlockX;
+    protected double targetBlockY;
+    protected double targetBlockZ;        
     
     
     public EntityAIGoToWork(EntityLiving par1EntityLiving, int BlockID, float _movementSpeed)
@@ -32,13 +34,8 @@ public class EntityAIGoToWork extends EntityAIBase {
         this.BlockID = BlockID;
         this.setMutexBits(1);
     }
-    
-    public void EntityAIHitBlock()
-    {    	
-    }
-    
-    
-    private Vec3 findPossibleBlockTarget()
+        
+    public Vec3 findPossibleBlockTarget()
     {
         for (int i = 0; i < 10; ++i)
         {
@@ -62,27 +59,25 @@ public class EntityAIGoToWork extends EntityAIBase {
     	return true;
     }
     
-    public boolean ContinueWorking()
-    {
-    	return true;
-    }
     
 	@Override
 	public boolean shouldExecute() {
 		
-	   //Am I currently happy with the location
-       if (this.taskEntity.getLookVec() == Vec3.createVectorHelper(this.targetBlockX, this.targetBlockY, this.targetBlockZ) ){
+	   //Am I currently interested in the location
+       if (this.taskEntity.getLookVec() == Vec3.createVectorHelper(this.targetBlockX, this.targetBlockY, this.targetBlockZ) && 
+    		   this.taskEntityWorld.getBlockId(MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ)) == this.BlockID ){
             return false;
         }
         else
         {
+        	//Look for some other block of the same type.
             Vec3 v = this.findPossibleBlockTarget();
 
             if (v == null)
             {
                 return false;
             }
-            else
+            else 
             {
                 this.targetBlockX = v.xCoord;
                 this.targetBlockY = v.yCoord;
@@ -101,7 +96,9 @@ public class EntityAIGoToWork extends EntityAIBase {
 	
 	public void startExecuting()
     {
+		 
         this.taskEntity.getNavigator().tryMoveToXYZ(this.targetBlockX, this.targetBlockY, this.targetBlockZ, this.movementSpeed);
+       
     }
 
 }

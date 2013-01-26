@@ -8,7 +8,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.boycat97.src.EntityAIGoToWork;
+import colonies.boycat97.src.EntityAILumberjack;
 import colonies.src.ColoniesMain;
 
 public class EntityLumberjack extends EntityCitizen {
@@ -23,7 +23,7 @@ public class EntityLumberjack extends EntityCitizen {
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,10));
 		
-		this.tasks.addTask(1, new EntityAIGoToWork(this,17, 0.4f));
+		this.tasks.addTask(1, new EntityAILumberjack(this, 17, 0.3f));
 	    
 	    // add this type of employment to the jobTypes if necessary
 	    boolean alreadyInList = false;
