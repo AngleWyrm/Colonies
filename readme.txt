@@ -2,7 +2,7 @@ Readme.txt for Colonies Minecraft modification
 ----------------------------------------------
 
 INSTALLATION:
-Just drop this zip file into your .minecraft/mods folder and you're all set!
+Drop this zip file into your .minecraft/mods folder and you're all set!
 
 PREREQUISITES:
 * Minecraft v1.4.5
@@ -10,6 +10,21 @@ PREREQUISITES:
 
 
 RELEASE NOTES
+
+Pre-Alpha Revision 10 25-Jan-2013
+
+Features
+    #58 Separate tab for Colonies chests and items in creative mode
+    Guard and Guard House
+    Improved chest textures for Town Hall, Fisherman's Hut, Mine
+    #58 GUI info button
+
+Fixes
+    #62 Fixed a crash issue when generating chat messages
+
+Known Issues
+    GUI info button not functioning yet
+
 
 Pre-Alpha Revision 9 18-Jan-2013
 
