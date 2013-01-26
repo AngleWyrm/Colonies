@@ -1,5 +1,6 @@
 package colonies.src;
 
+import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -8,6 +9,7 @@ import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.vector67.src.TileEntityColoniesChestRenderer;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 
 public class ClientProxy extends ServerProxy
@@ -20,11 +22,11 @@ public class ClientProxy extends ServerProxy
 		
 		// old code for custom female model
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
-		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
+		//		EtityWife.class, new RenderLiving(new ModelFemale(), 0.5F));n
 		
 		// Grave Stone (start)
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
-		//		EntityGraveStone.class, new RenderLiving(new ModelGraveStone(), 0.5F));		
+		//		EntityGraveStone.class, new RenderLiving(new ModelGraveStone(), 0.5F));
 		
 		// preloaded textures
         MinecraftForgeClient.preloadTexture(ITEMS_PNG);
