@@ -1,4 +1,4 @@
-package colonies.vector67.src;
+package colonies.src;
 
 import java.util.Map;
 
@@ -7,7 +7,6 @@ import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.TileEntityRenderer;
 import colonies.anglewyrm.src.TileEntityHouse;
 import colonies.anglewyrm.src.Utility;
-import colonies.src.ColoniesMain;
 
 import com.google.common.collect.Maps;
 

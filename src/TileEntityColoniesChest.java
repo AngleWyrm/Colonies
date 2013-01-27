@@ -1,4 +1,4 @@
-package colonies.vector67.src;
+package colonies.src;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,7 +15,6 @@ import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Point;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
-import colonies.src.ClientProxy;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 

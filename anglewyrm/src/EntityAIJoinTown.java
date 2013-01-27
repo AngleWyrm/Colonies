@@ -5,8 +5,8 @@ package colonies.anglewyrm.src;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
-import colonies.vector67.src.BlockColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.BlockColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityAIBase;

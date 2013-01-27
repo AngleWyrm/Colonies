@@ -22,8 +22,8 @@ import net.minecraft.src.PathPoint;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 import colonies.src.ColoniesMain;
+import colonies.src.TileEntityColoniesChest;
 import colonies.vector67.src.InventoryCitizen;
-import colonies.vector67.src.TileEntityColoniesChest;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {

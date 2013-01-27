@@ -11,10 +11,10 @@ import net.minecraft.src.World;
 import colonies.anglewyrm.src.TileEntityLoggingCamp;
 import colonies.anglewyrm.src.TileEntityTownHall;
 import colonies.anglewyrm.src.Utility;
+import colonies.src.BlockColoniesChest;
 import colonies.src.ClientProxy;
 import colonies.src.ColoniesMain;
-import colonies.vector67.src.BlockColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class BlockMine extends BlockColoniesChest {
 	

@@ -3,7 +3,7 @@ package colonies.lohikaarme.src;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.StatCollector;
 import colonies.anglewyrm.src.GuiColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class GuiHouse extends GuiColoniesChest {
 

@@ -5,10 +5,10 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.TileEntityTownHall;
+import colonies.src.BlockColoniesChest;
 import colonies.src.ClientProxy;
 import colonies.src.ColoniesMain;
-import colonies.vector67.src.BlockColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class BlockHunterBlind extends BlockColoniesChest {
 

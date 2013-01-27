@@ -1,7 +1,7 @@
 package colonies.anglewyrm.src;
 
 import net.minecraft.src.*;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class ContainerColoniesChest extends Container {
 

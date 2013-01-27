@@ -4,7 +4,7 @@ import net.minecraft.src.GuiButton;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.StatCollector;
 import colonies.anglewyrm.src.GuiColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class GuiTownHall extends GuiColoniesChest {
 

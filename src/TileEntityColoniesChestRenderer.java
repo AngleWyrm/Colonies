@@ -1,4 +1,4 @@
-package colonies.vector67.src;
+package colonies.src;
 
 import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11.glDisable;
@@ -22,7 +22,6 @@ import org.lwjgl.opengl.GL11;
 
 import colonies.anglewyrm.src.BlockHouse;
 import colonies.anglewyrm.src.Utility;
-import colonies.src.ClientProxy;
 import cpw.mods.fml.client.FMLClientHandler;
 //import colonies.pmardle.src.MappableItemStackWrapper;
 

@@ -2,7 +2,7 @@ package colonies.boycat97.src;
 
 import net.minecraft.src.IInventory;
 import colonies.src.ClientProxy;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class TileEntityGuardHouse extends TileEntityColoniesChest {
 	

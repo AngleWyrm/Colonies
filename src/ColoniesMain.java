@@ -21,8 +21,6 @@ import colonies.lohikaarme.src.ItemMeasuringTape;
 import colonies.thephpdev.src.BlockMine;
 import colonies.thephpdev.src.TileEntityMine;
 import colonies.stabtokill.src.ColoniesAchievements;
-import colonies.vector67.src.BlockColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
 import colonies.anglewyrm.src.BlockAlchemistShop;
 import colonies.anglewyrm.src.BlockFishermanHut;
 import colonies.anglewyrm.src.BlockHouse;

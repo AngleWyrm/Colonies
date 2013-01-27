@@ -1,4 +1,4 @@
-package colonies.vector67.src;
+package colonies.src;
 
 import static net.minecraftforge.common.ForgeDirection.DOWN;
 import java.util.Iterator;
@@ -26,8 +26,6 @@ import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 import colonies.anglewyrm.src.Point;
-import colonies.src.ClientProxy;
-import colonies.src.ColoniesMain;
 
 public class BlockColoniesChest extends BlockContainer {
 

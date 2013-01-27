@@ -3,7 +3,8 @@ package colonies.anglewyrm.src;
 import net.minecraft.src.*;
 
 import org.lwjgl.opengl.GL11;
-import colonies.vector67.src.TileEntityColoniesChest;
+
+import colonies.src.TileEntityColoniesChest;
 
 public class GuiColoniesChest extends GuiContainer 
 {

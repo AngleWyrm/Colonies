@@ -6,7 +6,7 @@ import net.minecraft.src.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import colonies.lohikaarme.src.GuiHouse;
 import colonies.lohikaarme.src.GuiTownHall;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class GuiHandlerColoniesChest implements IGuiHandler {
     //returns an instance of the Container you made earlier

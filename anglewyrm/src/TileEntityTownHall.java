@@ -8,9 +8,9 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.NBTTagCompound;
+import colonies.src.BlockColoniesChest;
 import colonies.src.ClientProxy;
-import colonies.vector67.src.BlockColoniesChest;
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.TileEntityColoniesChest;
 
 public class TileEntityTownHall extends TileEntityColoniesChest 
 {
