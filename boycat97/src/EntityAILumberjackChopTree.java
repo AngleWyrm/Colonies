@@ -29,7 +29,8 @@ public class EntityAILumberjackChopTree extends EntityAIGoToWork
 			
 			//make sure the entity is close to the wood
 			if ( Math.abs(this.targetBlockX - this.taskEntity.posX) <= 2) {
-				this.collectingWood();
+				
+				this.choppingWood();
 				//this.taskEntity.setCurrentItemOrArmor(0, new ItemStack(Item.axeWood, 1));
 			}
 			
@@ -37,10 +38,10 @@ public class EntityAILumberjackChopTree extends EntityAIGoToWork
 			
 		} 
 		
-		return true;
+		return super.continueExecuting();
 	}
 	
-	private void collectingWood() 
+	private void choppingWood() 
 	{
 		
 		//show the animation of the block being hit.
@@ -48,7 +49,15 @@ public class EntityAILumberjackChopTree extends EntityAIGoToWork
 		
 		//break a piece of wood off of the tree.
 		Block.wood.harvestBlock(this.taskEntityWorld, Minecraft.getMinecraft().thePlayer, MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ), 0);
+	
 	}	
 	 
+	
+	public void startExecuting() 
+	{
+		
+		this.continueExecuting();
+		
+	}
 	
 }
