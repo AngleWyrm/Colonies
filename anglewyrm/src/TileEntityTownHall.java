@@ -39,11 +39,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	
 	public boolean adoptTown(EntityCitizen newCitizen){
 		if((citizensList==null)||(newCitizen==null)){
-			Utility.Debug("null list and/or citizen");
+			// Utility.Debug("null list and/or citizen");
 			return false;
 		}
 		if(citizensList.size() >= maxPopulation){
-			Utility.Debug(townName + " full: " + citizensList.size() + "/" + maxPopulation);
+			// Utility.Debug("Town full: " + getInvName());
 			return false;
 		}
 		if(citizensList.contains(newCitizen)){

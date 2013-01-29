@@ -38,26 +38,23 @@ public class BlockTownHall extends BlockColoniesChest
     public TileEntity createNewTileEntity(World par1World){
     	return new TileEntityTownHall();
      }
- 
+
     public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
-    {
+    {   	
     	if(theWorld.isRemote) return;
-    	
     	super.onBlockPlacedBy(theWorld, x, y, z, par5EntityLiving);
-    	TileEntity te = theWorld.getBlockTileEntity(x, y, z);
-    	if(te != null){
-    		if(te instanceof TileEntityTownHall){
-    			((TileEntityTownHall)te).maxPopulation = 4;
-    			((TileEntityTownHall) te).playerTown = (TileEntityTownHall) te;
-    			Utility.Debug("Player town placed");
-    		}
-    		else{
-    			Utility.Debug("Found entity not a town hall");
-    		}
+    	
+    	// TODO: this tileEntity variable appears to be redundant
+    	//       there is likely already a tile entity associated with block
+    	tileEntity = (TileEntityTownHall)theWorld.getBlockTileEntity(x, y, z);
+    	if(tileEntity != null){
+    		((TileEntityTownHall) tileEntity).maxPopulation = 4;
+    		TileEntityTownHall.playerTown = ((TileEntityTownHall)tileEntity);
+    		Utility.chatMessage("player town placed");
     	}
     	else{
-    		Utility.Debug("Null tileEntity when placing town");
-    	}
+    			Utility.Debug("Found entity not a town hall");
+    		}
     }
     
     @Override
