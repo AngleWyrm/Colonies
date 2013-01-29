@@ -123,6 +123,8 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
     {
+    	if(theWorld.isRemote) return; // avoid Minecraft duplicating chests
+    	
     	// TODO: override in subclasses
     	addBlockToTown((TileEntityColoniesChest) theWorld.getBlockTileEntity(x, y, z));
     	

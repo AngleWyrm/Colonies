@@ -40,7 +40,7 @@ public class BlockHouse extends BlockColoniesChest {
     		
     		// TODO: use list
     		TileEntityTownHall.playerTown.homesList.offer(_teHouse);
-    		TileEntityTownHall.playerTown.maxPopulation += 1;
+    		TileEntityTownHall.playerTown.maxPopulation += 2;
        		Minecraft.getMinecraft().thePlayer.addChatMessage("New housing available in " 
        				+ TileEntityTownHall.playerTown.townName + " (pop: " 
        				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
