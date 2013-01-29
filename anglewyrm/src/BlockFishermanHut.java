@@ -33,7 +33,7 @@ public class BlockFishermanHut extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teFishermanHut){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teFishermanHut);
-    		Minecraft.getMinecraft().thePlayer.addChatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
     		return true;
     	}
     	return false;

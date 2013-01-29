@@ -5,6 +5,7 @@ import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.anglewyrm.src.TileEntityTownHall;
+import colonies.anglewyrm.src.Utility;
 import colonies.src.BlockColoniesChest;
 import colonies.src.ClientProxy;
 import colonies.src.ColoniesMain;
@@ -34,7 +35,7 @@ public class BlockHunterBlind extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teHunterBlind){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teHunterBlind);
-    		Minecraft.getMinecraft().thePlayer.addChatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
     		return true;
     	}
     	return false;

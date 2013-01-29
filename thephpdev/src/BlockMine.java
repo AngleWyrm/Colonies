@@ -80,7 +80,7 @@ public class BlockMine extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teMine){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teMine);
-    		Minecraft.getMinecraft().thePlayer.addChatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
     		return true;
     	}
     	return false;

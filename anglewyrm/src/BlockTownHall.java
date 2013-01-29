@@ -41,6 +41,8 @@ public class BlockTownHall extends BlockColoniesChest
  
     public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
     {
+    	if(theWorld.isRemote) return;
+    	
     	super.onBlockPlacedBy(theWorld, x, y, z, par5EntityLiving);
     	TileEntity te = theWorld.getBlockTileEntity(x, y, z);
     	if(te != null){
@@ -91,6 +93,9 @@ public class BlockTownHall extends BlockColoniesChest
     	super.randomDisplayTick(world, x, y, z, rng);
 
     	// player town border markers
+    	// CLIENT SIDE ONLY
+    	if(world.isRemote) return;
+    	
     	Point p = new Point();
     	for(int angle = 0; angle < 32; ++angle){
     		p.set(0, 0, 0);
