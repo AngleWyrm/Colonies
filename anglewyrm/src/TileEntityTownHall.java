@@ -54,29 +54,13 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		newCitizen.hasHomeTown = true;
 		newCitizen.homeTown = this;
 		if(citizensList.offer(newCitizen)){
-	 		Utility.chatMessage("A Citizen joined "	+ playerTown.getTownLabel());
+	 		Utility.chatMessage("A Citizen joined "	+ playerTown.getInvName());
 	 		}
 		else{
-			Utility.Debug("[ERR] citizenList refused offer");
+			Utility.Debug("[ERROR] citizenList refused offer");
 			return false;
 		}
 		return true;
-	}
-	
-	private String getTownLabel() {
-		String townLabel = new String();
-		if(townName != null) townLabel += townName;
-		townLabel += " (Pop: ";
-		if(citizensList != null && citizensList.isEmpty()){
-			townLabel += citizensList.size();
-			townLabel += "/";
-			townLabel += maxPopulation;
-			townLabel += ")";
-		}
-		else{
-			townLabel += "0)";
-		}
-		return townLabel;
 	}
 
 	// One citizen leaves town membership
@@ -87,10 +71,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		oldCitizen.hasHomeTown = false;
 		oldCitizen.homeTown = null;
 		Utility.Debug("Citizen left town");
-  		Utility.chatMessage("A Citizen left " 
-   				+ TileEntityTownHall.playerTown.townName + " (pop: " 
-   				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
-   				+ TileEntityTownHall.playerTown.maxPopulation + ")");
+  		Utility.chatMessage("A Citizen left " + getInvName());
   		
   		// TODO: free up houseing
  		return true;
@@ -127,9 +108,19 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	
 	@Override
     public String getInvName(){
-        // return "container.townhall";
-		return townName + " (pop: " + citizensList.size() + 
-				"/" + this.maxPopulation + ")";
+		String townLabel = new String();
+		if(townName != null) townLabel += townName;
+		townLabel += " (Pop: ";
+		if(citizensList != null){
+			townLabel += citizensList.size();
+			townLabel += "/";
+			townLabel += maxPopulation;
+			townLabel += ")";
+		}
+		else{
+			townLabel += "0)";
+		}
+		return townLabel;
     }
 	
 	@Override
