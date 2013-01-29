@@ -128,6 +128,10 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
         }
 
 		// citizen status special effects
+        // CLIENT SIDE ONLY
+        // May move all special effects to a class module later       
+        if(worldObj.isRemote) return;
+        
         // TODO: get AI to update wantsSomething
         if(wantsSomething){ // updated by EntityAIMaintainInventoryLevels
         	//Utility.chatMessage("want #" + ssn); // is executed, not clear by whom
