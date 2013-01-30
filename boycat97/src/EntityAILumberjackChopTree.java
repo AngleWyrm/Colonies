@@ -22,7 +22,7 @@ public class EntityAILumberjackChopTree extends EntityAIGoToWork
 	
 	public boolean continueExecuting()
 	{
-		//if we are looking for work then find tree and start chopping
+		//if we are looking for a spot for wood then find a tree and start chopping
 		if (lookForWorkLocation() != null  && 
 		this.taskEntityWorld.getBlockId(MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ)) == 17 ) 
 		{	
