@@ -646,6 +646,9 @@ public class InventoryCitizen implements IInventory{
      */
     public boolean canHarvestBlock(Block par1Block)
     {
+    	return false;
+    	/*
+    	 * Material.isHarbestable(Block) does not appear to be in v1.4.5 source code
         if (par1Block.blockMaterial.isHarvestable())
         {
             return true;
@@ -655,6 +658,7 @@ public class InventoryCitizen implements IInventory{
             ItemStack var2 = this.getStackInSlot(this.currentItem);
             return var2 != null ? var2.canHarvestBlock(par1Block) : false;
         }
+        */
     }
 
     /**
