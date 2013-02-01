@@ -11,6 +11,17 @@ PREREQUISITES:
 
 RELEASE NOTES
 
+Pre-Alpha Revision 11 1-Feb-2013
+
+Features
+    Lumberjacks plant saplings
+
+Fixes
+    #90 Fixed a crash issue when placing items in server
+    #42 Fixed an issue that caused some chat messages to appear twice
+    #33 Chests appear as small versions of themselves within the GUI and hotbar
+
+
 Pre-Alpha Revision 10 25-Jan-2013
 
 Features
