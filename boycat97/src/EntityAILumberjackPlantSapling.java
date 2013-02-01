@@ -1,9 +1,8 @@
 package colonies.boycat97.src;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.MathHelper;
+import net.minecraft.entity.EntityLiving;
 
 public class EntityAILumberjackPlantSapling extends EntityAIGoToWork {
 

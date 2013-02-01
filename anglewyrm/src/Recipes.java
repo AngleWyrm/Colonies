@@ -1,10 +1,10 @@
 package colonies.anglewyrm.src;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import colonies.src.ColoniesMain;
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockContainer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Recipes 
