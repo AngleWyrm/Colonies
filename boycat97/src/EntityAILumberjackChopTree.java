@@ -45,10 +45,11 @@ public class EntityAILumberjackChopTree extends EntityAIGoToWork
 	{
 		
 		//show the animation of the block being hit.
-		Minecraft.getMinecraft().effectRenderer.addBlockDestroyEffects((int)this.targetBlockX, (int)this.targetBlockY, (int)this.targetBlockZ, 16, 16);
+		Minecraft.getMinecraft().effectRenderer.addBlockDestroyEffects((int)this.targetBlockX, (int)this.targetBlockY, (int)this.targetBlockZ, 5, 16);
 		
 		//break a piece of wood off of the tree.
-		Block.wood.harvestBlock(this.taskEntityWorld, Minecraft.getMinecraft().thePlayer, MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ), 0);
+		this.taskEntityWorld.setBlockWithNotify(MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ), 0);
+		//Block.wood.harvestBlock(this.taskEntityWorld, Minecraft.getMinecraft().thePlayer, MathHelper.floor_double(this.targetBlockX), MathHelper.floor_double(this.targetBlockY), MathHelper.floor_double(this.targetBlockZ), 0);
 	
 	}	
 	 

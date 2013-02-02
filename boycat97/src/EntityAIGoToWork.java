@@ -37,7 +37,7 @@ public class EntityAIGoToWork extends EntityAIBase {
         
     public Vec3 lookForWorkLocation()
     {
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < 100; ++i)
         {
             int x = MathHelper.floor_double(this.taskEntity.posX + Utility.rng.nextInt(30) - 15);
             int y = MathHelper.floor_double(this.taskEntity.boundingBox.minY + Utility.rng.nextInt(10) - 5);
