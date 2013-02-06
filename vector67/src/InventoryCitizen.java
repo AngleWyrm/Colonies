@@ -365,19 +365,19 @@ public class InventoryCitizen implements IInventory{
     /**
      * removed one item of specified itemID from inventory (if it is in a stack, the stack size will reduce with 1)
      */
-    public boolean consumeInventoryItem(int par1)
+    public boolean consumeInventoryItem(int _itemID)
     {
-        int var2 = this.getInventorySlotContainItem(par1);
+        int slot = this.getInventorySlotContainItem(_itemID);
 
-        if (var2 < 0)
+        if (slot < 0)
         {
             return false;
         }
         else
         {
-            if (--this.mainInventory[var2].stackSize <= 0)
+            if (--this.mainInventory[slot].stackSize <= 0)
             {
-                this.mainInventory[var2] = null;
+                this.mainInventory[slot] = null;
             }
 
             return true;

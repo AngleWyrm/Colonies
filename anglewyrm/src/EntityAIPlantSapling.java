@@ -2,6 +2,7 @@ package colonies.anglewyrm.src;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityAIBase;
+import net.minecraft.src.MathHelper;
 import colonies.anglewyrm.src.Point;
 
 public class EntityAIPlantSapling extends EntityAIBase 
@@ -33,24 +34,40 @@ public class EntityAIPlantSapling extends EntityAIBase
 	{
 		if(destination == null){ // suitable destination not yet established
 			//   continue looking for a good spot
+			Utility.chatMessage("looking for a spot to plant sapling");
 			Point candidate = new Point();
 			for(int i = 0; i < 10; ++i){
-				// choose a spot 5-10m in a random direction
-				candidate.set(citizen.posX, citizen.posY, citizen.posZ);
+				// choose a spot 5-10m away from citizen in a random direction
 				candidate.polarTranslation(Utility.rng.nextRadian(), Math.PI/2, 5 + Utility.rng.nextInt(5));
+				candidate.plus(citizen.posX, citizen.posY, citizen.posZ);
 				Utility.terrainAdjustment(citizen.worldObj, candidate);
 				
-				// if a plantable ground that can see sky, we're good
-				//    set navigator, destination and return true
-			}
-			// still not found, continue searching later (return true) 
+				// if we found dirt that can see sky, we're good; set navigator and return true
+				if(citizen.worldObj.canBlockSeeTheSky((int)candidate.x, (int)candidate.y, (int)candidate.z)){
+					Utility.chatMessage("candidate sees sky " + candidate.toRoundedString());
+					if(citizen.worldObj.getBlockId((int)candidate.x, (int)candidate.y-1, (int)candidate.z) == Block.dirt.blockID){
+						Utility.chatMessage("IS DIRT!");
+						destination = candidate;
+						citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y, destination.z, 0.35f);
+						return true;
+					}
+					Utility.chatMessage("Not dirt?");
+					
+				} // else candidate didn't meet criteria, try another place
+			} // still not found, continue searching later
+			return true;
 		} // else a destination has already been established during a previous update tick
 		
-		if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) <= 3){
+		if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) <= 3) // close enough, plant sapling
+		{
 			// remove a sapling from inventory
-			// plant a sapling at destination
+			if(citizen.inventory.consumeInventoryItem(Block.sapling.blockID)){ // had a sapling (and used it up)
+				citizen.worldObj.setBlockWithNotify((int)destination.x, (int)destination.y, (int)destination.z, Block.sapling.blockID);			
+			} // else didn't have a sapling
+			
+			// mission accomplished; quit this task
 			destination = null;
-			return false; // mission accomplished, quit executing this task
+			return false;
 		} // else not there yet, or can't get there
 		
 		return !citizen.getNavigator().noPath();

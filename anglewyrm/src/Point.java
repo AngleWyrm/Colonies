@@ -41,14 +41,18 @@ public class Point
 		return this;
 	}
 	
-	public Point polarTranslation(double d, double e, double distance){
-		x = distance * Math.sin(e) * Math.cos(d);
-		y = distance * Math.cos(e);
-		z = distance * Math.sin(d) * Math.sin(e);
+	public Point polarTranslation(double equatorialAngle, double polarAngle, double distance){
+		x = distance * Math.sin(polarAngle) * Math.cos(equatorialAngle);
+		y = distance * Math.cos(polarAngle);
+		z = distance * Math.sin(equatorialAngle) * Math.sin(polarAngle);
 		return this; 
 	}
 	
 	public String toString(){
 		return "x="+x + " y="+y + " z="+z;
+	}
+	
+	public String toRoundedString(){
+		return "x:"+(int)x + " y:"+(int)y + " z:"+(int)z;
 	}
 }
