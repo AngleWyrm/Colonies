@@ -40,5 +40,22 @@ public class Utility
 		if(game == null || txt == null || game.thePlayer == null) return;
 		
   		game.thePlayer.addChatMessage(txt); 				 
-	}	
+	}
+	
+	public static Point terrainAdjustment(World world, Point p){
+		if(world == null || p == null) return null;
+		
+		// If this ain't air, go up until it is
+		while(!world.isAirBlock((int)p.x, (int)p.y, (int)p.z)){
+			++p.y;
+			if(p.y >= 126) return p; // fail safe
+			if(!world.isAirBlock((int)p.x, (int)p.y+1, (int)p.z)) ++p.y;
+		}
+		// else is air, if air beneath, go down until it ain't
+		while(world.isAirBlock((int)p.x, (int)p.y-1, (int)p.z)){
+			--p.y;
+			if(p.y <= 5) return p; // fail safe
+		}
+		return p;
+	}
 }
