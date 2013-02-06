@@ -20,6 +20,8 @@ public class EntityAIPlantSapling extends EntityAIBase
 	public boolean shouldExecute() 
 	{
 		if(citizen == null) return false;
+		if(citizen.homeTown == null) return false; // must belong to a town
+		if(!citizen.worldObj.isDaytime()) return false; // only plant during day
 		
 		// If citizen has a sapling in inventory, this task can be performed
 		if(citizen.inventory.hasItem(Block.sapling.blockID)){
@@ -73,6 +75,13 @@ public class EntityAIPlantSapling extends EntityAIBase
 			return false;
 		} // else not there yet, or can't get there
 		
-		return !citizen.getNavigator().noPath();
+		// Can we get there from here?
+		if(citizen.getNavigator().noPath()){ // nope, cancel this attempt
+			Utility.chatMessage("Unable to path to selected location");
+			destination = null;
+			return false;
+		}
+		// else still travelling to destination
+		return true;
 	}
 }
