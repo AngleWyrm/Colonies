@@ -36,6 +36,7 @@ public class EntityAIPlantSapling extends EntityAIBase
 			//   continue looking for a good spot
 			Utility.chatMessage("looking for a spot to plant sapling");
 			Point candidate = new Point();
+			int blockID = 0; 
 			for(int i = 0; i < 10; ++i){
 				// choose a spot 5-10m away from citizen in a random direction
 				candidate.polarTranslation(Utility.rng.nextRadian(), Math.PI/2, 5 + Utility.rng.nextInt(5));
@@ -45,13 +46,14 @@ public class EntityAIPlantSapling extends EntityAIBase
 				// if we found dirt that can see sky, we're good; set navigator and return true
 				if(citizen.worldObj.canBlockSeeTheSky((int)candidate.x, (int)candidate.y, (int)candidate.z)){
 					Utility.chatMessage("candidate sees sky " + candidate.toRoundedString());
-					if(citizen.worldObj.getBlockId((int)candidate.x, (int)candidate.y-1, (int)candidate.z) == Block.dirt.blockID){
-						Utility.chatMessage("IS DIRT!");
+					blockID = citizen.worldObj.getBlockId((int)candidate.x, (int)candidate.y-1, (int)candidate.z);
+					if(blockID == Block.grass.blockID || blockID == Block.dirt.blockID){
+						Utility.chatMessage("Found a suitable place to plant a sapling");
 						destination = candidate;
 						citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y, destination.z, 0.35f);
 						return true;
 					}
-					Utility.chatMessage("Not dirt?");
+					// Utility.chatMessage("Not dirt/grass?");
 					
 				} // else candidate didn't meet criteria, try another place
 			} // still not found, continue searching later
@@ -66,6 +68,7 @@ public class EntityAIPlantSapling extends EntityAIBase
 			} // else didn't have a sapling
 			
 			// mission accomplished; quit this task
+			Utility.chatMessage("Plant Sapling mission accomplished");
 			destination = null;
 			return false;
 		} // else not there yet, or can't get there
