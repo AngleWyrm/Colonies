@@ -28,8 +28,8 @@ public class EntityLumberjack extends EntityCitizen {
 		// this.tasks.addTask(3, new EntityAILumberjackPlantSapling(this, Block.dirt.blockID, 0.2f));
 	    tasks.addTask(6, new EntityAIPlantSapling(this));
 	    
-	    // temporary hack for testing: start with ten saplings
-	    inventory.addItemStackToInventory(new ItemStack(Block.sapling,10));
+	    // temporary hack for testing: start with saplings
+	    inventory.addItemStackToInventory(new ItemStack(Block.sapling,5));
 		
 	    // add this type of employment to the jobTypes if necessary
 	    boolean alreadyInList = false;

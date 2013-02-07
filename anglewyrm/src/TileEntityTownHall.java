@@ -181,7 +181,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), 14d);
         	p.plus(q);
         	this.terrainAdjustment(p);
-        	Utility.chatMessage(p.toString());
+        	// Utility.chatMessage(p.toString());
         	
         	// TODO: Validate and adjust ground level for mob landing
 

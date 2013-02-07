@@ -43,14 +43,21 @@ public class EntityAIPlantSapling extends EntityAIBase
 				// choose a spot 5-10m away from citizen in a random direction
 				candidate.polarTranslation(Utility.rng.nextRadian(), Math.PI/2, 5 + Utility.rng.nextInt(5));
 				candidate.plus(citizen.posX, citizen.posY, citizen.posZ);
+				
+				// move destination away from logging camp if necessary
+				if(candidate.getDistance(citizen.homeTown.xCoord, citizen.homeTown.yCoord, citizen.homeTown.zCoord) < 10){
+					double theta = Math.atan2(candidate.y - citizen.homeTown.yCoord, candidate.x - citizen.homeTown.xCoord);
+					candidate.polarTranslation(theta, Math.PI/2, 10);
+				}
+				
 				Utility.terrainAdjustment(citizen.worldObj, candidate);
 				
 				// if we found dirt that can see sky, we're good; set navigator and return true
 				if(citizen.worldObj.canBlockSeeTheSky((int)candidate.x, (int)candidate.y, (int)candidate.z)){
-					Utility.chatMessage("candidate sees sky " + candidate.toRoundedString());
+					// Utility.chatMessage("candidate sees sky " + candidate.toRoundedString());
 					blockID = citizen.worldObj.getBlockId((int)candidate.x, (int)candidate.y-1, (int)candidate.z);
 					if(blockID == Block.grass.blockID || blockID == Block.dirt.blockID){
-						Utility.chatMessage("Found a suitable place to plant a sapling");
+						// Utility.chatMessage("Found a suitable place to plant a sapling");
 						destination = candidate;
 						citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y, destination.z, 0.35f);
 						return true;
@@ -77,7 +84,7 @@ public class EntityAIPlantSapling extends EntityAIBase
 		
 		// Can we get there from here?
 		if(citizen.getNavigator().noPath()){ // nope, cancel this attempt
-			Utility.chatMessage("Unable to path to selected location");
+			// Utility.chatMessage("Unable to path to selected location");
 			destination = null;
 			return false;
 		}
