@@ -28,9 +28,6 @@ public class EntityLumberjack extends EntityCitizen {
 		// this.tasks.addTask(3, new EntityAILumberjackPlantSapling(this, Block.dirt.blockID, 0.2f));
 	    tasks.addTask(6, new EntityAIPlantSapling(this));
 	    
-	    // temporary hack for testing: start with saplings
-	    inventory.addItemStackToInventory(new ItemStack(Block.sapling,5));
-		
 	    // add this type of employment to the jobTypes if necessary
 	    boolean alreadyInList = false;
 	    for(EntityCitizen job : jobTypes){
@@ -40,8 +37,6 @@ public class EntityLumberjack extends EntityCitizen {
 	    	}
 	    }
 	    if(!alreadyInList) jobTypes.add(this);
-		
-		// TODO: Would like miners to go hostile with a pickaxe if attacked
 	}
 	
 	public String getTexture() {

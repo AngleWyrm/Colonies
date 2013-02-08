@@ -10,77 +10,56 @@ import net.minecraft.src.World;
 
 public class EntityAIFindShelterFromRain extends EntityAIBase
 {
-    private EntityCitizen citizen;
-    private double shelterX;
-    private double shelterY;
-    private double shelterZ;
-    private float movementSpeed;
-    private World theWorld;
-
+    EntityCitizen citizen;
+    Point destination;
+  
     public EntityAIFindShelterFromRain(EntityCitizen _citizen, float _movementSpeed)
     {
         this.citizen = _citizen;
-        this.movementSpeed = _movementSpeed;
-        this.theWorld = citizen.worldObj;
         this.setMutexBits(1);
+        
     }
 
     public boolean shouldExecute()
     {
-    	// is it raining?
-        if (!this.theWorld.isRaining()){
-            return false;
-        }
+    	if(citizen == null )    return false;
+        if (!citizen.worldObj.isRaining()) return false;
         
         // Am I already under cover?
-        else if (!this.theWorld.canBlockSeeTheSky(
-        		MathHelper.floor_double(this.citizen.posX), 
-        		(int)this.citizen.boundingBox.minY, 
-        		MathHelper.floor_double(this.citizen.posZ))){
+        if (!citizen.worldObj.canBlockSeeTheSky((int)citizen.posX, (int)citizen.posY, (int)citizen.posZ)){
             return false;
         }
-        else
-        {
-            Vec3 v = this.findPossibleShelter();
-
-            if (v == null)
-            {
-                return false;
-            }
-            else
-            {
-                this.shelterX = v.xCoord;
-                this.shelterY = v.yCoord;
-                this.shelterZ = v.zCoord;
-                return true;
-            }
-        }
+        return true;
     }
 
     public boolean continueExecuting()
     {
-        return !this.citizen.getNavigator().noPath();
-    }
-
-    public void startExecuting()
-    {
-        this.citizen.getNavigator().tryMoveToXYZ(this.shelterX, this.shelterY, this.shelterZ, this.movementSpeed);
-    }
-
-    private Vec3 findPossibleShelter()
-    {
-        for (int i = 0; i < 10; ++i)
-        {
-            int x = MathHelper.floor_double(this.citizen.posX + Utility.rng.nextInt(30) - 15);
-            int y = MathHelper.floor_double(this.citizen.boundingBox.minY + Utility.rng.nextInt(10) - 5);
-            int z = MathHelper.floor_double(this.citizen.posZ + Utility.rng.nextInt(30) - 15);
-
-            if (!this.theWorld.canBlockSeeTheSky(x, y, z) && this.citizen.getBlockPathWeight(x, y, z) < 0.0F)
-            {
-                return this.theWorld.getWorldVec3Pool().getVecFromPool(x, y, z);
-            }
-        }
-
-        return null;
+    	// if destination not yet established, search for shelter
+    	if(destination == null){
+    		Point candidate = new Point();
+    		for(int i = 0; i < 10; ++i){
+    			candidate.polarTranslation(Utility.rng.nextRadian(), Math.PI/2, Utility.rng.nextInt(20));
+    			candidate.plus(citizen.posX, citizen.posY, citizen.posZ);
+    			Utility.terrainAdjustment(citizen.worldObj, candidate);
+    			if(!citizen.worldObj.canBlockSeeTheSky((int)candidate.x, (int)candidate.y, (int)candidate.z)){
+    				destination = candidate;
+    				citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y, destination.z, 0.35f);
+    			} // else try another spot
+    		} // else still not found, search more later
+    		return true;
+    	} // else already has a destination
+    	
+    	if(this.citizen.getNavigator().noPath()){
+    		destination = null;
+    		return false;
+    	}
+    	
+    	// are we there yet?
+    	if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) < 2 ){
+        	Utility.chatMessage("Citizen #"+ citizen.ssn + " \"I wish this rain would stop\"");
+    		destination = null;
+    		return false;
+    	}
+    	return true;
     }
 }

@@ -18,7 +18,7 @@ import net.minecraft.src.ModLoader;
 // Join a town
 public class EntityAIVisit extends EntityAIBase 
 {
-	public static double TOO_FAR_AWAY = 30;
+	public static double TOO_FAR_AWAY = 64;
 	private EntityCitizen citizen;
 	private TileEntityColoniesChest destination;
 	
@@ -35,14 +35,14 @@ public class EntityAIVisit extends EntityAIBase
 		if( !citizen.hasHomeTown  ) return false;
 		if( TileEntityTownHall.playerTown == null ) return false;
 		if( distanceToBlock(destination) < 6d) return false; // too close
-		if(Utility.rng.nextFloat() > 0.75f ) return false; // sometimes just doesn't wanna	
+		if(Utility.rng.nextFloat() > 0.0015f ) return false; // sometimes just doesn't wanna	
 		return true;
 	}
 	
     public void startExecuting()
     {
     	if(TileEntityTownHall.playerTown != null){
-    	   	Utility.Debug("Going to visit a friend");
+    	   	// Utility.Debug("Going to visit a friend");
     	   	
     	   	// select destination
     	   	LinkedList<TileEntityColoniesChest> choices = new LinkedList<TileEntityColoniesChest>();
@@ -69,20 +69,17 @@ public class EntityAIVisit extends EntityAIBase
     	if(TileEntityTownHall.playerTown != null){
     		Utility.Debug("Heading to neighbor's");
     		if(distanceToBlock(destination) < 3d){
-    			Utility.Debug("Tea party!");
-				//Minecraft.getMinecraft().thePlayer.addChatMessage("Visiting");    			
+    			destination = null;
+    			Utility.chatMessage("Citizen #" + citizen.ssn + " Visited a building");
     			return false;
     		}
     	}
 
-    	boolean pathOK = !this.citizen.getNavigator().noPath();
-    	if(pathOK){
-    		Utility.Debug("...I can see it from here!");
+    	if(this.citizen.getNavigator().noPath()){
+    		destination = null;
+    		return false;
     	}
-    	else{
-    		Utility.Debug("Oh no! I can't get there from here!");
-    	}
-    	return pathOK;
+    	return true;
     }
    
 	private double distanceToBlock(TileEntityColoniesChest tile){

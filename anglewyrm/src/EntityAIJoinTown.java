@@ -17,53 +17,42 @@ public class EntityAIJoinTown extends EntityAIBase
 {
 	public static double TOO_FAR_AWAY = 40;
 	private EntityCitizen citizen;
+	Point destination;
 
 	public EntityAIJoinTown(EntityCitizen _citizen) {
-		this.citizen = _citizen;
-		this.setMutexBits(1); 
+		citizen = _citizen;
+		setMutexBits(1);
 	}
 
 	@Override
 	public boolean shouldExecute() 
 	{
 		// reasons to idle this task in the background
-		if( citizen.hasHomeTown && !citizen.firstVisit ) return false;
+		if( citizen.homeTown != null && !citizen.firstVisit ) return false;
 		if( TileEntityTownHall.playerTown == null ) return false;
 		
-		double distance = distanceToBlock(TileEntityTownHall.playerTown);
-		Utility.Debug("Distance to town hall:" + distance);
-		if( distance > TOO_FAR_AWAY ) return false;
-		
 		// apply for citizenship if necessary
-		if( !citizen.hasHomeTown ){
+		if( citizen.homeTown == null ){
 			if( TileEntityTownHall.playerTown.adoptTown(citizen) ){
 				Utility.Debug("Application for citizenship accepted");
+				return true;
 			}
 			else{
 				Utility.Debug("Application for citizenship declined");
 				return false;
 			}
-		}
-		
-		// Mission complete?
-		if( distance < 3d){
-			Utility.Debug("Citizen visited Town Hall");
-			citizen.firstVisit = false;
-			return false;
-		}
-		
+		}		
 		return true;
 	}
 	
     public void startExecuting()
     {
     	if(TileEntityTownHall.playerTown != null){
-    	   	Utility.Debug("Attempting Journey");
     		this.citizen.getNavigator()
         		.tryMoveToXYZ(TileEntityTownHall.playerTown.xCoord, 
         	 			  TileEntityTownHall.playerTown.yCoord+1, 
         				  TileEntityTownHall.playerTown.zCoord, 0.25f);
-    	}
+    	}// else fubar
     }
 
     public boolean continueExecuting()
@@ -74,8 +63,6 @@ public class EntityAIJoinTown extends EntityAIBase
     		// Arrive at town hall
     		if(distanceToBlock(TileEntityTownHall.playerTown) < 4d){
     			// assign housing
-    			Utility.Debug("Assigning housing");
-				Utility.chatMessage("A new citizen settled in town!");    			
     			citizen.firstVisit = false; // TODO: replace with housing availability check
     			
     			if(TileEntityTownHall.playerTown.homesList != null && !TileEntityTownHall.playerTown.homesList.isEmpty()){
@@ -95,7 +82,7 @@ public class EntityAIJoinTown extends EntityAIBase
     			}
     			
     			return false;
-    		}
+    		} // else still travelling to town hall
     	}
     	boolean pathOK = !this.citizen.getNavigator().noPath();
     	if(pathOK){

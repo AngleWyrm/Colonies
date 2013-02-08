@@ -53,7 +53,7 @@ public class ColoniesAchievements implements ICraftingHandler
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
 		
 		
-		System.out.println("ColoniesAchievements, crafting, are being called??");
+		// System.out.println("ColoniesAchievements, crafting, are being called??");
 		if (item.itemID == ColoniesMain.townHallID)
 		{
 			player.addStat(TownStarted, 1);

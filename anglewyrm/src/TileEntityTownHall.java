@@ -251,7 +251,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		par1NBTTagCompound.setInteger("Homeslist" + i0 + "x", i1.xCoord);
 		par1NBTTagCompound.setInteger("Homeslist" + i0 + "y", i1.yCoord);
 		par1NBTTagCompound.setInteger("Homeslist" + i0 + "z", i1.zCoord);
-		System.out.println(i0);
+		// System.out.println(i0);
 	  }
 	  par1NBTTagCompound.setInteger("HomeslistSize", i0);/*  */
 	  

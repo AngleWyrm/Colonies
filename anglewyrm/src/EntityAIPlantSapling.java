@@ -35,8 +35,7 @@ public class EntityAIPlantSapling extends EntityAIBase
 	public boolean continueExecuting()
 	{
 		if(destination == null){ // suitable destination not yet established
-			//   continue looking for a good spot
-			Utility.chatMessage("looking for a spot to plant sapling");
+			// Utility.chatMessage("looking for a spot to plant sapling");
 			Point candidate = new Point();
 			int blockID = 0; 
 			for(int i = 0; i < 10; ++i){
@@ -48,8 +47,7 @@ public class EntityAIPlantSapling extends EntityAIBase
 				if(candidate.getDistance(citizen.homeTown.xCoord, citizen.homeTown.yCoord, citizen.homeTown.zCoord) < 10){
 					double theta = Math.atan2(candidate.y - citizen.homeTown.yCoord, candidate.x - citizen.homeTown.xCoord);
 					candidate.polarTranslation(theta, Math.PI/2, 10);
-				}
-				
+				}			
 				Utility.terrainAdjustment(citizen.worldObj, candidate);
 				
 				// if we found dirt that can see sky, we're good; set navigator and return true
@@ -74,10 +72,8 @@ public class EntityAIPlantSapling extends EntityAIBase
 			// remove a sapling from inventory
 			if(citizen.inventory.consumeInventoryItem(Block.sapling.blockID)){ // had a sapling (and used it up)
 				citizen.worldObj.setBlockWithNotify((int)destination.x, (int)destination.y, (int)destination.z, Block.sapling.blockID);			
+				Utility.chatMessage("Citizen #" + citizen.ssn + " planted sapling");
 			} // else didn't have a sapling
-			
-			// mission accomplished; quit this task
-			Utility.chatMessage("Plant Sapling mission accomplished");
 			destination = null;
 			return false;
 		} // else not there yet, or can't get there
