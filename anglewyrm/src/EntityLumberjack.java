@@ -22,9 +22,9 @@ public class EntityLumberjack extends EntityCitizen {
 
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
-		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,10));
+		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,5));
 		
-		tasks.addTask(5, new EntityAILumberjackChopTree(this, Block.wood.blockID, 0.3f));
+		// tasks.addTask(5, new EntityAILumberjackChopTree(this, Block.wood.blockID, 0.3f));
 		// this.tasks.addTask(3, new EntityAILumberjackPlantSapling(this, Block.dirt.blockID, 0.2f));
 	    tasks.addTask(6, new EntityAIPlantSapling(this));
 	    

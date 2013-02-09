@@ -48,7 +48,8 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
     	double range = p.getDistance(citizen.homeTown.getPoint());
     	if(range < 3.0){
     		// arrived at location, transfer supplies
-    		citizen.getItemFromChest(citizen.homeTown, objectOfDesire);    		
+    		citizen.getItemFromChest(citizen.homeTown, objectOfDesire); 
+    		Utility.chatMessage("Citizen #" +citizen.ssn + " got supplies");
     		citizen.wantsSomething = false;
     		objectOfDesire = null;
     		return false;

@@ -11,6 +11,9 @@ PREREQUISITES:
 
 RELEASE NOTES
 
+Pre-Alpha Revision 12 8-Feb-2013
+   AI maintenance
+   
 Pre-Alpha Revision 11 1-Feb-2013
 
 Features

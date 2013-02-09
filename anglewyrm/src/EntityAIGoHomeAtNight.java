@@ -61,8 +61,8 @@ public class EntityAIGoHomeAtNight extends EntityAIBase
     	if(destination == null) return false;
     	
     	if(distanceToBlock(destination) < 5d){
-			Utility.Debug("Bed time");
-			// Minecraft.getMinecraft().thePlayer.addChatMessage("Sleeping");    			
+			// Utility.Debug("Bed time");
+			Utility.chatMessage("Citizen #" + citizen.ssn + " has gone home for the night");    			
 			return false;
     	}
 
