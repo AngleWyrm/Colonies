@@ -68,21 +68,18 @@ public class BlockHouse extends BlockColoniesChest {
     			if(_teChest.yCoord==players.homesList.get(i).yCoord){
     			  if(_teChest.zCoord==players.homesList.get(i).zCoord){
     				players.homesList.remove(i);
-    				players.homesList.remove(i);//removes a ghost!
     				break;
     			  }
     			}
     		  }
     		}
     		
+    		// Excess citizens leave town
     		while(players.citizensList.size() >players.maxPopulation){
     			players.leaveTown(players.citizensList.getLast());
     		}
     		
-    		Minecraft.getMinecraft().thePlayer.addChatMessage("Housing reduced for " 
-				+ players.townName + " (pop: " 
-				+ players.citizensList.size() + "/"
-				+ players.maxPopulation + ")");
+    		Utility.chatMessage("Housing reduced for " + players.getInvName());
     	}
     	
     	return false;
