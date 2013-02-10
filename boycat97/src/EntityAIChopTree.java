@@ -103,6 +103,7 @@ public class EntityAIChopTree extends EntityAIBase
 		} // else not there yet, or can't get there		
 		
 		// Can we get there from here?
+		if(citizen.getNavigator().noPath()) { // nope, cancel this attempt
 			destination = null;
 			return false;
 		}				
