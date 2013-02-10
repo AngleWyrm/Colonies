@@ -13,6 +13,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	static int INVENTORY_CHECK_FREQUENCY = 100; // about 5 seconds between scans
 	int updateCounter = INVENTORY_CHECK_FREQUENCY;
 	ItemStack objectOfDesire;
+	Point destination = new Point();
 	
 	public EntityAIMaintainInventoryLevels(EntityCitizen _citizen){
 		citizen = _citizen;	
@@ -24,7 +25,17 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	{
 		// reasons to idle this task
 		if(citizen == null) return false;
-		if(!citizen.hasHomeTown) return false;
+		if(citizen.homeTown == null) return false;
+		
+		// check for multiple wants quickly if nearby assigned chest
+		if(destination == null){
+			// TODO: will have this updated by joining/leaving jobs and building/destroying chests
+			destination = new Point(citizen.homeTown.xCoord,  citizen.homeTown.yCoord, citizen.homeTown.zCoord);
+		}
+		
+		if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) < 3){
+			return wantsSomething();
+		} // else too far away (would need to path there)
 		
 		// using memory of want, and updating want infrequently
 		if(--updateCounter > 0){
@@ -38,6 +49,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	
 	public void startExecuting(){
 		// TODO: select destination from employer, home, townhall
+		destination.set(citizen.homeTown.xCoord, citizen.homeTown.yCoord, citizen.homeTown.zCoord);
 		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.yCoord+1, citizen.homeTown.zCoord, 0.35f);
 	}
 	
@@ -48,10 +60,14 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
     	double range = p.getDistance(citizen.homeTown.getPoint());
     	if(range < 3.0){
     		// arrived at location, transfer supplies
-    		citizen.getItemFromChest(citizen.homeTown, objectOfDesire); 
-    		Utility.chatMessage("Citizen #" +citizen.ssn + " got supplies");
+    		citizen.stopNavigating();
+    		
+    		if(citizen.getItemFromChest(citizen.homeTown, objectOfDesire) != null){ 
+    			Utility.chatMessage("Citizen #" +citizen.ssn + " got supplies");
+    		}
     		citizen.wantsSomething = false;
     		objectOfDesire = null;
+    		destination = null;
     		return false;
     	}// else still pathing to location
     	

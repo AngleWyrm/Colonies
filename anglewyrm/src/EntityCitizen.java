@@ -91,7 +91,12 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	    this.paths = new HashMap<Integer, PathNavigator>();
 	}
 	
-	
+	public void stopNavigating(){
+		PathNavigate path = getNavigator();
+		if(path != null){
+			path.setPath(null, 0f);
+		}
+	}
 	
 	public ItemStack getItemFromChest(TileEntityColoniesChest chest, ItemStack desiredItem){
 		if(chest == null || desiredItem == null) return null;

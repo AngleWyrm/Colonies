@@ -70,6 +70,7 @@ public class EntityAIVisit extends EntityAIBase
     		Utility.Debug("Heading to neighbor's");
     		if(distanceToBlock(destination) < 3d){
     			destination = null;
+    			citizen.stopNavigating();
     			Utility.chatMessage("Citizen #" + citizen.ssn + " Visited a building");
     			return false;
     		}

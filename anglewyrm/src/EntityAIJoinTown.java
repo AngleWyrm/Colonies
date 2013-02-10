@@ -61,7 +61,10 @@ public class EntityAIJoinTown extends EntityAIBase
     		Utility.Debug("Continuing Journey");
     		
     		// Arrive at town hall
-    		if(distanceToBlock(TileEntityTownHall.playerTown) < 4d){
+    		if(distanceToBlock(TileEntityTownHall.playerTown) < 2d){
+    			destination = null;
+    			citizen.stopNavigating();
+    			
     			// assign housing
     			citizen.firstVisit = false; // TODO: replace with housing availability check
     			
@@ -80,7 +83,6 @@ public class EntityAIJoinTown extends EntityAIBase
     				citizen.residence = TileEntityTownHall.playerTown;
     				citizen.residence.moveIn(citizen);
     			}
-    			
     			return false;
     		} // else still travelling to town hall
     	}
