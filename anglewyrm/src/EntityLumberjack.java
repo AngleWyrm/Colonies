@@ -8,8 +8,7 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.boycat97.src.EntityAILumberjackChopTree;
-import colonies.boycat97.src.EntityAILumberjackPlantSapling;
+import colonies.boycat97.src.EntityAIChopTree;
 import colonies.src.ColoniesMain;
 
 public class EntityLumberjack extends EntityCitizen {
@@ -24,8 +23,8 @@ public class EntityLumberjack extends EntityCitizen {
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,5));
 		
-		// tasks.addTask(5, new EntityAILumberjackChopTree(this, Block.wood.blockID, 0.3f));
-		// this.tasks.addTask(3, new EntityAILumberjackPlantSapling(this, Block.dirt.blockID, 0.2f));
+		tasks.addTask(2, new EntityAIChopTree(this));
+//		 this.tasks.addTask(3, new EntityAILumberjackChopTree(this, Block.wood.blockID, 0.35f));
 	    tasks.addTask(6, new EntityAIPlantSapling(this));
 	    
 	    // add this type of employment to the jobTypes if necessary
