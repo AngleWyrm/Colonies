@@ -1,5 +1,6 @@
 package colonies.anglewyrm.src;
 
+import net.minecraft.src.EntityLiving;
 import net.minecraft.src.Vec3;
 
 public class Point 
@@ -23,6 +24,9 @@ public class Point
 	
 	public double getDistance(Point other){
 		return Math.sqrt((x-other.x)*(x-other.x) + (y-other.y)*(y-other.y) + (z-other.z)*(z-other.z));  
+	}
+	public double getDistance(EntityLiving _entityLiving){
+		return Math.sqrt((x-_entityLiving.posX)*(x-_entityLiving.posX) + (y-_entityLiving.posY)*(y-_entityLiving.posY) + (z-_entityLiving.posZ)*(z-_entityLiving.posZ));
 	}
 	public double getDistance(double _x, double _y, double _z){
 		return Math.sqrt((x-_x)*(x-_x) + (y-_y)*(y-_y) + (z-_z)*(z-_z));
