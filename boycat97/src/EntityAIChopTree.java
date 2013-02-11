@@ -22,7 +22,8 @@ public class EntityAIChopTree extends EntityAIBase
 	private EntityCitizen citizen;   
     protected int BlockID;
     protected World taskEntityWorld; 
-    protected float movementSpeed;    
+    protected float movementSpeed;
+    private static ItemStack[] axeTypes = {new ItemStack(Item.axeSteel,1), new ItemStack(Item.axeStone, 1), new ItemStack(Item.axeWood,1)};
     
     Point destination;
 	
@@ -32,6 +33,8 @@ public class EntityAIChopTree extends EntityAIBase
         this.taskEntityWorld = this.citizen.worldObj;
         this.BlockID = Block.wood.blockID;
         this.setMutexBits(1);
+        
+        
 	}	
 	
 	@Override
@@ -40,12 +43,9 @@ public class EntityAIChopTree extends EntityAIBase
 		if(citizen == null) return false;
 		if(citizen.homeTown == null) return false; // must belong to a town
 		if(!citizen.worldObj.isDaytime()) return false; // only chop during day
-		
-		//TODO: Check for axe in inventory.
-//		if(citizen.inventory.hasItem()){
-//			return true;
-//		}
-		
+
+		if(!citizen.inventory.hasItemOfSet(axeTypes)) return false; // needs an axe
+
 		return true;
 	}	
 	

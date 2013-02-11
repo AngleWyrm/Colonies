@@ -392,6 +392,20 @@ public class InventoryCitizen implements IInventory{
         int var2 = this.getInventorySlotContainItem(par1);
         return var2 >= 0;
     }
+    
+    // given an array of possible item stacks,
+    // return whether any of those items are present in inventory
+    public boolean hasItemOfSet(ItemStack[] _choices){
+    	if(_choices == null) return false;
+    	
+    	for(ItemStack stack : _choices){
+    		if(hasItem(stack.itemID)){
+    			return true;
+    		}
+    	}   	
+    	return false;
+    }
+    
 
     /**
      * Adds the item stack to the inventory, returns false if it is impossible.
