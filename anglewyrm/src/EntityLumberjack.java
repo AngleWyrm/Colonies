@@ -21,7 +21,6 @@ public class EntityLumberjack extends EntityCitizen {
 
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
-		desiredInventory.addItemStackToInventory(new ItemStack(Block.wood,3));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,5));
 		
 		tasks.addTask(2, new EntityAIChopTree(this));
