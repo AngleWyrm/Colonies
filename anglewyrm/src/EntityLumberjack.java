@@ -21,10 +21,10 @@ public class EntityLumberjack extends EntityCitizen {
 
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeSteel,1));
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.axeStone,2));
+		desiredInventory.addItemStackToInventory(new ItemStack(Block.wood,3));
 		desiredInventory.addItemStackToInventory(new ItemStack(Block.sapling,5));
 		
 		tasks.addTask(2, new EntityAIChopTree(this));
-//		 this.tasks.addTask(3, new EntityAILumberjackChopTree(this, Block.wood.blockID, 0.35f));
 	    tasks.addTask(6, new EntityAIPlantSapling(this));
 	    
 	    // add this type of employment to the jobTypes if necessary
