@@ -1,4 +1,4 @@
-package colonies.src;
+package colonies.src.tileentity;
 
 import java.util.Iterator;
 import java.util.LinkedList;

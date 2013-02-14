@@ -1,4 +1,4 @@
-package colonies.kzolp67.src;
+package colonies.src.tileentity;
 
 import net.minecraft.src.IInventory;
 import colonies.src.ClientProxy;

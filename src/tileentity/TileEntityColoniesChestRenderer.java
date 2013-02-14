@@ -1,4 +1,4 @@
-package colonies.src;
+package colonies.src.tileentity;
 
 import static org.lwjgl.opengl.GL11.glColor4f;
 import static org.lwjgl.opengl.GL11.glDisable;
