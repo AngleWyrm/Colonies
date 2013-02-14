@@ -240,11 +240,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
 	  super.writeToNBT(par1NBTTagCompound);
 	  
-	  par1NBTTagCompound.setString("Townsname",playerTown.townName);
+	  par1NBTTagCompound.setString("Townsname",townName);
 	  
 	  int i0=0;
 	  TileEntityColoniesChest i1;
-	  Iterator<TileEntityColoniesChest> ite  = playerTown.homesList.iterator();
+	  Iterator<TileEntityColoniesChest> ite  = homesList.iterator();
 	  while(ite.hasNext()){
 		++i0;
 		i1 = ite.next();
