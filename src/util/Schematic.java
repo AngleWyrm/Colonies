@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.util;
 
 import java.io.BufferedReader;
 import java.io.File;
