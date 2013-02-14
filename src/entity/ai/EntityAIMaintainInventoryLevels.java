@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.entity.ai;
 
 import java.util.LinkedList;
 

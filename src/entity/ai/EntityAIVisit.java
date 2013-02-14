@@ -1,8 +1,7 @@
-package colonies.anglewyrm.src;
+package colonies.src.entity.ai;
 //
 // TODO: Possibly add a navigate to town hall phase
 //
-import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;

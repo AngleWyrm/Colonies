@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.entity.ai;
 //
 // TODO: Possibly add a navigate to town hall phase
 //

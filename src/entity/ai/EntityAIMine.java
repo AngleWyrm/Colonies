@@ -1,4 +1,4 @@
-package colonies.vector67.src;
+package colonies.src.entity.ai;
 
 import java.util.Iterator;
 import java.util.List;

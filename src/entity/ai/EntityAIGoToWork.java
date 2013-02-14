@@ -1,4 +1,4 @@
-package colonies.boycat97.src;
+package colonies.src.entity.ai;
 
 import colonies.anglewyrm.src.Utility;
 import net.minecraft.src.Block;

@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.entity.ai;
 
 import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.EntityCreature;
