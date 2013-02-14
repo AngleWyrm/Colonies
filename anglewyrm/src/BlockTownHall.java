@@ -6,6 +6,7 @@ import java.util.Random;
 
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityLiving;
+import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import colonies.src.BlockColoniesChest;
@@ -48,6 +49,9 @@ public class BlockTownHall extends BlockColoniesChest
     	//       there is likely already a tile entity associated with block
     	tileEntity = (TileEntityTownHall)theWorld.getBlockTileEntity(x, y, z);
     	if(tileEntity != null){
+			if(par5EntityLiving instanceof EntityPlayer){
+  			  ((EntityPlayer) par5EntityLiving).openGui(ColoniesMain.instance, 10, theWorld, x, y, z);
+  			}
     		((TileEntityTownHall) tileEntity).maxPopulation = 4;
     		TileEntityTownHall.playerTown = ((TileEntityTownHall)tileEntity);
     		Utility.chatMessage("player town placed");

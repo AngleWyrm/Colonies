@@ -6,6 +6,7 @@ import net.minecraft.src.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import colonies.lohikaarme.src.GuiHouse;
 import colonies.lohikaarme.src.GuiTownHall;
+import colonies.lohikaarme.src.GuiTownName;
 import colonies.src.TileEntityColoniesChest;
 
 public class GuiHandlerColoniesChest implements IGuiHandler {
@@ -27,6 +28,7 @@ public class GuiHandlerColoniesChest implements IGuiHandler {
             switch(ID){
             case 0:return new GuiTownHall((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory);
             case 1:return new GuiHouse((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory);
+            case 10:return new GuiTownName((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory); 
             }
             return null;
     }
