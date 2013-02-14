@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.block;
 
 import colonies.src.ColoniesMain;
 import colonies.src.ServerProxy;

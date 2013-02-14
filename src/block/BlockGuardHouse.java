@@ -1,4 +1,4 @@
-package colonies.boycat97.src;
+package colonies.src.block;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.Block;

@@ -1,4 +1,4 @@
-package colonies.kzolp67.src;
+package colonies.src.block;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.CreativeTabs;

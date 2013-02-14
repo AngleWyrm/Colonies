@@ -1,4 +1,4 @@
-package colonies.kzolp67.src;
+package colonies.src.block;
 
 import colonies.src.ColoniesMain;
 import net.minecraft.src.Block;

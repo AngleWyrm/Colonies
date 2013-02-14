@@ -1,4 +1,4 @@
-package colonies.src;
+package colonies.src.block;
 
 import static net.minecraftforge.common.ForgeDirection.DOWN;
 import java.util.Iterator;

@@ -1,4 +1,5 @@
-package colonies.eragon.src;
+package colonies.src.block;
+
 import net.minecraft.src.GuiContainer;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.StatCollector;
