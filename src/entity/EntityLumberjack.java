@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.entity;
 
 import java.util.HashMap;
 

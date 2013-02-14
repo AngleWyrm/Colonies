@@ -1,4 +1,4 @@
-package colonies.kzolp67.src;
+package colonies.src.entity;
 
 import java.util.HashMap;
 

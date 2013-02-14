@@ -1,4 +1,4 @@
-package colonies.boycat97.src;
+package colonies.src.entity;
 
 import java.util.HashMap;
 
