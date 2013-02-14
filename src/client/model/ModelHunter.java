@@ -1,4 +1,4 @@
-package colonies.kzolp67.src;
+package colonies.src.model;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.ModelBase;

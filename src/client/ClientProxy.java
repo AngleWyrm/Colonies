@@ -1,4 +1,4 @@
-package colonies.src;
+package colonies.src.client;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
