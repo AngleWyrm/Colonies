@@ -1,4 +1,4 @@
-package colonies.vector67.src;
+package colonies.src.inventory;
 
 import colonies.anglewyrm.src.EntityCitizen;
 import colonies.anglewyrm.src.Utility;

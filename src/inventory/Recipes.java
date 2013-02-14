@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src.recipes;
 
 import colonies.src.ColoniesMain;
 import net.minecraft.src.Block;
