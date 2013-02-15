@@ -1,8 +1,7 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import java.util.HashMap;
 
-import colonies.src.ColoniesMain;
 
 import net.minecraft.src.Item;
 import net.minecraft.src.World;

@@ -1,16 +1,15 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.MathHelper;
-import colonies.anglewyrm.src.Point;
 
 public class EntityAIPlantSapling extends EntityAIBase 
 {
 	EntityCitizen citizen;
 	Point destination;
 	
-	EntityAIPlantSapling(EntityCitizen _citizen)
+	public EntityAIPlantSapling(EntityCitizen _citizen)
 	{
 		citizen = _citizen;
 		setMutexBits(1);

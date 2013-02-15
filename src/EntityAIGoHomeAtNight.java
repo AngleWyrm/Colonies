@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 //
 // TODO: Possibly add a navigate to town hall phase
 //
@@ -8,9 +8,6 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Vector;
 
-import colonies.src.BlockColoniesChest;
-import colonies.src.TileEntityColoniesChest;
-import colonies.anglewyrm.src.TileEntityTownHall;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.ModLoader;

@@ -1,7 +1,7 @@
 package colonies.vector67.src;
 
-import colonies.anglewyrm.src.EntityCitizen;
-import colonies.anglewyrm.src.Utility;
+import colonies.src.EntityCitizen;
+import colonies.src.Utility;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;

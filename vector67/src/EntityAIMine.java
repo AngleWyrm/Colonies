@@ -3,7 +3,7 @@ package colonies.vector67.src;
 import java.util.Iterator;
 import java.util.List;
 
-import colonies.anglewyrm.src.EntityMiner;
+import colonies.src.EntityMiner;
 
 import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.EntityVillager;

@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import java.util.Iterator;
 import java.util.List;
@@ -9,10 +9,6 @@ import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import colonies.src.BlockColoniesChest;
-import colonies.src.ClientProxy;
-import colonies.src.ColoniesMain;
-import colonies.src.TileEntityColoniesChest;
 
 public class BlockTownHall extends BlockColoniesChest 
 {

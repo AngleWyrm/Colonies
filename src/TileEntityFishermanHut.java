@@ -1,8 +1,6 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import net.minecraft.src.IInventory;
-import colonies.src.ClientProxy;
-import colonies.src.TileEntityColoniesChest;
 
 public class TileEntityFishermanHut extends TileEntityColoniesChest {
 

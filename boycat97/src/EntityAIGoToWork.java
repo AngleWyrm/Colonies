@@ -1,6 +1,6 @@
 package colonies.boycat97.src;
 
-import colonies.anglewyrm.src.Utility;
+import colonies.src.Utility;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityAIBase;
 import net.minecraft.src.EntityAITarget;

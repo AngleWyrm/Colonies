@@ -20,12 +20,8 @@ import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import colonies.anglewyrm.src.BlockTownHall;
-import colonies.anglewyrm.src.TileEntityTownHall;
-import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
-import colonies.anglewyrm.src.Point;
 
 public class BlockColoniesChest extends BlockContainer {
 

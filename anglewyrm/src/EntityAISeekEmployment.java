@@ -1,5 +1,7 @@
 package colonies.anglewyrm.src;
 
+import colonies.src.EntityCitizen;
+import colonies.src.TileEntityTownHall;
 import net.minecraft.src.EntityAIBase;
 
 public class EntityAISeekEmployment extends EntityAIBase 

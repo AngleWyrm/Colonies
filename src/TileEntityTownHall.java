@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -8,9 +8,6 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.NBTTagCompound;
-import colonies.src.BlockColoniesChest;
-import colonies.src.ClientProxy;
-import colonies.src.TileEntityColoniesChest;
 
 public class TileEntityTownHall extends TileEntityColoniesChest 
 {

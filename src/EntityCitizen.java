@@ -1,4 +1,4 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,8 +21,6 @@ import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.src.ColoniesMain;
-import colonies.src.TileEntityColoniesChest;
 import colonies.vector67.src.InventoryCitizen;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 

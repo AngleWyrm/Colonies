@@ -5,8 +5,6 @@ import java.util.Map;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.TileEntityRenderer;
-import colonies.anglewyrm.src.TileEntityHouse;
-import colonies.anglewyrm.src.Utility;
 
 import com.google.common.collect.Maps;
 

@@ -6,8 +6,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import colonies.src.ColoniesMain;
-import colonies.anglewyrm.src.ContainerColoniesChest;
-import colonies.anglewyrm.src.TileEntityTownHall;
+import colonies.src.ContainerColoniesChest;
+import colonies.src.TileEntityTownHall;
 import colonies.src.TileEntityColoniesChest;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChatAllowedCharacters;

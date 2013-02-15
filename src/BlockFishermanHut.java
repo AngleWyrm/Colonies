@@ -1,13 +1,9 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import colonies.src.BlockColoniesChest;
-import colonies.src.ClientProxy;
-import colonies.src.ColoniesMain;
-import colonies.src.TileEntityColoniesChest;
 
 public class BlockFishermanHut extends BlockColoniesChest {
 

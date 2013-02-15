@@ -1,6 +1,5 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
-import colonies.src.TileEntityColoniesChest;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.Vec3;
 

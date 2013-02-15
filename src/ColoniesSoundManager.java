@@ -1,6 +1,5 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
-import colonies.src.ColoniesMain;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.common.Side;

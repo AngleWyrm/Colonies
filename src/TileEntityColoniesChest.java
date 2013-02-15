@@ -11,10 +11,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
-import colonies.anglewyrm.src.EntityCitizen;
-import colonies.anglewyrm.src.Point;
-import colonies.anglewyrm.src.TileEntityTownHall;
-import colonies.anglewyrm.src.Utility;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 

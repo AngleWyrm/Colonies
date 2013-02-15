@@ -9,10 +9,10 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
-import colonies.anglewyrm.src.EntityCitizen;
-import colonies.anglewyrm.src.EntityLumberjack;
-import colonies.anglewyrm.src.Point;
-import colonies.anglewyrm.src.Utility;
+import colonies.src.EntityCitizen;
+import colonies.src.EntityLumberjack;
+import colonies.src.Point;
+import colonies.src.Utility;
 import cpw.mods.fml.common.FMLModContainer;
 import cpw.mods.fml.common.network.Player;
 

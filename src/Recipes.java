@@ -1,6 +1,5 @@
-package colonies.anglewyrm.src;
+package colonies.src;
 
-import colonies.src.ColoniesMain;
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockContainer;
 import net.minecraft.src.Item;

@@ -20,8 +20,6 @@ import net.minecraft.src.TileEntitySpecialRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import colonies.anglewyrm.src.BlockHouse;
-import colonies.anglewyrm.src.Utility;
 import cpw.mods.fml.client.FMLClientHandler;
 //import colonies.pmardle.src.MappableItemStackWrapper;
 
