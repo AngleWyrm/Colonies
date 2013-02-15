@@ -12,7 +12,6 @@ import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
 import colonies.vector67.src.EntityAIMine;
-import colonies.vector67.src.InventoryCitizen;
 
 public class EntityMiner extends EntityCitizen{
 	

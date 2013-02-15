@@ -1,7 +1,5 @@
-package colonies.vector67.src;
+package colonies.src;
 
-import colonies.src.EntityCitizen;
-import colonies.src.Utility;
 import net.minecraft.src.Block;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPlayer;

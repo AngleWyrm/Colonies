@@ -21,7 +21,6 @@ import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.vector67.src.InventoryCitizen;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 
 {
