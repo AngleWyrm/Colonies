@@ -1,6 +1,7 @@
 package colonies.src.buildings;
 
 import colonies.src.ClientProxy;
+import colonies.src.Utility;
 import colonies.src.citizens.EntityCitizen;
 import colonies.src.citizens.EntityLumberjack;
 import net.minecraft.src.IInventory;
@@ -23,6 +24,7 @@ public class TileEntityLoggingCamp extends TileEntityColoniesChest {
 		return ClientProxy.LOGGINGCAMP_PNG;
 	}
 
+	@Override
 	public boolean applyForJob(EntityCitizen _candidate){
 		if(_candidate.worldObj.isRemote) return false;
 		
@@ -30,22 +32,18 @@ public class TileEntityLoggingCamp extends TileEntityColoniesChest {
 		for(EntityLumberjack availablePosition : jobPositions){
 			if(availablePosition == null){
 				// foundd empty job.
-				// TODO: Does candidate qualify for position?
 				
-				availablePosition = replaceCitizen(_candidate);
+				// is candidate qualified?
+				if(!_candidate.isMale) return false;
+				
+				EntityLumberjack newCitizen = new EntityLumberjack(_candidate.worldObj);
+				_candidate.employer = this;
+				_candidate.setNewJob(newCitizen);				
+				availablePosition = newCitizen;
+				Utility.chatMessage("Citizen #" + _candidate.ssn + " hired as Lumberjack #"+newCitizen.ssn);
 				return true;
-			}
+			}// else position already occupied
 		}
 		return false;
 	}
-	
-	private EntityLumberjack replaceCitizen(EntityCitizen _oldCitizen){
-		EntityLumberjack newCitizen = new EntityLumberjack(_oldCitizen.worldObj);
-		newCitizen.setPosition(_oldCitizen.posX, _oldCitizen.posY, _oldCitizen.posZ);
-		// TODO: copy inventory, etc
-		_oldCitizen.setDead();
-		newCitizen.worldObj.spawnEntityInWorld(newCitizen);
-		return newCitizen;
-	}
-
 }

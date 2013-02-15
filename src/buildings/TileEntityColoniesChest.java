@@ -30,12 +30,11 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 		occupants = new LinkedList<EntityCitizen>();
 	}
 	
-	public EntityCitizen jobPositionAvailable(){
-		if(occupants.size() < maxOccupancy){
-			return workerType;
-		}
-		return null;
+	// to be overriden by various building types
+	public boolean applyForJob(EntityCitizen _candidate){
+		return false;
 	}
+	
 	
 	// Normally this function appears in the Block class,
 	// but there's a freakish requirement that the worldObj exist for the block

@@ -158,6 +158,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
            	else{
            		Random random = new Random();
            		switch(random.nextInt(6)){
+           			/*
            			case 0:
            				newGuy = new EntityAlchemist(worldObj);
            				break;
@@ -176,8 +177,9 @@ public class TileEntityTownHall extends TileEntityColoniesChest
            			case 5:
            				newGuy = new EntityWife(worldObj);
            				break;
+           			*/
            			default:
-           				newGuy = new EntityCitizen(worldObj); //This should never happen
+           				newGuy = new EntityCitizen(worldObj); // Citizens start as default (wanderer) citizens
            				break;
            		}
            	}
@@ -233,15 +235,17 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		return p;
 	}
 
-	public EntityCitizen getNextJob() {
-		if(employersList == null || employersList.isEmpty()) return null;
+	public boolean getNextJob(EntityCitizen _citizen) {
+		if(employersList == null || employersList.isEmpty()) return false;
 		
 		EntityCitizen newJob = null;
 		for(TileEntityColoniesChest jobSite : employersList){
-			newJob = jobSite.jobPositionAvailable();
-			if(newJob != null) return newJob;
+			if(jobSite.applyForJob(_citizen)){
+				// citizen hired and converted
+				return true;
+			} // else didn't get hired
 		}
-		return null;
+		return false;
 	}
 	
 	@Override
