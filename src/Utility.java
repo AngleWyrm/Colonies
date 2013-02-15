@@ -14,6 +14,11 @@ public class Utility
 {
 	public static Minecraft game;
 	
+	public static class RNG extends Random{
+		public float nextRadian(){
+			return nextFloat()*2.0f * (float)Math.PI;
+		}
+	}
 	// TODO: get world instance, and put world.getSeed() in Random() c'tor
 	public static RNG rng = new RNG();
 
