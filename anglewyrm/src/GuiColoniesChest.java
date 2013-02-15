@@ -5,7 +5,7 @@ import net.minecraft.src.*;
 import org.lwjgl.opengl.GL11;
 
 import colonies.src.ContainerColoniesChest;
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
 
 public class GuiColoniesChest extends GuiContainer 
 {

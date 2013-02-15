@@ -6,6 +6,9 @@ import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
 import net.minecraft.src.TileEntityRenderer;
 
+import colonies.src.buildings.BlockColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
+
 import com.google.common.collect.Maps;
 
 public class ColoniesChestRenderHelper extends ChestItemRenderHelper{

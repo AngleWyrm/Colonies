@@ -8,7 +8,7 @@ import colonies.lohikaarme.src.GuiHouse;
 import colonies.lohikaarme.src.GuiTownHall;
 import colonies.lohikaarme.src.GuiTownName;
 import colonies.src.ContainerColoniesChest;
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
 
 public class GuiHandlerColoniesChest implements IGuiHandler {
     //returns an instance of the Container you made earlier

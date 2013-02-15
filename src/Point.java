@@ -1,5 +1,6 @@
 package colonies.src;
 
+import colonies.src.buildings.TileEntityColoniesChest;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.Vec3;
 

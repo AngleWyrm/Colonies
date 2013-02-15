@@ -3,7 +3,7 @@ package colonies.eragon.src;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
 import cpw.mods.fml.common.network.IGuiHandler;
  
 public class GuiHandler implements IGuiHandler{

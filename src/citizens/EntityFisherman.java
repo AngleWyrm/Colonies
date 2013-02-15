@@ -1,55 +1,50 @@
-package colonies.boycat97.src;
+package colonies.src.citizens;
 
 import java.util.HashMap;
 
+import colonies.src.ColoniesMain;
+import colonies.src.Utility;
+
+
+import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
-import colonies.src.ColoniesMain;
-import colonies.src.Utility;
-import colonies.src.citizens.EntityCitizen;
 
-public class EntityGuard extends EntityCitizen {
+public class EntityFisherman extends EntityCitizen {
 	
-	protected EnumGuardRank currentRank;	
+	private Vector3D closestMinerChest;
 	
-	public enum EnumGuardRank {
-		FootSoldier,
-		Archer,
-		Seargent	
-	};
-	
-	public EntityGuard(World world) { 
+	public EntityFisherman(World world) { 
 		super(world);		
-		this.texture = ColoniesMain.skinGuard;
-		this.currentRank = EnumGuardRank.FootSoldier;
+		this.texture = ColoniesMain.skinFisherman;
 
-		//TODO: Figure out all the items that are required for desires.
-		//desiredInventory.addItemStackToInventory(new ItemStack(Item.fishingRod));
+		desiredInventory.addItemStackToInventory(new ItemStack(Item.fishingRod));
 	    
 	    // add this type of employment to the jobTypes if necessary
 	    boolean alreadyInList = false;
 	    for(EntityCitizen job : jobTypes){
-	    	if(job instanceof EntityGuard){
+	    	if(job instanceof EntityFisherman){
 	    		alreadyInList = true;
 	    		break;
 	    	}
 	    }
 	    if(!alreadyInList) jobTypes.add(this);
 
+		
+		// TODO: Would like miners to go hostile with a pickaxe if attacked
 	}
 	
 	public String getTexture() {
 		if (this.isInWater()) {
 			return ColoniesMain.skinMaleSwimming;
-		} else			
-			return this.texture;
+		}
+		return ColoniesMain.skinFisherman;
 	}
 
-	// TODO: custom voices
 	protected String getLivingSound() {
-		if (ColoniesMain.citizenGreetings){
+		if (citizenGreetings){
 			if (Utility.getLootCategory()>=3) { // Rare or above
 				return "colonies.m-hello";
 			}
@@ -60,12 +55,11 @@ public class EntityGuard extends EntityCitizen {
 	// Mob Loot for default Citizen
 	protected int getDropItemId() {
 		int lootID=1;
-		
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
-				return Item.bread.shiftedIndex;
+				return Item.fishRaw.shiftedIndex;
 			case 2: // Uncommon
-				return Item.swordWood.shiftedIndex;
+				return Item.fishingRod.shiftedIndex;
 			case 3: // Rare
 				return Item.goldNugget.shiftedIndex;
 			default: // Legendary

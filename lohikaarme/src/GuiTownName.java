@@ -7,8 +7,8 @@ import org.lwjgl.opengl.GL11;
 
 import colonies.src.ColoniesMain;
 import colonies.src.ContainerColoniesChest;
-import colonies.src.TileEntityTownHall;
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityTownHall;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChatAllowedCharacters;
 import net.minecraft.src.Container;
