@@ -8,6 +8,8 @@ import colonies.src.ClientProxy;
 import colonies.src.Point;
 import colonies.src.Utility;
 import colonies.src.citizens.EntityCitizen;
+import colonies.src.citizens.EntityLumberjack;
+import colonies.src.citizens.EntityWife;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
 import net.minecraft.src.EntityPlayer;
@@ -16,25 +18,49 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
+import net.minecraft.src.World;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
 	private ItemStack[] chestContents = new ItemStack[36];
 	private LinkedList<EntityCitizen> occupants;
 	private int maxOccupancy = 2;
+	protected EntityCitizen jobPositions[] = {null, null};
 	
-	public EntityCitizen workerType = new EntityCitizen(this.worldObj);
+	// TODO: This is probably better handled as createNewWorker()
+	// public EntityCitizen workerType = new EntityCitizen(this.worldObj);
 	
 	public TileEntityColoniesChest(){
 		super();
 		occupants = new LinkedList<EntityCitizen>();
 	}
 	
-	// to be overriden by various building types
+	
 	public boolean applyForJob(EntityCitizen _candidate){
+		if(_candidate.worldObj.isRemote) return false;
+		
+		// find a job opening
+		for(EntityCitizen availablePosition : jobPositions){
+			if(availablePosition == null){
+				// found empty job.
+				
+				// is candidate qualified?
+				if(!_candidate.isMale) return false;
+				
+				EntityCitizen newCitizen = createNewWorker(_candidate.worldObj);
+				_candidate.employer = this;
+				_candidate.setNewJob(newCitizen);				
+				availablePosition = newCitizen;
+				Utility.chatMessage("Citizen #" + _candidate.ssn + " hired as "+newCitizen.getJobTitle()+ " #"+newCitizen.ssn);
+				return true;
+			}// else position already occupied
+		}
 		return false;
 	}
-	
+	// Override for various building types
+	protected EntityCitizen createNewWorker(World theWorld){
+		return new EntityCitizen(theWorld);
+	}	
 	
 	// Normally this function appears in the Block class,
 	// but there's a freakish requirement that the worldObj exist for the block
@@ -495,6 +521,24 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 	public void moveIn(EntityCitizen newOccupant) {
 		if(occupants == null) return;
 		occupants.add(newOccupant);
+	}
+
+
+	public void fireEmployees() {
+		for(EntityCitizen employee : jobPositions){
+			if(employee != null){
+				employee.employer = null;
+				
+				if(employee.isMale){
+					employee.setNewJob(new EntityCitizen(employee.worldObj));
+				}
+				else{
+					employee.setNewJob(new EntityWife(employee.worldObj));
+				}
+				
+				employee = null;
+			}
+		}
 	}
 
 }

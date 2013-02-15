@@ -1,7 +1,10 @@
 package colonies.src.buildings;
 
 import colonies.src.ClientProxy;
+import colonies.src.citizens.EntityAlchemist;
+import colonies.src.citizens.EntityCitizen;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.World;
 
 public class TileEntityAlchemistShop extends TileEntityColoniesChest {
 
@@ -21,5 +24,9 @@ public class TileEntityAlchemistShop extends TileEntityColoniesChest {
 		return ClientProxy.ALCHEMISTCHEST_PNG;
 	}
 
+    @Override
+    public EntityCitizen createNewWorker(World theWorld){
+    	return new EntityAlchemist(theWorld);
+    }
 
 }

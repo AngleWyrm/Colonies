@@ -38,6 +38,11 @@ public class EntityLumberjack extends EntityCitizen {
 	    if(!alreadyInList) jobTypes.add(this);
 	}
 	
+	@Override
+	public String getJobTitle(){
+		return "Lumberjack";
+	}
+	
 	public String getTexture() {
 		if (this.isInWater()) {
 			return ColoniesMain.skinMinerSwimming;

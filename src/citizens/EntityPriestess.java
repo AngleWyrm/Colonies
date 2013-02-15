@@ -34,6 +34,11 @@ public class EntityPriestess extends EntityCitizen{
 		}
 		return ColoniesMain.skinPriestess;
     }
+	
+	public String getJobTitle(){
+		return "Priestess";
+	}
+	
     protected String getHurtSound(){
         return "colonies.f-ohyeah";
     }

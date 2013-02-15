@@ -116,6 +116,7 @@ public class BlockColoniesChest extends BlockContainer {
     	return false;
     }
     public boolean removeChestFromTown(TileEntityColoniesChest _teChest){
+    	_teChest.fireEmployees();
     	return false;
     }
     

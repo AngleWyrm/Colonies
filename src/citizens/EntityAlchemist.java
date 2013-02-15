@@ -38,6 +38,10 @@ public class EntityAlchemist extends EntityCitizen
 		}
 		return ColoniesMain.skinAlchemist;
 	}
+	
+	public String getJobTitle(){
+		return "Alchemist";
+	}
 
 	protected String getLivingSound() {
 		if (citizenGreetings){

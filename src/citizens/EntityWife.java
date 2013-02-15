@@ -35,6 +35,10 @@ public class EntityWife extends EntityCitizen{
 		}
 		return ColoniesMain.skinWife;
     }
+	
+	public String getJobTitle(){
+		return "Wife";
+	}
 
 	protected String getLivingSound(){
 		if(citizenGreetings){

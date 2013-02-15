@@ -3,7 +3,6 @@ package colonies.src.citizens;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import colonies.anglewyrm.src.EntityAISeekEmployment;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
@@ -538,6 +537,11 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		
 		this.setDead();
 		newJob.worldObj.spawnEntityInWorld(newJob);
+	}
+
+	public String getJobTitle() {
+		// TODO: String localization
+		return "Wanderer";
 	}
 
 }

@@ -1,7 +1,10 @@
 package colonies.src.buildings;
 
 import colonies.src.ClientProxy;
+import colonies.src.citizens.EntityCitizen;
+import colonies.src.citizens.EntityFisherman;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.World;
 
 public class TileEntityFishermanHut extends TileEntityColoniesChest {
 
@@ -21,5 +24,9 @@ public class TileEntityFishermanHut extends TileEntityColoniesChest {
 		return ClientProxy.FISHERMANHUT_PNG;
 	}
 
+    @Override
+    public EntityCitizen createNewWorker(World theWorld){
+    	return new EntityFisherman(theWorld);
+    }
 
 }

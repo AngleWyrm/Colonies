@@ -64,6 +64,10 @@ public class EntityMiner extends EntityCitizen{
 		return ColoniesMain.skinMiner;
 	}
 
+	public String getJobTitle(){
+		return "Miner";
+	}
+	
 	protected String getLivingSound() {
 		if (citizenGreetings){
 			if (Utility.getLootCategory()==3) {

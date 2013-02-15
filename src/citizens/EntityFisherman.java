@@ -42,6 +42,10 @@ public class EntityFisherman extends EntityCitizen {
 		}
 		return ColoniesMain.skinFisherman;
 	}
+	
+	public String getJobTitle(){
+		return "Fisherman";
+	}
 
 	protected String getLivingSound() {
 		if (citizenGreetings){

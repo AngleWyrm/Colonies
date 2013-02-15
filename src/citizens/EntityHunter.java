@@ -39,6 +39,10 @@ public class EntityHunter extends EntityCitizen {
 		}
 		return ColoniesMain.skinHunter;
 	}
+	
+	public String getJobTitle(){
+		return "Hunter";
+	}
    
     /**
      * Returns the item ID for the item the mob drops on death.
