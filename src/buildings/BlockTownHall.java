@@ -54,6 +54,9 @@ public class BlockTownHall extends BlockColoniesChest
   			  ((EntityPlayer) par5EntityLiving).openGui(ColoniesMain.instance, 10, theWorld, x, y, z);
   			}
     		((TileEntityTownHall) tileEntity).maxPopulation = 4;
+    		if(TileEntityTownHall.playerTown != null){
+    			TileEntityTownHall.playerTown.evacuateTown();
+    		}
     		TileEntityTownHall.playerTown = ((TileEntityTownHall)tileEntity);
     		Utility.chatMessage("player town placed");
     	}
@@ -96,7 +99,7 @@ public class BlockTownHall extends BlockColoniesChest
 
     	// player town border markers
     	// CLIENT SIDE ONLY
-    	if(world.isRemote) return;
+    	// if(world.isRemote) return;
     	
     	Point p = new Point();
     	for(int angle = 0; angle < 32; ++angle){
