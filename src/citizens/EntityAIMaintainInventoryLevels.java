@@ -60,8 +60,10 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
     public boolean continueExecuting()
     {
     	// if arrived, get supplies and return false
-    	Point p = new Point(citizen.posX, citizen.posY, citizen.posZ);
-    	double range = p.getDistance(citizen.homeTown.getPoint());
+    	Point p = new Point();
+    	double range;
+    	p.set(citizen.posX, citizen.posY, citizen.posZ);
+    	range = p.getDistance(citizen.homeTown.getPoint());
     	if(range < 3.0){
     		// arrived at location, transfer supplies
     		citizen.stopNavigating();

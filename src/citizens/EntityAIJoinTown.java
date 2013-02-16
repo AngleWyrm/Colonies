@@ -30,76 +30,64 @@ public class EntityAIJoinTown extends EntityAIBase
 	public boolean shouldExecute() 
 	{
 		// reasons to idle this task in the background
-		if( citizen.homeTown != null && !citizen.firstVisit ) return false;
-		if( TileEntityTownHall.playerTown == null ) return false;
+		if(TileEntityTownHall.playerTown == null) return false;  // no player town
+		if( citizen.homeTown != null){
+			if(!citizen.firstVisit) return false; // already visited town hall
+			return true; // else not there yet
+		} // else no home town
 		
-		// apply for citizenship if necessary
-		if( citizen.homeTown == null ){
-			if( TileEntityTownHall.playerTown.adoptTown(citizen) ){
-				Utility.Debug("Application for citizenship accepted");
-				return true;
-			}
-			else{
-				Utility.Debug("Application for citizenship declined");
-				return false;
-			}
-		}		
-		return true;
+		// apply for citizenship
+		if(TileEntityTownHall.playerTown.adoptTown(citizen)){
+			// Utility.Debug("Application for citizenship accepted");
+			return true;
+		}
+		else{
+			// Utility.Debug("Application for citizenship declined");
+			return false;
+		}
 	}
 	
     public void startExecuting()
     {
-    	if(TileEntityTownHall.playerTown != null){
-    		this.citizen.getNavigator()
-        		.tryMoveToXYZ(TileEntityTownHall.playerTown.xCoord, 
-        	 			  TileEntityTownHall.playerTown.yCoord+1, 
-        				  TileEntityTownHall.playerTown.zCoord, 0.25f);
-    	}// else fubar
+    	if(citizen.homeTown == null) return;
+    	destination = new Point(citizen.homeTown);
+   		citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y+1, destination.z, 0.25f);
     }
 
     public boolean continueExecuting()
     {
-    	if(TileEntityTownHall.playerTown != null){
-    		Utility.Debug("Continuing Journey");
-    		
-    		// Arrive at town hall
-    		if(distanceToBlock(TileEntityTownHall.playerTown) < 2d){
-    			destination = null;
-    			citizen.stopNavigating();
-    			
-    			// assign housing
-    			citizen.firstVisit = false; // TODO: replace with housing availability check
-    			
-    			if(TileEntityTownHall.playerTown.homesList != null && !TileEntityTownHall.playerTown.homesList.isEmpty()){
-    				// move into first house with vacancy and complimentary gender
-    				for(TileEntityColoniesChest testHouse : TileEntityTownHall.playerTown.homesList){
-    					if(testHouse.hasVacancy(citizen)){
-    						citizen.residence = testHouse;
-    						citizen.residence.moveIn(citizen);
-    						break;
-    					}
-    				}
-    			}
-    			if(citizen.residence == null){
-    				// couldn't find a suitable residence, use town hall
-    				citizen.residence = TileEntityTownHall.playerTown;
-    				citizen.residence.moveIn(citizen);
-    			}
-    			return false;
-    		} // else still travelling to town hall
+    	if(citizen.homeTown == null || destination == null){
+    		citizen.stopNavigating();
+    		destination = null;
+    		return false;
     	}
-    	boolean pathOK = !this.citizen.getNavigator().noPath();
-    	if(pathOK){
-    		Utility.Debug("...I can see it from here!");
-    	}
-    	else{
-    		Utility.Debug("Oh no! I can't get there from here!");
-    	}
-    	return pathOK;
+    	
+   		// Arrive at town hall
+   		if(destination.getDistance(citizen) < 3d){
+			destination = null;
+			citizen.stopNavigating();
+			
+			// assign housing
+			citizen.firstVisit = false; // TODO: replace with housing availability check
+			
+			if(citizen.homeTown.homesList != null && !citizen.homeTown.homesList.isEmpty()){
+				// move into first house with vacancy and complimentary gender
+				for(TileEntityColoniesChest testHouse : citizen.homeTown.homesList){
+					if(testHouse.hasVacancy(citizen)){
+						citizen.residence = testHouse;
+						citizen.residence.moveIn(citizen);
+						break;
+					}
+				}
+			}
+			if(citizen.residence == null){
+				// couldn't find a suitable residence, use town hall
+				citizen.residence = citizen.homeTown;
+				citizen.residence.moveIn(citizen);
+			}
+			return false; // moved in, quit process
+		} // else still traveling to town hall
+    
+    	return !this.citizen.getNavigator().noPath();
     }
-   
-	private double distanceToBlock(TileEntityTownHall tile){
-		double distance = tile.getDistanceFrom(citizen.posX, citizen.posY, citizen.posZ);
-		return Math.sqrt(distance);
-	}
 }
