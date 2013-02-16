@@ -101,7 +101,7 @@ public class EntityMiner extends EntityCitizen{
 		int minerBlockID = ColoniesMain.minerChestID;
 		if (ticksExisted - lastSearch >= 40) {
 			lastSearch = ticksExisted;
-			PathNavigator nav = pathToBlock(minerBlockID);
+			/*PathNavigator nav; // = pathToBlock(minerBlockID);
 			if (nav == null) return;
 			if (nav.getLength() < 1.5) {
 				if (nav.hasLocation()) {
@@ -112,6 +112,7 @@ public class EntityMiner extends EntityCitizen{
 			} else {
 				navigateToBlock(nav);
 			}
+			*/
 		}
 	}
 	
