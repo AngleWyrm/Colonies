@@ -11,6 +11,22 @@ PREREQUISITES:
 
 RELEASE NOTES
 
+
+Pre-Alpha Revision 13 15-Feb-2013
+
+Features
+    Placing player town hall presents a Name Town dialog
+    #100 Citizens can change to take on jobs based on town buildings
+    #98 Lumberjack requires an axe to chop trees
+
+Fixes
+    #96 Fixed some instances of citizens standing on chests
+    #91 Fixed crash when removing last house building
+
+Known Issues
+    Citizens don't yet choose from all available jobs
+
+
 Pre-Alpha Revision 12 8-Feb-2013
    AI maintenance
    

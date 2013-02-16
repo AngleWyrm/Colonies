@@ -17,7 +17,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	static int INVENTORY_CHECK_FREQUENCY = 100; // about 5 seconds between scans
 	int updateCounter = INVENTORY_CHECK_FREQUENCY;
 	ItemStack objectOfDesire;
-	Point destination = new Point();
+	Point destination;
 	
 	public EntityAIMaintainInventoryLevels(EntityCitizen _citizen){
 		citizen = _citizen;	
@@ -65,6 +65,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
     	if(range < 3.0){
     		// arrived at location, transfer supplies
     		citizen.stopNavigating();
+    		destination = null;
     		
     		if(citizen.getItemFromChest(citizen.homeTown, objectOfDesire) != null){ 
     			Utility.chatMessage("Citizen #" +citizen.ssn + " got supplies");
