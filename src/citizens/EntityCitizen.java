@@ -3,7 +3,6 @@ package colonies.src.citizens;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import colonies.boycat97.src.EntityAIGatherDroppedItems;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;

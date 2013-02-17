@@ -1,5 +1,6 @@
 package colonies.src;
 
+import colonies.src.buildings.ColoniesChestRenderHelper;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChestRenderer;
 import net.minecraft.src.Block;

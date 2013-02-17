@@ -1,4 +1,4 @@
-package colonies.boycat97.src;
+package colonies.src.citizens;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,8 +15,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3;
 import net.minecraft.src.World;
-import colonies.src.citizens.EntityCitizen;
-import colonies.src.citizens.EntityLumberjack;
 import colonies.src.Point;
 import colonies.src.Utility;
 import cpw.mods.fml.common.FMLModContainer;

@@ -6,7 +6,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import colonies.src.ColoniesMain;
-import colonies.src.ContainerColoniesChest;
+import colonies.src.buildings.ContainerColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityTownHall;
 import net.minecraft.src.Block;

@@ -7,7 +7,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import colonies.lohikaarme.src.GuiHouse;
 import colonies.lohikaarme.src.GuiTownHall;
 import colonies.lohikaarme.src.GuiTownName;
-import colonies.src.ContainerColoniesChest;
+import colonies.src.buildings.ContainerColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChest;
 
 public class GuiHandlerColoniesChest implements IGuiHandler {
