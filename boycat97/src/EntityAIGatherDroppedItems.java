@@ -57,14 +57,14 @@ public class EntityAIGatherDroppedItems extends EntityAIBase
 	public boolean continueExecuting()
 	{
 		//Look for item
-		List<EntityItem> foundItems = this.getNearbyEntities(taskEntityWorld, 12.0D);
+		List<EntityItem> foundItems = this.getNearbyEntities(taskEntityWorld, 6.0D);
 			
 		placeInInventory(foundItems);
 		return true;
 	}
 	
 	private List<EntityItem> getNearbyEntities(World world, double range) {	
-
+		//Scan for items in a set bounding box
 		List<EntityItem> items = citizen.worldObj.selectEntitiesWithinAABB(EntityItem.class, citizen.boundingBox.expand(range, range, range), this.field_82643_g);		
 		
 		return items;
@@ -74,10 +74,13 @@ public class EntityAIGatherDroppedItems extends EntityAIBase
 	private void placeInInventory(List<EntityItem> itemsToRetrieve)
 	{
 		//TODO: Determine what items they would like to have over just picking up everything.
-		for( EntityItem itemRetreived : itemsToRetrieve) {
-			if (this.citizen.inventory.addItemStackToInventory(itemRetreived.item) && itemRetreived.onGround ){
-				itemRetreived.setDead();
+		
+		//looking through items to make sure they are on the ground and available to be retrieved
+		for( EntityItem itemRetrieved : itemsToRetrieve) {
+			if (this.citizen.inventory.addItemStackToInventory(itemRetrieved.item) && itemRetrieved.onGround ){
+				itemRetrieved.setDead();
 			} else {
+				//if item was not retrievable move to next one.
 				continue;
 			}
 		}
