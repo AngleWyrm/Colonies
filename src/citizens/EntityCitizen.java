@@ -3,6 +3,7 @@ package colonies.src.citizens;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import colonies.anglewyrm.src.EntityAITransferInventoryToEmployer;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
@@ -53,29 +54,30 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	
 	public EntityCitizen(World par1World) {
 		super(par1World);
-		this.ssn = ++ssnPool;
-		this.texture = ColoniesMain.skinDefault;
-		this.moveSpeed = ColoniesMain.citizenMoveSpeed;
+		ssn = ++ssnPool;
+		texture = ColoniesMain.skinDefault;
+		moveSpeed = ColoniesMain.citizenMoveSpeed;
 		
-		this.inventory = new InventoryCitizen(this);
-		this.desiredInventory = new InventoryCitizen(this);
+		inventory = new InventoryCitizen(this);
+		desiredInventory = new InventoryCitizen(this);
 		desiredInventory.addItemStackToInventory(new ItemStack(Item.bread, 2));
 
-		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIEatSomething(this));
-	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
-	    this.tasks.addTask(2, new EntityAIGatherDroppedItems(this, null)); // Testing, might move to specific citizens
-	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
-	    this.tasks.addTask(3, new EntityAIMaintainInventoryLevels(this));
-	    this.tasks.addTask(4, new EntityAIJoinTown(this));
-		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
-		this.tasks.addTask(5, new EntityAIGoHomeAtNight(this));
-		this.tasks.addTask(5, new EntityAISeekEmployment(this));
-	    this.tasks.addTask(6, new EntityAIVisit(this));
-	    this.tasks.addTask(6, new EntityAIWander(this, this.moveSpeed));
-	    this.tasks.addTask(7, new EntityAIGoHomeAtNight(this));
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new EntityAIEatSomething(this));
+	    tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
+	    tasks.addTask(2, new EntityAIGatherDroppedItems(this, null)); // Testing, might move to specific citizens
+	    tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
+	    tasks.addTask(3, new EntityAIMaintainInventoryLevels(this));
+	    tasks.addTask(4, new EntityAIJoinTown(this));
+		tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+		tasks.addTask(5, new EntityAIGoHomeAtNight(this));
+		tasks.addTask(5, new EntityAISeekEmployment(this));
+		tasks.addTask(6, new EntityAITransferInventoryToEmployer(this));
+	    tasks.addTask(6, new EntityAIVisit(this));
+	    tasks.addTask(6, new EntityAIWander(this, this.moveSpeed));
+	    tasks.addTask(7, new EntityAIGoHomeAtNight(this));
 
-	    this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+	    targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 	    
 	    // add this type of employment to the jobTypes if necessary
 	    boolean alreadyInList = false;

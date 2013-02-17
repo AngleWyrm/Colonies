@@ -543,4 +543,18 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 		}
 	}
 
+	public int addItemsToInventory(ItemStack stack) {
+		// loop through inventory, topping off similar stacks or filling empty slots
+		for(int index = 0; index < getSizeInventory(); ++index){
+			ItemStack currentStack = getStackInSlot(index);
+			if(currentStack == null){
+				// empty slot, drop stack here
+				setInventorySlotContents(index, stack);
+				return 0; // ASSUMPTION: stack fits into empty slot
+			} // else not null
+			// TODO: top off partial stacks with same ID
+		}
+		return -1; // no room for this stack
+	}
+
 }

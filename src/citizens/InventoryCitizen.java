@@ -732,23 +732,23 @@ public class InventoryCitizen implements IInventory{
      */
     public void dropAllItems()
     {
-        int var1;
+        int index;
 
-        for (var1 = 0; var1 < this.mainInventory.length; ++var1)
+        for (index = 0; index < this.mainInventory.length; ++index)
         {
-            if (this.mainInventory[var1] != null)
+            if (this.mainInventory[index] != null)
             {
-                this.citizen.dropPlayerItemWithRandomChoice(this.mainInventory[var1], true);
-                this.mainInventory[var1] = null;
+                this.citizen.dropPlayerItemWithRandomChoice(this.mainInventory[index], true);
+                this.mainInventory[index] = null;
             }
         }
 
-        for (var1 = 0; var1 < this.armorInventory.length; ++var1)
+        for (index = 0; index < this.armorInventory.length; ++index)
         {
-            if (this.armorInventory[var1] != null)
+            if (this.armorInventory[index] != null)
             {
-                this.citizen.dropPlayerItemWithRandomChoice(this.armorInventory[var1], true);
-                this.armorInventory[var1] = null;
+                this.citizen.dropPlayerItemWithRandomChoice(this.armorInventory[index], true);
+                this.armorInventory[index] = null;
             }
         }
     }
@@ -828,10 +828,7 @@ public class InventoryCitizen implements IInventory{
     }
 
 	public boolean isFull() {
-		for(ItemStack stack : mainInventory){
-			if(stack == null) return false;
-		}
-		return true;
+		return getFirstEmptyStack() == -1;
 	}
 	
 }

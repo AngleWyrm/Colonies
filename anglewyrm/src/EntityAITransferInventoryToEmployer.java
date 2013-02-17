@@ -3,6 +3,7 @@ package colonies.anglewyrm.src;
 import colonies.src.Point;
 import colonies.src.citizens.EntityCitizen;
 import net.minecraft.src.EntityAIBase;
+import net.minecraft.src.ItemStack;
 
 public class EntityAITransferInventoryToEmployer extends EntityAIBase{
 
@@ -42,9 +43,27 @@ public class EntityAITransferInventoryToEmployer extends EntityAIBase{
 		citizen.stopNavigating();
 		destination = null;
 		
+		if(citizen.employer == null){ // chest is gone, drop everything
+			citizen.inventory.dropAllItems();
+			return false;
+		} // else chest exists
+			
 		// Dump cargo into employer chest
-		// Until chest is full
-		// or down to minimum desired levels of stuff
+		for(int index = 0; index < citizen.inventory.getSizeInventory(); ++index){
+			int desiredCount, extraOnHand;
+			ItemStack stack = citizen.inventory.getStackInSlot(index);
+			desiredCount = citizen.desiredInventory.countItems(stack.itemID);
+			extraOnHand = citizen.inventory.countItems(stack.itemID) - desiredCount;
+			if(extraOnHand > 0){
+				// have too many, transfer (or drop) some
+				if(citizen.employer.addItemsToInventory(stack) == 0){
+					// dropped off goods
+					citizen.inventory.mainInventory[index] = null;
+					continue;
+				} // else failed to add items to chest
+				citizen.dropPlayerItemWithRandomChoice(citizen.inventory.mainInventory[index], true);
+			} // else no extra to drop off
+		} // next citizen.inventory slot
 		
 		return false;
 	}
