@@ -16,13 +16,13 @@ public class EntityAISeekEmployment extends EntityAIBase
 	public boolean shouldExecute()
 	{
 		// reasons to idle this process
-		if(TileEntityTownHall.playerTown == null) return false;
-		if(TileEntityTownHall.playerTown.employersList == null) return false;
-		if(TileEntityTownHall.playerTown.employersList.isEmpty()) return false;
 		if(citizen == null) return false;
+		if(citizen.homeTown == null) return false;
+		if(citizen.homeTown.employersList == null) return false;
+		if(citizen.homeTown.employersList.isEmpty()) return false;
 		if(!citizen.worldObj.isDaytime()) return false; // don't work at night
 		if(citizen.firstVisit) return false; // wait until citizen visits town hall
-		if(citizen.worldObj.isRemote) return false;
+		if(citizen.worldObj.isRemote) return false; // is this a real citizen?
 		
 		// TODO: if already employed, then usually skip this
 		if(citizen.employer != null) return false;
@@ -34,8 +34,7 @@ public class EntityAISeekEmployment extends EntityAIBase
 	public void startExecuting(){	
 		// apply for jobs in list
 		boolean gotJob;
-		gotJob = TileEntityTownHall.playerTown.getNextJob(citizen);
-		// Utility.chatMessage("gotJob = " + gotJob);
+		gotJob = citizen.homeTown.getNextJob(citizen);
 		
 		// If didn't get a job, convert to plain citizen
 		if(!gotJob){

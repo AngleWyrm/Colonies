@@ -36,22 +36,24 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 	}
 	
 	
-	public boolean applyForJob(EntityCitizen _candidate){
-		if(_candidate.worldObj.isRemote) return false;
+	public boolean applyForJob(EntityCitizen candidate){
+		if(candidate.worldObj.isRemote) return false;
 		
 		// find a job opening
 		for(EntityCitizen availablePosition : jobPositions){
 			if(availablePosition == null){
 				// found empty job.
 				
-				// is candidate qualified?
-				if(!_candidate.isMale) return false;
+				// is candidate disqualified?
+				if(!candidate.isMale) return false;
+							
+				EntityCitizen newCitizen = createNewWorker(candidate.worldObj);
+				candidate.setNewJob(newCitizen);
 				
-				EntityCitizen newCitizen = createNewWorker(_candidate.worldObj);
-				_candidate.employer = this;
-				_candidate.setNewJob(newCitizen);				
+				newCitizen.employer = this;
 				availablePosition = newCitizen;
-				Utility.chatMessage("Citizen #" + _candidate.ssn + " hired as "+newCitizen.getJobTitle()+ " #"+newCitizen.ssn);
+				
+				Utility.chatMessage("Citizen #" + candidate.ssn + " hired as "+newCitizen.getJobTitle()+ " #"+newCitizen.ssn);
 				return true;
 			}// else position already occupied
 		}

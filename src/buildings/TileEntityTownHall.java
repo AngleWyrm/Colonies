@@ -30,12 +30,14 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
 
-	public LinkedList<EntityCitizen>       citizensList;
+	public LinkedList<EntityCitizen>       		citizensList;
 	public LinkedList<TileEntityColoniesChest>  homesList;
 	public LinkedList<TileEntityColoniesChest>  employersList;
 	
+	
 	private boolean notreturnedlist = false;
 	private Integer[][] homelistvalues;
+	
 	
 	public TileEntityTownHall() {
 		super();
@@ -51,24 +53,21 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 			return false;
 		}
 		if(citizensList.size() >= maxPopulation){
-			// Utility.Debug("Town full: " + getInvName());
+			Utility.chatMessage("Sorry, town full: " + getInvName());
 			return false;
 		}
 		if(citizensList.contains(newCitizen)){
-			Utility.Debug("Already a resident!?");
+			Utility.chatMessage("[ERROR] Already a resident!?");
 			return false;
 		}
 		
-		newCitizen.hasHomeTown = true;
-		newCitizen.homeTown = this;
 		if(citizensList.offer(newCitizen)){
 	 		Utility.chatMessage("A Citizen joined "	+ playerTown.getInvName());
-	 		}
-		else{
-			Utility.Debug("[ERROR] citizenList refused offer");
-			return false;
-		}
-		return true;
+			newCitizen.homeTown = this;
+			return true;
+ 		}
+		Utility.Debug("[ERROR] citizenList refused offer");
+		return false;
 	}
 
 	// One citizen leaves town membership
@@ -76,12 +75,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		if((citizensList==null)||(oldCitizen==null)) return false;
 		if(!citizensList.contains(oldCitizen)) return false;
 		citizensList.remove(citizensList.indexOf(oldCitizen));
-		oldCitizen.hasHomeTown = false;
 		oldCitizen.homeTown = null;
-		Utility.Debug("Citizen left town");
   		Utility.chatMessage("A Citizen left " + getInvName());
   		
   		// TODO: free up houseing
+  		// TODO: free up job
  		return true;
 	}
 	
@@ -137,51 +135,22 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         
         // DEBUG: workaround for double-chest placement bug
         if(this != playerTown) return;
-        
-        // player town border markers
-        // this.worldObj.spawnParticle("reddust", this.xCoord, this.yCoord + 1.5, this.zCoord, 0.0,0.0,0.0);
-        // Utility.chatMessage(this.xCoord + " "+this.yCoord+" "+this.zCoord);
-       	
+             	
         // Spawner system
         if(citizensList == null) return;
         if(citizensList.size() >= maxPopulation) return;
         
         if(--spawnDelay <= 0){
         	spawnDelay = 500;
-        	Utility.Debug(townName + " spawner triggered");
+        	// Utility.Debug(townName + " spawner triggered");
  
-        	// Choose citizen type to spawn
+        	// Choose citizen type to spawn (default wanderer or wife)
            	EntityCitizen newGuy;
-           	if(this.isLessFemales()){
+           	if(isLessFemales()){
            		newGuy = new EntityWife(worldObj);
            	}
            	else{
-           		Random random = new Random();
-           		switch(random.nextInt(6)){
-           			/*
-           			case 0:
-           				newGuy = new EntityAlchemist(worldObj);
-           				break;
-           			case 1:
-           				newGuy = new EntityFisherman(worldObj);
-           				break;
-           			case 2:
-           				newGuy = new EntityLumberjack(worldObj);
-           				break;
-           			case 3:
-           				newGuy = new EntityMiner(worldObj);
-           				break;
-           			case 4:
-           				newGuy = new EntityPriestess(worldObj);
-           				break;
-           			case 5:
-           				newGuy = new EntityWife(worldObj);
-           				break;
-           			*/
-           			default:
-           				newGuy = new EntityCitizen(worldObj); // Citizens start as default (wanderer) citizens
-           				break;
-           		}
+           		newGuy = new EntityCitizen(worldObj);
            	}
         	
         	// pick a random direction at the town perimeter
@@ -191,20 +160,22 @@ public class TileEntityTownHall extends TileEntityColoniesChest
         	q.polarTranslation(Utility.rng.nextRadian(), (float)(Math.PI/2.2), 14d);
         	p.plus(q);
         	this.terrainAdjustment(p);
-        	// Utility.chatMessage(p.toString());
-        	
-        	// TODO: Validate and adjust ground level for mob landing
 
         	// spawn mob
             newGuy.setLocationAndAngles(Math.floor(p.x), Math.floor(p.y), Math.floor(p.z), Utility.rng.nextFloat()*360.0f, 0.0f);
-            this.worldObj.spawnEntityInWorld(newGuy);
+            worldObj.spawnEntityInWorld(newGuy);
         }
+        
+        /*
+        // Load/Save
         if(notreturnedlist){
           for(int i=0;i<homelistvalues.length;i++){
       		TileEntityColoniesChest var1 = (TileEntityColoniesChest)worldObj.getBlockTileEntity(homelistvalues[i][0],homelistvalues[i][1],homelistvalues[i][2]);
       		playerTown.homesList.add((TileEntityColoniesChest)var1);;
           }
         }
+        */
+ 
 	}
 	private boolean isLessFemales(){
 		if(citizensList == null || citizensList.isEmpty()) return false;
@@ -248,6 +219,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		return false;
 	}
 	
+	/*
 	@Override
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
 	  super.writeToNBT(par1NBTTagCompound);
@@ -265,7 +237,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		par1NBTTagCompound.setInteger("Homeslist" + i0 + "z", i1.zCoord);
 		// System.out.println(i0);
 	  }
-	  par1NBTTagCompound.setInteger("HomeslistSize", i0);/*  */
+	  par1NBTTagCompound.setInteger("HomeslistSize", i0);
 	  
 	}
 	
@@ -291,6 +263,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	  maxPopulation += 4;
 	  playerTown = this;
 	}
+	*/
 	
 	@Override
 	public String getTextureFile(){

@@ -286,10 +286,15 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		
 		// TODO: copy inventory, etc
 		newJob.setPosition(this.posX, this.posY, this.posZ);
-		newJob.employer = this.employer;
 		
+		TileEntityTownHall town = this.homeTown;
+
+		this.homeTown.leaveTown(this);
 		this.setDead();
+		
 		newJob.worldObj.spawnEntityInWorld(newJob);
+		newJob.homeTown = town;
+		newJob.homeTown.adoptTown(newJob); // may have to subvert this method
 	}
 
 	public String getJobTitle() {
