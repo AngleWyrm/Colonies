@@ -52,6 +52,7 @@ public class EntityAITransferInventoryToEmployer extends EntityAIBase{
 		for(int index = 0; index < citizen.inventory.getSizeInventory(); ++index){
 			int desiredCount, extraOnHand;
 			ItemStack stack = citizen.inventory.getStackInSlot(index);
+			if(stack == null) continue;
 			desiredCount = citizen.desiredInventory.countItems(stack.itemID);
 			extraOnHand = citizen.inventory.countItems(stack.itemID) - desiredCount;
 			if(extraOnHand > 0){
