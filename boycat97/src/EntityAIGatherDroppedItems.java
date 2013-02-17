@@ -31,14 +31,16 @@ public class EntityAIGatherDroppedItems extends EntityAIBase
 	private ItemStack itemsLookingFor;
 	private World taskEntityWorld;
 	private boolean foundItem;
+	private ItemStack[] itemsToPickUp;
 	
 	private final IEntitySelector field_82643_g;
 	
 	private Point destination;
 	
-	public EntityAIGatherDroppedItems(EntityCitizen _citizen)
+	public EntityAIGatherDroppedItems(EntityCitizen _citizen, ItemStack[] _itemsToPickUp)
 	{
-		this.setMutexBits(4);
+		this.setMutexBits(0); // for testing wander, may change later
+		itemsToPickUp = _itemsToPickUp;
 		this.citizen = _citizen;
 		this.foundItem = false;
 		this.field_82643_g = (IEntitySelector)null;
@@ -73,20 +75,26 @@ public class EntityAIGatherDroppedItems extends EntityAIBase
 	
 	private void placeInInventory(List<EntityItem> itemsToRetrieve)
 	{
-		//TODO: Determine what items they would like to have over just picking up everything.
-		
 		//looking through items to make sure they are on the ground and available to be retrieved
 		for( EntityItem itemRetrieved : itemsToRetrieve) {
-			if (this.citizen.inventory.addItemStackToInventory(itemRetrieved.item) && itemRetrieved.onGround ){
-				itemRetrieved.setDead();
-			} else {
-				//if item was not retrievable move to next one.
-				continue;
-			}
-		}
+			// Do we want this item?
+			if(shouldPickUpThisItem(itemRetrieved.item)){
+				if (this.citizen.inventory.addItemStackToInventory(itemRetrieved.item) && itemRetrieved.onGround ){
+					itemRetrieved.setDead();
+				} // else pick up failed, move on to next item
+			} // else shouldn't pick up this item, move on to next item
+		} // done with retrieved item list
 		
 	}
-	
-	
+
+	private boolean shouldPickUpThisItem(ItemStack testItem) {
+		if(itemsToPickUp == null) return true; // no special set defined, so pick up everything
+		
+		// scan items to pick up, check for a match
+		for(ItemStack pickMeUp : itemsToPickUp){
+			if(testItem.itemID == pickMeUp.itemID) return true;
+		} // else no match
+		return false;
+	}
 	
 }
