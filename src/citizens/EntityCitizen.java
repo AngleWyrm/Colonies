@@ -3,6 +3,7 @@ package colonies.src.citizens;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import colonies.boycat97.src.EntityAIGatherDroppedItems;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
@@ -64,6 +65,7 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIEatSomething(this));
 	    this.tasks.addTask(1, new EntityAIFindShelterFromRain(this, 0.4f));
+	    this.tasks.addTask(2, new EntityAIGatherDroppedItems(this));
 	    this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
 	    this.tasks.addTask(3, new EntityAIMaintainInventoryLevels(this));
 	    this.tasks.addTask(4, new EntityAIJoinTown(this));
