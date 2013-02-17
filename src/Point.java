@@ -1,6 +1,7 @@
 package colonies.src;
 
 import colonies.src.buildings.TileEntityColoniesChest;
+import colonies.src.citizens.EntityCitizen;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.Vec3;
 
@@ -24,6 +25,16 @@ public class Point
 		x = _x;
 		y = _y;
 		z = _z;
+	}
+	public void set(TileEntityColoniesChest chest) {
+		x = chest.xCoord;
+		y = chest.yCoord;
+		z = chest.zCoord;
+	}
+	public void set(EntityCitizen citizen){
+		x = citizen.posX;
+		y = citizen.posY;
+		z = citizen.posZ;
 	}
 	
 	public double getDistance(Point other){
@@ -66,4 +77,5 @@ public class Point
 	public String toRoundedString(){
 		return "x:"+(int)x + " y:"+(int)y + " z:"+(int)z;
 	}
+
 }

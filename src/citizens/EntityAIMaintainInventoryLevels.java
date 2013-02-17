@@ -31,14 +31,13 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 		if(citizen == null) return false;
 		if(citizen.homeTown == null) return false;
 		if(!citizen.worldObj.isDaytime()) return false; // don't work during night
-		
-		// check for multiple wants quickly if nearby assigned chest
+		if(citizen.employer == null) return false;
+
+		// if nearby employer chest, check wants every time
 		if(destination == null){
-			// TODO: will have this updated by joining/leaving jobs and building/destroying chests
-			destination = new Point(citizen.homeTown.xCoord,  citizen.homeTown.yCoord, citizen.homeTown.zCoord);
+			destination = new Point(citizen.employer);
 		}
-		
-		if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) < 3){
+		if(destination.getDistance(citizen) < 3){
 			return wantsSomething();
 		} // else too far away (would need to path there)
 		
@@ -53,24 +52,21 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	}
 	
 	public void startExecuting(){
-		// TODO: select destination from employer, home, townhall
-		destination.set(citizen.homeTown.xCoord, citizen.homeTown.yCoord, citizen.homeTown.zCoord);
-		citizen.getNavigator().tryMoveToXYZ(citizen.homeTown.xCoord, citizen.homeTown.yCoord+1, citizen.homeTown.zCoord, 0.35f);
+		destination.set(citizen.employer);
+		citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y+1, destination.z, 0.35f);
 	}
 	
     public boolean continueExecuting()
     {
     	// if arrived, get supplies and return false
     	Point p = new Point();
-    	double range;
-    	p.set(citizen.posX, citizen.posY, citizen.posZ);
-    	range = p.getDistance(citizen.homeTown.getPoint());
-    	if(range < 3.0){
+    	p.set(citizen);
+    	if(p.getDistance(citizen.employer) < 3.0){
     		// arrived at location, transfer supplies
     		citizen.stopNavigating();
     		destination = null;
     		
-    		if(citizen.getItemFromChest(citizen.homeTown, objectOfDesire) != null){ 
+    		if(citizen.getItemFromChest(citizen.employer, objectOfDesire) != null){ 
     			Utility.chatMessage("Citizen #" +citizen.ssn + " got supplies");
     		}
     		citizen.wantsSomething = false;
