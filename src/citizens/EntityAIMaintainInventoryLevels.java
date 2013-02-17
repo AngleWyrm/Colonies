@@ -31,7 +31,8 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 		if(citizen == null) return false;
 		if(citizen.homeTown == null) return false;
 		if(!citizen.worldObj.isDaytime()) return false; // don't work during night
-		if(citizen.employer == null) return false;
+		if(citizen.employer == null) return false;      // needs an employer chest to get stuff from
+		if(citizen.inventory.isFull()) return false;    // need room to put stuff
 
 		// if nearby employer chest, check wants every time
 		if(destination == null){

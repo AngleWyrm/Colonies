@@ -19,7 +19,8 @@ public class InventoryCitizen implements IInventory{
     /**
      * An array of 36 item stacks indicating a citizen's inventory.
      */
-    public ItemStack[] mainInventory = new ItemStack[36];
+	private int INVENTORY_SIZE = 36;
+    public ItemStack[] mainInventory = new ItemStack[INVENTORY_SIZE];
 
     /** An array of 4 item stacks containing the currently worn armor pieces. */
     public ItemStack[] armorInventory = new ItemStack[4];
@@ -825,5 +826,12 @@ public class InventoryCitizen implements IInventory{
             this.armorInventory[index] = ItemStack.copyItemStack(otherCitizen.armorInventory[index]);
         }
     }
+
+	public boolean isFull() {
+		for(ItemStack stack : mainInventory){
+			if(stack == null) return false;
+		}
+		return true;
+	}
 	
 }
