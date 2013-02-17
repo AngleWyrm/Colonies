@@ -36,7 +36,7 @@ public class EntityAIGoHomeAtNight extends EntityAIBase
 		if( citizen.worldObj.isDaytime() ) return false;
 		if( TileEntityTownHall.playerTown == null ) return false;
 		if((destination != null) && (distanceToBlock(destination) < 5d)) return false;
-
+		if((citizen.residence != null) && (distanceToBlock(citizen.residence)<5d)) return false;
 		return true;
 	}
 	

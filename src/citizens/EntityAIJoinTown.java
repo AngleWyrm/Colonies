@@ -30,6 +30,7 @@ public class EntityAIJoinTown extends EntityAIBase
 	public boolean shouldExecute() 
 	{
 		// reasons to idle this task in the background
+		if(!citizen.worldObj.isDaytime()) return false; // don't work at night
 		if(TileEntityTownHall.playerTown == null) return false;  // no player town
 		if( citizen.homeTown != null){
 			if(!citizen.firstVisit) return false; // already visited town hall

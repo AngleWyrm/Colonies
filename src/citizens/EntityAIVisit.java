@@ -37,7 +37,9 @@ public class EntityAIVisit extends EntityAIBase
 		// reasons to idle this task in the background
 		if(citizen == null) return false;
 		if(citizen.homeTown == null) return false;
+		if(!citizen.worldObj.isDaytime()) return false; // don't visit at night
 		if(TileEntityTownHall.playerTown == null) return false;
+		
 		
 		if(Utility.rng.nextFloat() > 0.10f ) return false; // sometimes just doesn't wanna	
 

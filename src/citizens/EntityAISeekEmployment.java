@@ -20,6 +20,7 @@ public class EntityAISeekEmployment extends EntityAIBase
 		if(TileEntityTownHall.playerTown.employersList == null) return false;
 		if(TileEntityTownHall.playerTown.employersList.isEmpty()) return false;
 		if(citizen == null) return false;
+		if(!citizen.worldObj.isDaytime()) return false; // don't work at night
 		if(citizen.firstVisit) return false; // wait until citizen visits town hall
 		if(citizen.worldObj.isRemote) return false;
 		

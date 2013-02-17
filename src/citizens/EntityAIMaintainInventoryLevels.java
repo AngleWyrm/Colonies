@@ -30,6 +30,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 		// reasons to idle this task
 		if(citizen == null) return false;
 		if(citizen.homeTown == null) return false;
+		if(!citizen.worldObj.isDaytime()) return false; // don't work during night
 		
 		// check for multiple wants quickly if nearby assigned chest
 		if(destination == null){
