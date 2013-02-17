@@ -49,6 +49,7 @@ public class EntityAIGatherDroppedItems extends EntityAIBase
 		
 		if(citizen == null) return false;
 		if(citizen.homeTown == null) return false; // must belong to a town
+		if(citizen.inventory.isFull()) return false; // need room to pick up stuff
 		
 		return true;
 	}
