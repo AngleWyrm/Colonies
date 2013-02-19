@@ -76,6 +76,7 @@ public class ColoniesMain
 	public static Block fishermanHut;
 	public static Block alchemistShop;
 	public static Block guardHouse;
+	public static Item ancientTome;
 	
 	//public static GuiHandler guiHandlerChest;
 	public static GuiHandlerColoniesChest guiHandlerChest;
@@ -140,6 +141,7 @@ public class ColoniesMain
 	public static int fishermanHutID;
 	public static int alchemistShopID;
 	public static int guardHouseID;
+	public static int ancientTomeID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -176,6 +178,7 @@ public class ColoniesMain
 		fishermanHutID  = config.getBlock("fishermanHutID",  1108).getInt();
 		alchemistShopID = config.getBlock("alchemistShopID", 1109).getInt();
 		guardHouseID	= config.getBlock("guardHouseID", 	 1110).getInt();
+		ancientTomeID	= config.getBlock("ancientTomeID", 	 1111).getInt();
 		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
@@ -271,6 +274,10 @@ public class ColoniesMain
 		// Measuring tape
 		MeasuringTape = new ItemMeasuringTape(measuringTapeID).setItemName("Measuring Tape");
 		LanguageRegistry.addName(MeasuringTape,"Measuring Tape");
+		
+		// Ancient Tome
+		ancientTome = new ItemAncientTome(ancientTomeID).setItemName("Ancient Tome");
+		LanguageRegistry.addName(ancientTome,"Ancient Tome");
 
 		// Test block
 		test = (TestBlock) new TestBlock(testBlockID, 3, Material.ground)
