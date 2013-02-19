@@ -207,6 +207,9 @@ public class ColoniesMain
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
 	{
+		
+		//AncientTomeDropsEvent
+		MinecraftForge.EVENT_BUS.register(new AncientTomeDropsEvent());
 		// Chest block
 		chestBlock = new BlockColoniesChest(defaultChestID);
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
