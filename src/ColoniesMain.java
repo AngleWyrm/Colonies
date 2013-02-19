@@ -14,6 +14,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
 import colonies.kzolp67.src.ColoniesTab;
+import colonies.pmardle.src.ItemAncientTome;
 import colonies.src.buildings.BlockAlchemistShop;
 import colonies.src.buildings.BlockColoniesChest;
 import colonies.src.buildings.BlockFishermanHut;
