@@ -42,15 +42,16 @@ public class GuiTownHall extends GuiColoniesChest {
       // drawString parameters: string, x, y, color    		
       fontRenderer.drawString(StatCollector.translateToLocal(chestInventory.getInvName()), 8, 6, 0x404040);
       
+      int buttonHeight = 20;
       int xButton = ((width - xSize) / 2);
-	  int yButton = ((height - ySize) / 2) - 12;
+	  int yButton = ((height - ySize) / 2) - buttonHeight;
 	  
 	  int id = 0;
 	  
-	  infoButton = new GuiButton(id++, xButton, yButton, 50, 12, "Info");	  
+	  infoButton = new GuiButton(id++, xButton, yButton, 40, buttonHeight, "Info");	  
 	  controlList.add(infoButton);
 	  
-	  townHallInv = new GuiButton(id++, xButton+50, yButton, 100, 12, "Town Inv.");
+	  townHallInv = new GuiButton(id++, xButton+40, yButton, 60, buttonHeight, "Town Inv.");
 	  controlList.add(townHallInv);
       
 	 
@@ -71,6 +72,7 @@ public class GuiTownHall extends GuiColoniesChest {
 			GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glDisable(GL11.GL_DEPTH_TEST);	
 			this.infoButton.drawButton(this.mc, par1, par2);
+			//TODO: highlight the tab that is currently selected.
 			for (int var44 = 0; var44 < this.controlList.size(); ++var44)
 	        {
 	            GuiButton var55 = (GuiButton)this.controlList.get(var44);
@@ -129,7 +131,7 @@ public class GuiTownHall extends GuiColoniesChest {
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) 
     {
     	
-    	if ( this.currentView == this.infoButton.id) {
+    	if ( this.currentView == this.infoButton.id) {  //info view
         	//stores the background image in a variable to be rendered
             int picture = mc.renderEngine.getTexture(ColoniesMain.guiChestBackground);
             this.mc.renderEngine.bindTexture(picture);
@@ -141,7 +143,7 @@ public class GuiTownHall extends GuiColoniesChest {
             this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);        
             this.drawTexturedModalRect(x, y + this.inventoryRows * 18 + 17, 0, 126, this.xSize, 96);
             
-    	} else if ( this.currentView == this.townHallInv.id) {
+    	} else if ( this.currentView == this.townHallInv.id) { //inventory view
     		 int picture = mc.renderEngine.getTexture("/gui/container.png");
     		 this.mc.renderEngine.bindTexture(picture);
     		 
