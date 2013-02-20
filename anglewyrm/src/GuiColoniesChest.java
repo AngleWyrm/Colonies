@@ -14,7 +14,7 @@ public class GuiColoniesChest extends GuiContainer
 	private int inventoryRows = 0;
 
     public GuiColoniesChest (TileEntityColoniesChest teChest,InventoryPlayer _playerInventory) {
-            //the container is instanciated and passed to the superclass for handling
+            //the container is instantiated and passed to the superclass for handling
             super(new ContainerColoniesChest(_playerInventory, teChest));
             chestInventory = teChest;
             this.inventoryRows = chestInventory.getSizeInventory() / 9;
@@ -40,7 +40,7 @@ public class GuiColoniesChest extends GuiContainer
             // drawString parameters: string, x, y, color
             fontRenderer.drawString(StatCollector.translateToLocal(chestInventory.getInvName()), 8, 6, 0x404040);
 
-//             Localization: draws "Inventory" or your regional equivalent
+            // Localization: draws "Inventory" or your regional equivalent
             fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),8,ySize - 62, 0x404040);
     }
 

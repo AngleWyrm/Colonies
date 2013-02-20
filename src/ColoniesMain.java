@@ -201,7 +201,7 @@ public class ColoniesMain
 		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/gfx/skin_sergeant.png").value;
 
 		
-		guiChestBackground = config.get("GUI", "guiChestBackground", "/colonies/pmardle/gfx/Chestcontainer.png").value;
+		guiChestBackground = config.get("GUI", "guiChestBackground2", "/colonies/boycat97/gfx/windowBackground.png").value;
 	}
 	
 	// Register Colonies stuff with Minecraft Forge
