@@ -209,6 +209,7 @@ public class ColoniesMain
 	{
 		
 		//AncientTomeDropsEvent
+		//Additional note to force re-commit
 		MinecraftForge.EVENT_BUS.register(new AncientTomeDropsEvent());
 		// Chest block
 		chestBlock = new BlockColoniesChest(defaultChestID);
