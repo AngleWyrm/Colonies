@@ -129,7 +129,7 @@ public class GuiTownHall extends GuiColoniesChest {
     	
             // drawString parameters: string, x, y, color 
     		if ( tileEntityTownHall != null ) {
-    			fontRenderer.drawString(this.tileEntityTownHall.playerTown.getInvName(), 8, 6, 0x404040);
+    			//fontRenderer.drawString(this.tileEntityTownHall.playerTown.getInvName(), 8, 6, 0x404040);
     		}
         
     	} else if ( this.currentView == this.townHallInv.id) { // inventory view
