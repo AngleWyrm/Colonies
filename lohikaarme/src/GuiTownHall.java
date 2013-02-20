@@ -18,18 +18,31 @@ import colonies.anglewyrm.src.GuiColoniesChest;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityTownHall;
 
 public class GuiTownHall extends GuiColoniesChest {
-
+	
 	private GuiButton infoButton = null;
 	private GuiButton townHallInv = null;
+	
+	private TileEntityTownHall tileEntityTownHall = null;
 	
 	private int currentView = 0;
 	
 	private int inventoryRows = 0;
 	
-	public GuiTownHall(TileEntityColoniesChest teChest,InventoryPlayer _playerInventory) {
+	public GuiTownHall(TileEntityColoniesChest teChest, InventoryPlayer _playerInventory) {
 		super(teChest, _playerInventory);
+		
+		this.inventoryRows = chestInventory.getSizeInventory() / 9;
+        this.ySize = 114 + this.inventoryRows * 7;
+	}
+	
+	public GuiTownHall(TileEntityTownHall teChest, InventoryPlayer _playerInventory) {
+		super(teChest, _playerInventory);
+		
+		this.tileEntityTownHall = teChest;
+		
 		this.inventoryRows = chestInventory.getSizeInventory() / 9;
         this.ySize = 114 + this.inventoryRows * 7;
 	}
@@ -39,9 +52,6 @@ public class GuiTownHall extends GuiColoniesChest {
 	public void initGui(){
 	  super.initGui();
 	  
-      // drawString parameters: string, x, y, color    		
-      fontRenderer.drawString(StatCollector.translateToLocal(chestInventory.getInvName()), 8, 6, 0x404040);
-      
       int buttonHeight = 20;
       int xButton = ((width - xSize) / 2);
 	  int yButton = ((height - ySize) / 2) - buttonHeight;
@@ -115,12 +125,14 @@ public class GuiTownHall extends GuiColoniesChest {
     protected void drawGuiContainerForegroundLayer(int x, int y) 
     { 	
 
-    	if ( this.currentView == this.infoButton.id) {
+    	if ( this.currentView == this.infoButton.id) { //info view
     	
-            // drawString parameters: string, x, y, color    		
-            fontRenderer.drawString(StatCollector.translateToLocal(chestInventory.getInvName()), 8, 6, 0x404040);
+            // drawString parameters: string, x, y, color 
+    		if ( tileEntityTownHall != null ) {
+    			fontRenderer.drawString(this.tileEntityTownHall.playerTown.getInvName(), 8, 6, 0x404040);
+    		}
         
-    	} else if ( this.currentView == this.townHallInv.id) { 
+    	} else if ( this.currentView == this.townHallInv.id) { // inventory view
 
             // Localization: draws "Inventory" or your regional equivalent
             fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 62, 0x404040);
@@ -158,6 +170,9 @@ public class GuiTownHall extends GuiColoniesChest {
         
     }
 
-	
+	public void setTileEntityTownHall (TileEntityTownHall _tileEntityTownHall)
+	{
+		this.tileEntityTownHall = _tileEntityTownHall;
+	}
 
 }
