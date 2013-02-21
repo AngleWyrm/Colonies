@@ -28,7 +28,15 @@ public class GuiHandlerColoniesChest implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
             switch(ID){
-            case 0:return new GuiTownHall((TileEntityTownHall)world.getBlockTileEntity(x,y,z), player.inventory);
+            case 0:
+            	
+            	if (world.getBlockTileEntity(x,y,z) instanceof TileEntityTownHall) {
+            		TileEntityTownHall.playerTown = ((TileEntityTownHall)world.getBlockTileEntity(x,y,z));
+            		return new GuiTownHall((TileEntityTownHall)world.getBlockTileEntity(x,y,z), player.inventory);
+            	} else if (world.getBlockTileEntity(x,y,z) instanceof TileEntityColoniesChest) {
+            		return new GuiColoniesChest((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z), player.inventory);
+            	}
+            	
             case 1:return new GuiHouse((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory);
             case 10:return new GuiTownName((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z),player.inventory); 
             }
