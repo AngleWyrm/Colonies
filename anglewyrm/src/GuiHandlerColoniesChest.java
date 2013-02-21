@@ -23,7 +23,7 @@ public class GuiHandlerColoniesChest implements IGuiHandler {
         }
         return null;
 	}
-
+	//ID has same value than GuiID in BlockColoniesChest. Make new case to new gui and if it for chestblock change value of the GuiID to that at extend class.
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
