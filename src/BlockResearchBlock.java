@@ -15,12 +15,13 @@ import net.minecraft.src.Material;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
+import net.minecraft.src.TileEntityEnchantmentTable;
 import net.minecraft.src.World;
 import colonies.src.ColoniesMain;
 import colonies.src.GuiHandlerResearchBlock;
 import colonies.src.GuiResearchBlock;
 
-//..
+
 public class BlockResearchBlock extends BlockContainer
 {
     /**
@@ -40,10 +41,16 @@ public class BlockResearchBlock extends BlockContainer
     protected BlockResearchBlock(int par1, boolean par2)
     {
         super(par1, Material.rock);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.75F, 1.0F);
+        this.setLightOpacity(0);
         this.isActive = par2;
-        this.blockIndexInTexture = 45;
+        this.blockIndexInTexture = 0;
     }
 
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
     /**
      * Returns the ID of the items to drop on destruction.
      */
@@ -52,120 +59,81 @@ public class BlockResearchBlock extends BlockContainer
         return ColoniesMain.researchBlock.blockID;
     }
 
-    /**
-     * Called whenever the block is added into the world. Args: world, x, y, z
-     */
-    public void onBlockAdded(World par1World, int par2, int par3, int par4)
-    {
-        super.onBlockAdded(par1World, par2, par3, par4);
-        this.setDefaultDirection(par1World, par2, par3, par4);
-    }
-
-    /**
-     * set a blocks direction
-     */
-    private void setDefaultDirection(World par1World, int par2, int par3, int par4)
-    {
-        if (!par1World.isRemote)
-        {
-            int var5 = par1World.getBlockId(par2, par3, par4 - 1);
-            int var6 = par1World.getBlockId(par2, par3, par4 + 1);
-            int var7 = par1World.getBlockId(par2 - 1, par3, par4);
-            int var8 = par1World.getBlockId(par2 + 1, par3, par4);
-            byte var9 = 3;
-
-            if (Block.opaqueCubeLookup[var5] && !Block.opaqueCubeLookup[var6])
-            {
-                var9 = 3;
-            }
-
-            if (Block.opaqueCubeLookup[var6] && !Block.opaqueCubeLookup[var5])
-            {
-                var9 = 2;
-            }
-
-            if (Block.opaqueCubeLookup[var7] && !Block.opaqueCubeLookup[var8])
-            {
-                var9 = 5;
-            }
-
-            if (Block.opaqueCubeLookup[var8] && !Block.opaqueCubeLookup[var7])
-            {
-                var9 = 4;
-            }
-
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, var9);
-        }
-    }
-
+     
     @SideOnly(Side.CLIENT)
 
     /**
      * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
      */
-    public int getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-        if (par5 == 1)
-        {
-            return this.blockIndexInTexture + 17;
-        }
-        else if (par5 == 0)
-        {
-            return this.blockIndexInTexture + 17;
-        }
-        else
-        {
-            int var6 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
-            return par5 != var6 ? this.blockIndexInTexture : (this.isActive ? this.blockIndexInTexture + 16 : this.blockIndexInTexture - 1);
-        }
-    }
+	@Override
+	public String getTextureFile() {
+		return ("/colonies/gfx/ResearchBench.PNG");
+	}
+
 
     @SideOnly(Side.CLIENT)
+
 
     /**
      * A randomly called display update to be able to add particles or other items for display
      */
     public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        if (this.isActive)
-        {
-            int var6 = par1World.getBlockMetadata(par2, par3, par4);
-            float var7 = (float)par2 + 0.5F;
-            float var8 = (float)par3 + 0.0F + par5Random.nextFloat() * 6.0F / 16.0F;
-            float var9 = (float)par4 + 0.5F;
-            float var10 = 0.52F;
-            float var11 = par5Random.nextFloat() * 0.6F - 0.3F;
+        super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
 
-            if (var6 == 4)
+        for (int var6 = par2 - 2; var6 <= par2 + 2; ++var6)
+        {
+            for (int var7 = par4 - 2; var7 <= par4 + 2; ++var7)
             {
-                par1World.spawnParticle("smoke", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-                par1World.spawnParticle("flame", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-            }
-            else if (var6 == 5)
-            {
-                par1World.spawnParticle("smoke", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-                par1World.spawnParticle("flame", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-            }
-            else if (var6 == 2)
-            {
-                par1World.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
-                par1World.spawnParticle("flame", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
-            }
-            else if (var6 == 3)
-            {
-                par1World.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
-                par1World.spawnParticle("flame", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
+                if (var6 > par2 - 2 && var6 < par2 + 2 && var7 == par4 - 1)
+                {
+                    var7 = par4 + 2;
+                }
+
+                if (par5Random.nextInt(16) == 0)
+                {
+                    for (int var8 = par3; var8 <= par3 + 1; ++var8)
+                    {
+                        if (par1World.getBlockId(var6, var8, var7) == Block.bookShelf.blockID)
+                        {
+                            if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+                            {
+                                break;
+                            }
+
+                            par1World.spawnParticle("enchantmenttable", (double)par2 + 0.5D, (double)par3 + 2.0D, (double)par4 + 0.5D, (double)((float)(var6 - par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(var8 - par3) - par5Random.nextFloat() - 1.0F), (double)((float)(var7 - par4) + par5Random.nextFloat()) - 0.5D);
+                        }
+                    }
+                }
             }
         }
     }
+    /**
+     * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+     */
 
+    public boolean isOpaqueCube()
+    {
+    	return false;
+    }
+	
+    /**
+     * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
+     */
+    public int getBlockTextureFromSideAndMetadata(int par1, int par2)
+    {
+        return this.getBlockTextureFromSide(par1);
+    }
     /**
      * Returns the block texture based on the side being looked at.  Args: side
      */
-    public int getBlockTextureFromSide(int par1)
+   public int getBlockTextureFromSide(int par1)
     {
-        return par1 == 1 ? this.blockIndexInTexture + 17 : (par1 == 0 ? this.blockIndexInTexture + 17 : (par1 == 3 ? this.blockIndexInTexture - 1 : this.blockIndexInTexture));
+	   return par1 == 0 ? this.blockIndexInTexture + 17 : (par1 == 1 ? this.blockIndexInTexture : this.blockIndexInTexture + 16);
     }
+   /**
+    * Returns a new instance of a block's tile entity class. Called on placing the block.
+    */
 
     /**
      * Called upon block activation (right click on the block.)
@@ -182,7 +150,7 @@ public class BlockResearchBlock extends BlockContainer
 
             if (var10 != null)
             {
-            	par5EntityPlayer.openGui(ColoniesMain.instance, 0/*this is the gui-specific ID, pick whatever you want*/, par1World, par2, par3, par4);
+            	par5EntityPlayer.openGui(ColoniesMain.instance, 0, par1World, par2, par3, par4);
   
             }
 
@@ -193,11 +161,11 @@ public class BlockResearchBlock extends BlockContainer
     /**
      * Update which block ID the furnace is using depending on whether or not it is burning
      */
-    public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
-    {
+   public static void updateFurnaceBlockState(boolean par0, World par1World, int par2, int par3, int par4)
+   {
         int var5 = par1World.getBlockMetadata(par2, par3, par4);
         TileEntity var6 = par1World.getBlockTileEntity(par2, par3, par4);
-        keepResearchBlockInventory = true;
+       keepResearchBlockInventory = true;
 
         if (par0)
         {
@@ -208,7 +176,7 @@ public class BlockResearchBlock extends BlockContainer
             par1World.setBlockWithNotify(par2, par3, par4, ColoniesMain.researchBlock.blockID);
         }
 
-        keepResearchBlockInventory = false;
+       keepResearchBlockInventory = false;
         par1World.setBlockMetadataWithNotify(par2, par3, par4, var5);
 
         if (var6 != null)
@@ -229,30 +197,6 @@ public class BlockResearchBlock extends BlockContainer
     /**
      * Called when the block is placed in the world.
      */
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving)
-    {
-        int var6 = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-
-        if (var6 == 0)
-        {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 2);
-        }
-
-        if (var6 == 1)
-        {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 5);
-        }
-
-        if (var6 == 2)
-        {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 3);
-        }
-
-        if (var6 == 3)
-        {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 4);
-        }
-    }
 
     /**
      * ejects contained items into the world, and notifies neighbours of an update, as appropriate

@@ -19,7 +19,6 @@ public class ClientProxy extends ServerProxy
 		
 		// renderers
 		ChestItemRenderHelper.instance = new ColoniesChestRenderHelper();
-		
 		// old code for custom female model
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
 		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
@@ -50,7 +49,9 @@ public class ClientProxy extends ServerProxy
 
 	public void registerTileEntitySpecialRenderer(Class<TileEntityColoniesChest> colonieschesttileentity) {
 		ClientRegistry.bindTileEntitySpecialRenderer(colonieschesttileentity, new TileEntityColoniesChestRenderer());
-	}
+		}
+	
+	
 	@Override
     public World getClientWorld(){
         return FMLClientHandler.instance().getClient().theWorld;

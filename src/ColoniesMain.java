@@ -10,6 +10,8 @@ import net.minecraft.src.EnumCreatureType;
 import net.minecraft.src.Item;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
+import net.minecraft.src.RenderEnchantmentTable;
+import net.minecraft.src.TileEntityEnchantmentTable;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
@@ -119,9 +121,10 @@ public class ColoniesMain
 		proxy.registerRenderInformation(); 
 		Recipes.registerRecipes();
 		
-		ColoniesAchievements.addAchievementLocalizations();
+				ColoniesAchievements.addAchievementLocalizations();
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
 		GameRegistry.registerCraftingHandler(new ColoniesAchievements());
+		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "ResearchBlock");
 	}
 
 	@PostInit
@@ -229,6 +232,7 @@ public class ColoniesMain
 		chestBlock = new BlockColoniesChest(defaultChestID);
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
 		GameRegistry.registerBlock(chestBlock);
+			
 
 		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "container.colonieschest");
 		LanguageRegistry.instance().addStringLocalization("container.colonieschest", "en_US", "Colonies Chest");
