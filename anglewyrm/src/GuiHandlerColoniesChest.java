@@ -31,7 +31,6 @@ public class GuiHandlerColoniesChest implements IGuiHandler {
             case 0:
             	
             	if (world.getBlockTileEntity(x,y,z) instanceof TileEntityTownHall) {
-            		TileEntityTownHall.playerTown = ((TileEntityTownHall)world.getBlockTileEntity(x,y,z));
             		return new GuiTownHall((TileEntityTownHall)world.getBlockTileEntity(x,y,z), player.inventory);
             	} else if (world.getBlockTileEntity(x,y,z) instanceof TileEntityColoniesChest) {
             		return new GuiColoniesChest((TileEntityColoniesChest)world.getBlockTileEntity(x,y,z), player.inventory);

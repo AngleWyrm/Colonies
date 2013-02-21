@@ -262,7 +262,7 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 
     /**
      * Causes the TileEntity to reset all it's cached values for it's container block, blockID, metaData and in the case
-     * of chests, the adjcacent chest check
+     * of chests, the adjacent chest check
      */
     public void updateContainingBlockInfo()
     {

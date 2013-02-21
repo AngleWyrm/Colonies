@@ -25,18 +25,12 @@ public class GuiTownHall extends GuiColoniesChest {
 	private GuiButton infoButton = null;
 	private GuiButton townHallInv = null;
 	
-	private TileEntityTownHall tileEntityTownHall = null;
+	private static TileEntityTownHall tileEntityTownHall = null;
 	
 	private int currentView = 0;
 	
 	private int inventoryRows = 0;
 	
-	public GuiTownHall(TileEntityColoniesChest teChest, InventoryPlayer _playerInventory) {
-		super(teChest, _playerInventory);
-		
-		this.inventoryRows = chestInventory.getSizeInventory() / 9;
-        this.ySize = 114 + this.inventoryRows * 7;
-	}
 	
 	public GuiTownHall(TileEntityTownHall teChest, InventoryPlayer _playerInventory) {
 		super(teChest, _playerInventory);
@@ -128,8 +122,8 @@ public class GuiTownHall extends GuiColoniesChest {
     	if ( this.currentView == this.infoButton.id) { //info view
     	
             // drawString parameters: string, x, y, color 
-    		if ( tileEntityTownHall != null ) {
-    			//fontRenderer.drawString(this.tileEntityTownHall.playerTown.getInvName(), 8, 6, 0x404040);
+    		if ( tileEntityTownHall != null &&  this.tileEntityTownHall.playerTown != null ) {
+    			fontRenderer.drawString(this.tileEntityTownHall.playerTown.getInvName(), 8, 6, 0x404040);
     		}
         
     	} else if ( this.currentView == this.townHallInv.id) { // inventory view
