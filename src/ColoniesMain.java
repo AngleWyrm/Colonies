@@ -77,9 +77,12 @@ public class ColoniesMain
 	public static Block alchemistShop;
 	public static Block guardHouse;
 	public static Item ancientTome;
+	public static Item researchedTome;
+	public static Block researchBlock; //For inclusion in enchanter's house for player to research Ancient Tomes
 	
 	//public static GuiHandler guiHandlerChest;
 	public static GuiHandlerColoniesChest guiHandlerChest;
+	public static GuiHandlerResearchBlock guiHandlerResearchBlock;
 	//public static List<TileEntityTownHall> townsList;
 	
 	public static CreativeTabs coloniesTab = new ColoniesTab("coloniesTab");
@@ -109,6 +112,10 @@ public class ColoniesMain
 		 guiHandlerChest = new GuiHandlerColoniesChest();
 		// guiHandlerChest = new GuiHandler();
 		 NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
+
+		 guiHandlerResearchBlock = new GuiHandlerResearchBlock();
+		 NetworkRegistry.instance().registerGuiHandler(this, guiHandlerResearchBlock);
+		 
 		proxy.registerRenderInformation(); 
 		Recipes.registerRecipes();
 		
@@ -142,6 +149,8 @@ public class ColoniesMain
 	public static int alchemistShopID;
 	public static int guardHouseID;
 	public static int ancientTomeID;
+	public static int researchedTomeID;
+	public static int researchBlockID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -164,6 +173,7 @@ public class ColoniesMain
 	public static String skinSergeant;
 	
 	public static String guiChestBackground;
+	public static String guiResearchBlockBackground;
 	
 	private void setConfig(Configuration config)
 	{
@@ -179,6 +189,9 @@ public class ColoniesMain
 		alchemistShopID = config.getBlock("alchemistShopID", 1109).getInt();
 		guardHouseID	= config.getBlock("guardHouseID", 	 1110).getInt();
 		ancientTomeID	= config.getBlock("ancientTomeID", 	 1111).getInt();
+		researchedTomeID	= config.getBlock("researchedTomeID", 	 1112).getInt();
+		researchBlockID	= config.getBlock("researchBlockID", 	 1113).getInt();
+
 		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
 		citizenGreetings = config.get(Configuration.CATEGORY_GENERAL, "citizenGreetings", true).getBoolean(true);
@@ -202,6 +215,7 @@ public class ColoniesMain
 
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground2", "/colonies/boycat97/gfx/windowBackground.png").value;
+		guiResearchBlockBackground = config.get("GUI", "guiResearchBlockBackground", "/colonies/gfx/researchBlockBackground.png").value;
 	}
 	
 	// Register Colonies stuff with Minecraft Forge
@@ -282,6 +296,19 @@ public class ColoniesMain
 		// Ancient Tome
 		ancientTome = new ItemAncientTome(ancientTomeID).setItemName("Ancient Tome");
 		LanguageRegistry.addName(ancientTome,"Ancient Tome");
+		
+		// Researched Tome
+		researchedTome = new ItemResearchedTome(researchedTomeID).setItemName("Researched Tome");
+		LanguageRegistry.addName(researchedTome,"Researched Tome");
+		
+		// Research Block
+		researchBlock = new BlockResearchBlock(researchBlockID, false)
+		.setBlockName("researchBlock").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
+		LanguageRegistry.addName(researchBlock, "Research Bench");
+		GameRegistry.registerBlock(researchBlock);
+		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "container.researchBlock");
+		LanguageRegistry.instance().addStringLocalization("container.researchBlock", "en_US", "Research Bench");
+
 
 		// Test block
 		test = (TestBlock) new TestBlock(testBlockID, 3, Material.ground)
