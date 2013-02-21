@@ -8,3 +8,4 @@ public class GuiButtonColonies extends GuiButton {
 		super(par1, left, top, width, height, buttonText);
 	}
 }
+//Extend is more for texture change by overriding darwing methods
