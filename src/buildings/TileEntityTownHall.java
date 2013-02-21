@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import colonies.lohikaarme.src.GuiTownHall;
 import colonies.src.ClientProxy;
 import colonies.src.Point;
 import colonies.src.Utility;
@@ -42,6 +43,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public TileEntityTownHall() {
 		super();
 		setTownName("MyTown");
+		
 		citizensList = new LinkedList<EntityCitizen>();
 		employersList = new LinkedList<TileEntityColoniesChest>();
 		homesList = new LinkedList<TileEntityColoniesChest>();
