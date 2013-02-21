@@ -134,7 +134,7 @@ public class ColoniesMain
 	public String Version(){
 		return "PreAlpha, Revision 13";
 	}
-
+	//..
 	// Configuration Settings
 	// Appear here as public statics, and are set below in setConfig()
 	public static int testBlockID;
@@ -303,7 +303,7 @@ public class ColoniesMain
 		
 		// Research Block
 		researchBlock = new BlockResearchBlock(researchBlockID, false)
-		.setBlockName("researchBlock").setHardness(0.75f).setCreativeTab(CreativeTabs.tabBlock);
+		.setBlockName("researchBlock").setHardness(0.75f).setCreativeTab(ColoniesMain.coloniesTab);
 		LanguageRegistry.addName(researchBlock, "Research Bench");
 		GameRegistry.registerBlock(researchBlock);
 		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "container.researchBlock");

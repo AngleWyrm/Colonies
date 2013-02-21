@@ -20,7 +20,7 @@ import colonies.src.ColoniesMain;
 import colonies.src.GuiHandlerResearchBlock;
 import colonies.src.GuiResearchBlock;
 
-
+//..
 public class BlockResearchBlock extends BlockContainer
 {
     /**

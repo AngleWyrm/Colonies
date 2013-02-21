@@ -7,7 +7,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import colonies.eragon.src.BlockColoniesChestGui;
 import colonies.src.buildings.ContainerColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChest;
-
+//..
 public class GuiHandlerResearchBlock implements IGuiHandler {
     //returns an instance of the Container you made earlier
  

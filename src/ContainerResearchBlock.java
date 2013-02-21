@@ -9,7 +9,7 @@ import net.minecraft.src.Slot;
 import net.minecraft.src.SlotFurnace;
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
-
+//..
 public class ContainerResearchBlock extends Container
 {
     private TileEntityResearchBlock furnace;
