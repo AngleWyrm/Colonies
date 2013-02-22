@@ -33,6 +33,7 @@ public class ServerProxy implements IGuiHandler
 	public static String FISHERMANHUT_PNG    = "/colonies/irontaxi/gfx/fishermanhut.png";
 	public static String GUARDHOUSE_PNG  	 = "/colonies/boycat97/gfx/guardHouse.png";
 	public static String ALCHEMISTCHEST_PNG  = "/colonies/gfx/alchemistChest.png";
+	public static String ENCHANTERCHEST_PNG  = "/colonies/pmardle/gfx/Enchanterchest.png";
 		
     public void registerRenderInformation()
     {

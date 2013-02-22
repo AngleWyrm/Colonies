@@ -18,6 +18,7 @@ import colonies.eragon.src.GuiHandler;
 import colonies.kzolp67.src.ColoniesTab;
 import colonies.src.buildings.BlockAlchemistShop;
 import colonies.src.buildings.BlockColoniesChest;
+import colonies.src.buildings.BlockEnchanter;
 import colonies.src.buildings.BlockFishermanHut;
 import colonies.src.buildings.BlockHouse;
 import colonies.src.buildings.BlockHunterBlind;
@@ -26,6 +27,7 @@ import colonies.src.buildings.BlockMine;
 import colonies.src.buildings.BlockTownHall;
 import colonies.src.buildings.TileEntityAlchemistShop;
 import colonies.src.buildings.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityEnchanterChest;
 import colonies.src.buildings.TileEntityFishermanHut;
 import colonies.src.buildings.TileEntityHouse;
 import colonies.src.buildings.TileEntityHunterBlind;
@@ -34,6 +36,7 @@ import colonies.src.buildings.TileEntityMine;
 import colonies.src.buildings.TileEntityTownHall;
 import colonies.src.citizens.EntityAlchemist;
 import colonies.src.citizens.EntityCitizen;
+import colonies.src.citizens.EntityEnchanter;
 import colonies.src.citizens.EntityFisherman;
 import colonies.src.citizens.EntityHunter;
 import colonies.src.citizens.EntityLumberjack;
@@ -72,6 +75,7 @@ public class ColoniesMain
 	public static Block chestBlock;
 	public static Block townHall;
 	public static Block minerChest;
+	public static Block enchanterChest;
 	public static Block loggingCamp;
 	public static Block house;
 	public static Block hunterBlind;
@@ -147,6 +151,7 @@ public class ColoniesMain
 	public static int defaultChestID;
 	public static int townHallID;
 	public static int minerChestID;
+	public static int enchanterChestID;
 	public static int loggingCampID;
 	public static int blockHouseID;
 	public static int hunterBlindID;
@@ -176,6 +181,7 @@ public class ColoniesMain
 	public static String skinGuard;
 	public static String skinArcher;
 	public static String skinSergeant;
+	public static String skinEnchanter;
 	
 	public static String guiChestBackground;
 	public static String guiResearchBlockBackground;
@@ -196,6 +202,7 @@ public class ColoniesMain
 		ancientTomeID	= config.getBlock("ancientTomeID", 	 1111).getInt();
 		researchedTomeID	= config.getBlock("researchedTomeID", 	 1112).getInt();
 		researchBlockID	= config.getBlock("researchBlockID", 	 1113).getInt();
+		enchanterChestID    = config.getBlock("enchanterChestID",    1114).getInt();
 
 		
 		offensiveLanguageFilter = config.get(Configuration.CATEGORY_GENERAL, "offensiveLanguageFilter", false).getBoolean(false);
@@ -217,7 +224,7 @@ public class ColoniesMain
 		skinArcher			  = config.get("Skins", "skinArcher", 			 "/colonies/boycat97/gfx/skin_archer.png").value;
 		skinGuard			  = config.get("Skins", "skinGuard", 			 "/colonies/boycat97/gfx/skin_footsoldier.png").value;
 		skinSergeant		  = config.get("Skins", "skinSergeant", 		 "/colonies/boycat97/gfx/skin_sergeant.png").value;
-
+		skinEnchanter		  = config.get("Skins", "skinEnchanter", 		 "/colonies/pmardle/gfx/skin_enchanter.png").value;
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground2", "/colonies/boycat97/gfx/windowBackground.png").value;
 		guiResearchBlockBackground = config.get("GUI", "guiResearchBlockBackground", "/colonies/gfx/researchBlockBackground.png").value;
@@ -245,6 +252,12 @@ public class ColoniesMain
 		GameRegistry.registerBlock(minerChest);
 		GameRegistry.registerTileEntity(TileEntityMine.class, "container.mine");
 		LanguageRegistry.instance().addStringLocalization("container.mine", "en_US", "Mine");
+		
+		enchanterChest = new BlockEnchanter(enchanterChestID).setBlockName("Enchanter Chest");
+		LanguageRegistry.addName(enchanterChest, "Enchanter Chest");
+		GameRegistry.registerBlock(enchanterChest);
+		GameRegistry.registerTileEntity(TileEntityEnchanterChest.class, "container.enchanter");
+		LanguageRegistry.instance().addStringLocalization("container.enchanter", "en_US", "Enchanter Chest");
 		
 		// Logging Camp
 		loggingCamp = new BlockLoggingCamp(loggingCampID);
@@ -359,6 +372,10 @@ public class ColoniesMain
 		// Guard
 		EntityRegistry.registerGlobalEntityID(EntityGuard.class, "Guard", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
 		LanguageRegistry.instance().addStringLocalization("entity.Guard.name", "en_US", "Guard");
+		
+		// Enchanter
+		EntityRegistry.registerGlobalEntityID(EntityEnchanter.class, "Enchanter", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		LanguageRegistry.instance().addStringLocalization("entity.Enchanter.name", "en_US", "Enchanter");
 		
 		LanguageRegistry.instance().addStringLocalization("itemGroup.coloniesTab", "en_US", "Colonies");
 
