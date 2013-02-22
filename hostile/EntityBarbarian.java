@@ -1,5 +1,5 @@
 package colonies.hostile;
-
+// 
 import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.asm.SideOnly;
 import java.util.Calendar;
