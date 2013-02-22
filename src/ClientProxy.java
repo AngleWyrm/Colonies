@@ -1,10 +1,13 @@
 package colonies.src;
 
+import colonies.hostile.EntityBarbarian;
+import colonies.hostile.RenderBarbarian;
 import colonies.src.buildings.ColoniesChestRenderHelper;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChestRenderer;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
+import net.minecraft.src.ModelBiped;
 import net.minecraft.src.Render;
 import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
@@ -20,7 +23,7 @@ public class ClientProxy extends ServerProxy
 		
 		// renderers
 		ChestItemRenderHelper.instance = new ColoniesChestRenderHelper();
-		
+		RenderingRegistry.registerEntityRenderingHandler(EntityBarbarian.class, new RenderBarbarian(new ModelBiped(), 1.0f));
 	
 		// old code for custom female model
 		//RenderingRegistry.instance().registerEntityRenderingHandler(

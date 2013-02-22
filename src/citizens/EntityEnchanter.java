@@ -2,12 +2,23 @@ package colonies.src.citizens;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import net.minecraft.src.Block;
+import net.minecraft.src.ChunkCoordinates;
+import net.minecraft.src.EntityPlayer;
+import net.minecraft.src.IMerchant;
+import net.minecraft.src.INpc;
 import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
+import net.minecraft.src.MathHelper;
+import net.minecraft.src.MerchantRecipe;
+import net.minecraft.src.MerchantRecipeList;
+import net.minecraft.src.Potion;
+import net.minecraft.src.PotionEffect;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 import paulscode.sound.Vector3D;
@@ -15,13 +26,20 @@ import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.vector67.src.EntityAIMine;
+import cpw.mods.fml.common.Side;
+import cpw.mods.fml.common.asm.SideOnly;
 
-public class EntityEnchanter extends EntityCitizen{
+public class EntityEnchanter extends EntityCitizen implements INpc, IMerchant
+
+
+{
 	
 	public InventoryCitizen inventory = new InventoryCitizen(this);
 	private Vector3D closestEnchanterChest;
 	private static ItemStack defaultHeldItem;
 	private long lastSearch;
+	private int randomTickDivider;
+	public boolean isTrading;
 	
 	static {
 		defaultHeldItem = null;
@@ -29,8 +47,8 @@ public class EntityEnchanter extends EntityCitizen{
 	
 	public EntityEnchanter(World world) { 
 		super(world);
-		
-		
+		this.randomTickDivider = 0;
+		this.isTrading = false;
 		this.texture = ColoniesMain.skinEnchanter;
 	    
 	    // add this type of employment to the jobTypes if necessary
@@ -103,5 +121,40 @@ public class EntityEnchanter extends EntityCitizen{
 			*/
 		}
 	}
+
+	@Override
+	public void setCustomer(EntityPlayer var1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public EntityPlayer getCustomer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MerchantRecipeList getRecipes(EntityPlayer var1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void setRecipes(MerchantRecipeList var1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void useRecipe(MerchantRecipe var1) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	//Enchanter Interraction Code
+	
+
+
 }

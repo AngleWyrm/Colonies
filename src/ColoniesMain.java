@@ -15,6 +15,7 @@ import net.minecraft.src.TileEntityEnchantmentTable;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
+import colonies.hostile.EntityBarbarian;
 import colonies.kzolp67.src.ColoniesTab;
 import colonies.src.buildings.BlockAlchemistShop;
 import colonies.src.buildings.BlockColoniesChest;
@@ -340,6 +341,10 @@ public class ColoniesMain
 		// the three parameters after the class are ChanceWeight, minPackSize and maxPackSize
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
 		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Wanderer");
+		
+		//Barbarian
+		EntityRegistry.registerGlobalEntityID(EntityBarbarian.class, "Barbarian", EntityRegistry.findGlobalUniqueEntityId(), 32324, 2243);
+		LanguageRegistry.instance().addStringLocalization("entity.Barbarian.name", "en_US", "Barbarian");
 
 		// Miner
 		EntityRegistry.registerGlobalEntityID(EntityMiner.class, "Miner", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF8888);
@@ -374,7 +379,7 @@ public class ColoniesMain
 		LanguageRegistry.instance().addStringLocalization("entity.Guard.name", "en_US", "Guard");
 		
 		// Enchanter
-		EntityRegistry.registerGlobalEntityID(EntityEnchanter.class, "Enchanter", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0x099990);
+		EntityRegistry.registerGlobalEntityID(EntityEnchanter.class, "Enchanter", EntityRegistry.findGlobalUniqueEntityId(), 35342,2342);
 		LanguageRegistry.instance().addStringLocalization("entity.Enchanter.name", "en_US", "Enchanter");
 		
 		LanguageRegistry.instance().addStringLocalization("itemGroup.coloniesTab", "en_US", "Colonies");
