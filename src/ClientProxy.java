@@ -1,7 +1,9 @@
 package colonies.src;
 
 import colonies.hostile.EntityBarbarian;
+import colonies.hostile.EntityBarbarianChief;
 import colonies.hostile.RenderBarbarian;
+import colonies.hostile.RenderBarbarianChief;
 import colonies.src.buildings.ColoniesChestRenderHelper;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChestRenderer;
@@ -24,6 +26,7 @@ public class ClientProxy extends ServerProxy
 		// renderers
 		ChestItemRenderHelper.instance = new ColoniesChestRenderHelper();
 		RenderingRegistry.registerEntityRenderingHandler(EntityBarbarian.class, new RenderBarbarian(new ModelBiped(), 1.0f));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBarbarianChief.class, new RenderBarbarianChief(new ModelBiped(), 1.0f));
 	
 		// old code for custom female model
 		//RenderingRegistry.instance().registerEntityRenderingHandler(

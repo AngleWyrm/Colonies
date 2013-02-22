@@ -83,7 +83,7 @@ public class EntityEnchanter extends EntityCitizen implements INpc, IMerchant
 		return "";
 	}
 
-	// Mob Loot for Miner
+	// Mob Loot for Enchanter
 	protected int getDropItemId() {
 		int lootID=1;
 		switch(Utility.getLootCategory()) {
@@ -152,6 +152,8 @@ public class EntityEnchanter extends EntityCitizen implements INpc, IMerchant
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
 	//Enchanter Interraction Code
 	

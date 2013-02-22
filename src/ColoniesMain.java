@@ -16,6 +16,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
 import colonies.hostile.EntityBarbarian;
+import colonies.hostile.EntityBarbarianChief;
 import colonies.kzolp67.src.ColoniesTab;
 import colonies.src.buildings.BlockAlchemistShop;
 import colonies.src.buildings.BlockColoniesChest;
@@ -345,6 +346,10 @@ public class ColoniesMain
 		//Barbarian
 		EntityRegistry.registerGlobalEntityID(EntityBarbarian.class, "Barbarian", EntityRegistry.findGlobalUniqueEntityId(), 32324, 2243);
 		LanguageRegistry.instance().addStringLocalization("entity.Barbarian.name", "en_US", "Barbarian");
+		
+		//Barbarian Chief
+		EntityRegistry.registerGlobalEntityID(EntityBarbarianChief.class, "Barbarian Chief", EntityRegistry.findGlobalUniqueEntityId(), 7587, 8323);
+		LanguageRegistry.instance().addStringLocalization("entity.BarbarianChief.name", "en_US", "Barbarian Chief");
 
 		// Miner
 		EntityRegistry.registerGlobalEntityID(EntityMiner.class, "Miner", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF8888);
