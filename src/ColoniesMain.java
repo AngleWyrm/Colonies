@@ -125,6 +125,8 @@ public class ColoniesMain
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
 		GameRegistry.registerCraftingHandler(new ColoniesAchievements());
 		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "ResearchBlock");
+		
+		
 	}
 
 	@PostInit

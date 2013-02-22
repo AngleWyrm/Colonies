@@ -5,6 +5,7 @@ import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChestRenderer;
 import net.minecraft.src.Block;
 import net.minecraft.src.ChestItemRenderHelper;
+import net.minecraft.src.Render;
 import net.minecraft.src.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -19,6 +20,8 @@ public class ClientProxy extends ServerProxy
 		
 		// renderers
 		ChestItemRenderHelper.instance = new ColoniesChestRenderHelper();
+		
+	
 		// old code for custom female model
 		//RenderingRegistry.instance().registerEntityRenderingHandler(
 		//		EntityWife.class, new RenderLiving(new ModelFemale(), 0.5F));
@@ -32,7 +35,7 @@ public class ClientProxy extends ServerProxy
 		MinecraftForgeClient.preloadTexture(BLOCK_PNG);
 		
         MinecraftForgeClient.preloadTexture(BLACKSMITHCHEST_PNG);
-        MinecraftForgeClient.preloadTexture(BUILDERCHEST_PNG);
+        MinecraftForgeClient.preloadTexture(BUILDERCHEST_PNG); 
         MinecraftForgeClient.preloadTexture(FARMERCHEST_PNG);
         MinecraftForgeClient.preloadTexture(HOUSECHEST_PNG);
         MinecraftForgeClient.preloadTexture(LOGGINGCAMP_PNG);
@@ -49,9 +52,10 @@ public class ClientProxy extends ServerProxy
 
 	public void registerTileEntitySpecialRenderer(Class<TileEntityColoniesChest> colonieschesttileentity) {
 		ClientRegistry.bindTileEntitySpecialRenderer(colonieschesttileentity, new TileEntityColoniesChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityResearchBlock.class, new RenderResearchBlock());
 		}
-	
-	
+
+  	
 	@Override
     public World getClientWorld(){
         return FMLClientHandler.instance().getClient().theWorld;
