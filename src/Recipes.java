@@ -34,5 +34,8 @@ public class Recipes
 		
 		GameRegistry.addRecipe( new ItemStack(ColoniesMain.alchemistShop), new Object[]{
 			" F "," C "," B ", 'F',Item.flintAndSteel, 'B',BlockContainer.brewingStand, 'C',BlockContainer.chest});
+		
+		GameRegistry.addRecipe( new ItemStack(ColoniesMain.researchBlock), new Object[]{
+			" B ","EOE","OOO", 'B',Item.book, 'E',Item.emerald, 'O',Block.obsidian});
 	}	
 }
