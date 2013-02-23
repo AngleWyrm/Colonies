@@ -12,7 +12,9 @@ import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.RenderEnchantmentTable;
 import net.minecraft.src.TileEntityEnchantmentTable;
+import net.minecraft.src.WorldProvider;
 import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import colonies.eragon.src.GuiHandler;
 import colonies.hostile.EntityBarbarian;
@@ -87,6 +89,9 @@ public class ColoniesMain
 	public static Item ancientTome;
 	public static Item researchedTome;
 	public static Block researchBlock; //For inclusion in enchanter's house for player to research Ancient Tomes
+	public static BiomeGenBase VillageBiome; //for Village Biome
+
+
 	
 	//public static GuiHandler guiHandlerChest;
 	public static GuiHandlerColoniesChest guiHandlerChest;
@@ -125,13 +130,36 @@ public class ColoniesMain
 		 NetworkRegistry.instance().registerGuiHandler(this, guiHandlerResearchBlock);
 		 
 		proxy.registerRenderInformation(); 
+		
+		//Biome
+		VillageBiome = new BiomeGenVillage(53).setColor(2900485).setBiomeName("Village Biome").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.1F);
+        GameRegistry.addBiome(VillageBiome);
+ 
+  
+		//
+		
+		
+		
 		Recipes.registerRecipes();
 		
-				ColoniesAchievements.addAchievementLocalizations();
+		ColoniesAchievements.addAchievementLocalizations();
 		AchievementPage.registerAchievementPage(ColoniesAchievements.page1);
 		GameRegistry.registerCraftingHandler(new ColoniesAchievements());
 		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "ResearchBlock");
-		
+	
+
+		//Barbarian
+		EntityRegistry.registerGlobalEntityID(EntityBarbarian.class, "Barbarian", EntityRegistry.findGlobalUniqueEntityId(), 32324, 2243);
+		EntityRegistry.registerModEntity(EntityBarbarian.class, "Barbarian", EntityRegistry.findGlobalUniqueEntityId(), this, 80, 3, true);
+		EntityRegistry.addSpawn(EntityBarbarian.class, 3, 1, 3, EnumCreatureType.creature, ColoniesMain.VillageBiome, BiomeGenBase.taigaHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland, BiomeGenBase.river, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge); // low
+	    LanguageRegistry.instance().addStringLocalization("entity.Barbarian.name", "Barbarian");
+	    //Note: EntityRegistry.addspawn(<Entity.Class>, <Chance of Spawning (10=high, 1=low)>, Min Number of mobs per spawn, Max No. of mobs per spawn, <Creature Type> (Monster = Night only, Creature = day) <Biomes to spawn in>
+	
+	    //Barbarian Chief
+		EntityRegistry.registerGlobalEntityID(EntityBarbarianChief.class, "Barbarian Chief", EntityRegistry.findGlobalUniqueEntityId(), 7587, 8323);
+		EntityRegistry.registerModEntity(EntityBarbarianChief.class, "Barbarian Chief", EntityRegistry.findGlobalUniqueEntityId(), this, 80, 3, true);		
+		LanguageRegistry.instance().addStringLocalization("entity.Barbarian Chief.name", "Barbarian Chief");
+		EntityRegistry.addSpawn(EntityBarbarianChief.class, 2, 1, 1, EnumCreatureType.creature, ColoniesMain.VillageBiome, BiomeGenBase.taigaHills, BiomeGenBase.jungle, BiomeGenBase.jungleHills, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.forest, BiomeGenBase.forestHills, BiomeGenBase.swampland, BiomeGenBase.river, BiomeGenBase.beach, BiomeGenBase.desert, BiomeGenBase.extremeHills, BiomeGenBase.extremeHillsEdge);
 		
 	}
 
@@ -163,6 +191,8 @@ public class ColoniesMain
 	public static int ancientTomeID;
 	public static int researchedTomeID;
 	public static int researchBlockID;
+	public static int BarbarianID;
+	public static int BarbarianChiefID;
 	
 	public static boolean offensiveLanguageFilter;
 	public static boolean citizenGreetings;
@@ -343,14 +373,6 @@ public class ColoniesMain
 		EntityRegistry.registerGlobalEntityID(EntityCitizen.class, "Citizen", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF4444);
 		LanguageRegistry.instance().addStringLocalization("entity.Citizen.name", "en_US", "Wanderer");
 		
-		//Barbarian
-		EntityRegistry.registerGlobalEntityID(EntityBarbarian.class, "Barbarian", EntityRegistry.findGlobalUniqueEntityId(), 32324, 2243);
-		LanguageRegistry.instance().addStringLocalization("entity.Barbarian.name", "en_US", "Barbarian");
-		
-		//Barbarian Chief
-		EntityRegistry.registerGlobalEntityID(EntityBarbarianChief.class, "Barbarian Chief", EntityRegistry.findGlobalUniqueEntityId(), 7587, 8323);
-		LanguageRegistry.instance().addStringLocalization("entity.BarbarianChief.name", "en_US", "Barbarian Chief");
-
 		// Miner
 		EntityRegistry.registerGlobalEntityID(EntityMiner.class, "Miner", ModLoader.getUniqueEntityId(), 0xCCCCFF, 0xFF8888);
 		LanguageRegistry.instance().addStringLocalization("entity.Miner.name", "en_US", "Miner");
@@ -389,5 +411,8 @@ public class ColoniesMain
 		
 		LanguageRegistry.instance().addStringLocalization("itemGroup.coloniesTab", "en_US", "Colonies");
 
+		
+
+	}
 		}
-}
+
