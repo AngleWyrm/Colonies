@@ -352,8 +352,8 @@ public class ColoniesMain
 		LanguageRegistry.addName(researchedTome,"Researched Tome");
 		
 		// Research Block
-		researchBlock = new BlockResearchBlock(researchBlockID, false).setCreativeTab(ColoniesMain.coloniesTab);
-		//.setBlockName("researchBlock").setHardness(0.75f)
+		researchBlock = new BlockResearchBlock(researchBlockID, false)
+		.setBlockName("researchBlock").setHardness(0.75f).setCreativeTab(ColoniesMain.coloniesTab);
 		LanguageRegistry.addName(researchBlock, "Research Bench");
 		GameRegistry.registerBlock(researchBlock);
 		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "container.researchBlock");
