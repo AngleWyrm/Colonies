@@ -28,13 +28,12 @@ public class EntityAIChopTree extends EntityAIBase
     Point destination;
 	
 	public EntityAIChopTree(EntityCitizen _entityCitizen) {
-		this.movementSpeed = 0.35f;
+		this.movementSpeed = 0.25f;
         this.citizen = _entityCitizen;
         this.taskEntityWorld = this.citizen.worldObj;
         this.BlockID = Block.wood.blockID;
         this.setMutexBits(1);
-        
-        
+               
 	}	
 	
 	@Override
@@ -58,11 +57,11 @@ public class EntityAIChopTree extends EntityAIBase
 			Point candidate = new Point();
 			int blockID = 0; 
 			
-			for(int i = 0; i < 10; ++i) {
+			for(int i = 0; i < 100; ++i) {
 				
-				 //choose a spot 5-10m away from citizen in a random direction
-				candidate.polarTranslation(Utility.rng.nextRadian(), Math.PI/2, 5 + Utility.rng.nextInt(5));
-				candidate.plus(citizen.posX, citizen.posY, citizen.posZ);
+				//choose a spot 5-10m away from citizen in a random direction
+//				candidate.polarTranslation(Utility.rng.nextRadian(), Math.PI/2, 5 + Utility.rng.nextInt(5));
+//				candidate.plus(citizen.posX, citizen.posY, citizen.posZ);
 				
 				Vec3 tempVec = this.lookForWorkLocation();				
 				
@@ -77,8 +76,7 @@ public class EntityAIChopTree extends EntityAIBase
 					double theta = Math.atan2(candidate.y - citizen.homeTown.yCoord, candidate.x - citizen.homeTown.xCoord);
 					candidate.polarTranslation(theta, Math.PI/2, 10);
 				}			
-				//Utility.terrainAdjustment(citizen.worldObj, candidate);
-			
+				//Utility.terrainAdjustment(citizen.worldObj, candidate);			
 				
 				blockID = citizen.worldObj.getBlockId((int)candidate.x, (int)candidate.y, (int)candidate.z);					
 				if( blockID == Block.wood.blockID ) //TODO: look for a tree here with leaves.
@@ -90,14 +88,14 @@ public class EntityAIChopTree extends EntityAIBase
 					return true;
 				}
 			}
-			return false;			
-		} // else a destination has already been established during a previous update tick
-		
+			return false;		
+			
+		} // else a destination has already been established during a previous update tick		
 		
 		if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) <= 6) // close enough, chop tree
 		{
-			
 			this.choppingWood();
+			this.lookingForTheRestOfTheTree();
 			
 			return true;
 		} // else not there yet, or can't get there		
@@ -127,15 +125,12 @@ public class EntityAIChopTree extends EntityAIBase
         }
 
         return null;
+        
     }
 	
 	private void choppingWood() 
 	{
-		//TODO: figure out how to chop wood multiple times so that its being broken up correctly.
-		//set the variables that allow for immediate scanning for wood.
-		int scanTime = 0;
-		int MaxScanTime = 6;
-		
+				
 		//show the animation of the block being hit.
 		Minecraft.getMinecraft().effectRenderer.addBlockDestroyEffects((int)destination.x, (int)destination.y, (int)destination.z, 5, 16);
 		
@@ -143,31 +138,40 @@ public class EntityAIChopTree extends EntityAIBase
 		Block.wood.harvestBlock(this.taskEntityWorld, Minecraft.getMinecraft().thePlayer, (int)destination.x, (int)destination.y, (int)destination.z, 10);
 		this.taskEntityWorld.setBlockWithNotify((int)destination.x, (int)destination.y, (int)destination.z, 0);	
 		
-		destination.x = this.citizen.posX;
-		destination.y = this.citizen.posY;
-		destination.z = this.citizen.posZ;
-		
-		//Scan in the vicinity for any wood
-		//TODO: stick to current tree if possible.
+	}	
+	
+	private void lookingForTheRestOfTheTree () 
+	{
+		//TODO: figure out how to chop wood multiple times so that its being broken up correctly.
+		//set the variables that allow for immediate scanning for wood.
+		int scanTime = 0;
+		int MaxScanTime = 6; 
+				
 		while (destination != null && scanTime <= MaxScanTime) {
 			if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y-scanTime, (int)destination.z) == Block.wood.blockID) {
 				destination.y -= scanTime;
-				break;
-			}  else if (this.taskEntityWorld.getBlockId((int)destination.x+scanTime, (int)destination.y, (int)destination.z) == Block.wood.blockID) { 
+			}  else if (this.taskEntityWorld.getBlockId((int)destination.x+scanTime, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {  
 				destination.x += scanTime;
-				break;
+				destination.y += scanTime;
+			} else if (this.taskEntityWorld.getBlockId((int)destination.x+scanTime, (int)destination.y, (int)destination.z) == Block.wood.blockID) { 
+				destination.x += scanTime;
+			} else if (this.taskEntityWorld.getBlockId((int)destination.x-scanTime, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {  
+				destination.x -= scanTime;
+				destination.y += scanTime;
 			} else if (this.taskEntityWorld.getBlockId((int)destination.x-scanTime, (int)destination.y, (int)destination.z) == Block.wood.blockID) { 
 				destination.x -= scanTime;
-				break;
 			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y, (int)destination.z+scanTime) == Block.wood.blockID) { 
 				destination.z += scanTime;
-				break;
+			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z+scanTime) == Block.wood.blockID) {  
+				destination.z += scanTime;
+				destination.y += scanTime;
 			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y, (int)destination.z-scanTime) == Block.wood.blockID) { 
 				destination.z -= scanTime;
-				break;
-			}  else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {
+			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z-scanTime) == Block.wood.blockID) {  
+				destination.z -= scanTime;
+				destination.y += scanTime;
+			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {
 				destination.y -= scanTime;
-				break;
 			} else if (scanTime == MaxScanTime ) {
 				destination = null;
 			} else {
@@ -175,5 +179,5 @@ public class EntityAIChopTree extends EntityAIBase
 			}
 		}
 		
-	}	
+	}
 }

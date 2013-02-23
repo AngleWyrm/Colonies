@@ -1,8 +1,14 @@
 package colonies.src.buildings;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import colonies.src.ClientProxy;
 import colonies.src.Point;
@@ -205,7 +211,19 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
      */
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
-        super.readFromNBT(par1NBTTagCompound);
+        super.readFromNBT(par1NBTTagCompound);       
+
+        NBTTagList occupantsTagList = par1NBTTagCompound.getTagList("occupants");
+        this.occupants = new LinkedList<EntityCitizen>();
+
+        for (int var3 = 0; var3 < occupantsTagList.tagCount(); ++var3)
+        {
+            NBTTagCompound var4 = (NBTTagCompound)occupantsTagList.tagAt(var3);
+
+            this.occupants.add(EntityCitizen.loadEntityCitizenFromNBT(var4));
+        }
+        
+        
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
         this.chestContents = new ItemStack[this.getSizeInventory()];
 
@@ -226,8 +244,23 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
      */
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
-        super.writeToNBT(par1NBTTagCompound);
-        NBTTagList var2 = new NBTTagList();
+               
+        
+        NBTTagList occupantsTagList = new NBTTagList(); 
+
+        for (int var3 = 0; var3 < this.occupants.size(); ++var3)
+        {
+            if (this.occupants.get(var3) != null)
+            {
+                NBTTagCompound var4 = new NBTTagCompound();
+                this.occupants.get(var3).writeEntityToNBT(var4);
+                occupantsTagList.appendTag(var4);
+            }
+        }
+
+        par1NBTTagCompound.setTag("occupants", occupantsTagList);
+        
+        NBTTagList var2 = new NBTTagList(); 
 
         for (int var3 = 0; var3 < this.chestContents.length; ++var3)
         {
@@ -241,6 +274,8 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         }
 
         par1NBTTagCompound.setTag("Items", var2);
+        
+        super.writeToNBT(par1NBTTagCompound);
     }
 
     /**

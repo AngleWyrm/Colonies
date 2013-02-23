@@ -9,6 +9,7 @@ import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityTownHall;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
@@ -22,6 +23,7 @@ import net.minecraft.src.IMob;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.MathHelper;
+import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
@@ -302,6 +304,15 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 	public String getJobTitle() {
 		// TODO: String localization
 		return "Wanderer";
+	}
+
+	public static EntityCitizen loadEntityCitizenFromNBT(NBTTagCompound var4) {	
+		
+		EntityCitizen entityCit = new EntityCitizen(Minecraft.getMinecraft().theWorld);
+		entityCit.readEntityFromNBT(var4);
+		
+		return entityCit;
+	
 	}
 
 }

@@ -95,7 +95,6 @@ public class ColoniesMain
 	
 	//public static GuiHandler guiHandlerChest;
 	public static GuiHandlerColoniesChest guiHandlerChest;
-	public static GuiHandlerResearchBlock guiHandlerResearchBlock;
 	//public static List<TileEntityTownHall> townsList;
 	
 	public static CreativeTabs coloniesTab = new ColoniesTab("coloniesTab");
@@ -123,11 +122,11 @@ public class ColoniesMain
 	{	
 		registerColoniesStuff(); // at bottom of this file for legibility
 		 guiHandlerChest = new GuiHandlerColoniesChest();
-		// guiHandlerChest = new GuiHandler();
-		 NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
+		//guiHandlerChest = new GuiHandler();
+		NetworkRegistry.instance().registerGuiHandler(this, guiHandlerChest);
 
-		 guiHandlerResearchBlock = new GuiHandlerResearchBlock();
-		 NetworkRegistry.instance().registerGuiHandler(this, guiHandlerResearchBlock);
+		 //guiHandlerResearchBlock = new GuiHandlerResearchBlock();
+		 //NetworkRegistry.instance().registerGuiHandler(this, guiHandlerResearchBlock);
 		 
 		proxy.registerRenderInformation(); 
 		
@@ -353,8 +352,8 @@ public class ColoniesMain
 		LanguageRegistry.addName(researchedTome,"Researched Tome");
 		
 		// Research Block
-		researchBlock = new BlockResearchBlock(researchBlockID, false)
-		.setBlockName("researchBlock").setHardness(0.75f).setCreativeTab(ColoniesMain.coloniesTab);
+		researchBlock = new BlockResearchBlock(researchBlockID, false).setCreativeTab(ColoniesMain.coloniesTab);
+		//.setBlockName("researchBlock").setHardness(0.75f)
 		LanguageRegistry.addName(researchBlock, "Research Bench");
 		GameRegistry.registerBlock(researchBlock);
 		GameRegistry.registerTileEntity(TileEntityResearchBlock.class, "container.researchBlock");

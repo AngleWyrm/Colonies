@@ -383,7 +383,9 @@ public class BlockColoniesChest extends BlockContainer {
             	// NOTE: Choose first line for default chest
             	// and second line for custom chest GUI (WIP)
 //                player.displayGUIChest((IInventory)chest);
-                player.openGui(ColoniesMain.instance, GuiID, theWorld, x, y, z);
+            	
+            	openGUI(player, theWorld, x, y, z);
+                
                 return true;
             }
         }
@@ -423,5 +425,10 @@ public class BlockColoniesChest extends BlockContainer {
         while (!var6.isSitting());
 
         return true;
+    }
+    
+    public void openGUI(EntityPlayer player, World theWorld, int x, int y, int z)
+    {
+    	player.openGui(ColoniesMain.instance, GuiID, theWorld, x, y, z);
     }
 }

@@ -17,9 +17,10 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.TileEntityEnchantmentTable;
 import net.minecraft.src.World;
+import colonies.eragon.src.ContainerColoniesChest;
 import colonies.src.ColoniesMain;
-import colonies.src.GuiHandlerResearchBlock;
-import colonies.src.GuiResearchBlock;
+import colonies.src.buildings.BlockColoniesChest;
+import colonies.src.buildings.ColoniesChestRenderHelper;
 
 
 public class BlockResearchBlock extends BlockContainer
@@ -46,7 +47,7 @@ public class BlockResearchBlock extends BlockContainer
         this.isActive = par2;
         this.blockIndexInTexture = 0;
     }
-
+    @Override
     public boolean renderAsNormalBlock()
     {
         return false;
@@ -54,6 +55,7 @@ public class BlockResearchBlock extends BlockContainer
     /**
      * Returns the ID of the items to drop on destruction.
      */
+    @Override
     public int idDropped(int par1, Random par2Random, int par3)
     {
         return ColoniesMain.researchBlock.blockID;
@@ -72,8 +74,6 @@ public class BlockResearchBlock extends BlockContainer
 
 
     @SideOnly(Side.CLIENT)
-
-
     /**
      * A randomly called display update to be able to add particles or other items for display
      */
@@ -111,7 +111,7 @@ public class BlockResearchBlock extends BlockContainer
     /**
      * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
      */
-
+    @Override
     public boolean isOpaqueCube()
     {
     	return false;
@@ -120,10 +120,13 @@ public class BlockResearchBlock extends BlockContainer
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
+    @Override
     public int getBlockTextureFromSideAndMetadata(int par1, int par2)
     {
         return this.getBlockTextureFromSide(par1);
     }
+    
+    @Override
     /**
      * Returns the block texture based on the side being looked at.  Args: side
      */
@@ -138,6 +141,7 @@ public class BlockResearchBlock extends BlockContainer
     /**
      * Called upon block activation (right click on the block.)
      */
+    @Override
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
     {
         if (par1World.isRemote)
@@ -150,13 +154,14 @@ public class BlockResearchBlock extends BlockContainer
 
             if (var10 != null)
             {
-            	par5EntityPlayer.openGui(ColoniesMain.instance, 0, par1World, par2, par3, par4);
+            	openGUI(par5EntityPlayer, par1World, par2, par3, par4);
   
             }
 
             return true;
         }
     }
+
 
     /**
      * Update which block ID the furnace is using depending on whether or not it is burning
@@ -186,6 +191,7 @@ public class BlockResearchBlock extends BlockContainer
         }
     }
 
+   @Override
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
@@ -248,5 +254,10 @@ public class BlockResearchBlock extends BlockContainer
         }
 
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
+    }
+    
+    public void openGUI(EntityPlayer player, World theWorld, int x, int y, int z)
+    {
+    	player.openGui(ColoniesMain.instance, 0, theWorld, x, y, z);
     }
 }
