@@ -221,7 +221,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		return false;
 	}
 	
-	/*
+	
 	@Override
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
 	  super.writeToNBT(par1NBTTagCompound);
@@ -265,7 +265,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	  maxPopulation += 4;
 	  playerTown = this;
 	}
-	*/
+	
 	
 	@Override
 	public String getTextureFile(){
