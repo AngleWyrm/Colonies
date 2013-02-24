@@ -69,7 +69,7 @@ public class BlockResearchBlock extends BlockContainer
      */
 	@Override
 	public String getTextureFile() {
-		return ("/colonies/gfx/ResearchBench.PNG");
+		return ("/colonies/gfx/ResearchBench.png");
 	}
 
 
