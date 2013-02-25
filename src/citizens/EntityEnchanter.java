@@ -86,16 +86,16 @@ public class EntityEnchanter extends EntityCitizen implements INpc, IMerchant
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
 				switch(Utility.getLootCategory(3)) {
-					case 1: return Item.appleRed.shiftedIndex;
-					case 2: return Item.book.shiftedIndex;
-					default:return Item.paper.shiftedIndex;
+					case 1: return Item.appleRed.itemID;
+					case 2: return Item.book.itemID;
+					default:return Item.paper.itemID;
 				}
 			case 2: // Uncommon
-				return Item.ingotGold.shiftedIndex;
+				return Item.ingotGold.itemID;
 			case 3: // Rare
-				return ColoniesMain.ancientTome.shiftedIndex;
+				return ColoniesMain.ancientTome.itemID;
 			default: // Legendary
-				return Item.emerald.shiftedIndex;
+				return Item.emerald.itemID;
 		}
 	}
 

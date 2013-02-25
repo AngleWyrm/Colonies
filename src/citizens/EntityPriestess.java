@@ -58,16 +58,16 @@ public class EntityPriestess extends EntityCitizen{
     	switch(Utility.getLootCategory()){
     	case 1: // Common
     			switch(Utility.getLootCategory(3)){
-    			case 1: return Item.appleRed.shiftedIndex;
-    			case 2: return Item.arrow.shiftedIndex;
-    			default:return Item.bow.shiftedIndex;
+    			case 1: return Item.appleRed.itemID;
+    			case 2: return Item.arrow.itemID;
+    			default:return Item.bow.itemID;
     			}
     	case 2: // Uncommon
-    		return Item.emerald.shiftedIndex;
+    		return Item.emerald.itemID;
     	case 3: // Rare
-    		return Item.ingotIron.shiftedIndex;
+    		return Item.ingotIron.itemID;
     	default: // Legendary
-    		return Item.ingotGold.shiftedIndex;
+    		return Item.ingotGold.itemID;
     	}
     }
 

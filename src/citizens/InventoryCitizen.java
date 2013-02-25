@@ -265,7 +265,7 @@ public class InventoryCitizen implements IInventory{
     {
         if (par1Item != null)
         {
-            int var3 = this.getInventorySlotContainItemAndDamage(par1Item.shiftedIndex, par2);
+            int var3 = this.getInventorySlotContainItemAndDamage(par1Item.itemID, par2);
 
             if (var3 >= 0)
             {
@@ -277,7 +277,7 @@ public class InventoryCitizen implements IInventory{
                 return;
             }
 
-            this.mainInventory[this.currentItem] = new ItemStack(Item.itemsList[par1Item.shiftedIndex], 1, par2);
+            this.mainInventory[this.currentItem] = new ItemStack(Item.itemsList[par1Item.itemID], 1, par2);
         }
     }
 

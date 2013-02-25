@@ -16,7 +16,7 @@ public void onEntityDrop(LivingDropsEvent event) {
 	rand = Math.random();
 	if (event.entityLiving instanceof EntityZombie) {
 		 if (rand < 0.05d);{
-         	 event.entityLiving.dropItem(ColoniesMain.ancientTome.shiftedIndex, 1);
+         	 event.entityLiving.dropItem(ColoniesMain.ancientTome.itemID, 1);
 		 }
 													}
 														}

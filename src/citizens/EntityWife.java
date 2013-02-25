@@ -63,16 +63,16 @@ public class EntityWife extends EntityCitizen{
     	switch(Utility.getLootCategory()){
     	case 1: // Common
     			switch(Utility.getLootCategory(3)){
-    			case 1: return Item.appleRed.shiftedIndex;
-    			case 2: return Item.bone.shiftedIndex;
-    			default:return Item.rottenFlesh.shiftedIndex;
+    			case 1: return Item.appleRed.itemID;
+    			case 2: return Item.bone.itemID;
+    			default:return Item.rottenFlesh.itemID;
     			}
     	case 2: // Uncommon
-    		return Item.bread.shiftedIndex;
+    		return Item.bread.itemID;
     	case 3: // Rare
-    		return Item.bucketMilk.shiftedIndex;
+    		return Item.bucketMilk.itemID;
     	default: // Legendary
-    		return Item.emerald.shiftedIndex;
+    		return Item.emerald.itemID;
     	}
     }
 	

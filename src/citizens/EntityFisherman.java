@@ -61,13 +61,13 @@ public class EntityFisherman extends EntityCitizen {
 		int lootID=1;
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
-				return Item.fishRaw.shiftedIndex;
+				return Item.fishRaw.itemID;
 			case 2: // Uncommon
-				return Item.fishingRod.shiftedIndex;
+				return Item.fishingRod.itemID;
 			case 3: // Rare
-				return Item.goldNugget.shiftedIndex;
+				return Item.goldNugget.itemID;
 			default: // Legendary
-				return Item.ingotGold.shiftedIndex;
+				return Item.ingotGold.itemID;
 		}
 	}
 

@@ -250,7 +250,7 @@ public class EntityBarbarianChief extends EntityMob
      */
     protected int getDropItemId()
     {
-        return Item.ingotGold.shiftedIndex;
+        return Item.ingotGold.itemID;
     }
 
     /**
@@ -266,28 +266,28 @@ public class EntityBarbarianChief extends EntityMob
         switch (this.rand.nextInt(4))
         {
             case 0:
-                this.dropItem(Item.ingotIron.shiftedIndex, 3);
+                this.dropItem(Item.ingotIron.itemID, 3);
                 break;
             case 1:
-                this.dropItem(Item.diamond.shiftedIndex, 1);
+                this.dropItem(Item.diamond.itemID, 1);
                 break;
             case 2:
-                this.dropItem(Item.emerald.shiftedIndex, 1);
+                this.dropItem(Item.emerald.itemID, 1);
             case 3:
-                this.dropItem(ColoniesMain.ancientTome.shiftedIndex, 1);
+                this.dropItem(ColoniesMain.ancientTome.itemID, 1);
         }
         switch (this.rand.nextInt(4))
         {
             case 0:
-                this.dropItem(Item.bootsSteel.shiftedIndex, 1);
+                this.dropItem(Item.bootsSteel.itemID, 1);
                 break;
             case 1:
-                this.dropItem(Item.legsSteel.shiftedIndex, 1);
+                this.dropItem(Item.legsSteel.itemID, 1);
                 break;
             case 2:
-                this.dropItem(Item.helmetSteel.shiftedIndex, 1);
+                this.dropItem(Item.helmetSteel.itemID, 1);
             case 3:
-                this.dropItem(Item.plateSteel.shiftedIndex, 1);
+                this.dropItem(Item.plateSteel.itemID, 1);
         }
     }
 

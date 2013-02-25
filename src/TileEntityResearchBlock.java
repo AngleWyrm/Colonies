@@ -456,7 +456,7 @@ public class TileEntityResearchBlock extends TileEntity implements IInventory, I
         }
         else
         {
-            int var1 = par0ItemStack.getItem().shiftedIndex;
+            int var1 = par0ItemStack.getItem().itemID;
             Item var2 = par0ItemStack.getItem();
 
             if (par0ItemStack.getItem() instanceof ItemBlock && Block.blocksList[var1] != null)

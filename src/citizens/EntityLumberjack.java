@@ -64,16 +64,16 @@ public class EntityLumberjack extends EntityCitizen {
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
 				switch(Utility.getLootCategory(3)) {
-					case 1: return Item.appleRed.shiftedIndex;
-					case 2: return Item.pickaxeStone.shiftedIndex;
-					default:return Item.pickaxeSteel.shiftedIndex;
+					case 1: return Item.appleRed.itemID;
+					case 2: return Item.pickaxeStone.itemID;
+					default:return Item.pickaxeSteel.itemID;
 				}
 			case 2: // Uncommon
-				return Item.coal.shiftedIndex;
+				return Item.coal.itemID;
 			case 3: // Rare
-				return Item.goldNugget.shiftedIndex;
+				return Item.goldNugget.itemID;
 			default: // Legendary
-				return Item.ingotGold.shiftedIndex;
+				return Item.ingotGold.itemID;
 		}
 	}
 

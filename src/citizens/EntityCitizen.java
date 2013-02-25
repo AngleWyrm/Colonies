@@ -219,16 +219,16 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
     	switch(Utility.getLootCategory()){
     	case 1: // Common
     			switch(Utility.getLootCategory(3)){
-    			case 1: return Item.appleRed.shiftedIndex;
-    			case 2: return Item.shovelStone.shiftedIndex;
-    			default:return Item.bakedPotato.shiftedIndex;
+    			case 1: return Item.appleRed.itemID;
+    			case 2: return Item.shovelStone.itemID;
+    			default:return Item.bakedPotato.itemID;
     			}
     	case 2: // Uncommon
-    		return Item.swordWood.shiftedIndex;
+    		return Item.swordWood.itemID;
     	case 3: // Rare
-    		return Item.goldNugget.shiftedIndex;
+    		return Item.goldNugget.itemID;
     	default: // Legendary
-    		return Item.emerald.shiftedIndex;
+    		return Item.emerald.itemID;
     	}
     }
 

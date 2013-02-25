@@ -226,7 +226,7 @@ public class SchematicWorld extends World {
 						itemDamage = 0x03;
 					}
 
-					if (itemID == Item.skull.shiftedIndex) {
+					if (itemID == Item.skull.itemID) {
 						itemDamage = this.metadata[x][y][z];
 					}
 

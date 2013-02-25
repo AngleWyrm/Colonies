@@ -63,13 +63,13 @@ public class EntityGuard extends EntityCitizen {
 		
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
-				return Item.bread.shiftedIndex;
+				return Item.bread.itemID;
 			case 2: // Uncommon
-				return Item.swordWood.shiftedIndex;
+				return Item.swordWood.itemID;
 			case 3: // Rare
-				return Item.goldNugget.shiftedIndex;
+				return Item.goldNugget.itemID;
 			default: // Legendary
-				return Item.ingotGold.shiftedIndex;
+				return Item.ingotGold.itemID;
 		}
 	}
 

@@ -249,7 +249,7 @@ public class EntityBarbarian extends EntityMob
      */
     protected int getDropItemId()
     {
-        return Item.goldNugget.shiftedIndex;
+        return Item.goldNugget.itemID;
     }
 
     /**
@@ -265,15 +265,15 @@ public class EntityBarbarian extends EntityMob
         switch (this.rand.nextInt(4))
         {
             case 0:
-                this.dropItem(Item.ingotIron.shiftedIndex, 1);
+                this.dropItem(Item.ingotIron.itemID, 1);
                 break;
             case 1:
-                this.dropItem(Item.potato.shiftedIndex, 1);
+                this.dropItem(Item.potato.itemID, 1);
                 break;
             case 2:
-                this.dropItem(Item.emerald.shiftedIndex, 1);
+                this.dropItem(Item.emerald.itemID, 1);
             case 3:
-                this.dropItem(ColoniesMain.ancientTome.shiftedIndex, 1);
+                this.dropItem(ColoniesMain.ancientTome.itemID, 1);
         }
     }
 

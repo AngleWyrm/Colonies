@@ -57,13 +57,13 @@ public class EntityAlchemist extends EntityCitizen
 		int lootID=1;
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
-				return Item.appleRed.shiftedIndex;
+				return Item.appleRed.itemID;
 			case 2: // Uncommon
-				return Item.book.shiftedIndex;
+				return Item.book.itemID;
 			case 3: // Rare
-				return Item.flintAndSteel.shiftedIndex;
+				return Item.flintAndSteel.itemID;
 			default: // Legendary
-				return Item.ingotGold.shiftedIndex;
+				return Item.ingotGold.itemID;
 		}
 	}
 

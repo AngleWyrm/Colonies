@@ -30,7 +30,7 @@ public class ResearchRecipes
     private ResearchRecipes()
     {
 
-        this.addSmelting(ColoniesMain.ancientTome.shiftedIndex, new ItemStack(ColoniesMain.researchedTome), 1.0F);
+        this.addSmelting(ColoniesMain.ancientTome.itemID, new ItemStack(ColoniesMain.researchedTome), 1.0F);
 
     }
 
