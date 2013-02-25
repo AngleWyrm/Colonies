@@ -1,7 +1,7 @@
 package colonies.eragon.src;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.src.StatCollector;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 

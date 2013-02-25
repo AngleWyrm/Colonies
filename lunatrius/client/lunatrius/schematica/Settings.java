@@ -11,14 +11,14 @@ import colonies.lunatrius.client.lunatrius.schematica.util.MCLogger;
 import colonies.lunatrius.client.lunatrius.schematica.util.Vector3f;
 import colonies.lunatrius.client.lunatrius.schematica.util.Vector3i;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.ChunkCache;
-import net.minecraft.src.CompressedStreamTools;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.KeyBinding;
+import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.RenderItem;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.ChunkCache;
 
 import org.lwjgl.input.Keyboard;
 

@@ -5,11 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.command.IEntitySelector;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.IEntitySelector;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
@@ -19,7 +18,7 @@ import colonies.src.Point;
 import colonies.src.Utility;
 import cpw.mods.fml.common.FMLModContainer;
 import cpw.mods.fml.common.network.Player;
-import net.minecraft.src.Entity;
+import net.minecraft.entity.Entity;
 
 
 public class EntityAIGatherDroppedItems extends EntityAIBase 

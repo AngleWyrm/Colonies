@@ -2,7 +2,7 @@ package colonies.src;
 
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.citizens.EntityCitizen;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.Vec3;
 
 public class Point 

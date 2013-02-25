@@ -9,8 +9,7 @@ import colonies.src.ColoniesMain;
 import colonies.src.Point;
 import colonies.src.Utility;
 
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

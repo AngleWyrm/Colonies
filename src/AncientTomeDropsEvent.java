@@ -2,8 +2,7 @@ package colonies.src;
 
 //import net.minecraft.entity.item.EntityItem;
 //Additional note to force re-commit
-import net.minecraft.src.EntityZombie;
-import net.minecraft.src.EntityLiving;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;

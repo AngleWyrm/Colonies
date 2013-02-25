@@ -7,7 +7,6 @@ import colonies.src.Utility;
 
 
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.src.EntityCreature;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;

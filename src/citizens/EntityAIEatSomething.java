@@ -2,9 +2,7 @@ package colonies.src.citizens;
 
 import colonies.src.Utility;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.src.EntityCreature;
 import net.minecraft.item.Item;
-import net.minecraft.src.ItemFood;
 import net.minecraft.item.ItemStack;
 
 public class EntityAIEatSomething extends EntityAIBase

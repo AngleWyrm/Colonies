@@ -3,12 +3,12 @@ package colonies.lunatrius.client.lunatrius.schematica;
 import java.util.Locale;
 
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.src.GuiSlot;
+import net.minecraft.client.gui.GuiSlot;
+import net.minecraft.client.renderer.RenderEngine;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.RenderEngine;
-import net.minecraft.src.RenderHelper;
-import net.minecraft.src.Tessellator;
 import net.minecraftforge.client.ForgeHooksClient;
 
 import org.lwjgl.opengl.GL11;

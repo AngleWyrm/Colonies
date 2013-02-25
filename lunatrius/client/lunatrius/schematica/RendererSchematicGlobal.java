@@ -4,9 +4,9 @@ import java.nio.FloatBuffer;
 import java.util.Collections;
 import colonies.lunatrius.client.lunatrius.schematica.util.Vector3f;
 import colonies.lunatrius.client.lunatrius.schematica.util.Vector3i;
-import net.minecraft.src.EntityPlayerSP;
-import net.minecraft.src.Frustrum;
-import net.minecraft.src.Profiler;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.renderer.culling.Frustrum;
+import net.minecraft.profiler.Profiler;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 

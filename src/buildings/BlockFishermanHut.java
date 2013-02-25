@@ -4,7 +4,6 @@ import colonies.src.ClientProxy;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 

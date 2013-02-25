@@ -3,7 +3,6 @@ package colonies.src.citizens;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
-import net.minecraft.src.BlockWood;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
