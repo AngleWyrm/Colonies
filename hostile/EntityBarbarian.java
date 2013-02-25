@@ -241,7 +241,7 @@ public class EntityBarbarian extends EntityMob
      */
     protected void playStepSound(int par1, int par2, int par3, int par4)
     {
-        this.func_85030_a("mob.zombie.step", 0.15F, 1.0F);
+        this.playSound("mob.zombie.step", 0.15F, 1.0F);
     }
 
     /**
@@ -339,7 +339,7 @@ public class EntityBarbarian extends EntityMob
 
             EntityBarbarian var2 = new EntityBarbarian(this.worldObj);
             var2.func_82149_j(par1EntityLiving);
-            this.worldObj.setEntityDead(par1EntityLiving);
+            this.worldObj.removeEntity(par1EntityLiving);
             var2.initCreature();
             
             if (par1EntityLiving.isChild())
@@ -380,7 +380,7 @@ public class EntityBarbarian extends EntityMob
     {
         if (par1 == 16)
         {
-            this.worldObj.playSound(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "mob.zombie.remedy", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
+            this.worldObj.playSound(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "mob.zombie.remedy", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F, false);
         }
         else
         {

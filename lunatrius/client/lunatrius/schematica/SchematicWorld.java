@@ -444,7 +444,7 @@ public class SchematicWorld extends World {
 					base = 12;
 				}
 
-				skullTileEntity.func_82116_a((2 * base - angle) & 15);
+				skullTileEntity.setSkullRotation((2 * base - angle) & 15);
 			}
 		}
 
@@ -678,7 +678,7 @@ public class SchematicWorld extends World {
 
 			if (tileEntity instanceof TileEntitySkull && tileEntity.blockMetadata == 0x1) {
 				TileEntitySkull skullTileEntity = (TileEntitySkull) tileEntity;
-				skullTileEntity.func_82116_a((skullTileEntity.func_82119_b() + 12) & 15);
+				skullTileEntity.setSkullRotation((skullTileEntity.func_82119_b() + 12) & 15);
 			}
 
 		}

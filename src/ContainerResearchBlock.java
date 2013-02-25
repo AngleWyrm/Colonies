@@ -52,7 +52,7 @@ public class ContainerResearchBlock extends Container
      */
     public void updateCraftingResults()
     {
-        super.updateCraftingResults();
+        super.detectAndSendChanges();
 
         for (int var1 = 0; var1 < this.crafters.size(); ++var1)
         {
