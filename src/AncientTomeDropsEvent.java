@@ -4,7 +4,7 @@ package colonies.src;
 //Additional note to force re-commit
 import net.minecraft.src.EntityZombie;
 import net.minecraft.src.EntityLiving;
-import net.minecraft.src.Item;
+import net.minecraft.item.Item;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 

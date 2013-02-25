@@ -1,8 +1,8 @@
 package colonies.lunatrius.client.lunatrius.schematica;
 
-import net.minecraft.src.FontRenderer;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.src.GuiSlot;
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.RenderEngine;
 import net.minecraft.src.RenderHelper;
 import net.minecraft.src.Tessellator;

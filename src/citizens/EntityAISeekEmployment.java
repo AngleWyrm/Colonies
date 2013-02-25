@@ -2,7 +2,7 @@ package colonies.src.citizens;
 
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityTownHall;
-import net.minecraft.src.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIBase;
 
 public class EntityAISeekEmployment extends EntityAIBase 
 {

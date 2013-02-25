@@ -6,8 +6,8 @@ import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 
 
-import net.minecraft.src.Item;
-import net.minecraft.src.World;
+import net.minecraft.item.Item;
+import net.minecraft.world.World;
 
 public class EntityWife extends EntityCitizen{
 	public EntityWife(World world){ 

@@ -7,7 +7,7 @@
 package colonies.pmardle.src;
 
 import net.minecraft.src.Entity;
-import net.minecraft.src.MathHelper;
+import net.minecraft.util.MathHelper;
 import net.minecraft.src.ModelBase;
 import net.minecraft.src.ModelRenderer;
 

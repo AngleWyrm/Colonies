@@ -9,20 +9,14 @@ import colonies.src.ColoniesMain;
 import colonies.src.buildings.ContainerColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityTownHall;
-import net.minecraft.src.Block;
-import net.minecraft.src.ChatAllowedCharacters;
-import net.minecraft.src.Container;
-import net.minecraft.src.Gui;
-import net.minecraft.src.GuiButton;
-import net.minecraft.src.GuiContainer;
-import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiTextField;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.NetClientHandler;
-import net.minecraft.src.Packet130UpdateSign;
-import net.minecraft.src.StatCollector;
-import net.minecraft.src.TileEntityRenderer;
-import net.minecraft.src.TileEntitySign;
+import net.minecraft.block.Block;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.ChatAllowedCharacters;
 
 public class GuiTownName extends GuiContainer {
     /**

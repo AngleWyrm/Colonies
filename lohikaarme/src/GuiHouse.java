@@ -1,6 +1,6 @@
 package colonies.lohikaarme.src;
 
-import net.minecraft.src.InventoryPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.src.StatCollector;
 import colonies.anglewyrm.src.GuiColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChest;

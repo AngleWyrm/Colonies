@@ -1,8 +1,8 @@
 package colonies.lunatrius.client.lunatrius.schematica;
 
-import net.minecraft.src.GuiButton;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.MathHelper;
+import net.minecraft.util.MathHelper;
 import net.minecraft.src.StringTranslate;
 
 

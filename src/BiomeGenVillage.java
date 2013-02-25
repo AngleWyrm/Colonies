@@ -1,6 +1,7 @@
 package colonies.src;
 
-import net.minecraft.src.BiomeGenBase;
+import net.minecraft.world.biome.BiomeGenBase;
+
 
 public class BiomeGenVillage extends BiomeGenBase
 {

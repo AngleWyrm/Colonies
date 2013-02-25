@@ -5,8 +5,8 @@ import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class BlockFishermanHut extends BlockColoniesChest {
 

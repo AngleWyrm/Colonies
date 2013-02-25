@@ -13,7 +13,7 @@ import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityTownHall;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.src.ModLoader;
 
 // Go home at night

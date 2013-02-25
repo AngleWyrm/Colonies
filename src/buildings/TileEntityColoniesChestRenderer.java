@@ -11,11 +11,11 @@ import static org.lwjgl.opengl.GL11.glTranslatef;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Item;
-import net.minecraft.src.ModelChest;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.client.model.ModelChest;
 import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.TileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.src.TileEntitySpecialRenderer;
 
 import org.lwjgl.opengl.GL11;

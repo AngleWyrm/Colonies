@@ -1,9 +1,9 @@
 package colonies.eragon.src;
 
 import net.minecraft.src.Container;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.ItemStack;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.Slot;
 import colonies.src.buildings.TileEntityColoniesChest;
 

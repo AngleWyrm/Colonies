@@ -11,23 +11,23 @@ import colonies.src.buildings.TileEntityTownHall;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.DamageSource;
-import net.minecraft.src.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.src.EntityAIHurtByTarget;
-import net.minecraft.src.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.src.EntityAIWander;
 import net.minecraft.src.EntityAIWatchClosest;
 import net.minecraft.src.EntityCreature;
 import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.src.IMob;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.src.PathEntity;
 import net.minecraft.src.PathNavigate;
 import net.minecraft.src.PathPoint;
-import net.minecraft.src.World;
+import net.minecraft.world.World;
 import paulscode.sound.Vector3D;
 
 public class EntityCitizen extends EntityCreature implements IMob // TODO: Make EntityLiving 

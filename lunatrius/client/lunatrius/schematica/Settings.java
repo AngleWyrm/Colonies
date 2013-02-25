@@ -13,12 +13,12 @@ import colonies.lunatrius.client.lunatrius.schematica.util.Vector3i;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.ChunkCache;
 import net.minecraft.src.CompressedStreamTools;
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.KeyBinding;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.src.RenderBlocks;
 import net.minecraft.src.RenderItem;
-import net.minecraft.src.TileEntity;
+import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.input.Keyboard;
 

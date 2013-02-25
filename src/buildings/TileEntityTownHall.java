@@ -18,8 +18,8 @@ import colonies.src.citizens.EntityPriestess;
 import colonies.src.citizens.EntityWife;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.NBTTagCompound;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityTownHall extends TileEntityColoniesChest 
 {

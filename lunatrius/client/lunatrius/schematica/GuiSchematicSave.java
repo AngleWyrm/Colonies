@@ -1,8 +1,8 @@
 package colonies.lunatrius.client.lunatrius.schematica;
 
-import net.minecraft.src.GuiButton;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.src.GuiScreen;
-import net.minecraft.src.GuiTextField;
+import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.src.StringTranslate;
 
 public class GuiSchematicSave extends GuiScreen {

@@ -2,9 +2,9 @@ package colonies.boycat97.src;
 
 import java.util.HashMap;
 
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import paulscode.sound.Vector3D;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;

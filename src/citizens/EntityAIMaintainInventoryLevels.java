@@ -6,8 +6,8 @@ import colonies.src.Point;
 import colonies.src.Utility;
 
 
-import net.minecraft.src.EntityAIBase;
-import net.minecraft.src.ItemStack;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.item.ItemStack;
 
 // AI is given a set of stock levels to maintain in their personal inventory
 // They will check their place of employment to gather shortages

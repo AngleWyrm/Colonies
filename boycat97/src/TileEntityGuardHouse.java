@@ -1,6 +1,6 @@
 package colonies.boycat97.src;
 
-import net.minecraft.src.IInventory;
+import net.minecraft.inventory.IInventory;
 import colonies.src.ClientProxy;
 import colonies.src.buildings.TileEntityColoniesChest;
 

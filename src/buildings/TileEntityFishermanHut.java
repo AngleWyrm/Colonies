@@ -3,8 +3,8 @@ package colonies.src.buildings;
 import colonies.src.ClientProxy;
 import colonies.src.citizens.EntityCitizen;
 import colonies.src.citizens.EntityFisherman;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.World;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.world.World;
 
 public class TileEntityFishermanHut extends TileEntityColoniesChest {
 

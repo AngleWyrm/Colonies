@@ -1,7 +1,7 @@
 package colonies.src;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 
 // This is just a simple block from the forums
 // Someone suggested making a road block so this is it.

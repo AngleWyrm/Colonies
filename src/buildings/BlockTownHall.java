@@ -11,9 +11,9 @@ import colonies.src.Utility;
 
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class BlockTownHall extends BlockColoniesChest 
 {

@@ -6,11 +6,11 @@ import colonies.src.Point;
 import colonies.src.Utility;
 
 
-import net.minecraft.src.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.src.EntityCreature;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 
 public class EntityAIFindShelterFromRain extends EntityAIBase
 {

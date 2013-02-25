@@ -2,9 +2,9 @@ package colonies.src.citizens;
 
 import colonies.src.Point;
 import colonies.src.Utility;
-import net.minecraft.src.Block;
-import net.minecraft.src.EntityAIBase;
-import net.minecraft.src.MathHelper;
+import net.minecraft.block.Block;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.util.MathHelper;
 
 public class EntityAIPlantSapling extends EntityAIBase 
 {

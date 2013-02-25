@@ -1,17 +1,18 @@
 package colonies.lunatrius.client.lunatrius.schematica;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockChest;
-import net.minecraft.src.FontRenderer;
-import net.minecraft.src.ModelChest;
-import net.minecraft.src.ModelLargeChest;
-import net.minecraft.src.ModelSign;
-import net.minecraft.src.RenderEngine;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.TileEntityChest;
-import net.minecraft.src.TileEntityEnderChest;
-import net.minecraft.src.TileEntityRenderer;
-import net.minecraft.src.TileEntitySign;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.model.ModelChest;
+import net.minecraft.client.model.ModelLargeChest;
+import net.minecraft.client.model.ModelSign;
+import net.minecraft.client.renderer.RenderEngine;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityEnderChest;
+import net.minecraft.tileentity.TileEntitySign;
+
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;

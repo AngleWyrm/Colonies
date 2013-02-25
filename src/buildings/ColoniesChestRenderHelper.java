@@ -2,9 +2,10 @@ package colonies.src.buildings;
 
 import java.util.Map;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.ChestItemRenderHelper;
-import net.minecraft.src.TileEntityRenderer;
+import net.minecraft.block.Block;
+
+import net.minecraft.client.renderer.ChestItemRenderHelper;
+import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 
 import colonies.src.ColoniesMain;
 

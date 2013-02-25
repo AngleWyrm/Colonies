@@ -1,6 +1,6 @@
 package colonies.lohikaarme.src;
 
-import net.minecraft.src.GuiButton;
+import net.minecraft.client.gui.GuiButton;
 
 public class GuiButtonColonies extends GuiButton {
 

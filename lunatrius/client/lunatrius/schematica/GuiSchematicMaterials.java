@@ -3,10 +3,10 @@ package colonies.lunatrius.client.lunatrius.schematica;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.src.GuiButton;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.GuiSmallButton;
-import net.minecraft.src.ItemStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.StringTranslate;
 
 public class GuiSchematicMaterials extends GuiScreen {

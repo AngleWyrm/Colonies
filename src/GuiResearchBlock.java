@@ -1,9 +1,9 @@
 package colonies.src;
 //..
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
-import net.minecraft.src.GuiContainer;
-import net.minecraft.src.InventoryPlayer;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.src.StatCollector;
 
 import org.lwjgl.opengl.GL11;

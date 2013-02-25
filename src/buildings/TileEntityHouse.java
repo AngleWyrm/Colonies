@@ -1,7 +1,7 @@
 package colonies.src.buildings;
 
 import colonies.src.ClientProxy;
-import net.minecraft.src.IInventory;
+import net.minecraft.inventory.IInventory;
 
 public class TileEntityHouse extends TileEntityColoniesChest {
 

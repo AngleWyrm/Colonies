@@ -5,29 +5,29 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import net.minecraft.src.Block;
+import net.minecraft.block.Block;
 import net.minecraft.src.ChunkCoordinates;
-import net.minecraft.src.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.src.IMerchant;
 import net.minecraft.src.INpc;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.MathHelper;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.block.material.Material;
+import net.minecraft.util.MathHelper;
 import net.minecraft.src.MerchantRecipe;
 import net.minecraft.src.MerchantRecipeList;
 import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import paulscode.sound.Vector3D;
 import colonies.src.ColoniesMain;
 import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.vector67.src.EntityAIMine;
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityEnchanter extends EntityCitizen implements INpc, IMerchant
 

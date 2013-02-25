@@ -4,8 +4,8 @@ import colonies.src.ClientProxy;
 import colonies.src.Utility;
 import colonies.src.citizens.EntityCitizen;
 import colonies.src.citizens.EntityLumberjack;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.World;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.world.World;
 
 public class TileEntityLoggingCamp extends TileEntityColoniesChest {
 

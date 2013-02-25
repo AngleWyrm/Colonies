@@ -2,13 +2,13 @@ package colonies.src;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 
 public class Utility 
 {
