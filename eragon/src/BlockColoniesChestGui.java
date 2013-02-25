@@ -5,7 +5,7 @@ import net.minecraft.src.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-import colonies.vector67.src.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
  
  
 public class BlockColoniesChestGui extends GuiContainer{

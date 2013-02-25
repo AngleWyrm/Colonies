@@ -1,9 +1,10 @@
 package colonies.anglewyrm.src;
 
-import net.minecraft.src.EntityAIBase;
-import net.minecraft.src.EntityCreature;
-import net.minecraft.src.RandomPositionGenerator;
-import net.minecraft.src.Vec3;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.RandomPositionGenerator;
+import net.minecraft.util.Vec3;
+
 
 public class EnitityAIMeander extends EntityAIBase
 {
