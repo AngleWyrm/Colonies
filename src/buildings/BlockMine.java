@@ -42,7 +42,7 @@ public class BlockMine extends BlockColoniesChest {
 						new ItemStack(item.itemID, item.stackSize, item.getItemDamage()));
 
 				if (item.hasTagCompound()) {
-					entityItem.item.setTagCompound((NBTTagCompound) item.getTagCompound().copy());
+					entityItem.getEntityItem().setTagCompound((NBTTagCompound) item.getTagCompound().copy());
 				}
 
 				float factor = 0.05F;

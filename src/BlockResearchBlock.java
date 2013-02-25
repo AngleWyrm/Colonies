@@ -236,7 +236,7 @@ public class BlockResearchBlock extends BlockContainer
 
                             if (var9.hasTagCompound())
                             {
-                                var14.item.setTagCompound((NBTTagCompound)var9.getTagCompound().copy());
+                                var14.getEntityItem().setTagCompound((NBTTagCompound)var9.getTagCompound().copy());
                             }
 
                             float var15 = 0.05F;

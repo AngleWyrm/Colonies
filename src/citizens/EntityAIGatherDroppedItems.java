@@ -76,8 +76,8 @@ public class EntityAIGatherDroppedItems extends EntityAIBase
 		//looking through items to make sure they are on the ground and available to be retrieved
 		for( EntityItem itemRetrieved : itemsToRetrieve) {
 			// Do we want this item?
-			if(shouldPickUpThisItem(itemRetrieved.item)){
-				if (this.citizen.inventory.addItemStackToInventory(itemRetrieved.item) && itemRetrieved.onGround ){
+			if(shouldPickUpThisItem(itemRetrieved.getEntityItem())){
+				if (this.citizen.inventory.addItemStackToInventory(itemRetrieved.getEntityItem()) && itemRetrieved.onGround ){
 					itemRetrieved.setDead();
 				} // else pick up failed, move on to next item
 			} // else shouldn't pick up this item, move on to next item
