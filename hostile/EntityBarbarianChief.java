@@ -371,7 +371,7 @@ public class EntityBarbarianChief extends EntityMob
      */
     public void initCreature()
     {
-        this.canPickUpLoot = this.rand.nextFloat() < field_82181_as[this.worldObj.difficultySetting];
+        this.canPickUpLoot = this.rand.nextFloat() < pickUpLootProability[this.worldObj.difficultySetting];
 
         this.func_82164_bB();
         this.func_82162_bC();
