@@ -14,9 +14,9 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.client.model.ModelChest;
-import net.minecraft.src.RenderBlocks;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.src.TileEntitySpecialRenderer;
 
 import org.lwjgl.opengl.GL11;
 

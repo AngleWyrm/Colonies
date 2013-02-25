@@ -7,7 +7,6 @@ import colonies.src.citizens.EntityMiner;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.src.RandomPositionGenerator;
 import net.minecraft.util.Vec3;
 
 public class EntityAIMine extends EntityAIBase {

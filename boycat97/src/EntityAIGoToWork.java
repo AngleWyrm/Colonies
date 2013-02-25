@@ -2,14 +2,11 @@ package colonies.boycat97.src;
 
 import colonies.src.Utility;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.src.EntityAITarget;
-import net.minecraft.src.EntityLiving;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
-import net.minecraft.src.PathEntity;
-import net.minecraft.src.PathPoint;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;

@@ -2,11 +2,11 @@ package colonies.src;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.src.Entity;
 import net.minecraft.util.MathHelper;
-import net.minecraft.src.ModelBook;
+import net.minecraft.client.model.ModelBook;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.src.TileEntitySpecialRenderer;
 
 import org.lwjgl.opengl.GL11;
 

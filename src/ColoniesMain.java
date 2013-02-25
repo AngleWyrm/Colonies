@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraftforge.common.Configuration;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;

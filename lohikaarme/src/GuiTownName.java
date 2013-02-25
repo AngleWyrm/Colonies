@@ -11,6 +11,7 @@ import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityTownHall;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
