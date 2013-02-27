@@ -151,7 +151,7 @@ public class EntityAIChopTree extends EntityAIBase
 		 
 		//TODO: figure out how to chop wood multiple times so that its being broken up correctly.
 		//set the variables that allow for immediate scanning for wood. 
-	
+		
 		
 		if ( Math.abs((int)bottomOfTree.y - (int)this.citizen.posY) > 6 || this.bottomOfTree.y == this.topOfTree.y ) {
 			this.bottomOfTree = null;
