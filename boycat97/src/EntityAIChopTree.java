@@ -1,6 +1,9 @@
 package colonies.boycat97.src;
 
+import java.beans.DesignMode;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -25,6 +28,8 @@ public class EntityAIChopTree extends EntityAIBase
     private static ItemStack[] axeTypes = {new ItemStack(Item.axeSteel,1), new ItemStack(Item.axeStone, 1), new ItemStack(Item.axeWood,1)};
     
     Point destination;
+    Point topOfTree  = null;
+    Point bottomOfTree = null;
 	
 	public EntityAIChopTree(EntityCitizen _entityCitizen) {
 		this.movementSpeed = 0.25f;
@@ -51,7 +56,7 @@ public class EntityAIChopTree extends EntityAIBase
 	public boolean continueExecuting()
 	{
 		
-		if(destination == null) { // suitable destination not yet established
+		if(destination == null && this.bottomOfTree == null) { // suitable destination not yet established
 			
 			Point candidate = new Point();
 			int blockID = 0; 
@@ -78,7 +83,7 @@ public class EntityAIChopTree extends EntityAIBase
 				//Utility.terrainAdjustment(citizen.worldObj, candidate);			
 				
 				blockID = citizen.worldObj.getBlockId((int)candidate.x, (int)candidate.y, (int)candidate.z);					
-				if( blockID == Block.wood.blockID ) //TODO: look for a tree here with leaves.
+				if( blockID == Block.wood.blockID  ) //TODO: look for a tree here with leaves.
 				{
 					destination = candidate;
 					
@@ -96,7 +101,6 @@ public class EntityAIChopTree extends EntityAIBase
 			this.choppingWood();
 			this.lookingForTheRestOfTheTree();
 			
-			return true;
 		} // else not there yet, or can't get there		
 		
 		// Can we get there from here?
@@ -141,42 +145,50 @@ public class EntityAIChopTree extends EntityAIBase
 	
 	private void lookingForTheRestOfTheTree () 
 	{
+		
+		if (this.bottomOfTree == null) this.findGroundPoint();
+		if (this.topOfTree == null) this.findTopOfTree();
+		 
 		//TODO: figure out how to chop wood multiple times so that its being broken up correctly.
-		//set the variables that allow for immediate scanning for wood.
-		int scanTime = 0;
-		int MaxScanTime = 6; 
-				
-		while (destination != null && scanTime <= MaxScanTime) {
-			if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y-scanTime, (int)destination.z) == Block.wood.blockID) {
-				destination.y -= scanTime;
-			}  else if (this.taskEntityWorld.getBlockId((int)destination.x+scanTime, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {  
-				destination.x += scanTime;
-				destination.y += scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x+scanTime, (int)destination.y, (int)destination.z) == Block.wood.blockID) { 
-				destination.x += scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x-scanTime, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {  
-				destination.x -= scanTime;
-				destination.y += scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x-scanTime, (int)destination.y, (int)destination.z) == Block.wood.blockID) { 
-				destination.x -= scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y, (int)destination.z+scanTime) == Block.wood.blockID) { 
-				destination.z += scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z+scanTime) == Block.wood.blockID) {  
-				destination.z += scanTime;
-				destination.y += scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y, (int)destination.z-scanTime) == Block.wood.blockID) { 
-				destination.z -= scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z-scanTime) == Block.wood.blockID) {  
-				destination.z -= scanTime;
-				destination.y += scanTime;
-			} else if (this.taskEntityWorld.getBlockId((int)destination.x, (int)destination.y+scanTime, (int)destination.z) == Block.wood.blockID) {
-				destination.y -= scanTime;
-			} else if (scanTime == MaxScanTime ) {
-				destination = null;
-			} else {
-				scanTime++;
-			}
+		//set the variables that allow for immediate scanning for wood. 
+	
+		
+		if ( Math.abs((int)bottomOfTree.y - (int)this.citizen.posY) > 6 || this.bottomOfTree.y == this.topOfTree.y ) {
+			this.bottomOfTree = null;
+			this.topOfTree = null;
+			this.destination = null;
+		} else {		
+			this.bottomOfTree.y++;
+			this.destination.y = this.bottomOfTree.y;
 		}
 		
 	}
+	
+	
+	private void findGroundPoint()
+    {
+		bottomOfTree = new Point(destination.x, destination.y, destination.z); 
+		
+        while ( taskEntityWorld.getBlockId((int)Math.floor(bottomOfTree.x), (int)Math.floor(bottomOfTree.y), (int)Math.floor(bottomOfTree.z)) != Block.dirt.blockID  )
+        {
+        	bottomOfTree.y--;
+        }        
+
+    }
+	
+	private void findTopOfTree() {
+		
+		topOfTree = new Point(destination.x, destination.y, destination.z);
+		
+        while (( taskEntityWorld.getBlockId((int)Math.floor(topOfTree.x), (int)Math.floor(topOfTree.y), (int)Math.floor(topOfTree.z)) ==  Block.leaves.blockID || 
+        		taskEntityWorld.getBlockId((int)Math.floor(topOfTree.x), (int)Math.floor(topOfTree.y), (int)Math.floor(topOfTree.z)) == Block.wood.blockID ) &&  
+        		!this.taskEntityWorld.canBlockSeeTheSky((int)topOfTree.x, (int)topOfTree.y, (int)topOfTree.z))
+        {
+        	topOfTree.y++;
+        }
+        
+        
+	}
+	
+	
 }

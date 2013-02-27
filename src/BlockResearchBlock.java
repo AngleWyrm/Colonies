@@ -30,6 +30,8 @@ public class BlockResearchBlock extends BlockContainer
     /** True if this is an active furnace, false if idle */
     private final boolean isActive;
 
+    private int GuiID = 4;
+    
     /**
      * This flag is used to prevent the furnace inventory to be dropped upon block removal, is used internally when the
      * furnace block changes from idle to active and vice-versa.
@@ -255,6 +257,6 @@ public class BlockResearchBlock extends BlockContainer
     
     public void openGUI(EntityPlayer player, World theWorld, int x, int y, int z)
     {
-    	player.openGui(ColoniesMain.instance, 0, theWorld, x, y, z);
+    	player.openGui(ColoniesMain.instance, this.GuiID, theWorld, x, y, z);
     }
 }
