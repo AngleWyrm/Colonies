@@ -1,9 +1,8 @@
 package colonies.lohikaarme.src;
 
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.StatCollector;
+import net.minecraft.entity.player.InventoryPlayer;
 import colonies.anglewyrm.src.GuiColoniesChest;
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
 
 public class GuiHouse extends GuiColoniesChest {
 

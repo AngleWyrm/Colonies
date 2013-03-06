@@ -2,13 +2,13 @@ package colonies.boycat97.src;
 
 import java.util.HashMap;
 
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.World;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import paulscode.sound.Vector3D;
 import colonies.src.ColoniesMain;
-import colonies.anglewyrm.src.EntityCitizen;
-import colonies.anglewyrm.src.Utility;
+import colonies.src.Utility;
+import colonies.src.citizens.EntityCitizen;
 
 public class EntityGuard extends EntityCitizen {
 	
@@ -63,13 +63,13 @@ public class EntityGuard extends EntityCitizen {
 		
 		switch(Utility.getLootCategory()) {
 			case 1: // Common
-				return Item.bread.shiftedIndex;
+				return Item.bread.itemID;
 			case 2: // Uncommon
-				return Item.swordWood.shiftedIndex;
+				return Item.swordWood.itemID;
 			case 3: // Rare
-				return Item.goldNugget.shiftedIndex;
+				return Item.goldNugget.itemID;
 			default: // Legendary
-				return Item.ingotGold.shiftedIndex;
+				return Item.ingotGold.itemID;
 		}
 	}
 

@@ -1,6 +1,6 @@
 package colonies.lohikaarme.src;
 
-import net.minecraft.src.GuiButton;
+import net.minecraft.client.gui.GuiButton;
 
 public class GuiButtonColonies extends GuiButton {
 
@@ -8,3 +8,4 @@ public class GuiButtonColonies extends GuiButton {
 		super(par1, left, top, width, height, buttonText);
 	}
 }
+//Extend is more for texture change by overriding darwing methods

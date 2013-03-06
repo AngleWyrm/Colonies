@@ -7,15 +7,17 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EnumGameType;
-import net.minecraft.src.IChunkProvider;
-import net.minecraft.src.ISaveHandler;
-import net.minecraft.src.Profiler;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldProvider;
-import net.minecraft.src.WorldSettings;
-import net.minecraft.src.WorldType;
+import net.minecraft.entity.Entity;
+import net.minecraft.profiler.Profiler;
+import net.minecraft.world.EnumGameType;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldSettings;
+import net.minecraft.world.WorldType;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.storage.ISaveHandler;
+
+
 
 public class Schematic extends World
 {

@@ -2,7 +2,7 @@ Readme.txt for Colonies Minecraft modification
 ----------------------------------------------
 
 INSTALLATION:
-Drop this zip file into your .minecraft/mods folder and you're all set!
+Just drop this zip file into your .minecraft/mods folder and you're all set!
 
 PREREQUISITES:
 * Minecraft v1.4.5
@@ -10,37 +10,6 @@ PREREQUISITES:
 
 
 RELEASE NOTES
-
-Pre-Alpha Revision 10 25-Jan-2013
-
-Features
-    #58 Separate tab for Colonies chests and items in creative mode
-    Guard and Guard House
-    Improved chest textures for Town Hall, Fisherman's Hut, Mine
-    #58 GUI info button
-
-Fixes
-    #62 Fixed a crash issue when generating chat messages
-
-Known Issues
-    GUI info button not functioning yet
-
-
-Pre-Alpha Revision 9 18-Jan-2013
-
-Features
-    #75 Alchemist and alchemist's shop
-    Citizens move into houses, as well as town hall
-    Citizens go home at night
-
-Fixes
-    #72 House recipe wasn't working
-    #22 Server side wasn't working
-
-Known Issues
-    Citizens starve even when bread is available
-    Alchemist's shop displays as a logging camp chest
-
 
 Pre-Alpha Revision 8 12-Jan-2013
 

@@ -1,6 +1,7 @@
 package colonies.anglewyrm.src;
 
-import net.minecraft.src.EntityAIBase;
+import net.minecraft.entity.ai.EntityAIBase;
+
 
 public class EntityAILead extends EntityAIBase 
 {

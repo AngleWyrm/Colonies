@@ -1,9 +1,9 @@
 package colonies.eragon.src;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
-import colonies.src.TileEntityColoniesChest;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import colonies.src.buildings.TileEntityColoniesChest;
 import cpw.mods.fml.common.network.IGuiHandler;
  
 public class GuiHandler implements IGuiHandler{
@@ -34,6 +34,6 @@ public class GuiHandler implements IGuiHandler{
                         return new BlockColoniesChestGui(player.inventory, (TileEntityColoniesChest) tile_entity);
                 }
        
-        return null;
+                return null;
         }
 }

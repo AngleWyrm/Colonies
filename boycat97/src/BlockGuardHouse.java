@@ -1,16 +1,14 @@
 package colonies.boycat97.src;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.TileEntity;
-import net.minecraft.src.World;
-import colonies.anglewyrm.src.TileEntityTownHall;
-import colonies.anglewyrm.src.Utility;
-import colonies.src.BlockColoniesChest;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import colonies.src.ClientProxy;
 import colonies.src.ColoniesMain;
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.Utility;
+import colonies.src.buildings.BlockColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
+import colonies.src.buildings.TileEntityTownHall;
 
 public class BlockGuardHouse extends BlockColoniesChest {
 	

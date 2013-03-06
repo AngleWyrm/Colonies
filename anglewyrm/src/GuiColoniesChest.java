@@ -1,10 +1,15 @@
 package colonies.anglewyrm.src;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.src.*;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-import colonies.src.TileEntityColoniesChest;
+import colonies.src.buildings.ContainerColoniesChest;
+import colonies.src.buildings.TileEntityColoniesChest;
 
 public class GuiColoniesChest extends GuiContainer 
 {
@@ -13,7 +18,7 @@ public class GuiColoniesChest extends GuiContainer
 	private int inventoryRows = 0;
 
     public GuiColoniesChest (TileEntityColoniesChest teChest,InventoryPlayer _playerInventory) {
-            //the container is instanciated and passed to the superclass for handling
+            //the container is instantiated and passed to the superclass for handling
             super(new ContainerColoniesChest(_playerInventory, teChest));
             chestInventory = teChest;
             this.inventoryRows = chestInventory.getSizeInventory() / 9;
@@ -39,7 +44,7 @@ public class GuiColoniesChest extends GuiContainer
             // drawString parameters: string, x, y, color
             fontRenderer.drawString(StatCollector.translateToLocal(chestInventory.getInvName()), 8, 6, 0x404040);
 
-//             Localization: draws "Inventory" or your regional equivalent
+            // Localization: draws "Inventory" or your regional equivalent
             fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"),8,ySize - 62, 0x404040);
     }
 

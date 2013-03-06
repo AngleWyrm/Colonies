@@ -1,8 +1,11 @@
 package colonies.src;
 
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.World;
+import colonies.src.buildings.TileEntityColoniesChest;
+import colonies.src.TileEntityResearchBlock;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 
 public class ServerProxy implements IGuiHandler
@@ -30,12 +33,12 @@ public class ServerProxy implements IGuiHandler
 	public static String FISHERMANHUT_PNG    = "/colonies/irontaxi/gfx/fishermanhut.png";
 	public static String GUARDHOUSE_PNG  	 = "/colonies/boycat97/gfx/guardHouse.png";
 	public static String ALCHEMISTCHEST_PNG  = "/colonies/gfx/alchemistChest.png";
-	
+	public static String ENCHANTERCHEST_PNG  = "/colonies/pmardle/gfx/Enchanterchest.png";
+		
     public void registerRenderInformation()
     {
 
     }
-
     public void registerTileEntitySpecialRenderer(Class<TileEntityColoniesChest> renderer)
     {
         // TODO: Add special render types here
