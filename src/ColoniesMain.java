@@ -59,7 +59,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Colonies", name = "Colonies", version = "15 Feb 2012")
+@Mod(modid = "Colonies", name = "Colonies", version = "8 Mar 2013")
 @NetworkMod(
 		channels = { "Colonies" },
 		clientSideRequired = true,
@@ -109,6 +109,7 @@ public class ColoniesMain
 		setConfig(config);
 		config.save();
 		MinecraftForge.EVENT_BUS.register(new ColoniesSoundManager());
+		MinecraftForge.EVENT_BUS.register(new AncientTomeDropsEvent());
 	}
 
 	@Init
@@ -127,12 +128,7 @@ public class ColoniesMain
 		//Biome
 		VillageBiome = new BiomeGenVillage(53).setColor(2900485).setBiomeName("Village Biome").setTemperatureRainfall(1F, 0.5F).setMinMaxHeight(0.1F, 0.1F);
         GameRegistry.addBiome(VillageBiome);
- 
-  
-		//
-		
-		
-		
+ 	
 		Recipes.registerRecipes();
 		
 		ColoniesAchievements.addAchievementLocalizations();
@@ -164,9 +160,9 @@ public class ColoniesMain
 	}
 
 	public String Version(){
-		return "PreAlpha, Revision 13";
+		return "PreAlpha, Revision 14";
 	}
-	//..
+
 	// Configuration Settings
 	// Appear here as public statics, and are set below in setConfig()
 	public static int testBlockID;
@@ -257,11 +253,7 @@ public class ColoniesMain
 	
 	// Register Colonies stuff with Minecraft Forge
 	private void registerColoniesStuff()
-	{
-		
-		//AncientTomeDropsEvent
-		//Additional note to force re-commit
-		MinecraftForge.EVENT_BUS.register(new AncientTomeDropsEvent());
+	{		
 		// Chest block
 		chestBlock = new BlockColoniesChest(defaultChestID);
 		LanguageRegistry.addName(chestBlock, "Colonies Chest");
