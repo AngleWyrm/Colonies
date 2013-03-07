@@ -72,7 +72,9 @@ public class GuiTownName extends GuiContainer {
 //        {
             chest.townName = inputField.getText();
             chest.closeChest();
-//        }
+            if(TileEntityTownHall.playerTown != null){
+            	TileEntityTownHall.playerTown.setTownName(inputField.getText());
+            }
     }
 
     /**
