@@ -39,6 +39,7 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 			destination = new Point(citizen.employer);
 		}
 		if(destination.getDistance(citizen) < 3){
+			citizen.stopNavigating();
 			return wantsSomething();
 		} // else too far away (would need to path there)
 		
@@ -54,31 +55,29 @@ public class EntityAIMaintainInventoryLevels extends EntityAIBase
 	
 	public void startExecuting(){
 		destination.set(citizen.employer);
+		if(destination.getDistance(citizen.employer) < 3) return;
 		citizen.getNavigator().tryMoveToXYZ(destination.x, destination.y+1, destination.z, 0.35f);
 	}
 	
     public boolean continueExecuting()
     {
+    	if(citizen.employer == null) return false; // employer destroyed?
+    	
     	// if arrived, get supplies and return false
-    	Point p = new Point();
-    	p.set(citizen);
-    	if(p.getDistance(citizen.employer) < 3.0){
+    	destination.set(citizen.employer);
+    	if(destination.getDistance(citizen) < 3.0){
     		// arrived at location, transfer supplies
     		citizen.stopNavigating();
-    		destination = null;
     		
     		if(citizen.getItemFromChest(citizen.employer, objectOfDesire) != null){ 
     			Utility.chatMessage("Citizen #" +citizen.ssn + " got supplies");
     		}
     		citizen.wantsSomething = false;
     		objectOfDesire = null;
-    		destination = null;
     		return false;
     	}// else still pathing to location
     	
-    	boolean shouldContinue = !this.citizen.getNavigator().noPath();
-    	// other reasons to bail, such as status changes
-    	return shouldContinue;
+    	return !this.citizen.getNavigator().noPath();
     }
 
 	
