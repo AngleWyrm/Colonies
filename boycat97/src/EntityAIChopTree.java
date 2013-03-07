@@ -95,6 +95,7 @@ public class EntityAIChopTree extends EntityAIBase
 			return false;		
 			
 		} // else a destination has already been established during a previous update tick		
+		if(destination == null) return false; // CTD on null pointer exception
 		
 		if(destination.getDistance(citizen.posX, citizen.posY, citizen.posZ) <= 6) // close enough, chop tree
 		{
