@@ -15,6 +15,7 @@ import colonies.boycat97.src.BlockGuardHouse;
 import colonies.boycat97.src.EntityGuard;
 import colonies.boycat97.src.TileEntityGuardHouse;
 import colonies.kzolp67.src.ColoniesTab;
+import colonies.pmardle.src.BiomeGenVillage;
 import colonies.pmardle.src.EntityBarbarian;
 import colonies.pmardle.src.EntityBarbarianChief;
 import colonies.src.buildings.BlockAlchemistShop;

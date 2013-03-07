@@ -1,4 +1,4 @@
-package colonies.src;
+package colonies.pmardle.src;
 
 import net.minecraft.world.biome.BiomeGenBase;
 
