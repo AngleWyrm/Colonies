@@ -14,9 +14,9 @@ import colonies.anglewyrm.src.PacketHandler;
 import colonies.boycat97.src.BlockGuardHouse;
 import colonies.boycat97.src.EntityGuard;
 import colonies.boycat97.src.TileEntityGuardHouse;
-import colonies.hostile.EntityBarbarian;
-import colonies.hostile.EntityBarbarianChief;
 import colonies.kzolp67.src.ColoniesTab;
+import colonies.pmardle.src.EntityBarbarian;
+import colonies.pmardle.src.EntityBarbarianChief;
 import colonies.src.buildings.BlockAlchemistShop;
 import colonies.src.buildings.BlockColoniesChest;
 import colonies.src.buildings.BlockEnchanter;
@@ -407,5 +407,5 @@ public class ColoniesMain
 		
 
 	}
-		}
+}
 

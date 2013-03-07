@@ -1,9 +1,9 @@
 package colonies.src;
 
-import colonies.hostile.EntityBarbarian;
-import colonies.hostile.EntityBarbarianChief;
-import colonies.hostile.RenderBarbarian;
-import colonies.hostile.RenderBarbarianChief;
+import colonies.pmardle.src.EntityBarbarian;
+import colonies.pmardle.src.EntityBarbarianChief;
+import colonies.pmardle.src.RenderBarbarian;
+import colonies.pmardle.src.RenderBarbarianChief;
 import colonies.src.buildings.ColoniesChestRenderHelper;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityColoniesChestRenderer;

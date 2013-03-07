@@ -1,4 +1,4 @@
-package colonies.hostile;
+package colonies.pmardle.src;
 // 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -44,7 +44,7 @@ public class EntityBarbarianChief extends EntityMob
     public EntityBarbarianChief(World par1World)
     {
         super(par1World);
-        this.texture = "/colonies/hostile/gfx/BarbarianChief.png";
+        this.texture = "/colonies/pmardle/gfx/BarbarianChief.png";
         this.moveSpeed = 0.28F;
         this.setSize(0.9f, 1.8f);
         this.getNavigator().setBreakDoors(true);

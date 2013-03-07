@@ -1,4 +1,4 @@
-package colonies.hostile;
+package colonies.pmardle.src;
 //
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
