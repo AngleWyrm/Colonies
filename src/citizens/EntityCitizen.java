@@ -9,6 +9,8 @@ import colonies.src.Utility;
 import colonies.src.buildings.TileEntityColoniesChest;
 import colonies.src.buildings.TileEntityTownHall;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.StepSound;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -169,7 +171,9 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
     }
     
     protected void playStepSound(int par1, int par2, int par3, int par4){
-        this.worldObj.playSoundAtEntity(this, "mob.cow.step", 0.15F, 1.0F);
+    	StepSound sound = Block.blocksList[par4].stepSound;
+        this.worldObj.playSoundAtEntity(this, sound.getStepSound(), sound.getVolume(), sound.getPitch());
+        
     }
     /**
      * Args: itemstack, flag
