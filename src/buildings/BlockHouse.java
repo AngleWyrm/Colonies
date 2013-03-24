@@ -22,11 +22,10 @@ public class BlockHouse extends BlockColoniesChest {
 		return ClientProxy.HOUSECHEST_PNG;
 	}
 	
-    @Override
-    public TileEntity createNewTileEntity(World theWorld){
-    	tileEntity = new TileEntityHouse();
-        return tileEntity;
-     }
+    public TileEntity createNewTileEntity(World par1World)
+    {
+        return new TileEntityHouse();
+    }
     
     @Override
     public boolean addBlockToTown(TileEntityColoniesChest _teHouse){
@@ -37,10 +36,11 @@ public class BlockHouse extends BlockColoniesChest {
     		// DEBUG: Workaround for double-chest placement bug
     		
     		// TODO: use list
+    		_teHouse.townname = TileEntityTownHall.playerTown.townname;
     		TileEntityTownHall.playerTown.homesList.offer(_teHouse);
     		TileEntityTownHall.playerTown.maxPopulation += 2;
     		Utility.chatMessage("New housing available in " 
-       				+ TileEntityTownHall.playerTown.townName + " (pop: " 
+       				+ TileEntityTownHall.playerTown.townname + " (pop: " 
        				+ TileEntityTownHall.playerTown.citizensList.size() + "/"
        				+ TileEntityTownHall.playerTown.maxPopulation + ")");
        	    		return true;
@@ -54,10 +54,11 @@ public class BlockHouse extends BlockColoniesChest {
     	if(players != null){
     		if(players.homesList == null) return false;
     		if(players.citizensList == null) return false;
-    		if(players.citizensList.size() <=0) return false;
-    	    		
+    		if(players.maxPopulation <=0){
+    	      players.maxPopulation -= 2;
+    		}
     		// TODO: Use list
-    		players.maxPopulation -= 2;
+    		
 //    		if(TileEntityTownHall.playerTown.maxPopulation <=0) return false;
     		
     		int size1 = players.homesList.size();
@@ -82,5 +83,6 @@ public class BlockHouse extends BlockColoniesChest {
     	
     	return false;
     }
+    
 
 }

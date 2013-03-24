@@ -27,7 +27,6 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public int maxPopulation = 0;    // citizen count
 	public double townPerimeter = 14; // meters
 	private int spawnDelay = 600;    // count of calls to update function
-	public String townName;
 	
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
 
@@ -89,7 +88,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public boolean evacuateTown(){
 		if(citizensList==null) return false;
 		
-		Utility.Debug("Evacuating " + townName);
+		Utility.Debug("Evacuating " + townname);
 		maxPopulation = 0;
 		
 		// remove citizens from town
@@ -111,13 +110,13 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	}
 	
 	public void setTownName(String newName){
-		townName = newName;
+		townname = newName;
 	}
 	
 	@Override
     public String getInvName(){
 		String townLabel = new String();
-		if(townName != null) townLabel += townName;
+		if(townname != null) townLabel += townname;
 		townLabel += " (Pop: ";
 		if(citizensList != null){
 			townLabel += citizensList.size();
@@ -225,8 +224,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	@Override
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
 	  super.writeToNBT(par1NBTTagCompound);
-	  
-	  par1NBTTagCompound.setString("Townsname",townName);
+	 /* 
+	  par1NBTTagCompound.setString("Townsname",townname);
 	  
 	  int i0=0;
 	  TileEntityColoniesChest i1;
@@ -240,14 +239,14 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		// System.out.println(i0);
 	  }
 	  par1NBTTagCompound.setInteger("HomeslistSize", i0);
-	  
+	  */
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound){
 	  super.readFromNBT(par1NBTTagCompound);
-
-	  townName = par1NBTTagCompound.getString("Townsname");
+/*
+	  townname = par1NBTTagCompound.getString("Townsname");
 	  
 	  int size = par1NBTTagCompound.getInteger("HomeslistSize");
 	  homelistvalues= new Integer[size][3];
@@ -262,6 +261,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		notreturnedlist = true;
 		
 	  }
+	  */
 	  maxPopulation += 4;
 	  playerTown = this;
 	}

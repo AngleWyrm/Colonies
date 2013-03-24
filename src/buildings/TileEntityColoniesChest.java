@@ -26,7 +26,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
-
+	/**Name of the town chest belongs to*/
+    public String townname;
 	private ItemStack[] chestContents = new ItemStack[36];
 	private LinkedList<EntityCitizen> occupants;
 	private int maxOccupancy = 2;
@@ -236,6 +237,8 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
                 this.chestContents[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
+        
+        townname = par1NBTTagCompound.getString("townname");
     }
 
     /**
@@ -273,6 +276,8 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         }
 
         par1NBTTagCompound.setTag("Items", var2);
+        
+        par1NBTTagCompound.setString("townname", townname);
         
         super.writeToNBT(par1NBTTagCompound);
     }

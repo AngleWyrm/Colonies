@@ -26,20 +26,15 @@ public class BlockTownHall extends BlockColoniesChest
 	}
 	
 	@Override
-	public TileEntityColoniesChest getChestType(){
-		return tileEntity;
-	}
-	
-	@Override
 	public String getTextureFile() {
 		return ClientProxy.TOWNHALLCHEST_PNG;
 	}
-	
-    @Override
-    public TileEntity createNewTileEntity(World par1World){
-    	return new TileEntityTownHall();
-     }
 
+    public TileEntity createNewTileEntity(World par1World)
+    {
+        return new TileEntityTownHall();
+    }
+	
     public void onBlockPlacedBy(World theWorld, int x, int y, int z, EntityLiving par5EntityLiving)
     {   	
     	if(theWorld.isRemote) return;
@@ -65,8 +60,8 @@ public class BlockTownHall extends BlockColoniesChest
     }
     
     @Override
-    public void breakBlock(World theWorld, int x, int y, int z, int par5, int par6)
-    {
+    public void breakBlock(World theWorld, int x, int y, int z, int par5, int par6){
+    	
     	// Get block's associated tile entity,
     	// and if it's a good town hall, evacuate the citizens
     	TileEntity myTileEntity = theWorld.getBlockTileEntity(x, y, z);
@@ -123,5 +118,7 @@ public class BlockTownHall extends BlockColoniesChest
 		}
 		return p;
 	}
+	
+	public boolean removeChestFromTown(TileEntityColoniesChest _teChest){return false;}
 
  }

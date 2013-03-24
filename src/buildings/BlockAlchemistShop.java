@@ -31,7 +31,7 @@ public class BlockAlchemistShop extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teShop){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teShop);
-    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townname);
     		return true;
     	}
     	return false;

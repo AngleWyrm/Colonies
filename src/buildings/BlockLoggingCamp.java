@@ -31,7 +31,7 @@ public class BlockLoggingCamp extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teLoggingCamp){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teLoggingCamp);
-    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townname);
     		return true;
     	}
     	return false;

@@ -36,7 +36,7 @@ public class BlockEnchanter extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teEnchanter){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teEnchanter);
-    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townname);
     		return true;
     	}
     	return false;

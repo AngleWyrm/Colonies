@@ -31,7 +31,7 @@ public class BlockHunterBlind extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teHunterBlind){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teHunterBlind);
-    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townname);
     		return true;
     	}
     	return false;

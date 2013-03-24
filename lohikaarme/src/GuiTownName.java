@@ -70,7 +70,7 @@ public class GuiTownName extends GuiContainer {
 
 //        if (var1 != null)
 //        {
-            chest.townName = inputField.getText();
+            chest.townname = inputField.getText();
             chest.closeChest();
             if(TileEntityTownHall.playerTown != null){
             	TileEntityTownHall.playerTown.setTownName(inputField.getText());

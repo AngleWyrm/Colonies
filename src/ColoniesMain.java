@@ -256,9 +256,9 @@ public class ColoniesMain
 	private void registerColoniesStuff()
 	{		
 		// Chest block
-		chestBlock = new BlockColoniesChest(defaultChestID);
-		LanguageRegistry.addName(chestBlock, "Colonies Chest");
-		GameRegistry.registerBlock(chestBlock);
+//		chestBlock = new BlockColoniesChest(defaultChestID);
+//		LanguageRegistry.addName(chestBlock, "Colonies Chest");
+//		GameRegistry.registerBlock(chestBlock);
 			
 
 		GameRegistry.registerTileEntity(TileEntityColoniesChest.class, "container.colonieschest");

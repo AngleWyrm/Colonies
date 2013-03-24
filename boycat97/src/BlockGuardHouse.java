@@ -34,7 +34,7 @@ public class BlockGuardHouse extends BlockColoniesChest {
     public boolean addBlockToTown(TileEntityColoniesChest _teGuardHouse){
     	if(TileEntityTownHall.playerTown != null){
     		TileEntityTownHall.playerTown.employersList.offer(_teGuardHouse);
-    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townName);
+    		Utility.chatMessage("New jobs available in " + TileEntityTownHall.playerTown.townname);
     		return true;
     	}
     	return false;

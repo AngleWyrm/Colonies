@@ -27,10 +27,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockColoniesChest extends BlockContainer {
+public abstract class BlockColoniesChest extends BlockContainer {
 
-	//ID that is used to know what gui to show at Handler
+	/**ID that is used to know what gui to show at Handler*/
 	protected int GuiID=0;
+	
 	public TileEntityColoniesChest tileEntity;
 	
 	//private Random random = new Random();
@@ -115,7 +116,9 @@ public class BlockColoniesChest extends BlockContainer {
     	return false;
     }
     public boolean removeChestFromTown(TileEntityColoniesChest _teChest){
-    	_teChest.fireEmployees();
+
+    	  _teChest.fireEmployees();
+    	
     	return false;
     }
     
@@ -271,8 +274,8 @@ public class BlockColoniesChest extends BlockContainer {
      */
     public void breakBlock(World theWorld, int x, int y, int z, int par5, int par6)
     {
-    	removeChestFromTown((TileEntityColoniesChest) theWorld.getBlockTileEntity(x, y, z));
     	
+    	removeChestFromTown((TileEntityColoniesChest) theWorld.getBlockTileEntity(x, y, z));
     	
         TileEntityColoniesChest var7 = (TileEntityColoniesChest)theWorld.getBlockTileEntity(x, y, z);
 
@@ -314,6 +317,8 @@ public class BlockColoniesChest extends BlockContainer {
         }
 
         super.breakBlock(theWorld, x, y, z, par5, par6);
+        
+        
     }
 
     /**
@@ -397,9 +402,9 @@ public class BlockColoniesChest extends BlockContainer {
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
-    public TileEntity createNewTileEntity(World par1World)
+//    public TileEntity createNewTileEntity(World par1World)
     {
-        return new TileEntityColoniesChest();
+//        return tileEntity;
     }
 
     /**

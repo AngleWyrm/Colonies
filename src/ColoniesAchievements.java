@@ -20,9 +20,9 @@ public class ColoniesAchievements implements ICraftingHandler
 
 	public static Achievement TownStarted = (new Achievement(50, "TownStarted", 0, 0, ColoniesMain.townHall, null)).setIndependent().registerAchievement();	
 	public static Achievement ToTheDepts = (new Achievement(51, "ToTheDepts", 3, 1, ColoniesMain.minerChest, TownStarted)).registerAchievement();
-	public static Achievement Prosperity = (new Achievement(52, "Prosperity", -1, 2, ColoniesMain.chestBlock, TownStarted)).registerAchievement();
+//	public static Achievement Prosperity = (new Achievement(52, "Prosperity", -1, 2, ColoniesMain.chestBlock, TownStarted)).registerAchievement();
 	
-	public static AchievementPage page1 = new AchievementPage("Colonies", TownStarted, ToTheDepts, Prosperity);
+	public static AchievementPage page1 = new AchievementPage("Colonies", TownStarted, ToTheDepts/*, Prosperity*/);
 	
 
 
@@ -64,11 +64,11 @@ public class ColoniesAchievements implements ICraftingHandler
 			chestZMinerItMade = true;    
 		}
 		//is this a valid way of doing it?
-		if((chestZMinerItMade) && (chestZBuilderItMade) && (chestZBlSmithItMade) && (chestZLumItMade) && (chestZFarmsItMade))
+		/*if((chestZMinerItMade) && (chestZBuilderItMade) && (chestZBlSmithItMade) && (chestZLumItMade) && (chestZFarmsItMade))
 		{
 			player.addStat(Prosperity, 1);
 		}
-		/*
+		
 		if (item.itemID == ColoniesMain.loggingCampID)
 		{
 			chestZLumItMade = true;
