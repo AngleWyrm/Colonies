@@ -30,10 +30,11 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	/**Towns*/
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
 
+	public String worldName=null; 
+	
 	public LinkedList<EntityCitizen>       		citizensList;
 	public LinkedList<TileEntityColoniesChest>  homesList;
 	public LinkedList<TileEntityColoniesChest>  employersList;
-	
 	
 	private boolean notreturnedlist = false;
 	private Integer[][] homelistvalues;
@@ -241,6 +242,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	  }
 	  par1NBTTagCompound.setInteger("HomeslistSize", i0);
 	  */
+	  
+	  playerTown.worldName=worldObj.getWorldInfo().getWorldName();
 	}
 	
 	@Override
@@ -263,16 +266,22 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		
 	  }
 	  */
-	  
-	    homesList = playerTown.homesList;
-	    maxPopulation = 4 + playerTown.maxPopulation;
-	    playerTown = this;
+	    if(playerTown.hasStaticTowns()){
+	      homesList = playerTown.homesList;
+	      maxPopulation = 4 + playerTown.maxPopulation;
+	      playerTown = this;
+	    }
 	}
 	
 	
 	@Override
 	public String getTextureFile(){
 		return ClientProxy.TOWNHALLCHEST_PNG;
+	}
+	
+	public boolean hasStaticTowns(){
+	  if(worldName==null)return true;
+	  return worldName!=worldObj.getWorldInfo().getWorldName();
 	}
 
 }

@@ -29,8 +29,10 @@ public class TileEntityHouse extends TileEntityColoniesChest {
     
     public void readFromNBT(NBTTagCompound par1NBTTagCompound){
         super.readFromNBT(par1NBTTagCompound);
+        if(TileEntityTownHall.playerTown.hasStaticTowns()){
           TileEntityTownHall.playerTown.homesList.offer(this);
           TileEntityTownHall.playerTown.maxPopulation+=2;
+        }
     }
 
 }

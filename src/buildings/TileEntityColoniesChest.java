@@ -26,13 +26,13 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class TileEntityColoniesChest extends TileEntity implements IInventory {
+	
 	/**Name of the town chest belongs to*/
     public String townname;
 	private ItemStack[] chestContents = new ItemStack[36];
 	private LinkedList<EntityCitizen> occupants;
 	private int maxOccupancy = 2;
 	protected EntityCitizen jobPositions[] = {null, null};
-	
 	// TODO: This is probably better handled as createNewWorker()
 	// public EntityCitizen workerType = new EntityCitizen(this.worldObj);
 	
@@ -239,10 +239,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         }
         
         townname = par1NBTTagCompound.getString("townname");
-        
         if(TileEntityTownHall.playerTown==null){
-        	  TileEntityTownHall.playerTown = new TileEntityTownHall();  
+          TileEntityTownHall.playerTown = new TileEntityTownHall();
         }
+        
     }
 
     /**
