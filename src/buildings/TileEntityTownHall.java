@@ -27,7 +27,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	public int maxPopulation = 0;    // citizen count
 	public double townPerimeter = 14; // meters
 	private int spawnDelay = 600;    // count of calls to update function
-	
+	/**Towns*/
 	public static TileEntityTownHall playerTown; // to be replace by a list later on
 
 	public LinkedList<EntityCitizen>       		citizensList;
@@ -38,6 +38,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	private boolean notreturnedlist = false;
 	private Integer[][] homelistvalues;
 	
+    
 	
 	public TileEntityTownHall() {
 		super();
@@ -224,7 +225,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	@Override
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound){
 	  super.writeToNBT(par1NBTTagCompound);
-	 /* 
+	 /* Old Test
 	  par1NBTTagCompound.setString("Townsname",townname);
 	  
 	  int i0=0;
@@ -245,7 +246,7 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound){
 	  super.readFromNBT(par1NBTTagCompound);
-/*
+      /*Old Test
 	  townname = par1NBTTagCompound.getString("Townsname");
 	  
 	  int size = par1NBTTagCompound.getInteger("HomeslistSize");
@@ -262,8 +263,10 @@ public class TileEntityTownHall extends TileEntityColoniesChest
 		
 	  }
 	  */
-	  maxPopulation += 4;
-	  playerTown = this;
+	  
+	    homesList = playerTown.homesList;
+	    maxPopulation = 4 + playerTown.maxPopulation;
+	    playerTown = this;
 	}
 	
 	

@@ -239,6 +239,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         }
         
         townname = par1NBTTagCompound.getString("townname");
+        
+        if(TileEntityTownHall.playerTown==null){
+        	  TileEntityTownHall.playerTown = new TileEntityTownHall();  
+        }
     }
 
     /**
@@ -280,6 +284,9 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
         par1NBTTagCompound.setString("townname", townname);
         
         super.writeToNBT(par1NBTTagCompound);
+        
+        
+        
     }
 
     /**
