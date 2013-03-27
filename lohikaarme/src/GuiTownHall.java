@@ -28,16 +28,10 @@ public class GuiTownHall extends GuiColoniesChest {
 	
 	private int currentView = 0;
 	
-	private int inventoryRows = 0;
-	
 	
 	public GuiTownHall(TileEntityTownHall teChest, InventoryPlayer _playerInventory) {
 		super(teChest, _playerInventory);
-		
 		this.tileEntityTownHall = teChest;
-		
-		this.inventoryRows = chestInventory.getSizeInventory() / 9;
-        this.ySize = 114 + this.inventoryRows * 7;
 	}
 	
 	
@@ -109,8 +103,8 @@ public class GuiTownHall extends GuiColoniesChest {
 	
 	@Override
 	protected void actionPerformed(GuiButton guiButton) {
-		if (guiButton.enabled) {
-			this.currentView = guiButton.id;
+		if(guiButton.enabled) {
+		  this.currentView = guiButton.id;
 		}		
 	}
 	
@@ -146,7 +140,7 @@ public class GuiTownHall extends GuiColoniesChest {
             int x = (width - xSize) / 2;      
             int y = (height - ySize) / 2;
             this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);        
-            this.drawTexturedModalRect(x, y + this.inventoryRows * 18 + 17, 0, 126, this.xSize, 96);
+            this.drawTexturedModalRect(x, y + this.getInventoryRows() * 18 + 17, 0, 126, this.xSize, 96);
             
     	} else if ( this.currentView == this.townHallInv.id) { //inventory view
     		 int picture = mc.renderEngine.getTexture("/gui/container.png");
@@ -157,8 +151,8 @@ public class GuiTownHall extends GuiColoniesChest {
              int x = (width - xSize) / 2;
              int y = (height - ySize) / 2;
              //this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-             this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.inventoryRows * 18 + 17);
-             this.drawTexturedModalRect(x, y + this.inventoryRows * 18 + 17, 0, 126, this.xSize, 96);
+             this.drawTexturedModalRect(x, y, 0, 0, this.xSize, this.getInventoryRows() * 18 + 17);
+             this.drawTexturedModalRect(x, y + this.getInventoryRows() * 18 + 17, 0, 126, this.xSize, 96);
     	}
         
     }

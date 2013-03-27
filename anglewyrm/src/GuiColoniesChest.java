@@ -77,4 +77,8 @@ public class GuiColoniesChest extends GuiContainer
         this.drawTexturedModalRect(x, y + this.inventoryRows * 18 + 17, 0, 126, this.xSize, 96);
         
     }
+    /**Return InvetoryRows integer */
+    protected int getInventoryRows(){
+      return inventoryRows;
+    }
 }

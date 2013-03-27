@@ -602,5 +602,10 @@ public class TileEntityColoniesChest extends TileEntity implements IInventory {
 		}
 		return -1; // no room for this stack
 	}
+	
+	/**returns occupants of the chest*/
+	public LinkedList<EntityCitizen> getOccupants(){
+	  return occupants;
+	}
 
 }
