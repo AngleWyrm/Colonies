@@ -85,6 +85,12 @@ public class ColoniesMain
 	public static Item researchedTome;
 	public static Block researchBlock; //For inclusion in enchanter's house for player to research Ancient Tomes
 	public static BiomeGenBase VillageBiome; //for Village Biome
+	/**Names of the male citizens*/
+	public static String[] maleNames;
+	/**Names of the female citizens*/
+	public static String[] femaleNames;
+	/**Last names of the citizens*/
+	public static String[] lastNames;
 
 
 	
@@ -250,6 +256,10 @@ public class ColoniesMain
 		
 		guiChestBackground = config.get("GUI", "guiChestBackground2", "/colonies/boycat97/gfx/windowBackground.png").value;
 		guiResearchBlockBackground = config.get("GUI", "guiResearchBlockBackground", "/colonies/gfx/researchBlockBackground.png").value;
+		
+		maleNames   = config.get("Names","maleNames","Michle,Antalas,Olli,Yehoyakim,Bob,Hugo").value.split(",");
+		femaleNames = config.get("Names","femaleNames","Anna,Mirian,Kiki,Carina,Marijana,Jessica").value.split(",");
+		lastNames   = config.get("Names","lastnames","Huberman,Hironaka,Newton,Rosenfield,Dixon,Dell'antonio").value.split(",");
 	}
 	
 	// Register Colonies stuff with Minecraft Forge

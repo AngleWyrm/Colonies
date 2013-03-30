@@ -156,6 +156,8 @@ public class TileEntityTownHall extends TileEntityColoniesChest
            		newGuy = new EntityCitizen(worldObj);
            	}
         	
+           	newGuy.giveName();
+           	
         	// pick a random direction at the town perimeter
         	Point p = new Point(this.xCoord, this.yCoord, this.zCoord);
         	Point q = new Point();

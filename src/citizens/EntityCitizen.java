@@ -2,6 +2,7 @@ package colonies.src.citizens;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Random;
 
 import colonies.anglewyrm.src.EntityAITransferInventoryToEmployer;
 import colonies.src.ColoniesMain;
@@ -315,7 +316,30 @@ public class EntityCitizen extends EntityCreature implements IMob // TODO: Make 
 		entityCit.readEntityFromNBT(var4);
 		
 		return entityCit;
-	
 	}
-
+	/**Gives citizen a name*/
+	public void giveName(){
+	  Random random = new Random();
+	  String firstName=".";
+	  if(isMale){
+	    firstName = ColoniesMain.maleNames[random.nextInt(ColoniesMain.maleNames.length)];
+	  }
+	  else{
+        firstName = ColoniesMain.femaleNames[random.nextInt(ColoniesMain.femaleNames.length)];
+	  }
+	  String lastName = ColoniesMain.lastNames[random.nextInt(ColoniesMain.lastNames.length)];
+	  name = firstName+" "+lastName;
+	}
+	
+    @Override
+    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+      super.readEntityFromNBT(par1NBTTagCompound);
+      name = par1NBTTagCompound.getString("name");
+    }
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound){
+      super.writeEntityToNBT(par1NBTTagCompound);
+      par1NBTTagCompound.setString("name", name);
+	}
 }
