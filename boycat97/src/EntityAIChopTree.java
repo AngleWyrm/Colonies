@@ -25,7 +25,7 @@ public class EntityAIChopTree extends EntityAIBase
     protected int BlockID;
     protected World taskEntityWorld; 
     protected float movementSpeed;
-    private static ItemStack[] axeTypes = {new ItemStack(Item.axeSteel,1), new ItemStack(Item.axeStone, 1), new ItemStack(Item.axeWood,1)};
+    private static ItemStack[] axeTypes = {new ItemStack(Item.axeSteel,1), new ItemStack(Item.axeStone, 1), new ItemStack(Item.axeWood,1), new ItemStack(Item.axeDiamond,1)};
     
     Point destination;
     Point topOfTree  = null;
@@ -151,8 +151,7 @@ public class EntityAIChopTree extends EntityAIBase
 		if (this.topOfTree == null) this.findTopOfTree();
 		 
 		//TODO: figure out how to chop wood multiple times so that its being broken up correctly.
-		//set the variables that allow for immediate scanning for wood. 
-		
+		//set the variables that allow for immediate scanning for wood. 	
 		
 		if ( Math.abs((int)bottomOfTree.y - (int)this.citizen.posY) > 6 || this.bottomOfTree.y == this.topOfTree.y ) {
 			this.bottomOfTree = null;
